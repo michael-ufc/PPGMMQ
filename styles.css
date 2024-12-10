@@ -1,0 +1,19 @@
+/* style.css */
+
+/* Estilização personalizada (se necessário) */
+
+body {
+    background-color: #f8f9fa;
+}
+
+h1, h3, h4, h5 {
+    color: #0d6efd;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.text-danger {
+    font-weight: bold;
+}

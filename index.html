@@ -1,15 +1,521 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Hello World</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Hello, World!</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição PPGMMQ UFC - Processo Seletivo 2024.2</title>
+    <!-- Bootstrap CSS v5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="mb-4">Formulário de Inscrição - Processo Seletivo de Discentes 2024.2</h1>
+        <h3 class="mb-4">Edital 01/2024 - Processo Seletivo de Discentes 2024.2</h3>
+        <p><strong>Nota:</strong> Não esqueça que o e-mail de confirmação de preenchimento deste formulário deverá ser anexado junto com os demais documentos no SIGAA.</p>
+        <form id="inscricaoForm" novalidate>
+            <!-- Seção 1: E-mail -->
+            <hr>
+            <h4>Seção 1: E-mail</h4>
+            <div class="mb-3">
+                <label for="email" class="form-label"><strong>E-mail</strong> <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">
+                    Por favor, insira um e-mail válido.
+                </div>
+            </div>
+
+            <!-- Seção 2: Dados Pessoais -->
+            <hr>
+            <h4>Seção 2: Dados Pessoais</h4>
+            <div class="mb-3">
+                <label for="nomeCompleto" class="form-label"><strong>Nome Completo</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o seu nome completo.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="documentoIdentificacao" class="form-label"><strong>Documento oficial de Identificação</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="documentoIdentificacao" name="documentoIdentificacao" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o número do documento oficial com foto.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label"><strong>CPF</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="cpf" name="cpf" pattern="\d{11}" placeholder="Apenas números" required>
+                <div class="invalid-feedback">
+                    Por favor, insira um CPF válido (11 dígitos) ou deixe em branco se estrangeiro.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="telefoneFixo" class="form-label"><strong>Telefone fixo</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="telefoneFixo" name="telefoneFixo" placeholder="(DDD) Número ou 'não há'" required>
+                <div class="invalid-feedback">
+                    Por favor, insira um telefone fixo com DDD ou escreva "não há".
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="telefoneCelular" class="form-label"><strong>Telefone celular</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="telefoneCelular" name="telefoneCelular" placeholder="(DDD) Número ou 'não há'" required>
+                <div class="invalid-feedback">
+                    Por favor, insira um telefone celular com DDD ou escreva "não há".
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cidade" class="form-label"><strong>Cidade</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Ex: Fortaleza/CE" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a cidade e o estado no formato "Cidade/UF".
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"><strong>Enquadramento para cotas de ações afirmativas</strong> <span class="text-danger">*</span></label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Negro" id="cotaNegro" name="cotas">
+                    <label class="form-check-label" for="cotaNegro">
+                        Negro (preto/pardo)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Indígena" id="cotaIndigena" name="cotas">
+                    <label class="form-check-label" for="cotaIndigena">
+                        Indígena
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Quilombola" id="cotaQuilombola" name="cotas">
+                    <label class="form-check-label" for="cotaQuilombola">
+                        Quilombola
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="PCD" id="cotaPCD" name="cotas">
+                    <label class="form-check-label" for="cotaPCD">
+                        Pessoa com deficiência (PCD) *(especificar na opção "outros")*
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Outros" id="cotaOutros" name="cotas">
+                    <label class="form-check-label" for="cotaOutros">
+                        Outros...
+                    </label>
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, selecione pelo menos uma opção.
+                </div>
+            </div>
+
+            <!-- Seção 3: Seleção de Disciplinas -->
+            <hr>
+            <h4>Seção 3: Seleção de Disciplinas</h4>
+            <h5>Disciplinas para pontuação na Nota de Avaliação de Histórico (Nota_H)</h5>
+            <div class="mb-3">
+                <label for="disciplina1" class="form-label"><strong>Disciplina 1 - Área de Matemática</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina1" name="disciplina1" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 1.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina2" class="form-label"><strong>Disciplina 2 - Área de Matemática</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina2" name="disciplina2" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 2.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina3" class="form-label"><strong>Disciplina 3 - Área de Estatística</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina3" name="disciplina3" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 3.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina4" class="form-label"><strong>Disciplina 4 - Área de Computação</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina4" name="disciplina4" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 4.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina5" class="form-label"><strong>Disciplina 5 - Qualquer das três áreas</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina5" name="disciplina5" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 5.
+                </div>
+            </div>
+
+            <h5>Disciplinas adicionais para BÔNUS1 (máximo 5)</h5>
+            <div class="mb-3">
+                <label for="disciplina6" class="form-label"><strong>Disciplina 6 de qualquer das três áreas</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina6" name="disciplina6" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 6.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina7" class="form-label"><strong>Disciplina 7 de qualquer das três áreas</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina7" name="disciplina7" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 7.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina8" class="form-label"><strong>Disciplina 8 de qualquer das três áreas</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina8" name="disciplina8" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 8.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina9" class="form-label"><strong>Disciplina 9 de qualquer das três áreas</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina9" name="disciplina9" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 9.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplina10" class="form-label"><strong>Disciplina 10 de qualquer das três áreas</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplina10" name="disciplina10" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina 10.
+                </div>
+            </div>
+
+            <h5>Disciplinas adicionais para BÔNUS2 (máximo 4)</h5>
+            <div class="mb-3">
+                <label for="disciplinaOptativa1" class="form-label"><strong>Disciplina Optativa 1 do PPGMMQ</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplinaOptativa1" name="disciplinaOptativa1" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina Optativa 1.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplinaOptativa2" class="form-label"><strong>Disciplina Optativa 2 do PPGMMQ</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplinaOptativa2" name="disciplinaOptativa2" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina Optativa 2.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplinaOptativa3" class="form-label"><strong>Disciplina Optativa 3 do PPGMMQ</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplinaOptativa3" name="disciplinaOptativa3" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina Optativa 3.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="disciplinaOptativa4" class="form-label"><strong>Disciplina Optativa 4 do PPGMMQ</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="disciplinaOptativa4" name="disciplinaOptativa4" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a Disciplina Optativa 4.
+                </div>
+            </div>
+
+            <!-- Seção 4: Dados Acadêmicos -->
+            <hr>
+            <h4>Seção 4: Dados Acadêmicos</h4>
+            <div class="mb-3">
+                <label for="cursoGraduacao" class="form-label"><strong>Curso de Graduação</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="cursoGraduacao" name="cursoGraduacao" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o seu curso de graduação.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="instituicao" class="form-label"><strong>Instituição</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="instituicao" name="instituicao" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o nome da instituição onde realizou a graduação.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="igcInstituicao" class="form-label"><strong>IGC da Instituição</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o Índice Geral de Cursos (IGC) da instituição.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="ira" class="form-label"><strong>IRA</strong> <span class="text-danger">*</span></label>
+                <input type="number" step="0.01" class="form-control" id="ira" name="ira" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o Índice de Rendimento Acadêmico (IRA).
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cursoGraduacao2" class="form-label"><strong>Curso de Graduação 2</strong></label>
+                <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2">
+            </div>
+            <div class="mb-3">
+                <label for="instituicao2" class="form-label"><strong>Instituição 2</strong></label>
+                <input type="text" class="form-control" id="instituicao2" name="instituicao2">
+            </div>
+            <div class="mb-3">
+                <label for="igcInstituicao2" class="form-label"><strong>IGC da Instituição 2</strong></label>
+                <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2">
+            </div>
+            <div class="mb-3">
+                <label for="ira2" class="form-label"><strong>IRA 2</strong></label>
+                <input type="number" step="0.01" class="form-control" id="ira2" name="ira2">
+            </div>
+            <div class="mb-3">
+                <label for="curriculoLattes" class="form-label"><strong>Currículo Lattes</strong> <span class="text-danger">*</span></label>
+                <input type="url" class="form-control" id="curriculoLattes" name="curriculoLattes" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o link para seu currículo Lattes.
+                </div>
+            </div>
+
+            <!-- Seção 5: Análise Curricular -->
+            <hr>
+            <h4>Seção 5: Análise Curricular</h4>
+            <h5>1. Projetos de pesquisa/iniciação científica</h5>
+            <div class="mb-3">
+                <label for="projetosComBolsa" class="form-label"><strong>Com bolsa: Número de meses</strong></label>
+                <input type="number" class="form-control" id="projetosComBolsa" name="projetosComBolsa" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="projetosSemBolsa" class="form-label"><strong>Sem bolsa: Número de meses</strong></label>
+                <input type="number" class="form-control" id="projetosSemBolsa" name="projetosSemBolsa" min="0">
+            </div>
+
+            <h5>2. Publicações em periódicos</h5>
+            <div class="mb-3">
+                <label for="publicacoesA1A2" class="form-label"><strong>A1 e A2: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesA1A2" name="publicacoesA1A2" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="publicacoesA3A4" class="form-label"><strong>A3 e A4: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesA3A4" name="publicacoesA3A4" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="publicacoesB1B2" class="form-label"><strong>B1 e B2: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesB1B2" name="publicacoesB1B2" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="publicacoesB3B4" class="form-label"><strong>B3 e B4: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesB3B4" name="publicacoesB3B4" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="publicacoesC" class="form-label"><strong>C: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesC" name="publicacoesC" min="0">
+            </div>
+
+            <h5>3. Publicações em eventos</h5>
+            <div class="mb-3">
+                <label for="publicacoesArtigosCompletos" class="form-label"><strong>Artigos completos: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesArtigosCompletos" name="publicacoesArtigosCompletos" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="publicacoesResumosExtendidos" class="form-label"><strong>Resumos estendidos: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesResumosExtendidos" name="publicacoesResumosExtendidos" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="publicacoesResumosSimples" class="form-label"><strong>Resumos simples: Número de publicações</strong></label>
+                <input type="number" class="form-control" id="publicacoesResumosSimples" name="publicacoesResumosSimples" min="0">
+            </div>
+
+            <h5>4. Atividade de docência</h5>
+            <div class="mb-3">
+                <label for="docenciaIES" class="form-label"><strong>IES: Número de meses</strong></label>
+                <input type="number" class="form-control" id="docenciaIES" name="docenciaIES" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="docenciaMonitoria" class="form-label"><strong>Monitoria ou estágio docência: Número de meses</strong></label>
+                <input type="number" class="form-control" id="docenciaMonitoria" name="docenciaMonitoria" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="docenciaEnsino" class="form-label"><strong>Ensino Fundamental, Médio ou Técnico: Número de meses</strong></label>
+                <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0">
+            </div>
+
+            <h5>5. Outras atividades</h5>
+            <div class="mb-3">
+                <label for="bolsaPET" class="form-label"><strong>Bolsa PET: Número de meses</strong></label>
+                <input type="number" class="form-control" id="bolsaPET" name="bolsaPET" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="outrasBolsas" class="form-label"><strong>Outros tipos de bolsa: Número de meses</strong></label>
+                <input type="number" class="form-control" id="outrasBolsas" name="outrasBolsas" min="0">
+            </div>
+
+            <!-- Seção 6: Questionário Socioeconômico -->
+            <hr>
+            <h4>Seção 6: Questionário Socioeconômico</h4>
+            <div class="mb-3">
+                <label class="form-label"><strong>1. Como você se considera?</strong> <span class="text-danger">*</span></label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_1" value="Amarelo(a) de origem asiática" required>
+                    <label class="form-check-label" for="socio1_1">
+                        Amarelo(a) de origem asiática
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_2" value="Branco(a)">
+                    <label class="form-check-label" for="socio1_2">
+                        Branco(a)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_3" value="Indígena">
+                    <label class="form-check-label" for="socio1_3">
+                        Indígena
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_4" value="Pardo(a), Mulato(a)">
+                    <label class="form-check-label" for="socio1_4">
+                        Pardo(a), Mulato(a)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_5" value="Preto(a)">
+                    <label class="form-check-label" for="socio1_5">
+                        Preto(a)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_6" value="Não declarada">
+                    <label class="form-check-label" for="socio1_6">
+                        Não declarada
+                    </label>
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, selecione uma opção.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico2" class="form-label"><strong>2. Onde e como você mora atualmente?</strong> <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="socioeconomico2" name="socioeconomico2" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                    Por favor, responda a pergunta.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico3" class="form-label"><strong>3. Quantas pessoas moram em sua casa?</strong> <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="socioeconomico3" name="socioeconomico3" min="1" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o número de pessoas.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico4" class="form-label"><strong>4. Sua moradia está localizada em?</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="socioeconomico4" name="socioeconomico4" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a localização da sua moradia.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico5" class="form-label"><strong>5. Tipo de escola do ensino fundamental</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="socioeconomico5" name="socioeconomico5" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o tipo de escola.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico6" class="form-label"><strong>6. Tipo de escola do ensino médio</strong> <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="socioeconomico6" name="socioeconomico6" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o tipo de escola.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico7" class="form-label"><strong>7. Escolaridade dos familiares?</strong> <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="socioeconomico7" name="socioeconomico7" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                    Por favor, responda a pergunta.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico8" class="form-label"><strong>8. Renda familiar?</strong> <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="socioeconomico8" name="socioeconomico8" min="0" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a renda familiar.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico9" class="form-label"><strong>9. Quantos livros você lê por ano?</strong> <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="socioeconomico9" name="socioeconomico9" min="0" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a quantidade de livros lidos.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="socioeconomico10" class="form-label"><strong>10. Motivação para continuar estudando?</strong> <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="socioeconomico10" name="socioeconomico10" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                    Por favor, responda a pergunta.
+                </div>
+            </div>
+
+            <!-- Seção 7: Declarações para Bolsa -->
+            <hr>
+            <h4>Seção 7: Declarações para Bolsa</h4>
+            <div class="mb-3">
+                <label class="form-label"><strong>1. Situação atual (escolha uma):</strong></label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao1" value="Não exerço atividade remunerada." required>
+                    <label class="form-check-label" for="declaracao1">
+                        Não exerço atividade remunerada.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao2" value="Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa." required>
+                    <label class="form-check-label" for="declaracao2">
+                        Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao3" value="Exerço atividade remunerada e não me desligarei." required>
+                    <label class="form-check-label" for="declaracao3">
+                        Exerço atividade remunerada e não me desligarei.
+                    </label>
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, selecione uma opção.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label"><strong>2. Declarações:</strong></label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="declaracaoSim1" name="declaracoes2" value="Sim, declaro estar ciente." required>
+                    <label class="form-check-label" for="declaracaoSim1">
+                        Sim, declaro estar ciente.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="declaracaoSim2" name="declaracoes2" value="Sim, autorizo a averiguação das informações." required>
+                    <label class="form-check-label" for="declaracaoSim2">
+                        Sim, autorizo a averiguação das informações.
+                    </label>
+                </div>
+                <div class="invalid-feedback">
+                    Você deve marcar ambas as declarações.
+                </div>
+            </div>
+
+            <!-- Botão de Envio -->
+            <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
+        </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+
+    <!-- Bootstrap JS v5.3 e dependências -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
 </html>
