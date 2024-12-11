@@ -6,6 +6,8 @@
     <title>PPGMMQ</title>
     <!-- Bootstrap CSS v5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- Custom CSS -->
     <style>
         /* Layout da Navegação Lateral */
@@ -68,10 +70,10 @@
                 <a class="nav-link" href="#section1">1. Dados Pessoais</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#section2">2. Seleção de Disciplinas</a>
+                <a class="nav-link" href="#section2">2. Dados Acadêmicos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#section3">3. Dados Acadêmicos</a>
+                <a class="nav-link" href="#section3">3. Seleção de Disciplinas</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#section4">4. Análise Curricular</a>
@@ -97,6 +99,7 @@
                 </div>
             </div>
             <form id="inscricaoForm" novalidate>
+                
                 <!-- Seção 1: Dados Pessoais -->
                 <div id="section1" class="card mb-4">
                     <div class="card-body">
@@ -151,50 +154,87 @@
                             <div class="invalid-feedback">
                                 Por favor, insira a cidade e o estado no formato "Cidade/UF".
                             </div>
+                        </div>                        
+                    </div>
+                </div>                
+
+                <!-- Seção 2: Dados Acadêmicos -->
+                <div id="section2" class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Seção 2: Dados Acadêmicos</h4>
+                        <div class="mb-3">
+                            <label for="cursoGraduacao" class="form-label"><strong>Curso de Graduação</strong> <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="cursoGraduacao" name="cursoGraduacao" required>
+                            <div class="invalid-feedback">
+                                Por favor, insira o seu curso de graduação.
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label"><strong>Enquadramento para cotas de ações afirmativas</strong> <span class="text-danger">*</span></label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Negro" id="cotaNegro" name="cotas">
-                                <label class="form-check-label" for="cotaNegro">
-                                    Negro (preto/pardo)
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Indígena" id="cotaIndigena" name="cotas">
-                                <label class="form-check-label" for="cotaIndigena">
-                                    Indígena
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Quilombola" id="cotaQuilombola" name="cotas">
-                                <label class="form-check-label" for="cotaQuilombola">
-                                    Quilombola
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="PCD" id="cotaPCD" name="cotas">
-                                <label class="form-check-label" for="cotaPCD">
-                                    Pessoa com deficiência (PCD) *(especificar na opção "outros")*
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Outros" id="cotaOutros" name="cotas">
-                                <label class="form-check-label" for="cotaOutros">
-                                    Outros...
-                                </label>
-                            </div>
+                            <label for="instituicao" class="form-label"><strong>Instituição</strong> <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="instituicao" name="instituicao" required>
                             <div class="invalid-feedback">
-                                Por favor, selecione pelo menos uma opção.
+                                Por favor, insira o nome da instituição onde realizou a graduação.
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="igcInstituicao" class="form-label"><strong>IGC da Instituição</strong> <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" required>
+                                <div class="invalid-feedback">
+                                    Por favor, insira o Índice Geral de Cursos (IGC) da instituição.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ira" class="form-label">
+                                    <strong>IRA</strong>
+                                    <button type="button" 
+                                            class="btn btn-link btn-sm p-0 ms-1" 
+                                            data-bs-toggle="popover" 
+                                            data-bs-placement="right"
+                                            data-bs-html="true"
+                                            data-bs-content="IRA Individual é o Índice de Rendimento Acadêmico do aluno calculado de acordo com o desempenho acadêmico dele.">
+                                        <i class="bi bi-question-circle"></i>
+                                    </button>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" step="0.01" class="form-control" id="ira" name="ira" required>
+                                <div class="invalid-feedback">
+                                    Por favor, insira o Índice de Rendimento Acadêmico (IRA).
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cursoGraduacao2" class="form-label"><strong>Curso de Graduação 2</strong></label>
+                            <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="instituicao2" class="form-label"><strong>Instituição 2</strong></label>
+                            <input type="text" class="form-control" id="instituicao2" name="instituicao2">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="igcInstituicao2" class="form-label"><strong>IGC da Instituição 2</strong></label>
+                                <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ira2" class="form-label"><strong>IRA 2</strong></label>
+                                <input type="number" step="0.01" class="form-control" id="ira2" name="ira2">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="curriculoLattes" class="form-label"><strong>Currículo Lattes</strong> <span class="text-danger">*</span></label>
+                            <input type="url" class="form-control" id="curriculoLattes" name="curriculoLattes" required>
+                            <div class="invalid-feedback">
+                                Por favor, insira o link para seu currículo Lattes.
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Seção 2: Seleção de Disciplinas -->
-                <div id="section2" class="card mb-4">
+                <!-- Seção 3: Seleção de Disciplinas -->
+                <div id="section3" class="card mb-4">
                     <div class="card-body">
-                        <h4 class="card-title">Seção 2: Seleção de Disciplinas</h4>
+                        <h4 class="card-title">Seção 3: Seleção de Disciplinas</h4>
                         <h5>Disciplinas para pontuação na Nota de Avaliação de Histórico (Nota_H)</h5>
                         <div class="mb-3">
                             <label for="disciplina1" class="form-label"><strong>Disciplina 1 - Área de Matemática</strong> <span class="text-danger">*</span></label>
@@ -296,68 +336,6 @@
                             <input type="text" class="form-control" id="disciplinaOptativa4" name="disciplinaOptativa4" required>
                             <div class="invalid-feedback">
                                 Por favor, insira a Disciplina Optativa 4.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Seção 3: Dados Acadêmicos -->
-                <div id="section3" class="card mb-4">
-                    <div class="card-body">
-                        <h4 class="card-title">Seção 3: Dados Acadêmicos</h4>
-                        <div class="mb-3">
-                            <label for="cursoGraduacao" class="form-label"><strong>Curso de Graduação</strong> <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="cursoGraduacao" name="cursoGraduacao" required>
-                            <div class="invalid-feedback">
-                                Por favor, insira o seu curso de graduação.
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="instituicao" class="form-label"><strong>Instituição</strong> <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="instituicao" name="instituicao" required>
-                            <div class="invalid-feedback">
-                                Por favor, insira o nome da instituição onde realizou a graduação.
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="igcInstituicao" class="form-label"><strong>IGC da Instituição</strong> <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" required>
-                                <div class="invalid-feedback">
-                                    Por favor, insira o Índice Geral de Cursos (IGC) da instituição.
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="ira" class="form-label"><strong>IRA</strong> <span class="text-danger">*</span></label>
-                                <input type="number" step="0.01" class="form-control" id="ira" name="ira" required>
-                                <div class="invalid-feedback">
-                                    Por favor, insira o Índice de Rendimento Acadêmico (IRA).
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cursoGraduacao2" class="form-label"><strong>Curso de Graduação 2</strong></label>
-                            <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2">
-                        </div>
-                        <div class="mb-3">
-                            <label for="instituicao2" class="form-label"><strong>Instituição 2</strong></label>
-                            <input type="text" class="form-control" id="instituicao2" name="instituicao2">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="igcInstituicao2" class="form-label"><strong>IGC da Instituição 2</strong></label>
-                                <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="ira2" class="form-label"><strong>IRA 2</strong></label>
-                                <input type="number" step="0.01" class="form-control" id="ira2" name="ira2">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="curriculoLattes" class="form-label"><strong>Currículo Lattes</strong> <span class="text-danger">*</span></label>
-                            <input type="url" class="form-control" id="curriculoLattes" name="curriculoLattes" required>
-                            <div class="invalid-feedback">
-                                Por favor, insira o link para seu currículo Lattes.
                             </div>
                         </div>
                     </div>
@@ -665,6 +643,13 @@
 
                 form.classList.add('was-validated');
             }, false);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+            })
         });
     </script>
 </body>
