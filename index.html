@@ -503,6 +503,44 @@
                       Por favor, insira o link para seu currículo Lattes.
                     </div>
                   </div>
+
+                  <!-- Histórico de Disciplinas Curso de Graduação-->
+                  <div class="mb-3">
+                    <label for="historicoDisciplinasGraduacao" class="form-label">
+                      Histórico de Disciplinas do Curso de Graduação
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="historicoDisciplinasGraduacao"
+                      name="historicoDisciplinasGraduacao"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Por favor, envie o histórico de disciplinas do curso de
+                      graduação.
+                    </div>
+                  </div>
+
+                  <!-- Histórico de Disciplinas Curso de Graduação 2-->
+                  <div class="mb-3">
+                    <label for="historicoDisciplinasGraduacao2" class="form-label">
+                      Histórico de Disciplinas do Curso de Graduação 2
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="historicoDisciplinasGraduacao2"
+                      name="historicoDisciplinasGraduacao2"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Por favor, envie o histórico de disciplinas do curso de
+                      graduação 2.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -516,234 +554,664 @@
                 Disciplinas para pontuação na Nota de Avaliação de Histórico
                 (Nota_H)
               </h5>
-              <div class="mb-3">
-                <label for="disciplina1" class="form-label"
-                  ><strong>Disciplina 1 - Área de Matemática</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
+
+              <!-- Disciplina 1 - Área de Matemática -->
+              <div class="mb-4">
+                <label for="disciplina1" class="form-label">
+                  <strong>Disciplina 1 - Área de Matemática</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplina1"
                   name="disciplina1"
                   required
-                />
+                >
+                  <option value="" disabled selected>
+                    Selecione a Disciplina
+                  </option>
+                  <option value="Calculus_I">
+                    Cálculo Diferencial e Integral 1
+                  </option>
+                  <option value="Calculus_II">
+                    Cálculo Diferencial e Integral 2
+                  </option>
+                  <option value="Calculus_III">
+                    Cálculo Diferencial e Integral 3
+                  </option>
+                  <option value="Complex_Variables">
+                    Cálculo com Variáveis Complexas
+                  </option>
+                  <option value="Linear_Algebra">Álgebra Linear</option>
+                  <option value="Analytic_Geometry">Geometria Analítica</option>
+                  <option value="Mathematical_Analysis">
+                    Análise Matemática 1
+                  </option>
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 1.
+                  Por favor, selecione a Disciplina 1.
+                </div>
+
+                <!-- Ementa Equivalente 1 -->
+                <div class="mb-3">
+                  <label for="ementa1_1" class="form-label">
+                    Ementa Equivalente 1 para Disciplina 1
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa1_1"
+                    name="ementa1_1"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente 1 para Disciplina 1.
+                  </div>
+                </div>
+
+                <!-- Ementa Equivalente 2 (Opcional) -->
+                <div class="mb-3">
+                  <label for="ementa1_2" class="form-label">
+                    Ementa Equivalente 2 para Disciplina 1
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa1_2"
+                    name="ementa1_2"
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente 2 para Disciplina 1.
+                  </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <label for="disciplina2" class="form-label"
-                  ><strong>Disciplina 2 - Área de Matemática</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
+
+              <!-- Disciplina 2 - Área de Matemática -->
+              <div class="mb-4">
+                <label for="disciplina2" class="form-label">
+                  <strong>Disciplina 2 - Área de Matemática</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplina2"
                   name="disciplina2"
                   required
-                />
+                >
+                  <option value="" disabled selected>
+                    Selecione a Disciplina
+                  </option>
+                  <option value="Calculus_I">
+                    Cálculo Diferencial e Integral 1
+                  </option>
+                  <option value="Calculus_II">
+                    Cálculo Diferencial e Integral 2
+                  </option>
+                  <option value="Calculus_III">
+                    Cálculo Diferencial e Integral 3
+                  </option>
+                  <option value="Complex_Variables">
+                    Cálculo com Variáveis Complexas
+                  </option>
+                  <option value="Linear_Algebra">Álgebra Linear</option>
+                  <option value="Analytic_Geometry">Geometria Analítica</option>
+                  <option value="Mathematical_Analysis">
+                    Análise Matemática 1
+                  </option>
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 2.
+                  Por favor, selecione a Disciplina 2.
+                </div>
+
+                <!-- Ementa Equivalente 1 -->
+                <div class="mb-3">
+                  <label for="ementa2_1" class="form-label">
+                    Ementa Equivalente 1 para Disciplina 2
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa2_1"
+                    name="ementa2_1"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente 1 para Disciplina 2.
+                  </div>
+                </div>
+
+                <!-- Ementa Equivalente 2 (Opcional) -->
+                <div class="mb-3">
+                  <label for="ementa2_2" class="form-label">
+                    Ementa Equivalente 2 para Disciplina 2
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa2_2"
+                    name="ementa2_2"
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente 2 para Disciplina 2.
+                  </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <label for="disciplina3" class="form-label"
-                  ><strong>Disciplina 3 - Área de Estatística</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
+
+              <!-- Disciplina 3 - Área de Estatística -->
+              <div class="mb-4">
+                <label for="disciplina3" class="form-label">
+                  <strong>Disciplina 3 - Área de Estatística</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplina3"
                   name="disciplina3"
                   required
-                />
+                >
+                  <option value="" disabled selected>
+                    Selecione a Disciplina
+                  </option>
+                  <option value="Exploratory_Data_Analysis">
+                    Análise Exploratória de Dados
+                  </option>
+                  <option value="Introduction_Statistics">
+                    Introdução à Estatística
+                  </option>
+                  <option value="Probability_Calculation">
+                    Cálculo das Probabilidades
+                  </option>
+                  <option value="Probability_1">Probabilidade 1</option>
+                  <option value="Probability_2">Probabilidade 2</option>
+                  <option value="Statistical_Inference">
+                    Inferência Estatística 1
+                  </option>
+                  <option value="Regression_Models">
+                    Modelos de Regressão 1
+                  </option>
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 3.
+                  Por favor, selecione a Disciplina 3.
+                </div>
+
+                <!-- Ementa Equivalente -->
+                <div class="mb-3">
+                  <label for="ementa3" class="form-label">
+                    Ementa Equivalente para Disciplina 3
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa3"
+                    name="ementa3"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente para Disciplina 3.
+                  </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <label for="disciplina4" class="form-label"
-                  ><strong>Disciplina 4 - Área de Computação</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
+
+              <!-- Disciplina 4 - Área de Computação -->
+              <div class="mb-4">
+                <label for="disciplina4" class="form-label">
+                  <strong>Disciplina 4 - Área de Computação</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplina4"
                   name="disciplina4"
                   required
-                />
+                >
+                  <option value="" disabled selected>
+                    Selecione a Disciplina
+                  </option>
+                  <option value="Numerical_Calculus">Cálculo Numérico</option>
+                  <option value="Programming_Fundamentals">
+                    Fundamentos de Programação
+                  </option>
+                  <option value="Algorithm_Analysis">
+                    Construção e Análise de Algoritmos
+                  </option>
+                  <option value="Data_Structures">Estrutura de Dados</option>
+                  <option value="Finite_Math">Matemática Finita</option>
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 4.
+                  Por favor, selecione a Disciplina 4.
+                </div>
+
+                <!-- Ementa Equivalente -->
+                <div class="mb-3">
+                  <label for="ementa4" class="form-label">
+                    Ementa Equivalente para Disciplina 4
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa4"
+                    name="ementa4"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente para Disciplina 4.
+                  </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <label for="disciplina5" class="form-label"
-                  ><strong>Disciplina 5 - Qualquer das três áreas</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
+
+              <!-- Disciplina 5 - Qualquer das três áreas -->
+              <div class="mb-4">
+                <label for="disciplina5" class="form-label">
+                  <strong>Disciplina 5 - Qualquer das três áreas</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplina5"
                   name="disciplina5"
                   required
-                />
+                >
+                  <option value="" disabled selected>
+                    Selecione a Disciplina
+                  </option>
+                  <!-- Matemática -->
+                  <optgroup label="Matemática">
+                    <option value="Calculus_I">
+                      Cálculo Diferencial e Integral 1
+                    </option>
+                    <option value="Calculus_II">
+                      Cálculo Diferencial e Integral 2
+                    </option>
+                    <option value="Calculus_III">
+                      Cálculo Diferencial e Integral 3
+                    </option>
+                    <option value="Complex_Variables">
+                      Cálculo com Variáveis Complexas
+                    </option>
+                    <option value="Linear_Algebra">Álgebra Linear</option>
+                    <option value="Analytic_Geometry">
+                      Geometria Analítica
+                    </option>
+                    <option value="Mathematical_Analysis">
+                      Análise Matemática 1
+                    </option>
+                  </optgroup>
+                  <!-- Estatística -->
+                  <optgroup label="Estatística">
+                    <option value="Exploratory_Data_Analysis">
+                      Análise Exploratória de Dados
+                    </option>
+                    <option value="Introduction_Statistics">
+                      Introdução à Estatística
+                    </option>
+                    <option value="Probability_Calculation">
+                      Cálculo das Probabilidades
+                    </option>
+                    <option value="Probability_1">Probabilidade 1</option>
+                    <option value="Probability_2">Probabilidade 2</option>
+                    <option value="Statistical_Inference">
+                      Inferência Estatística 1
+                    </option>
+                    <option value="Regression_Models">
+                      Modelos de Regressão 1
+                    </option>
+                  </optgroup>
+                  <!-- Computação -->
+                  <optgroup label="Computação">
+                    <option value="Numerical_Calculus">Cálculo Numérico</option>
+                    <option value="Programming_Fundamentals">
+                      Fundamentos de Programação
+                    </option>
+                    <option value="Algorithm_Analysis">
+                      Construção e Análise de Algoritmos
+                    </option>
+                    <option value="Data_Structures">Estrutura de Dados</option>
+                    <option value="Finite_Math">Matemática Finita</option>
+                  </optgroup>
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 5.
+                  Por favor, selecione a Disciplina 5.
+                </div>
+
+                <!-- Ementa Equivalente 1 -->
+                <div class="mb-3">
+                  <label for="ementa5_1" class="form-label">
+                    Ementa Equivalente 1 para Disciplina 5
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa5_1"
+                    name="ementa5_1"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente 1 para Disciplina 5.
+                  </div>
+                </div>
+
+                <!-- Ementa Equivalente 2 (Opcional) -->
+                <div class="mb-3">
+                  <label for="ementa5_2" class="form-label">
+                    Ementa Equivalente 2 para Disciplina 5
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa5_2"
+                    name="ementa5_2"
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente 2 para Disciplina 5.
+                  </div>
                 </div>
               </div>
 
-              <h5>Disciplinas adicionais para BÔNUS1 (máximo 5)</h5>
+              <h5>Disciplinas adicionais para BÔNUS 1 (máximo 5)</h5>
+
+              <!-- BÔNUS 1 - Disciplina 6 -->
               <div class="mb-3">
-                <label for="disciplina6" class="form-label"
-                  ><strong>Disciplina 6 de qualquer das três áreas</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
+                <label for="disciplina6" class="form-label">
+                  <strong>Disciplina 6 de qualquer das três áreas</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplina6"
                   name="disciplina6"
                   required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 6.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="disciplina7" class="form-label"
-                  ><strong>Disciplina 7 de qualquer das três áreas</strong>
-                  <span class="text-danger">*</span></label
                 >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="disciplina7"
-                  name="disciplina7"
-                  required
-                />
+                  <option value="" disabled selected>
+                    Selecione a Disciplina
+                  </option>
+                  <!-- Reutilizar as opções das três áreas -->
+                  <optgroup label="Matemática">
+                    <option value="Calculus_I">
+                      Cálculo Diferencial e Integral 1
+                    </option>
+                    <option value="Calculus_II">
+                      Cálculo Diferencial e Integral 2
+                    </option>
+                    <option value="Calculus_III">
+                      Cálculo Diferencial e Integral 3
+                    </option>
+                    <option value="Complex_Variables">
+                      Cálculo com Variáveis Complexas
+                    </option>
+                    <option value="Linear_Algebra">Álgebra Linear</option>
+                    <option value="Analytic_Geometry">
+                      Geometria Analítica
+                    </option>
+                    <option value="Mathematical_Analysis">
+                      Análise Matemática 1
+                    </option>
+                  </optgroup>
+                  <optgroup label="Estatística">
+                    <option value="Exploratory_Data_Analysis">
+                      Análise Exploratória de Dados
+                    </option>
+                    <option value="Introduction_Statistics">
+                      Introdução à Estatística
+                    </option>
+                    <option value="Probability_Calculation">
+                      Cálculo das Probabilidades
+                    </option>
+                    <option value="Probability_1">Probabilidade 1</option>
+                    <option value="Probability_2">Probabilidade 2</option>
+                    <option value="Statistical_Inference">
+                      Inferência Estatística 1
+                    </option>
+                    <option value="Regression_Models">
+                      Modelos de Regressão 1
+                    </option>
+                  </optgroup>
+                  <optgroup label="Computação">
+                    <option value="Numerical_Calculus">Cálculo Numérico</option>
+                    <option value="Programming_Fundamentals">
+                      Fundamentos de Programação
+                    </option>
+                    <option value="Algorithm_Analysis">
+                      Construção e Análise de Algoritmos
+                    </option>
+                    <option value="Data_Structures">Estrutura de Dados</option>
+                    <option value="Finite_Math">Matemática Finita</option>
+                  </optgroup>
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 7.
+                  Por favor, selecione a Disciplina 6.
                 </div>
-              </div>
-              <div class="mb-3">
-                <label for="disciplina8" class="form-label"
-                  ><strong>Disciplina 8 de qualquer das três áreas</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="disciplina8"
-                  name="disciplina8"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 8.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="disciplina9" class="form-label"
-                  ><strong>Disciplina 9 de qualquer das três áreas</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="disciplina9"
-                  name="disciplina9"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 9.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="disciplina10" class="form-label"
-                  ><strong>Disciplina 10 de qualquer das três áreas</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="disciplina10"
-                  name="disciplina10"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a Disciplina 10.
+
+                <!-- Ementa Equivalente -->
+                <div class="mb-3">
+                  <label for="ementa6" class="form-label">
+                    Ementa Equivalente para Disciplina 6
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa6"
+                    name="ementa6"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente para Disciplina 6.
+                  </div>
                 </div>
               </div>
 
-              <h5>Disciplinas adicionais para BÔNUS2 (máximo 4)</h5>
+              <!-- Repita a estrutura acima para disciplinas 7, 8, 9 e 10 conforme necessário -->
+              <!-- Exemplo para Disciplina 7 -->
               <div class="mb-3">
-                <label for="disciplinaOptativa1" class="form-label"
-                  ><strong>Disciplina Optativa 1 do PPGMMQ</strong>
-                  <span class="text-danger">*</span></label
+                <label for="disciplina7" class="form-label">
+                  <strong>Disciplina 7 de qualquer das três áreas</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
+                  id="disciplina7"
+                  name="disciplina7"
+                  required
                 >
-                <input
-                  type="text"
-                  class="form-control"
+                  <option value="" disabled selected>
+                    Selecione a Disciplina
+                  </option>
+                  <!-- Reutilizar as opções das três áreas -->
+                  <optgroup label="Matemática">
+                    <option value="Calculus_I">
+                      Cálculo Diferencial e Integral 1
+                    </option>
+                    <option value="Calculus_II">
+                      Cálculo Diferencial e Integral 2
+                    </option>
+                    <option value="Calculus_III">
+                      Cálculo Diferencial e Integral 3
+                    </option>
+                    <option value="Complex_Variables">
+                      Cálculo com Variáveis Complexas
+                    </option>
+                    <option value="Linear_Algebra">Álgebra Linear</option>
+                    <option value="Analytic_Geometry">
+                      Geometria Analítica
+                    </option>
+                    <option value="Mathematical_Analysis">
+                      Análise Matemática 1
+                    </option>
+                  </optgroup>
+                  <optgroup label="Estatística">
+                    <option value="Exploratory_Data_Analysis">
+                      Análise Exploratória de Dados
+                    </option>
+                    <option value="Introduction_Statistics">
+                      Introdução à Estatística
+                    </option>
+                    <option value="Probability_Calculation">
+                      Cálculo das Probabilidades
+                    </option>
+                    <option value="Probability_1">Probabilidade 1</option>
+                    <option value="Probability_2">Probabilidade 2</option>
+                    <option value="Statistical_Inference">
+                      Inferência Estatística 1
+                    </option>
+                    <option value="Regression_Models">
+                      Modelos de Regressão 1
+                    </option>
+                  </optgroup>
+                  <optgroup label="Computação">
+                    <option value="Numerical_Calculus">Cálculo Numérico</option>
+                    <option value="Programming_Fundamentals">
+                      Fundamentos de Programação
+                    </option>
+                    <option value="Algorithm_Analysis">
+                      Construção e Análise de Algoritmos
+                    </option>
+                    <option value="Data_Structures">Estrutura de Dados</option>
+                    <option value="Finite_Math">Matemática Finita</option>
+                  </optgroup>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor, selecione a Disciplina 7.
+                </div>
+
+                <!-- Ementa Equivalente -->
+                <div class="mb-3">
+                  <label for="ementa7" class="form-label">
+                    Ementa Equivalente para Disciplina 7
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementa7"
+                    name="ementa7"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente para Disciplina 7.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Adicione mais disciplinas conforme necessário -->
+
+              <h5>Disciplinas adicionais para BÔNUS 2 (máximo 4)</h5>
+
+              <!-- Disciplina Optativa 1 do PPGMMQ -->
+              <div class="mb-3">
+                <label for="disciplinaOptativa1" class="form-label">
+                  <strong>Disciplina Optativa 1 do PPGMMQ</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplinaOptativa1"
                   name="disciplinaOptativa1"
                   required
-                />
+                >
+                  <option value="" disabled selected>
+                    Selecione a Disciplina Optativa 1
+                  </option>
+                  <!-- Adicione as opções de disciplinas optativas do PPGMMQ -->
+                  <option value="Optativa1">
+                    Nome da Disciplina Optativa 1
+                  </option>
+                  <option value="Optativa2">
+                    Nome da Disciplina Optativa 2
+                  </option>
+                  <option value="Optativa3">
+                    Nome da Disciplina Optativa 3
+                  </option>
+                  <option value="Optativa4">
+                    Nome da Disciplina Optativa 4
+                  </option>
+                  <!-- Continue conforme necessário -->
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina Optativa 1.
+                  Por favor, selecione a Disciplina Optativa 1.
+                </div>
+
+                <!-- Ementa Equivalente -->
+                <div class="mb-3">
+                  <label for="ementaOptativa1" class="form-label">
+                    Ementa Equivalente para Disciplina Optativa 1
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementaOptativa1"
+                    name="ementaOptativa1"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente para Disciplina
+                    Optativa 1.
+                  </div>
                 </div>
               </div>
+
+              <!-- Repita a estrutura acima para Disciplina Optativa 2, 3 e 4 -->
+
+              <!-- Exemplo para Disciplina Optativa 2 -->
               <div class="mb-3">
-                <label for="disciplinaOptativa2" class="form-label"
-                  ><strong>Disciplina Optativa 2 do PPGMMQ</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
+                <label for="disciplinaOptativa2" class="form-label">
+                  <strong>Disciplina Optativa 2 do PPGMMQ</strong>
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  class="form-select mb-2"
                   id="disciplinaOptativa2"
                   name="disciplinaOptativa2"
                   required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a Disciplina Optativa 2.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="disciplinaOptativa3" class="form-label"
-                  ><strong>Disciplina Optativa 3 do PPGMMQ</strong>
-                  <span class="text-danger">*</span></label
                 >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="disciplinaOptativa3"
-                  name="disciplinaOptativa3"
-                  required
-                />
+                  <option value="" disabled selected>
+                    Selecione a Disciplina Optativa 2
+                  </option>
+                  <!-- Adicione as opções de disciplinas optativas do PPGMMQ -->
+                  <option value="Optativa1">
+                    Nome da Disciplina Optativa 1
+                  </option>
+                  <option value="Optativa2">
+                    Nome da Disciplina Optativa 2
+                  </option>
+                  <option value="Optativa3">
+                    Nome da Disciplina Optativa 3
+                  </option>
+                  <option value="Optativa4">
+                    Nome da Disciplina Optativa 4
+                  </option>
+                  <!-- Continue conforme necessário -->
+                </select>
                 <div class="invalid-feedback">
-                  Por favor, insira a Disciplina Optativa 3.
+                  Por favor, selecione a Disciplina Optativa 2.
+                </div>
+
+                <!-- Ementa Equivalente -->
+                <div class="mb-3">
+                  <label for="ementaOptativa2" class="form-label">
+                    Ementa Equivalente para Disciplina Optativa 2
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="ementaOptativa2"
+                    name="ementaOptativa2"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, envie a ementa equivalente para Disciplina
+                    Optativa 2.
+                  </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <label for="disciplinaOptativa4" class="form-label"
-                  ><strong>Disciplina Optativa 4 do PPGMMQ</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="disciplinaOptativa4"
-                  name="disciplinaOptativa4"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a Disciplina Optativa 4.
-                </div>
-              </div>
+
+              <!-- Continue para Disciplina Optativa 3 e 4 -->
             </div>
           </div>
 
