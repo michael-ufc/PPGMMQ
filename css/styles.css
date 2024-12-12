@@ -58,3 +58,8 @@ body {
 .disciplina-adicional h6 {
     margin-bottom: 15px;
 }
+
+/* Ajustes para botões com ícones */
+.btn i.bi {
+    margin-right: 5px;
+}

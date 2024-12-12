@@ -57,67 +57,67 @@ document.addEventListener("DOMContentLoaded", () => {
         disciplinaDiv.setAttribute("data-type", type);
 
         disciplinaDiv.innerHTML = `
-          <h6>Disciplina Adicional ${disciplinaIndex} (${type.toUpperCase()})</h6>
-          <div class="row mb-3">
-              <div class="col-md-8">
-                  <select class="form-select disciplina-select" required>
-                      <option value="" disabled selected>
-                          Selecione a Disciplina
-                      </option>
-                      <!-- Matematica -->
-                      <optgroup label="Matemática">
-                          <option value="Calculus_I">Cálculo Diferencial e Integral 1</option>
-                          <option value="Calculus_II">Cálculo Diferencial e Integral 2</option>
-                          <option value="Calculus_III">Cálculo Diferencial e Integral 3</option>
-                          <option value="Complex_Variables">Cálculo com Variáveis Complexas</option>
-                          <option value="Linear_Algebra">Álgebra Linear</option>
-                          <option value="Analytic_Geometry">Geometria Analítica</option>
-                          <option value="Mathematical_Analysis">Análise Matemática 1</option>
-                      </optgroup>
-                      <!-- Estatística -->
-                      <optgroup label="Estatística">
-                          <option value="Exploratory_Data_Analysis">Análise Exploratória de Dados</option>
-                          <option value="Introduction_Statistics">Introdução à Estatística</option>
-                          <option value="Probability_Calculation">Cálculo das Probabilidades</option>
-                          <option value="Probability_1">Probabilidade 1</option>
-                          <option value="Probability_2">Probabilidade 2</option>
-                          <option value="Statistical_Inference">Inferência Estatística 1</option>
-                          <option value="Regression_Models">Modelos de Regressão 1</option>
-                      </optgroup>
-                      <!-- Computação -->
-                      <optgroup label="Computação">
-                          <option value="Numerical_Calculus">Cálculo Numérico</option>
-                          <option value="Programming_Fundamentals">Fundamentos de Programação</option>
-                          <option value="Algorithm_Analysis">Construção e Análise de Algoritmos</option>
-                          <option value="Data_Structures">Estrutura de Dados</option>
-                          <option value="Finite_Math">Matemática Finita</option>
-                      </optgroup>
-                  </select>
-                  <div class="invalid-feedback">
-                      Por favor, selecione uma disciplina.
-                  </div>
-              </div>
-              <div class="col-md-4 d-flex align-items-center">
-                  <button type="button" class="btn btn-danger remove-disciplina-btn">
-                      <i class="bi bi-trash"></i> Remover
-                  </button>
-              </div>
-          </div>
-          <div class="ementas-container mb-3">
-              <div class="mb-3 ementa-group">
-                  <label class="form-label">
-                      Ementa Equivalente <span class="text-danger">*</span>
-                  </label>
-                  <input type="file" class="form-control ementa-input" required />
-                  <div class="invalid-feedback">
-                      Por favor, envie a ementa equivalente.
-                  </div>
-              </div>
-              <button type="button" class="btn btn-secondary btn-sm add-ementa-btn">
-                  <i class="bi bi-plus-circle"></i> Adicionar Mais Ementas
-              </button>
-          </div>
-      `;
+            <h6>Disciplina Adicional ${disciplinaIndex} (${type.toUpperCase()})</h6>
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <select class="form-select disciplina-select" required>
+                        <option value="" disabled selected>
+                            Selecione a Disciplina
+                        </option>
+                        <!-- Matematica -->
+                        <optgroup label="Matemática">
+                            <option value="Calculus_I">Cálculo Diferencial e Integral 1</option>
+                            <option value="Calculus_II">Cálculo Diferencial e Integral 2</option>
+                            <option value="Calculus_III">Cálculo Diferencial e Integral 3</option>
+                            <option value="Complex_Variables">Cálculo com Variáveis Complexas</option>
+                            <option value="Linear_Algebra">Álgebra Linear</option>
+                            <option value="Analytic_Geometry">Geometria Analítica</option>
+                            <option value="Mathematical_Analysis">Análise Matemática 1</option>
+                        </optgroup>
+                        <!-- Estatística -->
+                        <optgroup label="Estatística">
+                            <option value="Exploratory_Data_Analysis">Análise Exploratória de Dados</option>
+                            <option value="Introduction_Statistics">Introdução à Estatística</option>
+                            <option value="Probability_Calculation">Cálculo das Probabilidades</option>
+                            <option value="Probability_1">Probabilidade 1</option>
+                            <option value="Probability_2">Probabilidade 2</option>
+                            <option value="Statistical_Inference">Inferência Estatística 1</option>
+                            <option value="Regression_Models">Modelos de Regressão 1</option>
+                        </optgroup>
+                        <!-- Computação -->
+                        <optgroup label="Computação">
+                            <option value="Numerical_Calculus">Cálculo Numérico</option>
+                            <option value="Programming_Fundamentals">Fundamentos de Programação</option>
+                            <option value="Algorithm_Analysis">Construção e Análise de Algoritmos</option>
+                            <option value="Data_Structures">Estrutura de Dados</option>
+                            <option value="Finite_Math">Matemática Finita</option>
+                        </optgroup>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor, selecione uma disciplina.
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <button type="button" class="btn btn-outline-danger btn-sm remove-disciplina-btn">
+                        <i class="bi bi-trash"></i> Remover
+                    </button>
+                </div>
+            </div>
+            <div class="ementas-container mb-3">
+                <div class="mb-3 ementa-group">
+                    <label class="form-label">
+                        Ementa Equivalente <span class="text-danger">*</span>
+                    </label>
+                    <input type="file" class="form-control ementa-input" required />
+                    <div class="invalid-feedback">
+                        Por favor, envie a ementa equivalente.
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-secondary btn-sm add-ementa-btn">
+                    <i class="bi bi-plus-circle"></i> Adicionar Mais Ementas
+                </button>
+            </div>
+        `;
 
         disciplinasAdicionaisContainer.appendChild(disciplinaDiv);
     }
