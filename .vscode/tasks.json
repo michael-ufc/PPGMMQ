@@ -13,17 +13,140 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             },
             "presentation": {
                 "echo": true,
-                "reveal": "always",
+                "reveal": "silent",
                 "focus": false,
                 "panel": "shared",
                 "showReuseMessage": true,
                 "clear": false
             },
+            "problemMatcher": [],
+        },
+        {
+            "label": "pgen",
+            "type": "shell",
+            "command": "../prompt-generator/.venv/bin/python ../prompt-generator/pgen.py prompt.yml",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
             "problemMatcher": []
+        },
+        // Same as pgen but includes git diff information in the prompt
+        {
+            "label": "pgen git",
+            "type": "shell",
+            "command": "../prompt-generator/.venv/bin/python ../prompt-generator/pgen.py prompt.yml --gitdiff",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        // Formats Python code using Black formatter with 120 character line length
+        // Runs silently in the background
+        {
+            "label": "black!",
+            "type": "shell",
+            "command": "black",
+            "args": [
+                "${file}",
+                "--line-length",
+                "120"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+        },
+        // Formats Django/HTML templates using djlint formatter
+        {
+            "label": "djlint format",
+            "type": "shell",
+            "command": "djlint",
+            "args": [
+                "--reformat",
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        // Checks Django/HTML templates for errors using djlint
+        {
+            "label": "djlint check",
+            "type": "shell",
+            "command": "djlint",
+            "args": [                
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        // Formats all C/C++ files in the epanet-dev/src/CLI directory using clang-format
+        // Uses style from .clang-format file and runs silently in the background
+        {
+            "label": "clang-format CLI",
+            "type": "shell",
+            "command": "find epanet-dev/src/CLI -iname '*.cpp' -o -iname '*.h' -o -iname '*.c' | xargs clang-format -i -style=file",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        // Build run-epanet3 in Release mode
+        {
+            "label": "build-release",
+            "type": "shell",
+            "command": "make -BUILD_TYPE=release",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "options": {
+                "cwd": "${workspaceFolder}/epanet-dev"
+            }
+        },
+        // Build run-epanet3 in Debug mode
+        {
+            "label": "build-debug",
+            "type": "shell",
+            "command": "make BUILD_TYPE=debug",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc", "$msCompile"],
+            "options": {
+                "cwd": "${workspaceFolder}/epanet-dev"
+            }
         }
     ]
 }

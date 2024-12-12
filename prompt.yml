@@ -6,12 +6,12 @@
 - js-beautify
 
 # sources:
-.: no
+./: yes
   index.html: all
   css/styles.css: all
   js/script.js: all
 
 # user_request
 """
-As disciplinas do "Bônus 1" e "Bônus 2" devem ser inseridas em subseções separadas para cada Bônus.
+O design dos botões pode ser mais elegante e moderno. Utilize btn-outline e btn-small.
 """

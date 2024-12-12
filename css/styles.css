@@ -1,5 +1,6 @@
-/* style.css */
+/* styles.css */
 
+/* Layout da Navegação Lateral */
 body {
     position: relative;
 }
@@ -49,6 +50,11 @@ body {
 }
 
 /* Botão de Remover Disciplina */
-.remove-disciplinas-btn {
-    margin-top: 30px;
+.remove-disciplina-btn {
+    margin-top: 0;
+}
+
+/* Margem para títulos das disciplinas adicionais */
+.disciplina-adicional h6 {
+    margin-bottom: 15px;
 }
