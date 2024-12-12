@@ -1,19 +1,54 @@
 /* style.css */
 
-/* Estilização personalizada (se necessário) */
-
 body {
+    position: relative;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    padding-top: 60px;
+    /* Espaço para a barra de progresso */
     background-color: #f8f9fa;
+    overflow-y: auto;
+    border-right: 1px solid #dee2e6;
 }
 
-h1, h3, h4, h5 {
-    color: #0d6efd;
+#sidebar .nav-link {
+    color: #333;
 }
 
-.form-label {
-    font-weight: bold;
+#sidebar .nav-link.active {
+    background-color: #116c5c;
+    color: #fff;
+    border-radius: 4px;
 }
 
-.text-danger {
-    font-weight: bold;
+/* Espaço para o conteúdo principal */
+#main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-top: 0;
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    #main-content {
+        margin-left: 0;
+    }
+}
+
+/* Botão de Remover Disciplina */
+.remove-disciplinas-btn {
+    margin-top: 30px;
 }

@@ -1,0 +1,17 @@
+# system:
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- js-beautify
+
+# sources:
+.: no
+  index.html: all
+  css/styles.css: all
+  js/script.js: all
+
+# user_request
+"""
+As disciplinas do "Bônus 1" e "Bônus 2" devem ser inseridas em subseções separadas para cada Bônus.
+"""

@@ -1,1824 +1,666 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PPGMMQ</title>
     <!-- Bootstrap CSS v5.3 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <!-- Custom CSS -->
-    <style>
-      /* Layout da Navegação Lateral */
-      body {
-        position: relative;
-      }
-      #sidebar {
-        position: fixed;
-        top: 0;
-        /* Ajuste a largura conforme necessário */
-        width: 250px;
-        height: 100%;
-        padding-top: 60px; /* Espaço para a barra de progresso */
-        background-color: #f8f9fa;
-        overflow-y: auto;
-        border-right: 1px solid #dee2e6;
-      }
-      #sidebar .nav-link {
-        color: #333;
-      }
-      #sidebar .nav-link.active {
-        background-color: #116c5c;
-        color: #fff;
-        border-radius: 4px;
-      }
-      /* Espaço para o conteúdo principal */
-      #main-content {
-        margin-left: 250px;
-        padding: 20px;
-      }
-      /* Ajustes para dispositivos móveis */
-      @media (max-width: 768px) {
-        #sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
-          padding-top: 0;
-          border-right: none;
-          border-bottom: 1px solid #dee2e6;
-        }
-        #main-content {
-          margin-left: 0;
-        }
-      }
-    </style>
-  </head>
-  <body
-    data-bs-spy="scroll"
-    data-bs-target="#sidebar"
-    data-bs-offset="100"
-    tabindex="0"
-  >
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="100" tabindex="0">
     <!-- Barra de Progresso -->
-    <div
-      class="progress position-fixed top-0 start-0 w-100"
-      style="height: 8px; z-index: 1030"
-    >
-      <div
-        id="formProgress"
-        class="progress-bar"
-        role="progressbar"
-        style="width: 0%; background-color: #116c5c"
-        aria-valuenow="0"
-        aria-valuemin="0"
-        aria-valuemax="100"
-      ></div>
+    <div class="progress position-fixed top-0 start-0 w-100" style="height: 8px; z-index: 1030">
+        <div id="formProgress" class="progress-bar" role="progressbar" style="width: 0%; background-color: #116c5c" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
 
     <!-- Navegação Lateral -->
-    <nav
-      id="sidebar"
-      class="bg-light"
-      style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 250px;
-        overflow-y: auto;
-        padding-top: 20px;
-        border-right: 1px solid #dee2e6;
-      "
-    >
-      <div class="d-flex justify-content-center align-items-center my-3">
-        <img
-          src="images/logo-ppgmmq.jpeg"
-          alt="Logo"
-          class="img-fluid"
-          style="max-height: 100px; margin: 10px"
-        />
-      </div>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" href="#section1">1. Dados Pessoais</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#section2">2. Dados Acadêmicos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#section3">3. Seleção de Disciplinas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#section4">4. Análise Curricular</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#section5">5. Dados Socioeconômicos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#section6">6. Declarações para Bolsa</a>
-        </li>
-      </ul>
+    <nav id="sidebar" class="bg-light">
+        <div class="d-flex justify-content-center align-items-center my-3">
+            <img src="images/logo-ppgmmq.jpeg" alt="Logo" class="img-fluid" style="max-height: 100px; margin: 10px" />
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#section1">1. Dados Pessoais</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section2">2. Dados Acadêmicos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section3">3. Seleção de Disciplinas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section4">4. Análise Curricular</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section5">5. Dados Socioeconômicos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section6">6. Declarações para Bolsa</a>
+            </li>
+        </ul>
     </nav>
 
     <!-- Conteúdo Principal -->
     <div id="main-content">
-      <div class="container my-2" style="max-width: 800px; margin-left: 0">
-        <div id="header" class="card mb-0" style="border: none">
-          <div class="card-body d-flex align-items-center">
-            <div>
-              <h1 class="mb-4">Formulário de Inscrição</h1>
-              <h3 class="mb-4">Processo Seletivo de Discentes 2025.1</h3>
+        <div class="container my-2" style="max-width: 800px; margin-left: 0">
+            <div id="header" class="card mb-0" style="border: none">
+                <div class="card-body d-flex align-items-center">
+                    <div>
+                        <h1 class="mb-4">Formulário de Inscrição</h1>
+                        <h3 class="mb-4">Processo Seletivo de Discentes 2025.1</h3>
+                    </div>
+                </div>
             </div>
-          </div>
+            <form id="inscricaoForm" novalidate>
+                <!-- Seção 1: Dados Pessoais -->
+                <div id="section1" class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Seção 1: Dados Pessoais</h4>
+                        <div class="mb-3">
+                            <label for="email" class="form-label"><strong>E-mail</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira um e-mail válido.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nomeCompleto" class="form-label"><strong>Nome Completo</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o seu nome completo.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentoIdentificacao" class="form-label"><strong>Documento oficial de Identidade</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="documentoIdentificacao" name="documentoIdentificacao" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o número do documento oficial com foto.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label"><strong>CPF</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" pattern="\d{11}" placeholder="Apenas números" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira um CPF válido (11 dígitos) ou deixe em
+                                branco se estrangeiro.
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="telefoneFixo" class="form-label"><strong>Telefone fixo</strong>
+                                    <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="telefoneFixo" name="telefoneFixo" placeholder="(DDD) Número ou 'não há'" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira um telefone fixo com DDD ou escreva "não
+                                    há".
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefoneCelular" class="form-label"><strong>Telefone celular</strong>
+                                    <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="telefoneCelular" name="telefoneCelular" placeholder="(DDD) Número ou 'não há'" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira um telefone celular com DDD ou escreva
+                                    "não há".
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cidade" class="form-label"><strong>Cidade</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Ex: Fortaleza/CE" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira a cidade e o estado no formato "Cidade/UF".
+                            </div>
+                        </div>
+                        <!-- Comprovantes -->
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Comprovantes</h5>
+
+                                <!-- Documento de Identidade -->
+                                <div class="mb-3">
+                                    <label for="docIdentidadeUpload" class="form-label">
+                                        Documento oficial de identidade, com foto, do país de
+                                        origem
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="file" class="form-control" id="docIdentidadeUpload" name="docIdentidadeUpload" required />
+                                    <div class="invalid-feedback">
+                                        Por favor, envie a cópia do documento de identidade com
+                                        foto.
+                                    </div>
+                                </div>
+
+                                <!-- Campo para Autodeclaração -->
+                                <div class="mb-3">
+                                    <label for="autodeclaracaoUpload" class="form-label">
+                                        Autodeclaração (vide ANEXO II)
+                                        <span class="text-danger">(Opcional, para concorrer às cotas de políticas
+                                            afirmativas)</span>
+                                    </label>
+                                    <input type="file" class="form-control" id="autodeclaracaoUpload" name="autodeclaracaoUpload" />
+                                    <div class="invalid-feedback">
+                                        Caso deseje concorrer nas cotas, envie a autodeclaração
+                                        preenchida.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 2: Dados Acadêmicos -->
+                <div id="section2" class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Seção 2: Dados Acadêmicos</h4>
+                        <div class="mb-3">
+                            <label for="cursoGraduacao" class="form-label"><strong>Curso de Graduação</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="cursoGraduacao" name="cursoGraduacao" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o seu curso de graduação.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="instituicao" class="form-label"><strong>Instituição</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="instituicao" name="instituicao" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o nome da instituição onde realizou a
+                                graduação.
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="igcInstituicao" class="form-label"><strong>IGC da Instituição</strong>
+                                    <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira o Índice Geral de Cursos (IGC) da
+                                    instituição.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ira" class="form-label">
+                                    <strong>IRA</strong>
+                                    <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover" data-bs-placement="right" data-bs-html="true" data-bs-content="IRA Individual é o Índice de Rendimento Acadêmico do aluno calculado de acordo com o desempenho acadêmico dele.">
+                                        <i class="bi bi-question-circle"></i>
+                                    </button>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" step="0.01" class="form-control" id="ira" name="ira" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira o Índice de Rendimento Acadêmico (IRA).
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cursoGraduacao2" class="form-label"><strong>Curso de Graduação 2</strong></label>
+                            <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="instituicao2" class="form-label"><strong>Instituição 2</strong></label>
+                            <input type="text" class="form-control" id="instituicao2" name="instituicao2" />
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="igcInstituicao2" class="form-label"><strong>IGC da Instituição 2</strong></label>
+                                <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ira2" class="form-label"><strong>IRA 2</strong></label>
+                                <input type="number" step="0.01" class="form-control" id="ira2" name="ira2" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="curriculoLattes" class="form-label"><strong>Currículo Lattes</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="url" class="form-control" id="curriculoLattes" name="curriculoLattes" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o link para seu currículo Lattes.
+                            </div>
+                        </div>
+                        <!-- Comprovantes -->
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Comprovantes</h5>
+
+                                <!-- Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso-->
+                                <div class="mb-3">
+                                    <label for="diplomaGraduacaoUpload" class="form-label">
+                                        Frente e verso do Diploma de Graduação ou Declaração de
+                                        Conclusão de Curso
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="file" class="form-control" id="diplomaGraduacaoUpload" name="diplomaGraduacaoUpload" required />
+                                    <div class="invalid-feedback">
+                                        Por favor, envie a cópia do diploma de graduação ou
+                                        declaração de conclusão de curso.
+                                    </div>
+                                </div>
+
+                                <!-- Currículo Lattes -->
+                                <div class="mb-3">
+                                    <label for="curriculoLattes" class="form-label">
+                                        Currículo Lattes
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="file" class="form-control" id="curriculoLattes" name="curriculoLattes" required />
+                                    <div class="invalid-feedback">
+                                        Por favor, insira o link para seu currículo Lattes.
+                                    </div>
+                                </div>
+
+                                <!-- Histórico de Disciplinas Curso de Graduação-->
+                                <div class="mb-3">
+                                    <label for="historicoDisciplinasGraduacao" class="form-label">
+                                        Histórico de Disciplinas do Curso de Graduação
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao" name="historicoDisciplinasGraduacao" required />
+                                    <div class="invalid-feedback">
+                                        Por favor, envie o histórico de disciplinas do curso de
+                                        graduação.
+                                    </div>
+                                </div>
+
+                                <!-- Histórico de Disciplinas Curso de Graduação 2-->
+                                <div class="mb-3">
+                                    <label for="historicoDisciplinasGraduacao2" class="form-label">
+                                        Histórico de Disciplinas do Curso de Graduação 2
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao2" name="historicoDisciplinasGraduacao2" required />
+                                    <div class="invalid-feedback">
+                                        Por favor, envie o histórico de disciplinas do curso de
+                                        graduação 2.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 3: Seleção de Disciplinas -->
+                <div id="section3" class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Seção 3: Seleção de Disciplinas</h4>
+                        <h5>
+                            Disciplinas para pontuação na Nota de Avaliação de Histórico
+                            (Nota_H)
+                        </h5>
+
+                        <!-- Disciplina Repetível -->
+                        <div id="disciplinas-container">
+                            <!-- Disciplina 1 a 5: Estáticos -->
+                            <div class="disciplina-group required">
+                                <label class="form-label"><strong>Disciplina</strong>
+                                    <span class="text-danger">*</span></label>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <select class="form-select disciplina-select" required>
+                                            <option value="" disabled selected>
+                                                Selecione a Disciplina
+                                            </option>
+                                            <!-- Matematica -->
+                                            <optgroup label="Matemática">
+                                                <option value="Calculus_I">Cálculo Diferencial e Integral 1</option>
+                                                <option value="Calculus_II">Cálculo Diferencial e Integral 2</option>
+                                                <option value="Calculus_III">Cálculo Diferencial e Integral 3</option>
+                                                <option value="Complex_Variables">Cálculo com Variáveis Complexas</option>
+                                                <option value="Linear_Algebra">Álgebra Linear</option>
+                                                <option value="Analytic_Geometry">Geometria Analítica</option>
+                                                <option value="Mathematical_Analysis">Análise Matemática 1</option>
+                                            </optgroup>
+                                            <!-- Estatística -->
+                                            <optgroup label="Estatística">
+                                                <option value="Exploratory_Data_Analysis">Análise Exploratória de Dados</option>
+                                                <option value="Introduction_Statistics">Introdução à Estatística</option>
+                                                <option value="Probability_Calculation">Cálculo das Probabilidades</option>
+                                                <option value="Probability_1">Probabilidade 1</option>
+                                                <option value="Probability_2">Probabilidade 2</option>
+                                                <option value="Statistical_Inference">Inferência Estatística 1</option>
+                                                <option value="Regression_Models">Modelos de Regressão 1</option>
+                                            </optgroup>
+                                            <!-- Computação -->
+                                            <optgroup label="Computação">
+                                                <option value="Numerical_Calculus">Cálculo Numérico</option>
+                                                <option value="Programming_Fundamentals">Fundamentos de Programação</option>
+                                                <option value="Algorithm_Analysis">Construção e Análise de Algoritmos</option>
+                                                <option value="Data_Structures">Estrutura de Dados</option>
+                                                <option value="Finite_Math">Matemática Finita</option>
+                                            </optgroup>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Por favor, selecione uma disciplina.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-success add-disciplinas-btn">
+                                            <i class="bi bi-plus-circle"></i> Adicionar Ementa
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="ementas-container mb-3">
+                                    <div class="mb-3 ementa-group">
+                                        <label class="form-label">
+                                            Ementa Equivalente <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="file" class="form-control ementa-input" required />
+                                        <div class="invalid-feedback">
+                                            Por favor, envie a ementa equivalente.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fim das disciplinas estáticas -->
+                        </div>
+
+                        <!-- Botões para Adicionar Disciplinas Adicionais -->
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-primary" id="addBonus1Btn" data-type="bonus1" data-max="5">
+                                <i class="bi bi-plus-circle"></i> Adicionar Disciplina BÔNUS 1
+                            </button>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-secondary" id="addBonus2Btn" data-type="bonus2" data-max="4">
+                                <i class="bi bi-plus-circle"></i> Adicionar Disciplina BÔNUS 2
+                            </button>
+                        </div>
+
+                        <!-- Contêiner para Disciplinas Adicionais -->
+                        <div id="disciplinas-adicionais-container"></div>
+                    </div>
+                </div>
+
+                <!-- Seção 4: Análise Curricular -->
+                <div id="section4" class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Seção 4: Análise Curricular</h4>
+                        <h5>1. Projetos de pesquisa/iniciação científica</h5>
+                        <div class="mb-3">
+                            <label for="projetosComBolsa" class="form-label"><strong>Com bolsa: Número de meses</strong></label>
+                            <input type="number" class="form-control" id="projetosComBolsa" name="projetosComBolsa" min="0" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="projetosSemBolsa" class="form-label"><strong>Sem bolsa: Número de meses</strong></label>
+                            <input type="number" class="form-control" id="projetosSemBolsa" name="projetosSemBolsa" min="0" />
+                        </div>
+
+                        <h5>2. Publicações em periódicos</h5>
+                        <div class="mb-3">
+                            <label for="publicacoesA1A2" class="form-label"><strong>A1 e A2: Número de publicações</strong></label>
+                            <input type="number" class="form-control" id="publicacoesA1A2" name="publicacoesA1A2" min="0" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="publicacoesA3A4" class="form-label"><strong>A3 e A4: Número de publicações</strong></label>
+                            <input type="number" class="form-control" id="publicacoesA3A4" name="publicacoesA3A4" min="0" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="publicacoesB1B2" class="form-label"><strong>B1 e B2: Número de publicações</strong></label>
+                            <input type="number" class="form-control" id="publicacoesB1B2" name="publicacoesB1B2" min="0" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="publicacoesB3B4" class="form-label"><strong>B3 e B4: Número de publicações</strong></label>
+                            <input type="number" class="form-control" id="publicacoesB3B4" name="publicacoesB3B4" min="0" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="publicacoesC" class="form-label"><strong>C: Número de publicações</strong></label>
+                            <input type="number" class="form-control" id="publicacoesC" name="publicacoesC" min="0" />
+                        </div>
+
+                        <h5>3. Publicações em eventos (Número de Publicações)</h5>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="publicacoesArtigosCompletos" class="form-label"><strong>Artigos completos</strong></label>
+                                <input type="number" class="form-control" id="publicacoesArtigosCompletos" name="publicacoesArtigosCompletos" min="0" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="publicacoesResumosExtendidos" class="form-label"><strong>Resumos estendidos</strong></label>
+                                <input type="number" class="form-control" id="publicacoesResumosExtendidos" name="publicacoesResumosExtendidos" min="0" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="publicacoesResumosSimples" class="form-label"><strong>Resumos simples</strong></label>
+                                <input type="number" class="form-control" id="publicacoesResumosSimples" name="publicacoesResumosSimples" min="0" />
+                            </div>
+                        </div>
+
+                        <h5>4. Atividade de docência (Número de Meses)</h5>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="docenciaIES" class="form-label"><strong>IES</strong></label>
+                                <input type="number" class="form-control" id="docenciaIES" name="docenciaIES" min="0" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="docenciaMonitoria" class="form-label"><strong>Monitoria/Estágio Docência</strong></label>
+                                <input type="number" class="form-control" id="docenciaMonitoria" name="docenciaMonitoria" min="0" />
+                            </div>
+                            <div class="col-md-4">
+                                <label for="docenciaEnsino" class="form-label"><strong>Ensino Fund., Médio ou Técnico</strong></label>
+                                <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0" />
+                            </div>
+                        </div>
+
+                        <h5>5. Outras atividades</h5>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="bolsaPET" class="form-label"><strong>Bolsa PET: Número de meses</strong></label>
+                                <input type="number" class="form-control" id="bolsaPET" name="bolsaPET" min="0" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="outrasBolsas" class="form-label"><strong>Outros tipos de bolsa: Número de meses</strong></label>
+                                <input type="number" class="form-control" id="outrasBolsas" name="outrasBolsas" min="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 5: Questionário Socioeconômico -->
+                <div id="section5" class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Seção 5: Dados Socioeconômicos</h4>
+                        <div class="mb-3">
+                            <label class="form-label"><strong>1. Como você se considera?</strong>
+                                <span class="text-danger">*</span></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_1" value="Amarelo(a) de origem asiática" required />
+                                <label class="form-check-label" for="socio1_1">
+                                    Amarelo(a) de origem asiática
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_2" value="Branco(a)" />
+                                <label class="form-check-label" for="socio1_2">
+                                    Branco(a)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_3" value="Indígena" />
+                                <label class="form-check-label" for="socio1_3">
+                                    Indígena
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_4" value="Pardo(a), Mulato(a)" />
+                                <label class="form-check-label" for="socio1_4">
+                                    Pardo(a), Mulato(a)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_5" value="Preto(a)" />
+                                <label class="form-check-label" for="socio1_5">
+                                    Preto(a)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_6" value="Não declarada" />
+                                <label class="form-check-label" for="socio1_6">
+                                    Não declarada
+                                </label>
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor, selecione uma opção.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="socioeconomico2" class="form-label"><strong>2. Onde e como você mora atualmente?</strong>
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="socioeconomico2" name="socioeconomico2" rows="3" required></textarea>
+                            <div class="invalid-feedback">
+                                Por favor, responda a pergunta.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="socioeconomico3" class="form-label"><strong>3. Quantas pessoas moram em sua casa?</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="socioeconomico3" name="socioeconomico3" min="1" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o número de pessoas.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="socioeconomico4" class="form-label"><strong>4. Sua moradia está localizada em?</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="socioeconomico4" name="socioeconomico4" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira a localização da sua moradia.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="socioeconomico5" class="form-label"><strong>5. Tipo de escola do ensino fundamental</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="socioeconomico5" name="socioeconomico5" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o tipo de escola.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="socioeconomico6" class="form-label"><strong>6. Tipo de escola do ensino médio</strong>
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="socioeconomico6" name="socioeconomico6" required />
+                            <div class="invalid-feedback">
+                                Por favor, insira o tipo de escola.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="socioeconomico7" class="form-label"><strong>7. Escolaridade dos familiares?</strong>
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="socioeconomico7" name="socioeconomico7" rows="3" required></textarea>
+                            <div class="invalid-feedback">
+                                Por favor, responda a pergunta.
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="socioeconomico8" class="form-label"><strong>8. Renda familiar?</strong>
+                                    <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="socioeconomico8" name="socioeconomico8" min="0" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira a renda familiar.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="socioeconomico9" class="form-label"><strong>9. Quantos livros você lê por ano?</strong>
+                                    <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="socioeconomico9" name="socioeconomico9" min="0" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira a quantidade de livros lidos.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="socioeconomico10" class="form-label"><strong>10. Motivação para continuar estudando?</strong>
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="socioeconomico10" name="socioeconomico10" rows="3" required></textarea>
+                            <div class="invalid-feedback">
+                                Por favor, responda a pergunta.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 6: Declarações para Bolsa -->
+                <div id="section6" class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Seção 6: Declarações para Bolsa</h4>
+                        <div class="mb-3">
+                            <label class="form-label"><strong>1. Situação atual (escolha uma):</strong></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao1" value="Não exerço atividade remunerada." required />
+                                <label class="form-check-label" for="declaracao1">
+                                    Não exerço atividade remunerada.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao2" value="Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa." required />
+                                <label class="form-check-label" for="declaracao2">
+                                    Exerço atividade remunerada, mas me desligarei caso
+                                    contemplado com bolsa.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao3" value="Exerço atividade remunerada e não me desligarei." required />
+                                <label class="form-check-label" for="declaracao3">
+                                    Exerço atividade remunerada e não me desligarei.
+                                </label>
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor, selecione uma opção.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"><strong>2. Declarações:</strong></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="declaracaoSim1" name="declaracoes2" value="Sim, declaro estar ciente." required />
+                                <label class="form-check-label" for="declaracaoSim1">
+                                    Sim, declaro estar ciente.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="declaracaoSim2" name="declaracoes2" value="Sim, autorizo a averiguação das informações." required />
+                                <label class="form-check-label" for="declaracaoSim2">
+                                    Sim, autorizo a averiguação das informações.
+                                </label>
+                            </div>
+                            <div class="invalid-feedback">
+                                Você deve marcar ambas as declarações.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão de Envio -->
+                <button type="submit" class="btn btn-primary">
+                    Enviar Inscrição
+                </button>
+            </form>
         </div>
-        <form id="inscricaoForm" novalidate>
-          <!-- Seção 1: Dados Pessoais -->
-          <div id="section1" class="card mb-4">
-            <div class="card-body">
-              <h4 class="card-title">Seção 1: Dados Pessoais</h4>
-              <div class="mb-3">
-                <label for="email" class="form-label"
-                  ><strong>E-mail</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira um e-mail válido.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="nomeCompleto" class="form-label"
-                  ><strong>Nome Completo</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="nomeCompleto"
-                  name="nomeCompleto"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o seu nome completo.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="documentoIdentificacao" class="form-label"
-                  ><strong>Documento oficial de Identidade</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="documentoIdentificacao"
-                  name="documentoIdentificacao"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o número do documento oficial com foto.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="cpf" class="form-label"
-                  ><strong>CPF</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cpf"
-                  name="cpf"
-                  pattern="\d{11}"
-                  placeholder="Apenas números"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira um CPF válido (11 dígitos) ou deixe em
-                  branco se estrangeiro.
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="telefoneFixo" class="form-label"
-                    ><strong>Telefone fixo</strong>
-                    <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="telefoneFixo"
-                    name="telefoneFixo"
-                    placeholder="(DDD) Número ou 'não há'"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, insira um telefone fixo com DDD ou escreva "não
-                    há".
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="telefoneCelular" class="form-label"
-                    ><strong>Telefone celular</strong>
-                    <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="telefoneCelular"
-                    name="telefoneCelular"
-                    placeholder="(DDD) Número ou 'não há'"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, insira um telefone celular com DDD ou escreva
-                    "não há".
-                  </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="cidade" class="form-label"
-                  ><strong>Cidade</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cidade"
-                  name="cidade"
-                  placeholder="Ex: Fortaleza/CE"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a cidade e o estado no formato "Cidade/UF".
-                </div>
-              </div>
-              <!-- Comprovantes -->
-              <div class="card mt-4">
-                <div class="card-body">
-                  <h5 class="card-title">Comprovantes</h5>
-
-                  <!-- Documento de Identidade -->
-                  <div class="mb-3">
-                    <label for="docIdentidadeUpload" class="form-label">
-                      Documento oficial de identidade, com foto, do país de
-                      origem
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="docIdentidadeUpload"
-                      name="docIdentidadeUpload"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Por favor, envie a cópia do documento de identidade com
-                      foto.
-                    </div>
-                  </div>
-
-                  <!-- Campo para Autodeclaração -->
-                  <div class="mb-3">
-                    <label for="autodeclaracaoUpload" class="form-label">
-                      Autodeclaração (vide ANEXO II)
-                      <span class="text-danger"
-                        >(Opcional, para concorrer às cotas de políticas
-                        afirmativas)</span
-                      >
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="autodeclaracaoUpload"
-                      name="autodeclaracaoUpload"
-                    />
-                    <div class="invalid-feedback">
-                      Caso deseje concorrer nas cotas, envie a autodeclaração
-                      preenchida.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Seção 2: Dados Acadêmicos -->
-          <div id="section2" class="card mb-4">
-            <div class="card-body">
-              <h4 class="card-title">Seção 2: Dados Acadêmicos</h4>
-              <div class="mb-3">
-                <label for="cursoGraduacao" class="form-label"
-                  ><strong>Curso de Graduação</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cursoGraduacao"
-                  name="cursoGraduacao"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o seu curso de graduação.
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="instituicao" class="form-label"
-                  ><strong>Instituição</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="instituicao"
-                  name="instituicao"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o nome da instituição onde realizou a
-                  graduação.
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="igcInstituicao" class="form-label"
-                    ><strong>IGC da Instituição</strong>
-                    <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="igcInstituicao"
-                    name="igcInstituicao"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, insira o Índice Geral de Cursos (IGC) da
-                    instituição.
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="ira" class="form-label">
-                    <strong>IRA</strong>
-                    <button
-                      type="button"
-                      class="btn btn-link btn-sm p-0 ms-1"
-                      data-bs-toggle="popover"
-                      data-bs-placement="right"
-                      data-bs-html="true"
-                      data-bs-content="IRA Individual é o Índice de Rendimento Acadêmico do aluno calculado de acordo com o desempenho acadêmico dele."
-                    >
-                      <i class="bi bi-question-circle"></i>
-                    </button>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    class="form-control"
-                    id="ira"
-                    name="ira"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, insira o Índice de Rendimento Acadêmico (IRA).
-                  </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="cursoGraduacao2" class="form-label"
-                  ><strong>Curso de Graduação 2</strong></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cursoGraduacao2"
-                  name="cursoGraduacao2"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="instituicao2" class="form-label"
-                  ><strong>Instituição 2</strong></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="instituicao2"
-                  name="instituicao2"
-                />
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="igcInstituicao2" class="form-label"
-                    ><strong>IGC da Instituição 2</strong></label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="igcInstituicao2"
-                    name="igcInstituicao2"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label for="ira2" class="form-label"
-                    ><strong>IRA 2</strong></label
-                  >
-                  <input
-                    type="number"
-                    step="0.01"
-                    class="form-control"
-                    id="ira2"
-                    name="ira2"
-                  />
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="curriculoLattes" class="form-label"
-                  ><strong>Currículo Lattes</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="url"
-                  class="form-control"
-                  id="curriculoLattes"
-                  name="curriculoLattes"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o link para seu currículo Lattes.
-                </div>
-              </div>
-              <!-- Comprovantes -->
-              <div class="card mt-4">
-                <div class="card-body">
-                  <h5 class="card-title">Comprovantes</h5>
-
-                  <!-- Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso-->
-                  <div class="mb-3">
-                    <label for="diplomaGraduacaoUpload" class="form-label">
-                      Frente e verso do Diploma de Graduação ou Declaração de
-                      Conclusão de Curso
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="diplomaGraduacaoUpload"
-                      name="diplomaGraduacaoUpload"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Por favor, envie a cópia do diploma de graduação ou
-                      declaração de conclusão de curso.
-                    </div>
-                  </div>
-
-                  <!-- Currículo Lattes -->
-                  <div class="mb-3">
-                    <label for="curriculoLattes" class="form-label">
-                      Currículo Lattes
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="curriculoLattes"
-                      name="curriculoLattes"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Por favor, insira o link para seu currículo Lattes.
-                    </div>
-                  </div>
-
-                  <!-- Histórico de Disciplinas Curso de Graduação-->
-                  <div class="mb-3">
-                    <label for="historicoDisciplinasGraduacao" class="form-label">
-                      Histórico de Disciplinas do Curso de Graduação
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="historicoDisciplinasGraduacao"
-                      name="historicoDisciplinasGraduacao"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Por favor, envie o histórico de disciplinas do curso de
-                      graduação.
-                    </div>
-                  </div>
-
-                  <!-- Histórico de Disciplinas Curso de Graduação 2-->
-                  <div class="mb-3">
-                    <label for="historicoDisciplinasGraduacao2" class="form-label">
-                      Histórico de Disciplinas do Curso de Graduação 2
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="historicoDisciplinasGraduacao2"
-                      name="historicoDisciplinasGraduacao2"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Por favor, envie o histórico de disciplinas do curso de
-                      graduação 2.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Seção 3: Seleção de Disciplinas -->
-          <div id="section3" class="card mb-4">
-            <div class="card-body">
-              <h4 class="card-title">Seção 3: Seleção de Disciplinas</h4>
-              <h5>
-                Disciplinas para pontuação na Nota de Avaliação de Histórico
-                (Nota_H)
-              </h5>
-
-              <!-- Disciplina 1 - Área de Matemática -->
-              <div class="mb-4">
-                <label for="disciplina1" class="form-label">
-                  <strong>Disciplina 1 - Área de Matemática</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplina1"
-                  name="disciplina1"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina
-                  </option>
-                  <option value="Calculus_I">
-                    Cálculo Diferencial e Integral 1
-                  </option>
-                  <option value="Calculus_II">
-                    Cálculo Diferencial e Integral 2
-                  </option>
-                  <option value="Calculus_III">
-                    Cálculo Diferencial e Integral 3
-                  </option>
-                  <option value="Complex_Variables">
-                    Cálculo com Variáveis Complexas
-                  </option>
-                  <option value="Linear_Algebra">Álgebra Linear</option>
-                  <option value="Analytic_Geometry">Geometria Analítica</option>
-                  <option value="Mathematical_Analysis">
-                    Análise Matemática 1
-                  </option>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina 1.
-                </div>
-
-                <!-- Ementa Equivalente 1 -->
-                <div class="mb-3">
-                  <label for="ementa1_1" class="form-label">
-                    Ementa Equivalente 1 para Disciplina 1
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa1_1"
-                    name="ementa1_1"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente 1 para Disciplina 1.
-                  </div>
-                </div>
-
-                <!-- Ementa Equivalente 2 (Opcional) -->
-                <div class="mb-3">
-                  <label for="ementa1_2" class="form-label">
-                    Ementa Equivalente 2 para Disciplina 1
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa1_2"
-                    name="ementa1_2"
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente 2 para Disciplina 1.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Disciplina 2 - Área de Matemática -->
-              <div class="mb-4">
-                <label for="disciplina2" class="form-label">
-                  <strong>Disciplina 2 - Área de Matemática</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplina2"
-                  name="disciplina2"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina
-                  </option>
-                  <option value="Calculus_I">
-                    Cálculo Diferencial e Integral 1
-                  </option>
-                  <option value="Calculus_II">
-                    Cálculo Diferencial e Integral 2
-                  </option>
-                  <option value="Calculus_III">
-                    Cálculo Diferencial e Integral 3
-                  </option>
-                  <option value="Complex_Variables">
-                    Cálculo com Variáveis Complexas
-                  </option>
-                  <option value="Linear_Algebra">Álgebra Linear</option>
-                  <option value="Analytic_Geometry">Geometria Analítica</option>
-                  <option value="Mathematical_Analysis">
-                    Análise Matemática 1
-                  </option>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina 2.
-                </div>
-
-                <!-- Ementa Equivalente 1 -->
-                <div class="mb-3">
-                  <label for="ementa2_1" class="form-label">
-                    Ementa Equivalente 1 para Disciplina 2
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa2_1"
-                    name="ementa2_1"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente 1 para Disciplina 2.
-                  </div>
-                </div>
-
-                <!-- Ementa Equivalente 2 (Opcional) -->
-                <div class="mb-3">
-                  <label for="ementa2_2" class="form-label">
-                    Ementa Equivalente 2 para Disciplina 2
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa2_2"
-                    name="ementa2_2"
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente 2 para Disciplina 2.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Disciplina 3 - Área de Estatística -->
-              <div class="mb-4">
-                <label for="disciplina3" class="form-label">
-                  <strong>Disciplina 3 - Área de Estatística</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplina3"
-                  name="disciplina3"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina
-                  </option>
-                  <option value="Exploratory_Data_Analysis">
-                    Análise Exploratória de Dados
-                  </option>
-                  <option value="Introduction_Statistics">
-                    Introdução à Estatística
-                  </option>
-                  <option value="Probability_Calculation">
-                    Cálculo das Probabilidades
-                  </option>
-                  <option value="Probability_1">Probabilidade 1</option>
-                  <option value="Probability_2">Probabilidade 2</option>
-                  <option value="Statistical_Inference">
-                    Inferência Estatística 1
-                  </option>
-                  <option value="Regression_Models">
-                    Modelos de Regressão 1
-                  </option>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina 3.
-                </div>
-
-                <!-- Ementa Equivalente -->
-                <div class="mb-3">
-                  <label for="ementa3" class="form-label">
-                    Ementa Equivalente para Disciplina 3
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa3"
-                    name="ementa3"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente para Disciplina 3.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Disciplina 4 - Área de Computação -->
-              <div class="mb-4">
-                <label for="disciplina4" class="form-label">
-                  <strong>Disciplina 4 - Área de Computação</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplina4"
-                  name="disciplina4"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina
-                  </option>
-                  <option value="Numerical_Calculus">Cálculo Numérico</option>
-                  <option value="Programming_Fundamentals">
-                    Fundamentos de Programação
-                  </option>
-                  <option value="Algorithm_Analysis">
-                    Construção e Análise de Algoritmos
-                  </option>
-                  <option value="Data_Structures">Estrutura de Dados</option>
-                  <option value="Finite_Math">Matemática Finita</option>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina 4.
-                </div>
-
-                <!-- Ementa Equivalente -->
-                <div class="mb-3">
-                  <label for="ementa4" class="form-label">
-                    Ementa Equivalente para Disciplina 4
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa4"
-                    name="ementa4"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente para Disciplina 4.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Disciplina 5 - Qualquer das três áreas -->
-              <div class="mb-4">
-                <label for="disciplina5" class="form-label">
-                  <strong>Disciplina 5 - Qualquer das três áreas</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplina5"
-                  name="disciplina5"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina
-                  </option>
-                  <!-- Matemática -->
-                  <optgroup label="Matemática">
-                    <option value="Calculus_I">
-                      Cálculo Diferencial e Integral 1
-                    </option>
-                    <option value="Calculus_II">
-                      Cálculo Diferencial e Integral 2
-                    </option>
-                    <option value="Calculus_III">
-                      Cálculo Diferencial e Integral 3
-                    </option>
-                    <option value="Complex_Variables">
-                      Cálculo com Variáveis Complexas
-                    </option>
-                    <option value="Linear_Algebra">Álgebra Linear</option>
-                    <option value="Analytic_Geometry">
-                      Geometria Analítica
-                    </option>
-                    <option value="Mathematical_Analysis">
-                      Análise Matemática 1
-                    </option>
-                  </optgroup>
-                  <!-- Estatística -->
-                  <optgroup label="Estatística">
-                    <option value="Exploratory_Data_Analysis">
-                      Análise Exploratória de Dados
-                    </option>
-                    <option value="Introduction_Statistics">
-                      Introdução à Estatística
-                    </option>
-                    <option value="Probability_Calculation">
-                      Cálculo das Probabilidades
-                    </option>
-                    <option value="Probability_1">Probabilidade 1</option>
-                    <option value="Probability_2">Probabilidade 2</option>
-                    <option value="Statistical_Inference">
-                      Inferência Estatística 1
-                    </option>
-                    <option value="Regression_Models">
-                      Modelos de Regressão 1
-                    </option>
-                  </optgroup>
-                  <!-- Computação -->
-                  <optgroup label="Computação">
-                    <option value="Numerical_Calculus">Cálculo Numérico</option>
-                    <option value="Programming_Fundamentals">
-                      Fundamentos de Programação
-                    </option>
-                    <option value="Algorithm_Analysis">
-                      Construção e Análise de Algoritmos
-                    </option>
-                    <option value="Data_Structures">Estrutura de Dados</option>
-                    <option value="Finite_Math">Matemática Finita</option>
-                  </optgroup>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina 5.
-                </div>
-
-                <!-- Ementa Equivalente 1 -->
-                <div class="mb-3">
-                  <label for="ementa5_1" class="form-label">
-                    Ementa Equivalente 1 para Disciplina 5
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa5_1"
-                    name="ementa5_1"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente 1 para Disciplina 5.
-                  </div>
-                </div>
-
-                <!-- Ementa Equivalente 2 (Opcional) -->
-                <div class="mb-3">
-                  <label for="ementa5_2" class="form-label">
-                    Ementa Equivalente 2 para Disciplina 5
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa5_2"
-                    name="ementa5_2"
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente 2 para Disciplina 5.
-                  </div>
-                </div>
-              </div>
-
-              <h5>Disciplinas adicionais para BÔNUS 1 (máximo 5)</h5>
-
-              <!-- BÔNUS 1 - Disciplina 6 -->
-              <div class="mb-3">
-                <label for="disciplina6" class="form-label">
-                  <strong>Disciplina 6 de qualquer das três áreas</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplina6"
-                  name="disciplina6"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina
-                  </option>
-                  <!-- Reutilizar as opções das três áreas -->
-                  <optgroup label="Matemática">
-                    <option value="Calculus_I">
-                      Cálculo Diferencial e Integral 1
-                    </option>
-                    <option value="Calculus_II">
-                      Cálculo Diferencial e Integral 2
-                    </option>
-                    <option value="Calculus_III">
-                      Cálculo Diferencial e Integral 3
-                    </option>
-                    <option value="Complex_Variables">
-                      Cálculo com Variáveis Complexas
-                    </option>
-                    <option value="Linear_Algebra">Álgebra Linear</option>
-                    <option value="Analytic_Geometry">
-                      Geometria Analítica
-                    </option>
-                    <option value="Mathematical_Analysis">
-                      Análise Matemática 1
-                    </option>
-                  </optgroup>
-                  <optgroup label="Estatística">
-                    <option value="Exploratory_Data_Analysis">
-                      Análise Exploratória de Dados
-                    </option>
-                    <option value="Introduction_Statistics">
-                      Introdução à Estatística
-                    </option>
-                    <option value="Probability_Calculation">
-                      Cálculo das Probabilidades
-                    </option>
-                    <option value="Probability_1">Probabilidade 1</option>
-                    <option value="Probability_2">Probabilidade 2</option>
-                    <option value="Statistical_Inference">
-                      Inferência Estatística 1
-                    </option>
-                    <option value="Regression_Models">
-                      Modelos de Regressão 1
-                    </option>
-                  </optgroup>
-                  <optgroup label="Computação">
-                    <option value="Numerical_Calculus">Cálculo Numérico</option>
-                    <option value="Programming_Fundamentals">
-                      Fundamentos de Programação
-                    </option>
-                    <option value="Algorithm_Analysis">
-                      Construção e Análise de Algoritmos
-                    </option>
-                    <option value="Data_Structures">Estrutura de Dados</option>
-                    <option value="Finite_Math">Matemática Finita</option>
-                  </optgroup>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina 6.
-                </div>
-
-                <!-- Ementa Equivalente -->
-                <div class="mb-3">
-                  <label for="ementa6" class="form-label">
-                    Ementa Equivalente para Disciplina 6
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa6"
-                    name="ementa6"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente para Disciplina 6.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Repita a estrutura acima para disciplinas 7, 8, 9 e 10 conforme necessário -->
-              <!-- Exemplo para Disciplina 7 -->
-              <div class="mb-3">
-                <label for="disciplina7" class="form-label">
-                  <strong>Disciplina 7 de qualquer das três áreas</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplina7"
-                  name="disciplina7"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina
-                  </option>
-                  <!-- Reutilizar as opções das três áreas -->
-                  <optgroup label="Matemática">
-                    <option value="Calculus_I">
-                      Cálculo Diferencial e Integral 1
-                    </option>
-                    <option value="Calculus_II">
-                      Cálculo Diferencial e Integral 2
-                    </option>
-                    <option value="Calculus_III">
-                      Cálculo Diferencial e Integral 3
-                    </option>
-                    <option value="Complex_Variables">
-                      Cálculo com Variáveis Complexas
-                    </option>
-                    <option value="Linear_Algebra">Álgebra Linear</option>
-                    <option value="Analytic_Geometry">
-                      Geometria Analítica
-                    </option>
-                    <option value="Mathematical_Analysis">
-                      Análise Matemática 1
-                    </option>
-                  </optgroup>
-                  <optgroup label="Estatística">
-                    <option value="Exploratory_Data_Analysis">
-                      Análise Exploratória de Dados
-                    </option>
-                    <option value="Introduction_Statistics">
-                      Introdução à Estatística
-                    </option>
-                    <option value="Probability_Calculation">
-                      Cálculo das Probabilidades
-                    </option>
-                    <option value="Probability_1">Probabilidade 1</option>
-                    <option value="Probability_2">Probabilidade 2</option>
-                    <option value="Statistical_Inference">
-                      Inferência Estatística 1
-                    </option>
-                    <option value="Regression_Models">
-                      Modelos de Regressão 1
-                    </option>
-                  </optgroup>
-                  <optgroup label="Computação">
-                    <option value="Numerical_Calculus">Cálculo Numérico</option>
-                    <option value="Programming_Fundamentals">
-                      Fundamentos de Programação
-                    </option>
-                    <option value="Algorithm_Analysis">
-                      Construção e Análise de Algoritmos
-                    </option>
-                    <option value="Data_Structures">Estrutura de Dados</option>
-                    <option value="Finite_Math">Matemática Finita</option>
-                  </optgroup>
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina 7.
-                </div>
-
-                <!-- Ementa Equivalente -->
-                <div class="mb-3">
-                  <label for="ementa7" class="form-label">
-                    Ementa Equivalente para Disciplina 7
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementa7"
-                    name="ementa7"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente para Disciplina 7.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Adicione mais disciplinas conforme necessário -->
-
-              <h5>Disciplinas adicionais para BÔNUS 2 (máximo 4)</h5>
-
-              <!-- Disciplina Optativa 1 do PPGMMQ -->
-              <div class="mb-3">
-                <label for="disciplinaOptativa1" class="form-label">
-                  <strong>Disciplina Optativa 1 do PPGMMQ</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplinaOptativa1"
-                  name="disciplinaOptativa1"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina Optativa 1
-                  </option>
-                  <!-- Adicione as opções de disciplinas optativas do PPGMMQ -->
-                  <option value="Optativa1">
-                    Nome da Disciplina Optativa 1
-                  </option>
-                  <option value="Optativa2">
-                    Nome da Disciplina Optativa 2
-                  </option>
-                  <option value="Optativa3">
-                    Nome da Disciplina Optativa 3
-                  </option>
-                  <option value="Optativa4">
-                    Nome da Disciplina Optativa 4
-                  </option>
-                  <!-- Continue conforme necessário -->
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina Optativa 1.
-                </div>
-
-                <!-- Ementa Equivalente -->
-                <div class="mb-3">
-                  <label for="ementaOptativa1" class="form-label">
-                    Ementa Equivalente para Disciplina Optativa 1
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementaOptativa1"
-                    name="ementaOptativa1"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente para Disciplina
-                    Optativa 1.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Repita a estrutura acima para Disciplina Optativa 2, 3 e 4 -->
-
-              <!-- Exemplo para Disciplina Optativa 2 -->
-              <div class="mb-3">
-                <label for="disciplinaOptativa2" class="form-label">
-                  <strong>Disciplina Optativa 2 do PPGMMQ</strong>
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  class="form-select mb-2"
-                  id="disciplinaOptativa2"
-                  name="disciplinaOptativa2"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecione a Disciplina Optativa 2
-                  </option>
-                  <!-- Adicione as opções de disciplinas optativas do PPGMMQ -->
-                  <option value="Optativa1">
-                    Nome da Disciplina Optativa 1
-                  </option>
-                  <option value="Optativa2">
-                    Nome da Disciplina Optativa 2
-                  </option>
-                  <option value="Optativa3">
-                    Nome da Disciplina Optativa 3
-                  </option>
-                  <option value="Optativa4">
-                    Nome da Disciplina Optativa 4
-                  </option>
-                  <!-- Continue conforme necessário -->
-                </select>
-                <div class="invalid-feedback">
-                  Por favor, selecione a Disciplina Optativa 2.
-                </div>
-
-                <!-- Ementa Equivalente -->
-                <div class="mb-3">
-                  <label for="ementaOptativa2" class="form-label">
-                    Ementa Equivalente para Disciplina Optativa 2
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="ementaOptativa2"
-                    name="ementaOptativa2"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, envie a ementa equivalente para Disciplina
-                    Optativa 2.
-                  </div>
-                </div>
-              </div>
-
-              <!-- Continue para Disciplina Optativa 3 e 4 -->
-            </div>
-          </div>
-
-          <!-- Seção 4: Análise Curricular -->
-          <div id="section4" class="card mb-4">
-            <div class="card-body">
-              <h4 class="card-title">Seção 4: Análise Curricular</h4>
-              <h5>1. Projetos de pesquisa/iniciação científica</h5>
-              <div class="mb-3">
-                <label for="projetosComBolsa" class="form-label"
-                  ><strong>Com bolsa: Número de meses</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="projetosComBolsa"
-                  name="projetosComBolsa"
-                  min="0"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="projetosSemBolsa" class="form-label"
-                  ><strong>Sem bolsa: Número de meses</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="projetosSemBolsa"
-                  name="projetosSemBolsa"
-                  min="0"
-                />
-              </div>
-
-              <h5>2. Publicações em periódicos</h5>
-              <div class="mb-3">
-                <label for="publicacoesA1A2" class="form-label"
-                  ><strong>A1 e A2: Número de publicações</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="publicacoesA1A2"
-                  name="publicacoesA1A2"
-                  min="0"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="publicacoesA3A4" class="form-label"
-                  ><strong>A3 e A4: Número de publicações</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="publicacoesA3A4"
-                  name="publicacoesA3A4"
-                  min="0"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="publicacoesB1B2" class="form-label"
-                  ><strong>B1 e B2: Número de publicações</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="publicacoesB1B2"
-                  name="publicacoesB1B2"
-                  min="0"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="publicacoesB3B4" class="form-label"
-                  ><strong>B3 e B4: Número de publicações</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="publicacoesB3B4"
-                  name="publicacoesB3B4"
-                  min="0"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="publicacoesC" class="form-label"
-                  ><strong>C: Número de publicações</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="publicacoesC"
-                  name="publicacoesC"
-                  min="0"
-                />
-              </div>
-
-              <h5>3. Publicações em eventos (Número de Publicações)</h5>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label for="publicacoesArtigosCompletos" class="form-label"
-                    ><strong>Artigos completos</strong></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="publicacoesArtigosCompletos"
-                    name="publicacoesArtigosCompletos"
-                    min="0"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label for="publicacoesResumosExtendidos" class="form-label"
-                    ><strong>Resumos estendidos</strong></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="publicacoesResumosExtendidos"
-                    name="publicacoesResumosExtendidos"
-                    min="0"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label for="publicacoesResumosSimples" class="form-label"
-                    ><strong>Resumos simples</strong></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="publicacoesResumosSimples"
-                    name="publicacoesResumosSimples"
-                    min="0"
-                  />
-                </div>
-              </div>
-
-              <h5>4. Atividade de docência (Número de Meses)</h5>
-              <div class="row mb-3">
-                <div class="col-md-4">
-                  <label for="docenciaIES" class="form-label"
-                    ><strong>IES</strong></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="docenciaIES"
-                    name="docenciaIES"
-                    min="0"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label for="docenciaMonitoria" class="form-label"
-                    ><strong>Monitoria/Estágio Docência</strong></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="docenciaMonitoria"
-                    name="docenciaMonitoria"
-                    min="0"
-                  />
-                </div>
-                <div class="col-md-4">
-                  <label for="docenciaEnsino" class="form-label"
-                    ><strong>Ensino Fund., Médio ou Técnico</strong></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="docenciaEnsino"
-                    name="docenciaEnsino"
-                    min="0"
-                  />
-                </div>
-              </div>
-
-              <h5>5. Outras atividades</h5>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="bolsaPET" class="form-label"
-                    ><strong>Bolsa PET: Número de meses</strong></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="bolsaPET"
-                    name="bolsaPET"
-                    min="0"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label for="outrasBolsas" class="form-label"
-                    ><strong
-                      >Outros tipos de bolsa: Número de meses</strong
-                    ></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="outrasBolsas"
-                    name="outrasBolsas"
-                    min="0"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Seção 5: Questionário Socioeconômico -->
-          <div id="section5" class="card mb-4">
-            <div class="card-body">
-              <h4 class="card-title">Seção 5: Dados Socioeconômicos</h4>
-              <div class="mb-3">
-                <label class="form-label"
-                  ><strong>1. Como você se considera?</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="socioeconomico1"
-                    id="socio1_1"
-                    value="Amarelo(a) de origem asiática"
-                    required
-                  />
-                  <label class="form-check-label" for="socio1_1">
-                    Amarelo(a) de origem asiática
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="socioeconomico1"
-                    id="socio1_2"
-                    value="Branco(a)"
-                  />
-                  <label class="form-check-label" for="socio1_2">
-                    Branco(a)
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="socioeconomico1"
-                    id="socio1_3"
-                    value="Indígena"
-                  />
-                  <label class="form-check-label" for="socio1_3">
-                    Indígena
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="socioeconomico1"
-                    id="socio1_4"
-                    value="Pardo(a), Mulato(a)"
-                  />
-                  <label class="form-check-label" for="socio1_4">
-                    Pardo(a), Mulato(a)
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="socioeconomico1"
-                    id="socio1_5"
-                    value="Preto(a)"
-                  />
-                  <label class="form-check-label" for="socio1_5">
-                    Preto(a)
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="socioeconomico1"
-                    id="socio1_6"
-                    value="Não declarada"
-                  />
-                  <label class="form-check-label" for="socio1_6">
-                    Não declarada
-                  </label>
-                </div>
-                <div class="invalid-feedback">
-                  Por favor, selecione uma opção.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="socioeconomico2" class="form-label"
-                  ><strong>2. Onde e como você mora atualmente?</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <textarea
-                  class="form-control"
-                  id="socioeconomico2"
-                  name="socioeconomico2"
-                  rows="3"
-                  required
-                ></textarea>
-                <div class="invalid-feedback">
-                  Por favor, responda a pergunta.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="socioeconomico3" class="form-label"
-                  ><strong>3. Quantas pessoas moram em sua casa?</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="socioeconomico3"
-                  name="socioeconomico3"
-                  min="1"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o número de pessoas.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="socioeconomico4" class="form-label"
-                  ><strong>4. Sua moradia está localizada em?</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="socioeconomico4"
-                  name="socioeconomico4"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira a localização da sua moradia.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="socioeconomico5" class="form-label"
-                  ><strong>5. Tipo de escola do ensino fundamental</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="socioeconomico5"
-                  name="socioeconomico5"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o tipo de escola.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="socioeconomico6" class="form-label"
-                  ><strong>6. Tipo de escola do ensino médio</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="socioeconomico6"
-                  name="socioeconomico6"
-                  required
-                />
-                <div class="invalid-feedback">
-                  Por favor, insira o tipo de escola.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="socioeconomico7" class="form-label"
-                  ><strong>7. Escolaridade dos familiares?</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <textarea
-                  class="form-control"
-                  id="socioeconomico7"
-                  name="socioeconomico7"
-                  rows="3"
-                  required
-                ></textarea>
-                <div class="invalid-feedback">
-                  Por favor, responda a pergunta.
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <label for="socioeconomico8" class="form-label"
-                    ><strong>8. Renda familiar?</strong>
-                    <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="socioeconomico8"
-                    name="socioeconomico8"
-                    min="0"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, insira a renda familiar.
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="socioeconomico9" class="form-label"
-                    ><strong>9. Quantos livros você lê por ano?</strong>
-                    <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="socioeconomico9"
-                    name="socioeconomico9"
-                    min="0"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor, insira a quantidade de livros lidos.
-                  </div>
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label for="socioeconomico10" class="form-label"
-                  ><strong>10. Motivação para continuar estudando?</strong>
-                  <span class="text-danger">*</span></label
-                >
-                <textarea
-                  class="form-control"
-                  id="socioeconomico10"
-                  name="socioeconomico10"
-                  rows="3"
-                  required
-                ></textarea>
-                <div class="invalid-feedback">
-                  Por favor, responda a pergunta.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Seção 6: Declarações para Bolsa -->
-          <div id="section6" class="card mb-4">
-            <div class="card-body">
-              <h4 class="card-title">Seção 6: Declarações para Bolsa</h4>
-              <div class="mb-3">
-                <label class="form-label"
-                  ><strong>1. Situação atual (escolha uma):</strong></label
-                >
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="declaracoes1"
-                    id="declaracao1"
-                    value="Não exerço atividade remunerada."
-                    required
-                  />
-                  <label class="form-check-label" for="declaracao1">
-                    Não exerço atividade remunerada.
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="declaracoes1"
-                    id="declaracao2"
-                    value="Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa."
-                    required
-                  />
-                  <label class="form-check-label" for="declaracao2">
-                    Exerço atividade remunerada, mas me desligarei caso
-                    contemplado com bolsa.
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="declaracoes1"
-                    id="declaracao3"
-                    value="Exerço atividade remunerada e não me desligarei."
-                    required
-                  />
-                  <label class="form-check-label" for="declaracao3">
-                    Exerço atividade remunerada e não me desligarei.
-                  </label>
-                </div>
-                <div class="invalid-feedback">
-                  Por favor, selecione uma opção.
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label"
-                  ><strong>2. Declarações:</strong></label
-                >
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="declaracaoSim1"
-                    name="declaracoes2"
-                    value="Sim, declaro estar ciente."
-                    required
-                  />
-                  <label class="form-check-label" for="declaracaoSim1">
-                    Sim, declaro estar ciente.
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="declaracaoSim2"
-                    name="declaracoes2"
-                    value="Sim, autorizo a averiguação das informações."
-                    required
-                  />
-                  <label class="form-check-label" for="declaracaoSim2">
-                    Sim, autorizo a averiguação das informações.
-                  </label>
-                </div>
-                <div class="invalid-feedback">
-                  Você deve marcar ambas as declarações.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Botão de Envio -->
-          <button type="submit" class="btn btn-primary">
-            Enviar Inscrição
-          </button>
-        </form>
-      </div>
     </div>
 
     <!-- Bootstrap JS v5.3 e dependências -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Inicializar ScrollSpy para a navegação lateral
-        const scrollSpy = new bootstrap.ScrollSpy(document.body, {
-          target: "#sidebar",
-          offset: 100,
-        });
+    <script src="js/script.js"></script>
+</body>
 
-        // Atualizar a barra de progresso com base na posição do scroll
-        const progressBar = document.getElementById("formProgress");
-
-        function updateProgressBar() {
-          // Calcular o quanto a página foi rolada
-          let scrollTop =
-            window.pageYOffset || document.documentElement.scrollTop;
-          let docHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-          let scrolled = (scrollTop / docHeight) * 100;
-          scrolled = scrolled > 100 ? 100 : scrolled; // Limitar a 100%
-          progressBar.style.width = scrolled + "%";
-          progressBar.setAttribute("aria-valuenow", scrolled.toFixed(0));
-          progressBar.textContent = scrolled.toFixed(0) + "%";
-        }
-
-        window.addEventListener("scroll", updateProgressBar);
-        updateProgressBar(); // Inicializar ao carregar a página
-
-        // Validação do formulário
-        const form = document.getElementById("inscricaoForm");
-
-        form.addEventListener(
-          "submit",
-          function (event) {
-            // Verificar se todas as seções obrigatórias estão válidas
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-
-            form.classList.add("was-validated");
-          },
-          false
-        );
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var popoverTriggerList = [].slice.call(
-          document.querySelectorAll('[data-bs-toggle="popover"]')
-        );
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-          return new bootstrap.Popover(popoverTriggerEl);
-        });
-      });
-    </script>
-  </body>
 </html>
