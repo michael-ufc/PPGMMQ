@@ -24,13 +24,11 @@ Página de inscrição para a pós-graduação no Programa de Pós-Graduação e
 
 ---
 
-## Seção 1: E-mail
+### Seção 1: Dados Pessoais
+
 - **E-mail**  
   *(Campo obrigatório)*
 
----
-
-## Seção 2: Dados Pessoais
 - **Nome Completo**  
   *(Campo obrigatório)*  
   Insira o seu nome completo.
@@ -66,8 +64,8 @@ Página de inscrição para a pós-graduação no Programa de Pós-Graduação e
 
 ---
 
-## Seção 3: Seleção de Disciplinas
-### Disciplinas para pontuação na Nota de Avaliação de Histórico (Nota_H)
+### Seção 3: Seleção de Disciplinas
+#### Disciplinas para pontuação na Nota de Avaliação de Histórico (Nota_H)
 O candidato deverá informar **5 (cinco) disciplinas distintas** do seu histórico acadêmico de graduação:
 - **Disciplina 1 - Área de Matemática**  
   *(Campo obrigatório)*  
@@ -80,7 +78,7 @@ O candidato deverá informar **5 (cinco) disciplinas distintas** do seu históri
 - **Disciplina 5 - Qualquer das três áreas**  
   *(Campo obrigatório)*  
 
-### Disciplinas adicionais para BÔNUS1 (máximo 5)
+#### Disciplinas adicionais para BÔNUS1 (máximo 5)
 Informe disciplinas adicionais para bônus na Nota_H:
 - **Disciplina 6 de qualquer das três áreas**  
   *(Campo obrigatório)*  
@@ -93,7 +91,7 @@ Informe disciplinas adicionais para bônus na Nota_H:
 - **Disciplina 10 de qualquer das três áreas**  
   *(Campo obrigatório)*  
 
-### Disciplinas adicionais para BÔNUS2 (máximo 4)
+#### Disciplinas adicionais para BÔNUS2 (máximo 4)
 Informe disciplinas adicionais optativas do PPGMMQ:
 - **Disciplina Optativa 1 do PPGMMQ**  
   *(Campo obrigatório)*  
@@ -106,7 +104,7 @@ Informe disciplinas adicionais optativas do PPGMMQ:
 
 ---
 
-## Seção 4: Dados Acadêmicos
+### Seção 4: Dados Acadêmicos
 - **Curso de Graduação**  
   *(Campo obrigatório)*  
   Indique o seu curso de graduação.
@@ -134,7 +132,7 @@ Informe disciplinas adicionais optativas do PPGMMQ:
 
 ---
 
-## Seção 5: Análise Curricular
+### Seção 5: Análise Curricular
 Informe os itens da Tabela 4 do Edital:
 1. **Projetos de pesquisa/iniciação científica**  
    - **Com bolsa:** Número de meses  
@@ -163,7 +161,7 @@ Informe os itens da Tabela 4 do Edital:
 
 ---
 
-## Seção 6: Questionário Socioeconômico
+### Seção 6: Questionário Socioeconômico
 1. **Como você se considera?**  
    *(Campo obrigatório)*  
    - [ ] Amarelo(a) de origem asiática  
@@ -202,7 +200,7 @@ Informe os itens da Tabela 4 do Edital:
 
 ---
 
-## Seção 7: Declarações para Bolsa
+### Seção 7: Declarações para Bolsa
 1. **Situação atual (escolha uma):**
    - [ ] Não exerço atividade remunerada.  
    - [ ] Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa.  
@@ -212,3 +210,7 @@ Informe os itens da Tabela 4 do Edital:
    - [x] Sim, declaro estar ciente.  
    - [x] Sim, autorizo a averiguação das informações.  
 ```
+
+## Features
+
+O candidato deverá fazer o upload de muitos documentos (comprovantes) para cada seção do formulário. Então a página deverá ter campos para upload com um botão para coleta do caminho do arquivo e a sua descrição.
