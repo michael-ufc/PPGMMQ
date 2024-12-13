@@ -32,7 +32,7 @@
                 <a class="nav-link" href="#section2">2. Dados Acadêmicos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#section3">3. Seleção de Disciplinas</a>
+                <a class="nav-link" href="#section3">3. Avaliação de Histórico</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#section4">4. Análise Curricular</a>
@@ -48,15 +48,16 @@
 
     <!-- Conteúdo Principal -->
     <div id="main-content">
-        <div class="container my-2" style="max-width: 800px; margin-left: 0">
+        <div class="container my-1" style="max-width: 800px; margin-left: 0">
             <div id="header" class="card mb-0" style="border: none">
                 <div class="card-body d-flex align-items-center">
                     <div>
-                        <h1 class="mb-4">Formulário de Inscrição</h1>
-                        <h3 class="mb-4">Processo Seletivo de Discentes 2025.1</h3>
+                        <h3 class="mb-3">Processo Seletivo Mestrado 2025.1</h3>
                     </div>
                 </div>
             </div>
+
+            <!-- Formulário -->
             <form id="inscricaoForm" novalidate>
                 <!-- Seção 1: Dados Pessoais -->
                 <div id="section1" class="card mb-4">
@@ -65,7 +66,7 @@
                         <div class="mb-3">
                             <label for="email" class="form-label"><strong>E-mail</strong>
                                 <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" id="email" name="email" required />
+                            <input type="email" class="form-control" id="email" name="email" autocomplete="email" required />
                             <div class="invalid-feedback">
                                 Por favor, insira um e-mail válido.
                             </div>
@@ -131,8 +132,7 @@
                                 <!-- Documento de Identidade -->
                                 <div class="mb-3">
                                     <label for="docIdentidadeUpload" class="form-label">
-                                        Documento oficial de identidade, com foto, do país de
-                                        origem
+                                        Documento oficial de identidade com foto
                                         <span class="text-danger">*</span>
                                     </label>
                                     <input type="file" class="form-control" id="docIdentidadeUpload" name="docIdentidadeUpload" required />
@@ -250,18 +250,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Currículo Lattes -->
-                                <div class="mb-3">
-                                    <label for="curriculoLattes" class="form-label">
-                                        Currículo Lattes
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="file" class="form-control" id="curriculoLattes" name="curriculoLattes" required />
-                                    <div class="invalid-feedback">
-                                        Por favor, insira o link para seu currículo Lattes.
-                                    </div>
-                                </div>
-
                                 <!-- Histórico de Disciplinas Curso de Graduação-->
                                 <div class="mb-3">
                                     <label for="historicoDisciplinasGraduacao" class="form-label">
@@ -295,95 +283,24 @@
                 <!-- Seção 3: Seleção de Disciplinas -->
                 <div id="section3" class="card mb-4">
                     <div class="card-body">
-                        <h4 class="card-title">Seção 3: Seleção de Disciplinas</h4>
-                        <h5>
-                            Disciplinas para pontuação na Nota de Avaliação de Histórico
-                            (Nota_H)
-                        </h5>
+                        <h4 class="card-title">Seção 3: Avaliação de Histórico (Nota_H)</h4>
 
-                        <!-- Disciplina Repetível -->
-                        <div id="disciplinas-container">
-                            <!-- Disciplina 1 a 5: Estáticos -->
-                            <div class="disciplina-group required">
-                                <label class="form-label"><strong>Disciplina</strong>
-                                    <span class="text-danger">*</span></label>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <select class="form-select disciplina-select" required>
-                                            <option value="" disabled selected>
-                                                Selecione a Disciplina
-                                            </option>
-                                            <!-- Matematica -->
-                                            <optgroup label="Matemática">
-                                                <option value="Calculus_I">Cálculo Diferencial e Integral 1</option>
-                                                <option value="Calculus_II">Cálculo Diferencial e Integral 2</option>
-                                                <option value="Calculus_III">Cálculo Diferencial e Integral 3</option>
-                                                <option value="Complex_Variables">Cálculo com Variáveis Complexas</option>
-                                                <option value="Linear_Algebra">Álgebra Linear</option>
-                                                <option value="Analytic_Geometry">Geometria Analítica</option>
-                                                <option value="Mathematical_Analysis">Análise Matemática 1</option>
-                                            </optgroup>
-                                            <!-- Estatística -->
-                                            <optgroup label="Estatística">
-                                                <option value="Exploratory_Data_Analysis">Análise Exploratória de Dados</option>
-                                                <option value="Introduction_Statistics">Introdução à Estatística</option>
-                                                <option value="Probability_Calculation">Cálculo das Probabilidades</option>
-                                                <option value="Probability_1">Probabilidade 1</option>
-                                                <option value="Probability_2">Probabilidade 2</option>
-                                                <option value="Statistical_Inference">Inferência Estatística 1</option>
-                                                <option value="Regression_Models">Modelos de Regressão 1</option>
-                                            </optgroup>
-                                            <!-- Computação -->
-                                            <optgroup label="Computação">
-                                                <option value="Numerical_Calculus">Cálculo Numérico</option>
-                                                <option value="Programming_Fundamentals">Fundamentos de Programação</option>
-                                                <option value="Algorithm_Analysis">Construção e Análise de Algoritmos</option>
-                                                <option value="Data_Structures">Estrutura de Dados</option>
-                                                <option value="Finite_Math">Matemática Finita</option>
-                                            </optgroup>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Por favor, selecione uma disciplina.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-success add-disciplinas-btn">
-                                            <i class="bi bi-plus-circle"></i> Adicionar Ementa
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="ementas-container mb-3">
-                                    <div class="mb-3 ementa-group">
-                                        <label class="form-label">
-                                            Ementa Equivalente <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="file" class="form-control ementa-input" required />
-                                        <div class="invalid-feedback">
-                                            Por favor, envie a ementa equivalente.
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Disciplinas de Matemática, Estatística e Computação -->
+                        <div id="courses" class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Disciplinas de Matemática, Estatística e Computação</h5>
+                                <!-- The course will be autoloaded -->
                             </div>
-                            <!-- Fim das disciplinas estáticas -->
                         </div>
 
-                        <!-- Subseções para BÔNUS 1 e BÔNUS 2 -->
-                        <div id="disciplinas-bonus1" class="mb-4">
-                            <h5>Disciplinas Adicionais para BÔNUS 1 (máximo 5)</h5>
-                            <button type="button" class="btn btn-outline-primary btn-sm" id="addBonus1Btn" data-type="bonus1" data-max="5">
-                                <i class="bi bi-plus-circle"></i> Adicionar Disciplina BÔNUS 1
-                            </button>
-                            <div id="disciplinas-adicionais-bonus1-container" class="mt-3"></div>
+                        <!-- Disciplinas Bônus -->
+                        <div id="bonusCourses" class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Disciplinas Bônus</h5>
+                                <!-- The course will be autoloaded -->
+                                <button type="button" class="btn btn-sm btn-outline-success" id="addBonusCourse">+ Disciplina Bônus</button>
+                            </div>
                         </div>
-
-                        <div id="disciplinas-bonus2" class="mb-4">
-                            <h5>Disciplinas Adicionais para BÔNUS 2 (máximo 4)</h5>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" id="addBonus2Btn" data-type="bonus2" data-max="4">
-                                <i class="bi bi-plus-circle"></i> Adicionar Disciplina BÔNUS 2
-                            </button>
-                            <div id="disciplinas-adicionais-bonus2-container" class="mt-3"></div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -473,49 +390,42 @@
                 <div id="section5" class="card mb-4">
                     <div class="card-body">
                         <h4 class="card-title">Seção 5: Dados Socioeconômicos</h4>
+
+                        <!-- 1. Como você se considera? -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>1. Como você se considera?</strong>
-                                <span class="text-danger">*</span></label>
+                            <label class="form-label" for="socio1_1">
+                                <strong>1. Como você se considera?</strong>
+                                <span class="text-danger">*</span>
+                            </label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_1" value="Amarelo(a) de origem asiática" required />
-                                <label class="form-check-label" for="socio1_1">
-                                    Amarelo(a) de origem asiática
-                                </label>
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_1" value="Amarelo(a) de origem asiática" required>
+                                <label class="form-check-label" for="socio1_1">Amarelo(a) de origem asiática</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_2" value="Branco(a)" />
-                                <label class="form-check-label" for="socio1_2">
-                                    Branco(a)
-                                </label>
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_2" value="Branco(a)">
+                                <label class="form-check-label" for="socio1_2">Branco(a)</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_3" value="Indígena" />
-                                <label class="form-check-label" for="socio1_3">
-                                    Indígena
-                                </label>
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_3" value="Indígena">
+                                <label class="form-check-label" for="socio1_3">Indígena</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_4" value="Pardo(a), Mulato(a)" />
-                                <label class="form-check-label" for="socio1_4">
-                                    Pardo(a), Mulato(a)
-                                </label>
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_4" value="Pardo(a), Mulato(a)">
+                                <label class="form-check-label" for="socio1_4">Pardo(a), Mulato(a)</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_5" value="Preto(a)" />
-                                <label class="form-check-label" for="socio1_5">
-                                    Preto(a)
-                                </label>
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_5" value="Preto(a)">
+                                <label class="form-check-label" for="socio1_5">Preto(a)</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_6" value="Não declarada" />
-                                <label class="form-check-label" for="socio1_6">
-                                    Não declarada
-                                </label>
+                                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_6" value="Não declarada">
+                                <label class="form-check-label" for="socio1_6">Não declarada</label>
                             </div>
                             <div class="invalid-feedback">
                                 Por favor, selecione uma opção.
                             </div>
                         </div>
+
 
                         <div class="mb-3">
                             <label for="socioeconomico2" class="form-label"><strong>2. Onde e como você mora atualmente?</strong>
@@ -605,50 +515,49 @@
                 <div id="section6" class="card mb-4">
                     <div class="card-body">
                         <h4 class="card-title">Seção 6: Declarações para Bolsa</h4>
+
+                        <!-- 1. Situação atual -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>1. Situação atual (escolha uma):</strong></label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao1" value="Não exerço atividade remunerada." required />
-                                <label class="form-check-label" for="declaracao1">
-                                    Não exerço atividade remunerada.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao2" value="Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa." required />
-                                <label class="form-check-label" for="declaracao2">
-                                    Exerço atividade remunerada, mas me desligarei caso
-                                    contemplado com bolsa.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao3" value="Exerço atividade remunerada e não me desligarei." required />
-                                <label class="form-check-label" for="declaracao3">
-                                    Exerço atividade remunerada e não me desligarei.
-                                </label>
-                            </div>
-                            <div class="invalid-feedback">
-                                Por favor, selecione uma opção.
-                            </div>
+                            <fieldset>
+                                <legend class="form-label"><strong>1. Situação atual (escolha uma):</strong></legend>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao1" value="Não exerço atividade remunerada." required>
+                                    <label class="form-check-label" for="declaracao1">Não exerço atividade remunerada.</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao2" value="Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa." required>
+                                    <label class="form-check-label" for="declaracao2">Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa.</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao3" value="Exerço atividade remunerada e não me desligarei." required>
+                                    <label class="form-check-label" for="declaracao3">Exerço atividade remunerada e não me desligarei.</label>
+                                </div>
+                                <div class="invalid-feedback">Por favor, selecione uma opção.</div>
+                            </fieldset>
                         </div>
 
+                        <!-- 2. Declarações -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>2. Declarações:</strong></label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="declaracaoSim1" name="declaracoes2" value="Sim, declaro estar ciente." required />
-                                <label class="form-check-label" for="declaracaoSim1">
-                                    Sim, declaro estar ciente.
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="declaracaoSim2" name="declaracoes2" value="Sim, autorizo a averiguação das informações." required />
-                                <label class="form-check-label" for="declaracaoSim2">
-                                    Sim, autorizo a averiguação das informações.
-                                </label>
-                            </div>
-                            <div class="invalid-feedback">
-                                Você deve marcar ambas as declarações.
-                            </div>
+                            <fieldset>
+                                <legend class="form-label"><strong>2. Declarações:</strong></legend>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="declaracaoSim1" name="declaracoes2" value="Sim, declaro estar ciente." required>
+                                    <label class="form-check-label" for="declaracaoSim1">
+                                        Sim, declaro estar ciente.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="declaracaoSim2" name="declaracoes2" value="Sim, autorizo a averiguação das informações." required>
+                                    <label class="form-check-label" for="declaracaoSim2">
+                                        Sim, autorizo a averiguação das informações.
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Você deve marcar ambas as declarações.
+                                </div>
+                            </fieldset>
                         </div>
+
                     </div>
                 </div>
 
