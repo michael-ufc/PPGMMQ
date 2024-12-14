@@ -1,5 +1,4 @@
 .
-├── 127.0.0.1-1734176873486.log
 ├── css
 │   └── styles.css
 ├── docs
@@ -8,7 +7,6 @@
 │   └── logo-ppgmmq.jpeg
 ├── includes
 │   ├── footer.html
-│   ├── instructions.html
 │   ├── section1.html
 │   ├── section2.html
 │   ├── section3.html
@@ -29,4 +27,4 @@
 ├── README.md
 └── tree.txt
 
-6 directories, 24 files
+6 directories, 22 files

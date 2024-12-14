@@ -1,65 +1,106 @@
-/* styles.css */
+/* css/styles.css */
 
-/* Layout da Navegação Lateral */
-body {
-    position: relative;
-}
-
-#sidebar {
-    position: fixed;
-    top: 0;
-    width: 250px;
+/* Sidebar Navigation Styling */
+.nav-pills {
+    background-color: #ffffff;
+    /* White background for the sidebar */
     height: 100%;
-    padding-top: 60px;
-    /* Espaço para a barra de progresso */
-    background-color: #f8f9fa;
-    overflow-y: auto;
-    border-right: 1px solid #dee2e6;
-}
-
-#sidebar .nav-link {
-    color: #333;
-}
-
-#sidebar .nav-link.active {
-    background-color: #116c5c;
-    color: #fff;
-    border-radius: 4px;
-}
-
-/* Espaço para o conteúdo principal */
-#main-content {
-    margin-left: 250px;
     padding: 20px;
+    /* Increased padding for better spacing */
+    border-radius: 5px;
+    box-shadow: none;
+    /* Optional: Adds a subtle shadow for depth */
 }
 
-/* Ajustes para dispositivos móveis */
+/* Remove borders and adjust the appearance of nav links */
+.nav-pills .nav-link {
+    border-radius: 4px;
+    padding: 10px 15px;
+    color: #495057;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Active Navigation Link Styling */
+.nav-pills .nav-link.active {
+    background-color: #d4edda;
+    /* Light green background */
+    color: #155724;
+    /* Dark green text for contrast */
+    border-color: #c3e6cb;
+    /* Border color matching the background */
+}
+
+/* Optional: Hover Effects for Navigation Links */
+.nav-pills .nav-link:hover {
+    background-color: #e2e6ea;
+    /* Light gray on hover */
+    color: green;
+    /* Bootstrap primary color for text on hover */
+}
+
+/* Tab Content Styling */
+.tab-content {
+    text-align: left;
+    /* Align text to the left */
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background for consistency */
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.05);
+    /* Optional: Adds a subtle shadow */
+}
+
+/* Sidebar with fixed width */
+.custom-sidebar {
+    height: 80vh;
+    /* Full height of the viewport */
+    background-color: white;
+    /* Light background for sidebar */
+    padding-right: 20px;
+}
+
+.custom-sidebar .h-100 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#generatePdfBtn {
+    margin-top: auto;
+    /* Ensure the button stays at the bottom */
+}
+
+/* Content area with padding */
+.custom-content {
+    padding: 0 20px 0 0;
+    /* Adds right padding */
+    background-color: white;
+    /* Optional: light background for better distinction */
+}
+
+.main-container {
+    display: flex;
+    justify-content: flex-start;
+    /* Aligns the container to the left */
+    padding-left: 0;
+    /* Removes extra padding */
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    #sidebar {
+    .nav-pills {
+        flex-direction: row;
         width: 100%;
-        height: auto;
-        position: relative;
-        padding-top: 0;
-        border-right: none;
-        border-bottom: 1px solid #dee2e6;
+        overflow-x: auto;
     }
 
-    #main-content {
-        margin-left: 0;
+    .nav-pills .nav-link {
+        flex: 1 1 auto;
+        text-align: center;
     }
-}
 
-/* Botão de Remover Disciplina */
-.remove-disciplina-btn {
-    margin-top: 0;
-}
-
-/* Margem para títulos das disciplinas adicionais */
-.disciplina-adicional h6 {
-    margin-bottom: 15px;
-}
-
-/* Ajustes para botões com ícones */
-.btn i.bi {
-    margin-right: 5px;
+    .tab-content {
+        padding: 10px;
+    }
 }

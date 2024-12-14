@@ -11,7 +11,6 @@
   index.html: all
 
 ./includes: yes
-  instructions.html: all
   section1.html: none
   section2.html: none
   section3.html: none
@@ -20,20 +19,20 @@
   section6.html: none
   footer.html: none
 
-./css: no
-  styles.css: none
+./css: yes
+  styles.css: yes
 
-./js: no
+./js: yes
   main.js: all
   includes.js: all
-  courseSelection.js: all
-  popovers.js: all
-  utils.js: all
+  courseSelection.js: none
+  popovers.js: none
+  utils.js: none
 
-./docs: yes
+./docs: none
   edital_mestrado_2025-1.md: all
 
 # user_request
 """
-Extraia as informações do edital para escrevermos a página de "instructions.html". Colete apenas as informações relevantes para o preenchimento do formulário.
+There is a shadow in the left sidebar. Pls, how can I remove it?
 """
