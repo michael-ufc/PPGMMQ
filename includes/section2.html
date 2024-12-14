@@ -60,11 +60,16 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="curriculoLattes" class="form-label"><strong>Currículo Lattes</strong>
-                <span class="text-danger">*</span></label>
-            <input type="url" class="form-control" id="curriculoLattes" name="curriculoLattes" required />
+            <label for="curriculoLattes" class="form-label">
+                <strong>Currículo Lattes</strong>
+                <span class="text-danger">*</span>
+                <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover" data-bs-placement="right" data-bs-html="true" data-bs-content="Insira a URL completa do seu currículo na Plataforma Lattes (http://lattes.cnpq.br)">
+                    <i class="bi bi-question-circle"></i>
+                </button>
+            </label>
+            <input type="url" class="form-control" id="curriculoLattes" name="curriculoLattes" placeholder="http://lattes.cnpq.br/..." required />
             <div class="invalid-feedback">
-                Por favor, insira o link para seu currículo Lattes.
+                Por favor, insira a URL do seu currículo na Plataforma Lattes.
             </div>
         </div>
         <!-- Comprovantes -->
@@ -79,7 +84,7 @@
                         Conclusão de Curso
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="file" class="form-control" id="diplomaGraduacaoUpload" name="diplomaGraduacaoUpload" required />
+                    <input type="file" class="form-control" id="diplomaGraduacaoUpload" name="diplomaGraduacaoUpload" accept=".pdf" required />
                     <div class="invalid-feedback">
                         Por favor, envie a cópia do diploma de graduação ou
                         declaração de conclusão de curso.
@@ -92,10 +97,23 @@
                         Histórico de Disciplinas do Curso de Graduação
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao" name="historicoDisciplinasGraduacao" required />
+                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao" name="historicoDisciplinasGraduacao" accept=".pdf" required />
                     <div class="invalid-feedback">
                         Por favor, envie o histórico de disciplinas do curso de
                         graduação.
+                    </div>
+                </div>
+
+                <!-- Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso-->
+                <div class="mb-3">
+                    <label for="diplomaGraduacaoUpload2" class="form-label">
+                        Frente e verso do Diploma de Graduação ou Declaração de
+                        Conclusão de Curso
+                    </label>
+                    <input type="file" class="form-control" id="diplomaGraduacaoUpload2" name="diplomaGraduacaoUpload2" accept=".pdf" />
+                    <div class="invalid-feedback">
+                        Por favor, envie a cópia do diploma de graduação ou
+                        declaração de conclusão de curso.
                     </div>
                 </div>
 
@@ -103,9 +121,8 @@
                 <div class="mb-3">
                     <label for="historicoDisciplinasGraduacao2" class="form-label">
                         Histórico de Disciplinas do Curso de Graduação 2
-                        <span class="text-danger">*</span>
                     </label>
-                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao2" name="historicoDisciplinasGraduacao2" required />
+                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao2" name="historicoDisciplinasGraduacao2" accept=".pdf" />
                     <div class="invalid-feedback">
                         Por favor, envie o histórico de disciplinas do curso de
                         graduação 2.

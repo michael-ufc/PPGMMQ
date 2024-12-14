@@ -16,6 +16,7 @@
 ├── index.html
 ├── js
 │   ├── courseSelection.js
+│   ├── generatePdf.js
 │   ├── includes.js
 │   ├── main.js
 │   ├── popovers.js
@@ -27,4 +28,4 @@
 ├── README.md
 └── tree.txt
 
-6 directories, 22 files
+6 directories, 23 files

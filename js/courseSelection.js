@@ -51,14 +51,14 @@ const courseCategories = {
     ],
 };
 
-function createCourseContainer(containerId, courseNumber) {
+function createCourseContainer(containerId, courseNumber, required = true) {
     return `
         <div id="${containerId}-container-${courseNumber}" class="mb-3 mx-3">
             <label for="${containerId}-${courseNumber}" class="form-label">
                 <strong>Disciplina ${courseNumber}</strong> 
-                <span class="text-danger">*</span>
+                ${required ? '<span class="text-danger">*</span>' : ''}
             </label>
-            <select class="form-select disciplina-select my-1" id="${containerId}-${courseNumber}" name="${containerId}-${courseNumber}" required>
+            <select class="form-select disciplina-select my-1" id="${containerId}-${courseNumber}" name="${containerId}-${courseNumber}" ${required ? 'required' : ''}>
             </select>
             <div class="invalid-feedback">Por favor, selecione uma disciplina.</div>
             
@@ -66,15 +66,16 @@ function createCourseContainer(containerId, courseNumber) {
                 <label for="${containerId}-${courseNumber}Name" class="form-label">
                     Disciplinas equivalentes no seu histórico
                 </label>
-                <textarea class="form-control" id="${containerId}-${courseNumber}Name" name="${containerId}-${courseNumber}Name"></textarea>
+                <textarea class="form-control" id="${containerId}-${courseNumber}Name" name="${containerId}-${courseNumber}Name" ${required ? 'required' : ''}></textarea>
                 <div class="invalid-feedback">Por favor, insira o nome da disciplina.</div>
             </div>
             
             <div class="mb-3">
                 <label for="course${courseNumber}Syllabi" class="form-label">
                     Ementas das disciplinas equivalentes
+                    <small class="text-muted">(não é necessário anexar se a disciplina tiver exatamente o mesmo nome)</small>
                 </label>
-                <input type="file" class="form-control" id="${containerId}-${courseNumber}Syllabi" name="${containerId}-${courseNumber}Syllabi[]" multiple>
+                <input type="file" class="form-control" id="${containerId}-${courseNumber}Syllabi" name="${containerId}-${courseNumber}Syllabi[]" multiple accept=".pdf">
                 <div class="invalid-feedback">Por favor, envie a(s) ementa(s) da disciplina que você cursou.</div>
             </div>
         </div>
@@ -168,7 +169,7 @@ function initializeBonusCourses1() {
     const numberOfBonusCourses = 5;
 
     for (let i = 1; i <= numberOfBonusCourses; i++) {
-        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i));
+        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i, false));
     }
 
     for (let i = 1; i <= numberOfBonusCourses; i++) {
@@ -183,7 +184,7 @@ function initializeBonusCourses2() {
     const numberOfBonusCourses = 4;
 
     for (let i = 1; i <= numberOfBonusCourses; i++) {
-        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i));
+        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i, false));
     }
 
     for (let i = 1; i <= numberOfBonusCourses; i++) {

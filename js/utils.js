@@ -22,3 +22,36 @@ export function debounce(func, wait) {
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
 }
+
+export function collectFormData(formId) {
+    const form = document.getElementById(formId);
+    const formData = new FormData(form);
+    const data = {};
+
+    // Iterate over each key/value pair in FormData
+    for (let [key, value] of formData.entries()) {
+        // Handle multiple selections (e.g., checkboxes)
+        if (data[key]) {
+            if (Array.isArray(data[key])) {
+                data[key].push(value);
+            } else {
+                data[key] = [data[key], value];
+            }
+        } else {
+            data[key] = value;
+        }
+    }
+
+    // Handle file uploads separately
+    const fileInputs = form.querySelectorAll('input[type="file"]');
+    data.uploadedFiles = {};
+
+    fileInputs.forEach(input => {
+        const files = input.files;
+        if (files.length > 0) {
+            data.uploadedFiles[input.name] = Array.from(files);
+        }
+    });
+
+    return data;
+}
