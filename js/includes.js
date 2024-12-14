@@ -4,8 +4,7 @@ export async function loadIncludes() {
     await loadHTML('includes/footer.html', 'footer-placeholder');
 
     // Define the sections including the instructions
-    const sections = [
-        {
+    const sections = [{
             file: 'section1.html',
             containerId: 'section1-content'
         },
