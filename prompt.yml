@@ -7,12 +7,16 @@
 
 # sources:
 ./: yes
+  tree.txt: all
   index.html: all
-  css/styles.css: none
+  css/styles.css: all
+  js/main.js: all
   js/courseSelection.js: none
-  js/progressBar.js: all
+  js/progressBar.js: none
 
 # user_request
 """
-Ajuste o progressBar.js para considerar as subopções 3.1, 3.2 e 3.3.
+The index.html page is too long. Please, how can I split it into multiple files?
+I'm constrained by client side solutions, because my server is static. The solution must split the form sections into multiple files.
+I also wanna use vscode to edit the files with html, css and js syntax highlighting, so convert the html files to strings is not an ideal solution.
 """

@@ -372,78 +372,239 @@
                     <div class="card-body">
                         <h4 class="card-title">Seção 4: Análise Curricular</h4>
                         <h5>1. Projetos de pesquisa/iniciação científica</h5>
-                        <div class="mb-3">
-                            <label for="projetosComBolsa" class="form-label"><strong>Com bolsa: Número de meses</strong></label>
-                            <input type="number" class="form-control" id="projetosComBolsa" name="projetosComBolsa" min="0" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="projetosSemBolsa" class="form-label"><strong>Sem bolsa: Número de meses</strong></label>
-                            <input type="number" class="form-control" id="projetosSemBolsa" name="projetosSemBolsa" min="0" />
+                        <!-- Com bolsa -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Com bolsa (quantidade de meses)</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="projetosComBolsa" class="form-label">Meses</label>
+                                        <input type="number" class="form-control" id="projetosComBolsa" name="projetosComBolsa" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="projetosComBolsaUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="projetosComBolsaUpload" name="projetosComBolsaUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
+                        <!-- Sem bolsa -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Sem bolsa (quantidade de meses)</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="projetosSemBolsa" class="form-label">Meses</label>
+                                        <input type="number" class="form-control" id="projetosSemBolsa" name="projetosSemBolsa" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="projetosSemBolsaUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="projetosSemBolsaUpload" name="projetosSemBolsaUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <h5>2. Publicações em periódicos</h5>
-                        <div class="mb-3">
-                            <label for="publicacoesA1A2" class="form-label"><strong>A1 e A2: Número de publicações</strong></label>
-                            <input type="number" class="form-control" id="publicacoesA1A2" name="publicacoesA1A2" min="0" />
+                        <h6 class="text-danger">Envie apenas as páginas que identificam os autores e a revista.</h6>
+                        <!-- Categorias A1 e A2 -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Categorias A1 e A2</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="publicacoesA1A2" class="form-label">Quantos?</label>
+                                        <input type="number" class="form-control" id="publicacoesA1A2" name="publicacoesA1A2" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="publicacoesA1A2Upload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="publicacoesA1A2Upload" name="publicacoesA1A2Upload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="publicacoesA3A4" class="form-label"><strong>A3 e A4: Número de publicações</strong></label>
-                            <input type="number" class="form-control" id="publicacoesA3A4" name="publicacoesA3A4" min="0" />
+                        <!-- Categorias A3 e A4 -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Categorias A3 e A4</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="publicacoesA3A4" class="form-label">Quantos?</label>
+                                        <input type="number" class="form-control" id="publicacoesA3A4" name="publicacoesA3A4" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="publicacoesA3A4Upload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="publicacoesA3A4Upload" name="publicacoesA3A4Upload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="publicacoesB1B2" class="form-label"><strong>B1 e B2: Número de publicações</strong></label>
-                            <input type="number" class="form-control" id="publicacoesB1B2" name="publicacoesB1B2" min="0" />
+                        <!-- Categorias B1 e B2 -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Categorias B1 e B2</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="publicacoesB1B2" class="form-label">Quantos?</label>
+                                        <input type="number" class="form-control" id="publicacoesB1B2" name="publicacoesB1B2" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="publicacoesB1B2Upload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="publicacoesB1B2Upload" name="publicacoesB1B2Upload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="publicacoesB3B4" class="form-label"><strong>B3 e B4: Número de publicações</strong></label>
-                            <input type="number" class="form-control" id="publicacoesB3B4" name="publicacoesB3B4" min="0" />
+                        <!-- Categorias B3 e B4 -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Categorias B3 e B4</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="publicacoesB3B4" class="form-label">Quantos?</label>
+                                        <input type="number" class="form-control" id="publicacoesB3B4" name="publicacoesB3B4" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="publicacoesB3B4Upload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="publicacoesB3B4Upload" name="publicacoesB3B4Upload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="publicacoesC" class="form-label"><strong>C: Número de publicações</strong></label>
-                            <input type="number" class="form-control" id="publicacoesC" name="publicacoesC" min="0" />
+                        <!-- Categorias C -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Categorias C</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="publicacoesC" class="form-label">Quantos?</label>
+                                        <input type="number" class="form-control" id="publicacoesC" name="publicacoesC" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="publicacoesCUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="publicacoesCUpload" name="publicacoesCUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <h5>3. Publicações em eventos (Número de Publicações)</h5>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label for="publicacoesArtigosCompletos" class="form-label"><strong>Artigos completos</strong></label>
-                                <input type="number" class="form-control" id="publicacoesArtigosCompletos" name="publicacoesArtigosCompletos" min="0" />
+                        <!-- Artigos completos -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Artigos completos</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="publicacoesArtigosCompletos" class="form-label">Quantos?</label>
+                                        <input type="number" class="form-control" id="publicacoesArtigosCompletos" name="publicacoesArtigosCompletos" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="publicacoesArtigosCompletosUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="publicacoesArtigosCompletosUpload" name="publicacoesArtigosCompletosUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="publicacoesResumosExtendidos" class="form-label"><strong>Resumos estendidos</strong></label>
-                                <input type="number" class="form-control" id="publicacoesResumosExtendidos" name="publicacoesResumosExtendidos" min="0" />
-                            </div>
-                            <div class="col-md-4">
-                                <label for="publicacoesResumosSimples" class="form-label"><strong>Resumos simples</strong></label>
-                                <input type="number" class="form-control" id="publicacoesResumosSimples" name="publicacoesResumosSimples" min="0" />
+                        </div>
+                        <!-- Resumos estendidos -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Resumos estendidos</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="publicacoesResumosExtendidos" class="form-label">Quantos?</label>
+                                        <input type="number" class="form-control" id="publicacoesResumosExtendidos" name="publicacoesResumosExtendidos" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="publicacoesResumosExtendidosUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="publicacoesResumosExtendidosUpload" name="publicacoesResumosExtendidosUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <h5>4. Atividade de docência (Número de Meses)</h5>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label for="docenciaIES" class="form-label"><strong>IES</strong></label>
-                                <input type="number" class="form-control" id="docenciaIES" name="docenciaIES" min="0" />
+                        <!-- IES -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Instituição de Ensino Superior (IES)</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="docenciaIES" class="form-label">Meses</label>
+                                        <input type="number" class="form-control" id="docenciaIES" name="docenciaIES" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="docenciaIESUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="docenciaIESUpload" name="docenciaIESUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="docenciaMonitoria" class="form-label"><strong>Monitoria/Estágio Docência</strong></label>
-                                <input type="number" class="form-control" id="docenciaMonitoria" name="docenciaMonitoria" min="0" />
+                        </div>
+                        <!-- Monitoria/Estágio Docência -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Monitoria/Estágio Docência</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="docenciaMonitoria" class="form-label">Meses</label>
+                                        <input type="number" class="form-control" id="docenciaMonitoria" name="docenciaMonitoria" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="docenciaMonitoriaUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="docenciaMonitoriaUpload" name="docenciaMonitoriaUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="docenciaEnsino" class="form-label"><strong>Ensino Fund., Médio ou Técnico</strong></label>
-                                <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0" />
+                        </div>
+                        <!-- Ensino Fund., Médio ou Técnico -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Ensino Fundamental, Médio ou Técnico</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="docenciaEnsino" class="form-label">Meses</label>
+                                        <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="docenciaEnsinoUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="docenciaEnsinoUpload" name="docenciaEnsinoUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <h5>5. Outras atividades</h5>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="bolsaPET" class="form-label"><strong>Bolsa PET: Número de meses</strong></label>
-                                <input type="number" class="form-control" id="bolsaPET" name="bolsaPET" min="0" />
+                        <!-- Bolsa PET -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Bolsa PET</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="bolsaPET" class="form-label">Meses</label>
+                                        <input type="number" class="form-control" id="bolsaPET" name="bolsaPET" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="bolsaPETUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="bolsaPETUpload" name="bolsaPETUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="outrasBolsas" class="form-label"><strong>Outros tipos de bolsa: Número de meses</strong></label>
-                                <input type="number" class="form-control" id="outrasBolsas" name="outrasBolsas" min="0" />
+                        </div>
+                        <!-- Outras bolsas -->
+                        <div class="card rounded-3 mb-3">
+                            <div class="card-body">
+                                <h6>Outros tipos de bolsa</h6>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-md-2">
+                                        <label for="outrasBolsas" class="form-label">Meses</label>
+                                        <input type="number" class="form-control" id="outrasBolsas" name="outrasBolsas" min="0" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="outrasBolsasUpload" class="form-label">Comprovantes</label>
+                                        <input type="file" class="form-control" id="outrasBolsasUpload" name="outrasBolsasUpload" accept=".pdf,.jpg,.png" multiple />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
