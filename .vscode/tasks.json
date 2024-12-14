@@ -9,7 +9,8 @@
                 "--replace",
                 "index.html",
                 "css/styles.css",
-                "js/*.js"
+                "js/*.js",
+                "includes/*.html"
             ],
             "group": {
                 "kind": "build",

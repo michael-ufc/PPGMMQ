@@ -9,15 +9,31 @@
 ./: yes
   tree.txt: all
   index.html: all
-  css/styles.css: none
-  js/main.js: all
-  js/includes.js: all
-  js/courseSelection.js: all
-  js/progressBar.js: none
-  js/scrollSpy.js: none
-  js/popovers.js: none
+
+./includes: yes
+  instructions.html: all
+  section1.html: none
+  section2.html: none
+  section3.html: none
+  section4.html: none
+  section5.html: none
+  section6.html: none
+  footer.html: none
+
+./css: no
+  styles.css: none
+
+./js: no
+  main.js: all
+  includes.js: all
+  courseSelection.js: all
+  popovers.js: all
+  utils.js: all
+
+./docs: yes
+  edital_mestrado_2025-1.md: all
 
 # user_request
 """
-The courseSelection.js file is not working. I'm not sure, but I believe the reason is that includes.js must be loaded before courseSelection.js. Pls, check if this is the case and fix it.
+Extraia as informações do edital para escrevermos a página de "instructions.html". Colete apenas as informações relevantes para o preenchimento do formulário.
 """

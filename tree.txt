@@ -1,16 +1,26 @@
 .
+├── 127.0.0.1-1734176873486.log
 ├── css
 │   └── styles.css
 ├── docs
+│   └── edital_mestrado_2025-1.md
 ├── images
 │   └── logo-ppgmmq.jpeg
+├── includes
+│   ├── footer.html
+│   ├── instructions.html
+│   ├── section1.html
+│   ├── section2.html
+│   ├── section3.html
+│   ├── section4.html
+│   ├── section5.html
+│   └── section6.html
 ├── index.html
 ├── js
 │   ├── courseSelection.js
+│   ├── includes.js
 │   ├── main.js
 │   ├── popovers.js
-│   ├── progressBar.js
-│   ├── scrollSpy.js
 │   └── utils.js
 ├── LICENSE
 ├── PROJECT.md
@@ -19,4 +29,4 @@
 ├── README.md
 └── tree.txt
 
-5 directories, 15 files
+6 directories, 24 files
