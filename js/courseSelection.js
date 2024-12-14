@@ -32,61 +32,7 @@ const courseCategories = {
     ],
 };
 
-export function initializeCourseSelection() {
-    const courseConfigs = [{
-            number: 1,
-            categories: ["Matemática"]
-        },
-        {
-            number: 2,
-            categories: ["Matemática"]
-        },
-        {
-            number: 3,
-            categories: ["Estatística"]
-        },
-        {
-            number: 4,
-            categories: ["Computação"]
-        },
-        {
-            number: 5,
-            categories: ["Matemática", "Estatística", "Computação"],
-            includeOptGroups: true
-        },
-    ];
 
-    const coursesContainer = document.getElementById("courses");
-
-    courseConfigs.forEach(config => {
-        appendHTML(coursesContainer, createCourseContainer(config.number));
-    });
-
-    courseConfigs.forEach(config => {
-        const {
-            number,
-            categories,
-            includeOptGroups = false
-        } = config;
-        const courseSelect = document.getElementById(`course${number}`);
-        populateSelect(courseSelect, categories, includeOptGroups);
-    });
-
-    // Event listeners for dynamic course selections
-    document.getElementById("course1").addEventListener("change", updateCourse2Options);
-    courseConfigs.forEach(config => {
-        if (config.number !== 5) {
-            const select = document.getElementById(`course${config.number}`);
-            if (select) {
-                select.addEventListener("change", updateCourse5Options);
-            }
-        }
-    });
-
-    // Initial population
-    updateCourse2Options();
-    updateCourse5Options();
-}
 
 function createCourseContainer(courseNumber) {
     return `
@@ -119,6 +65,14 @@ function createCourseContainer(courseNumber) {
 }
 
 function populateSelect(selectElement, categories, includeOptGroups = false) {
+    // Add a neutral default option
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Selecione uma disciplina";
+    defaultOption.selected = true;
+    defaultOption.disabled = true;
+    selectElement.appendChild(defaultOption);
+
     if (includeOptGroups && categories.length > 1) {
         categories.forEach(category => {
             const optGroup = document.createElement("optgroup");
@@ -133,11 +87,6 @@ function populateSelect(selectElement, categories, includeOptGroups = false) {
         });
     } else {
         const singleCategory = categories[0];
-        const defaultOption = document.createElement("option");
-        defaultOption.value = "";
-        defaultOption.textContent = `Selecione uma disciplina de ${singleCategory}`;
-        selectElement.appendChild(defaultOption);
-
         courseCategories[singleCategory].forEach(([value, label]) => {
             const option = document.createElement("option");
             option.value = value;
@@ -149,6 +98,7 @@ function populateSelect(selectElement, categories, includeOptGroups = false) {
     // Enable the select element after populating
     selectElement.disabled = false;
 }
+
 
 function updateCourse2Options() {
     const course1Select = document.getElementById("course1");
@@ -215,4 +165,169 @@ function updateCourse5Options() {
         });
         course5Select.appendChild(optGroup);
     });
+}
+
+// Adicione uma nova função para inicializar as disciplinas bônus
+export function initializeBonusCourses() {
+    // Target the .card-body within bonusCoursesContainer
+    const bonusCoursesContainer = document.getElementById("bonusCoursesContainer").querySelector(".card-body");
+    const numberOfBonusCourses = 9;
+
+    for (let i = 1; i <= numberOfBonusCourses; i++) {
+        appendHTML(bonusCoursesContainer, createBonusCourseContainer(i));
+    }
+
+    // Popula cada seleção de disciplina bônus
+    for (let i = 1; i <= numberOfBonusCourses; i++) {
+        const bonusSelect = document.getElementById(`bonusCourse${i}`);
+        populateSelect(bonusSelect, ["Matemática", "Estatística", "Computação"], true);
+        bonusSelect.addEventListener("change", updateBonusCoursesOptions);
+    }
+}
+
+function createBonusCourseContainer(bonusNumber) {
+    return `
+        <div id="bonus-course-container-${bonusNumber}" class="mb-3 mx-3">
+            <label for="bonusCourse${bonusNumber}" class="form-label">
+                <strong>Disciplina Bônus ${bonusNumber}</strong> 
+            </label>
+            <select class="form-select disciplina-select my-1" id="bonusCourse${bonusNumber}" name="bonusCourse${bonusNumber}">
+            </select>
+            <div class="invalid-feedback">Por favor, selecione uma disciplina bônus.</div>
+            
+            <div class="mb-3">
+                <label for="bonusCourse${bonusNumber}Name" class="form-label">
+                    Disciplinas equivalentes no seu histórico
+                </label>
+                <textarea class="form-control" id="bonusCourse${bonusNumber}Name" name="bonusCourse${bonusNumber}Name"></textarea>
+                <div class="invalid-feedback">Por favor, insira o nome da disciplina.</div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="bonusCourse${bonusNumber}Syllabi" class="form-label">
+                    Ementas das disciplinas equivalentes
+                </label>
+                <input type="file" class="form-control" id="bonusCourse${bonusNumber}Syllabi" name="bonusCourse${bonusNumber}Syllabi[]" multiple>
+                <div class="invalid-feedback">Por favor, envie a(s) ementa(s) da disciplina que você cursou.</div>
+            </div>
+        </div>
+    `;
+}
+
+function updateBonusCoursesOptions() {
+    const allSelectedCourses = getAllSelectedCourses();
+    const bonusSelects = document.querySelectorAll('select[id^="bonusCourse"]');
+
+    bonusSelects.forEach(select => {
+        const currentValue = select.value; // Store the current selection
+        select.innerHTML = ""; // Clear existing options
+
+        // Add a default option
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        defaultOption.textContent = "Selecione uma disciplina de Matemática, Estatística ou Computação";
+        select.appendChild(defaultOption);
+
+        // Populate options excluding already selected courses
+        ["Matemática", "Estatística", "Computação"].forEach(category => {
+            const optGroup = document.createElement("optgroup");
+            optGroup.label = category;
+            courseCategories[category].forEach(([value, label]) => {
+                if (!allSelectedCourses.has(value) || value === currentValue) {
+                    const option = document.createElement("option");
+                    option.value = value;
+                    option.textContent = label;
+                    if (value === currentValue) {
+                        option.selected = true; // Re-select the current value
+                    }
+                    optGroup.appendChild(option);
+                }
+            });
+            select.appendChild(optGroup);
+        });
+    });
+}
+
+
+function getAllSelectedCourses() {
+    const selectedCourses = new Set();
+
+    // Coleta todas as seleções principais
+    ["course1", "course2", "course3", "course4", "course5"].forEach(courseId => {
+        const select = document.getElementById(courseId);
+        if (select && select.value) {
+            selectedCourses.add(select.value);
+        }
+    });
+
+    // Coleta todas as seleções de disciplinas bônus
+    const bonusSelects = document.querySelectorAll('select[id^="bonusCourse"]');
+    bonusSelects.forEach(select => {
+        if (select.value) {
+            selectedCourses.add(select.value);
+        }
+    });
+
+    return selectedCourses;
+}
+
+
+export function initializeCourseSelection() {
+    const courseConfigs = [{
+            number: 1,
+            categories: ["Matemática"]
+        },
+        {
+            number: 2,
+            categories: ["Matemática"]
+        },
+        {
+            number: 3,
+            categories: ["Estatística"]
+        },
+        {
+            number: 4,
+            categories: ["Computação"]
+        },
+        {
+            number: 5,
+            categories: ["Matemática", "Estatística", "Computação"],
+            includeOptGroups: true
+        },
+    ];
+
+    // Target the .card-body within coursesContainer
+    const coursesContainer = document.getElementById("courses").querySelector(".card-body");
+
+    courseConfigs.forEach(config => {
+        appendHTML(coursesContainer, createCourseContainer(config.number));
+    });
+
+    courseConfigs.forEach(config => {
+        const {
+            number,
+            categories,
+            includeOptGroups = false
+        } = config;
+        const courseSelect = document.getElementById(`course${number}`);
+        populateSelect(courseSelect, categories, includeOptGroups);
+    });
+
+    // Event listeners for dynamic course selections
+    document.getElementById("course1").addEventListener("change", updateCourse2Options);
+    courseConfigs.forEach(config => {
+        if (config.number !== 5) {
+            const select = document.getElementById(`course${config.number}`);
+            if (select) {
+                select.addEventListener("change", updateCourse5Options);
+            }
+        }
+    });
+
+    // Initial population
+    updateCourse2Options();
+    updateCourse5Options();
+    initializeBonusCourses();
 }
