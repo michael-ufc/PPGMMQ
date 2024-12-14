@@ -8,6 +8,11 @@ Página de inscrição para a pós-graduação no Programa de Pós-Graduação e
 - Bootstrap (v5.3)
 - js-beautify
 
+## Referências
+
+Edital 2025.1 - Mestrado
+- https://docs.google.com/document/d/1paoscJv2rYKuPD2FzCplQO_gUkTNmjIs9/edit
+
 ## Estrutura do projeto
 
 - index.html: Página principal

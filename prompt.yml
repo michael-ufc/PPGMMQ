@@ -8,10 +8,11 @@
 # sources:
 ./: yes
   index.html: all
-  css/styles.css: all
-  js/script.js: all
+  css/styles.css: none
+  js/courseSelection.js: none
+  js/progressBar.js: all
 
 # user_request
 """
-O design dos botões pode ser mais elegante e moderno. Utilize btn-outline e btn-small.
+Ajuste o progressBar.js para considerar as subopções 3.1, 3.2 e 3.3.
 """

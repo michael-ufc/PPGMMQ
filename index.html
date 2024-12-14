@@ -35,6 +35,17 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#section3">3. Avaliação de Histórico</a>
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">3.1 Nota_H</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bonusCourses1">3.2 Bônus 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bonusCourses2">3.3 Bônus 2</a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#section4">4. Análise Curricular</a>
@@ -118,6 +129,56 @@
                                     "não há".
                                 </div>
                             </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Enquadramento para cotas de ações afirmativas</strong> <span class="text-danger">*</span></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Negro" id="cotaNegro" name="cotas">
+                                <label class="form-check-label" for="cotaNegro">
+                                    Negro (preto/pardo)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Indígena" id="cotaIndigena" name="cotas">
+                                <label class="form-check-label" for="cotaIndigena">
+                                    Indígena
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Quilombola" id="cotaQuilombola" name="cotas">
+                                <label class="form-check-label" for="cotaQuilombola">
+                                    Quilombola
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="PCD" id="cotaPCD" name="cotas">
+                                <label class="form-check-label" for="cotaPCD">
+                                    Pessoa com deficiência (PCD)
+                                </label>
+                            </div>
+                            <div id="pcdInput" class="mt-2" style="display: none;">
+                                <input type="text" class="form-control" id="especificacaoPCD" name="especificacaoPCD" placeholder="Especifique sua deficiência">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Outros" id="cotaOutros" name="cotas">
+                                <label class="form-check-label" for="cotaOutros">
+                                    Outros
+                                </label>
+                            </div>
+                            <div id="outrosInput" class="mt-2" style="display: none;">
+                                <input type="text" class="form-control" id="especificacaoOutros" name="especificacaoOutros" placeholder="Especifique outro enquadramento">
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor, selecione pelo menos uma opção.
+                            </div>
+                            <script>
+                                document.getElementById('cotaPCD').addEventListener('change', function() {
+                                    document.getElementById('pcdInput').style.display = this.checked ? 'block' : 'none';
+                                });
+                                document.getElementById('cotaOutros').addEventListener('change', function() {
+                                    document.getElementById('outrosInput').style.display = this.checked ? 'block' : 'none';
+                                });
+                            </script>
                         </div>
                         <!-- Comprovantes -->
                         <div class="card mt-4">
@@ -288,10 +349,18 @@
                             </div>
                         </div>
 
-                        <!-- Disciplinas Bônus -->
-                        <div id="bonusCoursesContainer" class="card mb-4">
+                        <!-- Disciplinas Bônus 1 -->
+                        <div id="bonusCourses1" class="card mb-4">
                             <div class="card-body">
-                                <h5 class="card-title mb-0">Disciplinas Bônus</h5>
+                                <h5 class="card-title mb-1">Disciplinas Bônus 1</h5>
+                                <!-- The course will be autoloaded -->
+                            </div>
+                        </div>
+
+                        <!-- Disciplinas Bônus 2 -->
+                        <div id="bonusCourses2" class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">Disciplinas Bônus 2</h5>
                                 <!-- The course will be autoloaded -->
                             </div>
                         </div>
@@ -513,7 +582,9 @@
                         <!-- 1. Situação atual -->
                         <div class="mb-3">
                             <fieldset>
-                                <legend class="form-label"><strong>1. Situação atual (escolha uma):</strong></legend>
+                                <legend class="form-label">
+                                    <h5>1. Situação atual (escolha uma):</h5>
+                                </legend>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao1" value="Não exerço atividade remunerada." required>
                                     <label class="form-check-label" for="declaracao1">Não exerço atividade remunerada.</label>
@@ -533,7 +604,9 @@
                         <!-- 2. Declarações -->
                         <div class="mb-3">
                             <fieldset>
-                                <legend class="form-label"><strong>2. Declarações:</strong></legend>
+                                <legend class="form-label">
+                                    <h5>2. Declarações:</h5>
+                                </legend>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="declaracaoSim1" name="declaracoes2" value="Sim, declaro estar ciente." required>
                                     <label class="form-check-label" for="declaracaoSim1">

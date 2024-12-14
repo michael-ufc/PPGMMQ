@@ -30,26 +30,43 @@ const courseCategories = {
         ["Data_Structures", "Estrutura de Dados"],
         ["Finite_Math", "Matemática Finita"]
     ],
+    "PPGMMQ": [
+        ["Introduction_to_Modeling", "Introdução à Modelagem"],
+        ["Probability_and_Statistical_Inference", "Probabilidade e Inferência Estatística"],
+        ["Linear_Optimization", "Otimização Linear"],
+        ["Scientific_Programming", "Elementos de Programação Científica"],
+        ["Introduction_to_Bayesian_Inference", "Introdução à Inferência Bayesiana"],
+        ["Regression_Models", "Modelos de Regressão"],
+        ["Multivariate_Modeling", "Métodos de Modelagem Multivariada"],
+        ["Computational_Methods_in_Statistics", "Métodos Computacionais em Estatística"],
+        ["Stochastic_Processes", "Processos Estocásticos"],
+        ["Game_Theory_and_Conflict_Analysis", "Teoria dos Jogos e Análise de Conflitos"],
+        ["Mathematical_Methods_in_Physics", "Métodos Matemáticos em Física"],
+        ["Special_Topics_in_Statistical_and_Mathematical_Modeling", "Tópicos Especiais de Modelagem Estatística e Matemática"],
+        ["Computational_Intelligence", "Inteligência Computacional"],
+        ["Metaheuristics", "Metaheurísticas"],
+        ["Integer_Optimization", "Otimização Inteira"],
+        ["Combinatorial_Optimization_and_Graphs", "Otimização Combinatória e em Grafos"],
+        ["Nonlinear_Optimization", "Otimização Não Linear"],
+    ],
 };
 
-
-
-function createCourseContainer(courseNumber) {
+function createCourseContainer(containerId, courseNumber) {
     return `
-        <div id="course-container-${courseNumber}" class="mb-3 mx-3">
-            <label for="course${courseNumber}" class="form-label">
+        <div id="${containerId}-container-${courseNumber}" class="mb-3 mx-3">
+            <label for="${containerId}-${courseNumber}" class="form-label">
                 <strong>Disciplina ${courseNumber}</strong> 
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-select disciplina-select my-1" id="course${courseNumber}" name="course${courseNumber}" required>
+            <select class="form-select disciplina-select my-1" id="${containerId}-${courseNumber}" name="${containerId}-${courseNumber}" required>
             </select>
             <div class="invalid-feedback">Por favor, selecione uma disciplina.</div>
             
             <div class="mb-3">
-                <label for="course${courseNumber}Name" class="form-label">
+                <label for="${containerId}-${courseNumber}Name" class="form-label">
                     Disciplinas equivalentes no seu histórico
                 </label>
-                <textarea class="form-control" id="course${courseNumber}Name" name="course${courseNumber}Name"></textarea>
+                <textarea class="form-control" id="${containerId}-${courseNumber}Name" name="${containerId}-${courseNumber}Name"></textarea>
                 <div class="invalid-feedback">Por favor, insira o nome da disciplina.</div>
             </div>
             
@@ -57,7 +74,7 @@ function createCourseContainer(courseNumber) {
                 <label for="course${courseNumber}Syllabi" class="form-label">
                     Ementas das disciplinas equivalentes
                 </label>
-                <input type="file" class="form-control" id="course${courseNumber}Syllabi" name="course${courseNumber}Syllabi[]" multiple>
+                <input type="file" class="form-control" id="${containerId}-${courseNumber}Syllabi" name="${containerId}-${courseNumber}Syllabi[]" multiple>
                 <div class="invalid-feedback">Por favor, envie a(s) ementa(s) da disciplina que você cursou.</div>
             </div>
         </div>
@@ -68,7 +85,10 @@ function populateSelect(selectElement, categories, includeOptGroups = false) {
     // Add a neutral default option
     const defaultOption = document.createElement("option");
     defaultOption.value = "";
-    defaultOption.textContent = "Selecione uma disciplina";
+    if (categories.length > 1)
+        defaultOption.textContent = "Selecione uma disciplina de Matemática, Estatística ou Computação";
+    else
+        defaultOption.textContent = "Selecione uma disciplina de " + categories[0];
     defaultOption.selected = true;
     defaultOption.disabled = true;
     selectElement.appendChild(defaultOption);
@@ -99,182 +119,7 @@ function populateSelect(selectElement, categories, includeOptGroups = false) {
     selectElement.disabled = false;
 }
 
-
-function updateCourse2Options() {
-    const course1Select = document.getElementById("course1");
-    const course2Select = document.getElementById("course2");
-
-    const selectedValue = course1Select.value;
-
-    // Clear previous options
-    course2Select.innerHTML = "";
-
-    // Add default option
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.disabled = true;
-    defaultOption.selected = true;
-    defaultOption.textContent = "Selecione uma disciplina de Matemática";
-    course2Select.appendChild(defaultOption);
-
-    // Add only non-selected options
-    courseCategories["Matemática"].forEach(([value, label]) => {
-        if (value !== selectedValue) {
-            const option = document.createElement("option");
-            option.value = value;
-            option.textContent = label;
-            course2Select.appendChild(option);
-        }
-    });
-}
-
-function updateCourse5Options() {
-    const course5Select = document.getElementById("course5");
-    const selectedValues = new Set();
-
-    // Collect selected values from other course selects
-    ["course1", "course2", "course3", "course4"].forEach(courseId => {
-        const select = document.getElementById(courseId);
-        if (select && select.value) {
-            selectedValues.add(select.value);
-        }
-    });
-
-    // Clear previous options
-    course5Select.innerHTML = "";
-
-    // Add default option
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.disabled = true;
-    defaultOption.selected = true;
-    defaultOption.textContent = "Selecione uma disciplina de Matemática, Estatística ou Computação";
-    course5Select.appendChild(defaultOption);
-
-    // Add options excluding already selected ones
-    ["Matemática", "Estatística", "Computação"].forEach(category => {
-        const optGroup = document.createElement("optgroup");
-        optGroup.label = category;
-        courseCategories[category].forEach(([value, label]) => {
-            if (!selectedValues.has(value)) {
-                const option = document.createElement("option");
-                option.value = value;
-                option.textContent = label;
-                optGroup.appendChild(option);
-            }
-        });
-        course5Select.appendChild(optGroup);
-    });
-}
-
-// Adicione uma nova função para inicializar as disciplinas bônus
-export function initializeBonusCourses() {
-    // Target the .card-body within bonusCoursesContainer
-    const bonusCoursesContainer = document.getElementById("bonusCoursesContainer").querySelector(".card-body");
-    const numberOfBonusCourses = 9;
-
-    for (let i = 1; i <= numberOfBonusCourses; i++) {
-        appendHTML(bonusCoursesContainer, createBonusCourseContainer(i));
-    }
-
-    // Popula cada seleção de disciplina bônus
-    for (let i = 1; i <= numberOfBonusCourses; i++) {
-        const bonusSelect = document.getElementById(`bonusCourse${i}`);
-        populateSelect(bonusSelect, ["Matemática", "Estatística", "Computação"], true);
-        bonusSelect.addEventListener("change", updateBonusCoursesOptions);
-    }
-}
-
-function createBonusCourseContainer(bonusNumber) {
-    return `
-        <div id="bonus-course-container-${bonusNumber}" class="mb-3 mx-3">
-            <label for="bonusCourse${bonusNumber}" class="form-label">
-                <strong>Disciplina Bônus ${bonusNumber}</strong> 
-            </label>
-            <select class="form-select disciplina-select my-1" id="bonusCourse${bonusNumber}" name="bonusCourse${bonusNumber}">
-            </select>
-            <div class="invalid-feedback">Por favor, selecione uma disciplina bônus.</div>
-            
-            <div class="mb-3">
-                <label for="bonusCourse${bonusNumber}Name" class="form-label">
-                    Disciplinas equivalentes no seu histórico
-                </label>
-                <textarea class="form-control" id="bonusCourse${bonusNumber}Name" name="bonusCourse${bonusNumber}Name"></textarea>
-                <div class="invalid-feedback">Por favor, insira o nome da disciplina.</div>
-            </div>
-            
-            <div class="mb-3">
-                <label for="bonusCourse${bonusNumber}Syllabi" class="form-label">
-                    Ementas das disciplinas equivalentes
-                </label>
-                <input type="file" class="form-control" id="bonusCourse${bonusNumber}Syllabi" name="bonusCourse${bonusNumber}Syllabi[]" multiple>
-                <div class="invalid-feedback">Por favor, envie a(s) ementa(s) da disciplina que você cursou.</div>
-            </div>
-        </div>
-    `;
-}
-
-function updateBonusCoursesOptions() {
-    const allSelectedCourses = getAllSelectedCourses();
-    const bonusSelects = document.querySelectorAll('select[id^="bonusCourse"]');
-
-    bonusSelects.forEach(select => {
-        const currentValue = select.value; // Store the current selection
-        select.innerHTML = ""; // Clear existing options
-
-        // Add a default option
-        const defaultOption = document.createElement("option");
-        defaultOption.value = "";
-        defaultOption.disabled = true;
-        defaultOption.selected = true;
-        defaultOption.textContent = "Selecione uma disciplina de Matemática, Estatística ou Computação";
-        select.appendChild(defaultOption);
-
-        // Populate options excluding already selected courses
-        ["Matemática", "Estatística", "Computação"].forEach(category => {
-            const optGroup = document.createElement("optgroup");
-            optGroup.label = category;
-            courseCategories[category].forEach(([value, label]) => {
-                if (!allSelectedCourses.has(value) || value === currentValue) {
-                    const option = document.createElement("option");
-                    option.value = value;
-                    option.textContent = label;
-                    if (value === currentValue) {
-                        option.selected = true; // Re-select the current value
-                    }
-                    optGroup.appendChild(option);
-                }
-            });
-            select.appendChild(optGroup);
-        });
-    });
-}
-
-
-function getAllSelectedCourses() {
-    const selectedCourses = new Set();
-
-    // Coleta todas as seleções principais
-    ["course1", "course2", "course3", "course4", "course5"].forEach(courseId => {
-        const select = document.getElementById(courseId);
-        if (select && select.value) {
-            selectedCourses.add(select.value);
-        }
-    });
-
-    // Coleta todas as seleções de disciplinas bônus
-    const bonusSelects = document.querySelectorAll('select[id^="bonusCourse"]');
-    bonusSelects.forEach(select => {
-        if (select.value) {
-            selectedCourses.add(select.value);
-        }
-    });
-
-    return selectedCourses;
-}
-
-
-export function initializeCourseSelection() {
+function initializeCoursesContainer() {
     const courseConfigs = [{
             number: 1,
             categories: ["Matemática"]
@@ -299,10 +144,11 @@ export function initializeCourseSelection() {
     ];
 
     // Target the .card-body within coursesContainer
-    const coursesContainer = document.getElementById("courses").querySelector(".card-body");
+    const containerId = "courses";
+    const coursesContainer = document.getElementById(containerId).querySelector(".card-body");
 
     courseConfigs.forEach(config => {
-        appendHTML(coursesContainer, createCourseContainer(config.number));
+        appendHTML(coursesContainer, createCourseContainer(containerId, config.number));
     });
 
     courseConfigs.forEach(config => {
@@ -311,23 +157,43 @@ export function initializeCourseSelection() {
             categories,
             includeOptGroups = false
         } = config;
-        const courseSelect = document.getElementById(`course${number}`);
+        const courseSelect = document.getElementById(`${containerId}-${number}`);
         populateSelect(courseSelect, categories, includeOptGroups);
     });
+}
 
-    // Event listeners for dynamic course selections
-    document.getElementById("course1").addEventListener("change", updateCourse2Options);
-    courseConfigs.forEach(config => {
-        if (config.number !== 5) {
-            const select = document.getElementById(`course${config.number}`);
-            if (select) {
-                select.addEventListener("change", updateCourse5Options);
-            }
-        }
-    });
+function initializeBonusCourses1() {
+    const containerId = "bonusCourses1";
+    const bonusCoursesContainer = document.getElementById(containerId).querySelector(".card-body");
+    const numberOfBonusCourses = 5;
 
-    // Initial population
-    updateCourse2Options();
-    updateCourse5Options();
-    initializeBonusCourses();
+    for (let i = 1; i <= numberOfBonusCourses; i++) {
+        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i));
+    }
+
+    for (let i = 1; i <= numberOfBonusCourses; i++) {
+        const bonusSelect = document.getElementById(`${containerId}-${i}`);
+        populateSelect(bonusSelect, ["Matemática", "Estatística", "Computação"], true);
+    }
+}
+
+function initializeBonusCourses2() {
+    const containerId = "bonusCourses2";
+    const bonusCoursesContainer = document.getElementById(containerId).querySelector(".card-body");
+    const numberOfBonusCourses = 4;
+
+    for (let i = 1; i <= numberOfBonusCourses; i++) {
+        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i));
+    }
+
+    for (let i = 1; i <= numberOfBonusCourses; i++) {
+        const bonusSelect = document.getElementById(`${containerId}-${i}`);
+        populateSelect(bonusSelect, ["PPGMMQ"], true);
+    }
+}
+
+export function initializeCourseSelection() {
+    initializeCoursesContainer();
+    initializeBonusCourses1();
+    initializeBonusCourses2();
 }
