@@ -79,31 +79,32 @@
                                 Por favor, insira o seu nome completo.
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="documentoIdentificacao" class="form-label"><strong>Documento oficial de Identidade</strong>
-                                <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="documentoIdentificacao" name="documentoIdentificacao" required />
-                            <div class="invalid-feedback">
-                                Por favor, insira o número do documento oficial com foto.
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="cpf" class="form-label"><strong>CPF</strong>
+                                    <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="cpf" name="cpf" pattern="\d{11}" placeholder="Apenas números" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira um CPF válido (11 dígitos) ou deixe em
+                                    branco se estrangeiro.
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cpf" class="form-label"><strong>CPF</strong>
-                                <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" pattern="\d{11}" placeholder="Apenas números" required />
-                            <div class="invalid-feedback">
-                                Por favor, insira um CPF válido (11 dígitos) ou deixe em
-                                branco se estrangeiro.
+                            <div class="col-md-6">
+                                <label for="documentoIdentificacao" class="form-label"><strong>Número da Identidade</strong>
+                                    <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="documentoIdentificacao" name="documentoIdentificacao" required />
+                                <div class="invalid-feedback">
+                                    Por favor, insira o número do documento oficial com foto.
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="telefoneFixo" class="form-label"><strong>Telefone fixo</strong>
+                                <label for="cidade" class="form-label"><strong>Cidade</strong>
                                     <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="telefoneFixo" name="telefoneFixo" placeholder="(DDD) Número ou 'não há'" required />
+                                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Ex: Fortaleza/CE" required />
                                 <div class="invalid-feedback">
-                                    Por favor, insira um telefone fixo com DDD ou escreva "não
-                                    há".
+                                    Por favor, insira a cidade e o estado no formato "Cidade/UF".
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -114,14 +115,6 @@
                                     Por favor, insira um telefone celular com DDD ou escreva
                                     "não há".
                                 </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cidade" class="form-label"><strong>Cidade</strong>
-                                <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Ex: Fortaleza/CE" required />
-                            <div class="invalid-feedback">
-                                Por favor, insira a cidade e o estado no formato "Cidade/UF".
                             </div>
                         </div>
                         <!-- Comprovantes -->
@@ -280,7 +273,7 @@
                     </div>
                 </div>
 
-                <!-- Seção 3: Seleção de Disciplinas -->
+                <!-- Seção 3: Avaliação de Histórico (Nota_H) -->
                 <div id="section3" class="card mb-4">
                     <div class="card-body">
                         <h4 class="card-title">Seção 3: Avaliação de Histórico (Nota_H)</h4>
@@ -296,9 +289,8 @@
                         <!-- Disciplinas Bônus -->
                         <div id="bonusCourses" class="card mb-4">
                             <div class="card-body">
-                                <h5 class="card-title">Disciplinas Bônus</h5>
+                                <h5 class="card-title mb-0">Disciplinas Bônus</h5>
                                 <!-- The course will be autoloaded -->
-                                <button type="button" class="btn btn-sm btn-outline-success" id="addBonusCourse">+ Disciplina Bônus</button>
                             </div>
                         </div>
                     </div>
