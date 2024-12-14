@@ -1,0 +1,142 @@
+<div id="section1" class="card mb-4">
+    <div class="card-body">
+        <h4 class="card-title">Seção 1: Dados Pessoais</h4>
+        <div class="mb-3">
+            <label for="email" class="form-label"><strong>E-mail</strong>
+                <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="email" name="email" autocomplete="email" required />
+            <div class="invalid-feedback">
+                Por favor, insira um e-mail válido.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="nomeCompleto" class="form-label"><strong>Nome Completo</strong>
+                <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" required />
+            <div class="invalid-feedback">
+                Por favor, insira o seu nome completo.
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="cpf" class="form-label"><strong>CPF</strong>
+                    <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="cpf" name="cpf" pattern="\d{11}" placeholder="Apenas números" required />
+                <div class="invalid-feedback">
+                    Por favor, insira um CPF válido (11 dígitos) ou deixe em
+                    branco se estrangeiro.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="documentoIdentificacao" class="form-label"><strong>Número da Identidade</strong>
+                    <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="documentoIdentificacao" name="documentoIdentificacao" required />
+                <div class="invalid-feedback">
+                    Por favor, insira o número do documento oficial com foto.
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="cidade" class="form-label"><strong>Cidade</strong>
+                    <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Ex: Fortaleza/CE" required />
+                <div class="invalid-feedback">
+                    Por favor, insira a cidade e o estado no formato "Cidade/UF".
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="telefoneCelular" class="form-label"><strong>Telefone celular</strong>
+                    <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="telefoneCelular" name="telefoneCelular" placeholder="(DDD) Número ou 'não há'" required />
+                <div class="invalid-feedback">
+                    Por favor, insira um telefone celular com DDD ou escreva
+                    "não há".
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><strong>Enquadramento para cotas de ações afirmativas</strong> <span class="text-danger">*</span></label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Negro" id="cotaNegro" name="cotas">
+                <label class="form-check-label" for="cotaNegro">
+                    Negro (preto/pardo)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Indígena" id="cotaIndigena" name="cotas">
+                <label class="form-check-label" for="cotaIndigena">
+                    Indígena
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Quilombola" id="cotaQuilombola" name="cotas">
+                <label class="form-check-label" for="cotaQuilombola">
+                    Quilombola
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="PCD" id="cotaPCD" name="cotas">
+                <label class="form-check-label" for="cotaPCD">
+                    Pessoa com deficiência (PCD)
+                </label>
+            </div>
+            <div id="pcdInput" class="mt-2" style="display: none;">
+                <input type="text" class="form-control" id="especificacaoPCD" name="especificacaoPCD" placeholder="Especifique sua deficiência">
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Outros" id="cotaOutros" name="cotas">
+                <label class="form-check-label" for="cotaOutros">
+                    Outros
+                </label>
+            </div>
+            <div id="outrosInput" class="mt-2" style="display: none;">
+                <input type="text" class="form-control" id="especificacaoOutros" name="especificacaoOutros" placeholder="Especifique outro enquadramento">
+            </div>
+            <div class="invalid-feedback">
+                Por favor, selecione pelo menos uma opção.
+            </div>
+            <script>
+                document.getElementById('cotaPCD').addEventListener('change', function() {
+                    document.getElementById('pcdInput').style.display = this.checked ? 'block' : 'none';
+                });
+                document.getElementById('cotaOutros').addEventListener('change', function() {
+                    document.getElementById('outrosInput').style.display = this.checked ? 'block' : 'none';
+                });
+            </script>
+        </div>
+        <!-- Comprovantes -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Comprovantes</h5>
+
+                <!-- Documento de Identidade -->
+                <div class="mb-3">
+                    <label for="docIdentidadeUpload" class="form-label">
+                        Documento oficial de identidade com foto
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="file" class="form-control" id="docIdentidadeUpload" name="docIdentidadeUpload" required />
+                    <div class="invalid-feedback">
+                        Por favor, envie a cópia do documento de identidade com
+                        foto.
+                    </div>
+                </div>
+
+                <!-- Campo para Autodeclaração -->
+                <div class="mb-3">
+                    <label for="autodeclaracaoUpload" class="form-label">
+                        Autodeclaração (vide ANEXO II)
+                        <span class="text-danger">(Opcional, para concorrer às cotas de políticas
+                            afirmativas)</span>
+                    </label>
+                    <input type="file" class="form-control" id="autodeclaracaoUpload" name="autodeclaracaoUpload" />
+                    <div class="invalid-feedback">
+                        Caso deseje concorrer nas cotas, envie a autodeclaração
+                        preenchida.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

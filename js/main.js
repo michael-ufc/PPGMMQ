@@ -1,5 +1,9 @@
-// main.js
-
+import {
+    loadIncludes
+} from './includes.js';
+import {
+    initializeCourseSelection
+} from './courseSelection.js';
 import {
     initializeScrollSpy
 } from './scrollSpy.js';
@@ -9,13 +13,16 @@ import {
 import {
     initializePopovers
 } from './popovers.js';
-import {
-    initializeCourseSelection
-} from './courseSelection.js';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Step 1: Load includes
+    await loadIncludes();
+
+    // Step 2: Initialize dependent scripts
+    initializeCourseSelection();
+
+    // Step 3: Initialize independent scripts
     initializeScrollSpy();
     initializeProgressBar();
     initializePopovers();
-    initializeCourseSelection();
 });

@@ -1,0 +1,118 @@
+<div id="section2" class="card mb-4">
+    <div class="card-body">
+        <h4 class="card-title">Seção 2: Dados Acadêmicos</h4>
+        <div class="mb-3">
+            <label for="cursoGraduacao" class="form-label"><strong>Curso de Graduação</strong>
+                <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="cursoGraduacao" name="cursoGraduacao" required />
+            <div class="invalid-feedback">
+                Por favor, insira o seu curso de graduação.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="instituicao" class="form-label"><strong>Instituição</strong>
+                <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="instituicao" name="instituicao" required />
+            <div class="invalid-feedback">
+                Por favor, insira o nome da instituição onde realizou a
+                graduação.
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="igcInstituicao" class="form-label"><strong>IGC da Instituição</strong>
+                    <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" required />
+                <div class="invalid-feedback">
+                    Por favor, insira o Índice Geral de Cursos (IGC) da
+                    instituição.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="ira" class="form-label">
+                    <strong>IRA</strong>
+                    <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover" data-bs-placement="right" data-bs-html="true" data-bs-content="IRA Individual é o Índice de Rendimento Acadêmico do aluno calculado de acordo com o desempenho acadêmico dele.">
+                        <i class="bi bi-question-circle"></i>
+                    </button>
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="number" step="0.01" class="form-control" id="ira" name="ira" required />
+                <div class="invalid-feedback">
+                    Por favor, insira o Índice de Rendimento Acadêmico (IRA).
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="cursoGraduacao2" class="form-label"><strong>Curso de Graduação 2</strong></label>
+            <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2" />
+        </div>
+        <div class="mb-3">
+            <label for="instituicao2" class="form-label"><strong>Instituição 2</strong></label>
+            <input type="text" class="form-control" id="instituicao2" name="instituicao2" />
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="igcInstituicao2" class="form-label"><strong>IGC da Instituição 2</strong></label>
+                <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2" />
+            </div>
+            <div class="col-md-6">
+                <label for="ira2" class="form-label"><strong>IRA 2</strong></label>
+                <input type="number" step="0.01" class="form-control" id="ira2" name="ira2" />
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="curriculoLattes" class="form-label"><strong>Currículo Lattes</strong>
+                <span class="text-danger">*</span></label>
+            <input type="url" class="form-control" id="curriculoLattes" name="curriculoLattes" required />
+            <div class="invalid-feedback">
+                Por favor, insira o link para seu currículo Lattes.
+            </div>
+        </div>
+        <!-- Comprovantes -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Comprovantes</h5>
+
+                <!-- Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso-->
+                <div class="mb-3">
+                    <label for="diplomaGraduacaoUpload" class="form-label">
+                        Frente e verso do Diploma de Graduação ou Declaração de
+                        Conclusão de Curso
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="file" class="form-control" id="diplomaGraduacaoUpload" name="diplomaGraduacaoUpload" required />
+                    <div class="invalid-feedback">
+                        Por favor, envie a cópia do diploma de graduação ou
+                        declaração de conclusão de curso.
+                    </div>
+                </div>
+
+                <!-- Histórico de Disciplinas Curso de Graduação-->
+                <div class="mb-3">
+                    <label for="historicoDisciplinasGraduacao" class="form-label">
+                        Histórico de Disciplinas do Curso de Graduação
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao" name="historicoDisciplinasGraduacao" required />
+                    <div class="invalid-feedback">
+                        Por favor, envie o histórico de disciplinas do curso de
+                        graduação.
+                    </div>
+                </div>
+
+                <!-- Histórico de Disciplinas Curso de Graduação 2-->
+                <div class="mb-3">
+                    <label for="historicoDisciplinasGraduacao2" class="form-label">
+                        Histórico de Disciplinas do Curso de Graduação 2
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao2" name="historicoDisciplinasGraduacao2" required />
+                    <div class="invalid-feedback">
+                        Por favor, envie o histórico de disciplinas do curso de
+                        graduação 2.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

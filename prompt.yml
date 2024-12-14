@@ -9,14 +9,15 @@
 ./: yes
   tree.txt: all
   index.html: all
-  css/styles.css: all
+  css/styles.css: none
   js/main.js: all
-  js/courseSelection.js: none
+  js/includes.js: all
+  js/courseSelection.js: all
   js/progressBar.js: none
+  js/scrollSpy.js: none
+  js/popovers.js: none
 
 # user_request
 """
-The index.html page is too long. Please, how can I split it into multiple files?
-I'm constrained by client side solutions, because my server is static. The solution must split the form sections into multiple files.
-I also wanna use vscode to edit the files with html, css and js syntax highlighting, so convert the html files to strings is not an ideal solution.
+The courseSelection.js file is not working. I'm not sure, but I believe the reason is that includes.js must be loaded before courseSelection.js. Pls, check if this is the case and fix it.
 """
