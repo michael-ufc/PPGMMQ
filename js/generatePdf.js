@@ -22,6 +22,120 @@ const {
     jsPDF
 } = window.jspdf;
 
+// js/generatePdf.js
+
+/**
+ * Esta função preenche o objeto formData com dados fictícios para fins de depuração.
+ * @param {object} formData - O objeto que contém os dados do formulário organizados por seções.
+ */
+export function setMockData(formData) {
+    console.log("setMockData");
+    console.log(formData);
+
+    // Seção 1: Dados Pessoais
+    formData.section1_form = {
+        nomeCompleto: "João da Silva",
+        email: "joao.silva@example.com",
+        cpf: "123.456.789-10",
+        documentoIdentificacao: "RG 12.345.678-9",
+        cidade: "São Paulo",
+        telefoneCelular: "(11) 91234-5678",
+        cotas: "Sim",
+        especificacaoPcd: "Deficiência auditiva",
+        especificacaoOutros: "Sem outras especificações",
+        docIdentidadeUpload: "documento_identidade_mock.pdf",
+        autodeclaracaoUpload: "autodeclaracao_mock.pdf"
+    };
+
+    // Seção 2: Dados Acadêmicos
+    formData.section2_form = {
+        cursoGraduacao: "Engenharia de Computação",
+        instituicao: "Universidade de São Paulo",
+        igcInstituicao: "9.0",
+        ira: "8.5",
+        cursoGraduacao2: "Ciência da Computação",
+        instituicao2: "Universidade Federal do Rio de Janeiro",
+        igcInstituicao2: "8.8",
+        ira2: "8.2",
+        curriculoLattes: "https://lattes.cnpq.br/1234567890123456",
+        diplomaGraduacaoUpload: "diploma_graduacao_mock.pdf",
+        historicoDisciplinasGraduacao: "historico_graduacao_mock.pdf",
+        diplomaGraduacaoUpload2: "diploma_graduacao2_mock.pdf",
+        historicoDisciplinasGraduacao2: "historico_graduacao2_mock.pdf"
+    };
+
+    // Seção 3: Avaliação de Histórico
+    formData.section3_form = {
+        "courses-1": "Matemática Aplicada",
+        "courses-1Name": "Cálculo I",
+        "courses-1Syllabi[]": ["calculo1_syllabus.pdf"],
+        "courses-2": "Física",
+        "courses-2Name": "Mecânica Clássica",
+        "courses-2Syllabi[]": ["mecanica_syllabus.pdf"],
+        // Adicione mais cursos conforme necessário
+        "bonusCourses1-1": "Cursos Extracurriculares",
+        "bonusCourses1-1Name": "Introdução à Inteligência Artificial",
+        "bonusCourses1-1Syllabi[]": ["ia_syllabus.pdf"],
+        // Continue preenchendo conforme a estrutura original
+    };
+
+    // Seção 4: Análise Curricular
+    formData.section4_form = {
+        projetosComBolsa: "Projeto de Pesquisa em Machine Learning",
+        projetosComBolsaUpload: "projeto_ml_mock.pdf",
+        projetosSemBolsa: "Projeto de Extensão em Desenvolvimento Web",
+        projetosSemBolsaUpload: "projeto_web_mock.pdf",
+        publicacoesA1A2: "Artigo sobre Redes Neurais",
+        publicacoesA1A2Upload: "publicacao_rn_mock.pdf",
+        publicacoesA3A4: "Artigo sobre Processamento de Imagens",
+        publicacoesA3A4Upload: "publicacao_pi_mock.pdf",
+        publicacoesB1B2: "Resenha sobre Computação Quântica",
+        publicacoesB1B2Upload: "resenha_cq_mock.pdf",
+        publicacoesB3B4: "Trabalho de Conclusão de Curso",
+        publicacoesB3B4Upload: "tcc_mock.pdf",
+        publicacoesC: "Publicação em Revista Internacional",
+        publicacoesCUpload: "publicacao_revista_mock.pdf",
+        publicacoesArtigosCompletos: "Artigo Completo sobre Algoritmos Genéticos",
+        publicacoesArtigosCompletosUpload: "algoritmos_geneticos_mock.pdf",
+        publicacoesResumosExtendidos: "Resumo Estendido sobre Big Data",
+        publicacoesResumosExtendidosUpload: "big_data_mock.pdf",
+        docenciaIes: "Monitoria em Programação Avançada",
+        docenciaIesUpload: "monitoria_mock.pdf",
+        docenciaMonitoria: "Monitoria em Estruturas de Dados",
+        docenciaMonitoriaUpload: "estruturas_dados_mock.pdf",
+        docenciaEnsino: "Assistente de Ensino em Banco de Dados",
+        docenciaEnsinoUpload: "banco_dados_mock.pdf",
+        bolsaPet: "Bolsa PET em Desenvolvimento de Software",
+        bolsaPetUpload: "bolsa_pet_mock.pdf",
+        outrasBolsas: "Bolsa de Iniciação Científica",
+        outrasBolsasUpload: "iniciacao_cientifica_mock.pdf"
+    };
+
+    // Seção 5: Dados Socioeconômicos
+    formData.section5_form = {
+        identificacaoRacialEtnica: "Parda",
+        localCondicaoMoradia: "Própria",
+        numeroMoradores: "4",
+        localizacaoMoradia: "Zona Norte",
+        tipoEscolaFundamental: "Pública",
+        tipoEscolaMedio: "Particular",
+        escolaridadeFamiliares: "Mãe: Ensino Médio; Pai: Ensino Superior",
+        rendaFamiliar: "3 salários mínimos",
+        quantidadeLivros: "20",
+        motivacaoEstudos: "Desejo de contribuir para a comunidade acadêmica e profissional."
+    };
+
+    // Seção 6: Declarações para Bolsa
+    formData.section6_form = {
+        situacaoAtual: "Empregado",
+        estouCienteDasPenalidades: true,
+        autorizoAveriguacoes: true
+    };
+
+    return formData;
+}
+
+
 /**
  * Collects and organizes form data by sections.
  * @param {string} formId - The ID of the form to collect data from.
@@ -55,7 +169,6 @@ export function collectFormData(formId) {
         });
     }
 
-    console.log('Collected Form Data:', data);
     return data;
 }
 
@@ -64,7 +177,10 @@ export function collectFormData(formId) {
  * @param {string} formId - The ID of the form to process.
  */
 export async function generateAndMergePDF(formId) {
-    const formData = collectFormData(formId);
+    let formData = collectFormData(formId);
+
+    // Just for testing
+    formData = setMockData(formData);
 
     // Step 1: Generate initial PDF with form data
     const initialPdfBytes = await createInitialPdf(formData);
@@ -95,8 +211,6 @@ async function createInitialPdf(formData) {
 
     // Iterate through each section
     for (const [section, fields] of Object.entries(formData)) {
-        console.log("Processing section:", section);
-
         // Add color for section titles
         doc.setTextColor(0, 102, 204); // Set to a blue color (RGB: 0, 102, 204)
         doc.setFontSize(14);
@@ -178,14 +292,20 @@ function formatFieldName(fieldName) {
  * @returns {Promise<Uint8Array>} - A promise that resolves to the bytes of the merged PDF.
  */
 async function mergeUploadedPdfs(initialPdfBytes, formData) {
+    console.log("mergeUploadedPdfs");
+    console.log("FormData before processing:", formData);
+
     // Load the initial PDF document
     const pdfDoc = await PDFDocument.load(initialPdfBytes);
 
     // Iterate over each section's uploaded files
     for (const [section, fields] of Object.entries(formData)) {
+        console.log("Section been processed:", section, "Fields:", fields);
         if (fields.uploadedFiles) {
+            console.log("Uploaded files found:", fields.uploadedFiles);
             for (const [inputName, files] of Object.entries(fields.uploadedFiles)) {
                 for (let file of files) {
+                    console.log("Processing file:", file);
                     if (file.type === 'application/pdf') {
                         const arrayBuffer = await file.arrayBuffer();
                         const uploadedPdf = await PDFDocument.load(arrayBuffer);
@@ -218,6 +338,8 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
                     // Handle other file types if necessary
                 }
             }
+        } else {
+            console.log("No uploaded files found in section:", section);
         }
     }
 
