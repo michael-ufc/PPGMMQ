@@ -38,7 +38,6 @@ export async function loadIncludes() {
 
 async function loadHTML(url, elementId) {
     try {
-        console.log(`Loading ${url} into element #${elementId}`);
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Failed to load ${url}: ${response.statusText}`);

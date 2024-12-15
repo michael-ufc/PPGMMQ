@@ -1,147 +1,148 @@
 <div id="section5" class="mt-1">
     <div class="card-body">
-        <!-- 1. Como você se considera? -->
+        <!-- 1. Identificação Racial/Etnica -->
         <div class="mb-3">
-            <label class="form-label" for="socio1_1">
-                <strong>1. Como você se considera?</strong>
+            <label class="form-label" for="identificacaoRacialEtnica">
+                <strong>1. Qual é sua identificação racial/étnica?</strong>
                 <span class="text-danger">*</span>
             </label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_1" value="Amarelo(a) de origem asiática" required>
-                <label class="form-check-label" for="socio1_1">Amarelo(a) de origem asiática</label>
+                <input class="form-check-input" type="radio" name="identificacaoRacialEtnica" id="amarelo" value="Amarelo(a) - Origem Asiática" required>
+                <label class="form-check-label" for="amarelo">Amarelo(a) - Origem Asiática</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_2" value="Branco(a)">
-                <label class="form-check-label" for="socio1_2">Branco(a)</label>
+                <input class="form-check-input" type="radio" name="identificacaoRacialEtnica" id="branco" value="Branco(a)">
+                <label class="form-check-label" for="branco">Branco(a)</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_3" value="Indígena">
-                <label class="form-check-label" for="socio1_3">Indígena</label>
+                <input class="form-check-input" type="radio" name="identificacaoRacialEtnica" id="indigena" value="Indígena">
+                <label class="form-check-label" for="indigena">Indígena</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_4" value="Pardo(a), Mulato(a)">
-                <label class="form-check-label" for="socio1_4">Pardo(a), Mulato(a)</label>
+                <input class="form-check-input" type="radio" name="identificacaoRacialEtnica" id="pardoMulato" value="Pardo(a) ou Mulato(a)">
+                <label class="form-check-label" for="pardoMulato">Pardo(a) ou Mulato(a)</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_5" value="Preto(a)">
-                <label class="form-check-label" for="socio1_5">Preto(a)</label>
+                <input class="form-check-input" type="radio" name="identificacaoRacialEtnica" id="preto" value="Preto(a)">
+                <label class="form-check-label" for="preto">Preto(a)</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="socioeconomico1" id="socio1_6" value="Não declarada">
-                <label class="form-check-label" for="socio1_6">Não declarada</label>
+                <input class="form-check-input" type="radio" name="identificacaoRacialEtnica" id="naoDeclarado" value="Não declarada">
+                <label class="form-check-label" for="naoDeclarado">Não declarada</label>
             </div>
-            <div class="invalid-feedback">
-                Por favor, selecione uma opção.
-            </div>
+            <div class="invalid-feedback">Por favor, selecione uma opção.</div>
         </div>
 
+        <!-- 2. Local e Condição de Moradia -->
         <div class="mb-3">
-            <label for="socioeconomico2" class="form-label"><strong>2. Onde e como você mora atualmente?</strong>
-                <span class="text-danger">*</span></label>
-            <textarea class="form-control" id="socioeconomico2" name="socioeconomico2" rows="3" required></textarea>
-            <div class="invalid-feedback">
-                Por favor, responda a pergunta.
-            </div>
+            <label for="localCondicaoMoradia" class="form-label">
+                <strong>2. Onde e como você mora atualmente?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <textarea class="form-control" id="localCondicaoMoradia" name="localCondicaoMoradia" rows="3" required></textarea>
+            <div class="invalid-feedback">Por favor, descreva onde e como você mora atualmente.</div>
         </div>
 
+        <!-- 3. Número de Moradores no Domicílio -->
         <div class="mb-3">
-            <label for="socioeconomico3" class="form-label"><strong>3. Quantas pessoas moram em sua casa?</strong>
-                <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" id="socioeconomico3" name="socioeconomico3" min="1" required />
-            <div class="invalid-feedback">
-                Por favor, insira o número de pessoas.
-            </div>
+            <label for="numeroMoradores" class="form-label">
+                <strong>3. Quantas pessoas moram na sua casa?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <input type="number" class="form-control" id="numeroMoradores" name="numeroMoradores" min="1" required />
+            <div class="invalid-feedback">Por favor, insira o número de pessoas que residem em sua casa.</div>
         </div>
 
+        <!-- 4. Localização da Moradia -->
         <div class="mb-3">
-            <label for="socioeconomico4" class="form-label"><strong>4. Sua moradia está localizada em?</strong>
-                <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="socioeconomico4" name="socioeconomico4" required />
-            <div class="invalid-feedback">
-                Por favor, insira a localização da sua moradia.
-            </div>
+            <label for="localizacaoMoradia" class="form-label">
+                <strong>4. Sua moradia está localizada em:</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" id="localizacaoMoradia" name="localizacaoMoradia" required />
+            <div class="invalid-feedback">Por favor, insira a localização da sua moradia.</div>
         </div>
 
-        <div class="row mb-3">
-            <!-- Column for Tipo de escola do ensino fundamental -->
-            <div class="col-md-6">
-                <label for="socioeconomico5" class="form-label"><strong>5. Tipo de escola do ensino fundamental</strong>
-                    <span class="text-danger">*</span></label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="socio5_publica" name="socioeconomico5" value="Pública" required />
-                    <label class="form-check-label" for="socio5_publica">Pública</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="socio5_particular" name="socioeconomico5" value="Particular" required />
-                    <label class="form-check-label" for="socio5_particular">Particular</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="socio5_filantropica" name="socioeconomico5" value="Filantrópica" required />
-                    <label class="form-check-label" for="socio5_filantropica">Particular (com bolsa)</label>
-                </div>
-                <div class="invalid-feedback">
-                    Por favor, selecione o tipo de escola.
-                </div>
-            </div>
-
-            <!-- Column for Tipo de escola do ensino médio -->
-            <div class="col-md-6">
-                <label for="socioeconomico6" class="form-label"><strong>6. Tipo de escola do ensino médio</strong>
-                    <span class="text-danger">*</span></label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="socio6_publica" name="socioeconomico6" value="Pública" required />
-                    <label class="form-check-label" for="socio6_publica">Pública</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="socio6_particular" name="socioeconomico6" value="Particular" required />
-                    <label class="form-check-label" for="socio6_particular">Particular</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="socio6_filantropica" name="socioeconomico6" value="Filantrópica" required />
-                    <label class="form-check-label" for="socio6_filantropica">Particular (com bolsa)</label>
-                </div>
-                <div class="invalid-feedback">
-                    Por favor, insira o tipo de escola.
-                </div>
-            </div>
-        </div>
-
-
+        <!-- 5. Tipo de Escola - Ensino Fundamental -->
         <div class="mb-3">
-            <label for="socioeconomico7" class="form-label"><strong>7. Escolaridade dos familiares?</strong>
-                <span class="text-danger">*</span></label>
-            <textarea class="form-control" id="socioeconomico7" name="socioeconomico7" rows="3" required></textarea>
-            <div class="invalid-feedback">
-                Por favor, responda a pergunta.
+            <label for="tipoEscolaFundamental" class="form-label">
+                <strong>5. Qual o tipo de escola onde você cursou o ensino fundamental?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="escolaFundamentalPublica" name="tipoEscolaFundamental" value="Pública" required />
+                <label class="form-check-label" for="escolaFundamentalPublica">Pública</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="escolaFundamentalParticular" name="tipoEscolaFundamental" value="Particular" required />
+                <label class="form-check-label" for="escolaFundamentalParticular">Particular</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="escolaFundamentalBolsista" name="tipoEscolaFundamental" value="Particular (com bolsa)" required />
+                <label class="form-check-label" for="escolaFundamentalBolsista">Particular (com bolsa)</label>
+            </div>
+            <div class="invalid-feedback">Por favor, selecione o tipo de escola onde cursou o ensino fundamental.</div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="socioeconomico8" class="form-label"><strong>8. Renda familiar?</strong>
-                    <span class="text-danger">*</span></label>
-                <input type="number" class="form-control" id="socioeconomico8" name="socioeconomico8" min="0" required />
-                <div class="invalid-feedback">
-                    Por favor, insira a renda familiar.
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="socioeconomico9" class="form-label"><strong>9. Quantos livros você lê por ano?</strong>
-                    <span class="text-danger">*</span></label>
-                <input type="number" class="form-control" id="socioeconomico9" name="socioeconomico9" min="0" required />
-                <div class="invalid-feedback">
-                    Por favor, insira a quantidade de livros lidos.
-                </div>
-            </div>
-        </div>
-
+        <!-- 6. Tipo de Escola - Ensino Médio -->
         <div class="mb-3">
-            <label for="socioeconomico10" class="form-label"><strong>10. Motivação para continuar estudando?</strong>
-                <span class="text-danger">*</span></label>
-            <textarea class="form-control" id="socioeconomico10" name="socioeconomico10" rows="3" required></textarea>
-            <div class="invalid-feedback">
-                Por favor, responda a pergunta.
+            <label for="tipoEscolaMedio" class="form-label">
+                <strong>6. Qual o tipo de escola onde você cursou o ensino médio?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="escolaMedioPublica" name="tipoEscolaMedio" value="Pública" required />
+                <label class="form-check-label" for="escolaMedioPublica">Pública</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="escolaMedioParticular" name="tipoEscolaMedio" value="Particular" required />
+                <label class="form-check-label" for="escolaMedioParticular">Particular</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="escolaMedioBolsista" name="tipoEscolaMedio" value="Particular (com bolsa)" required />
+                <label class="form-check-label" for="escolaMedioBolsista">Particular (com bolsa)</label>
+            </div>
+            <div class="invalid-feedback">Por favor, selecione o tipo de escola onde cursou o ensino médio.</div>
+        </div>
+
+        <!-- 7. Escolaridade dos Familiares -->
+        <div class="mb-3">
+            <label for="escolaridadeFamiliares" class="form-label">
+                <strong>7. Qual a escolaridade dos seus familiares?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <textarea class="form-control" id="escolaridadeFamiliares" name="escolaridadeFamiliares" rows="3" required></textarea>
+            <div class="invalid-feedback">Por favor, informe a escolaridade dos seus familiares.</div>
+        </div>
+
+        <!-- 8. Renda Familiar Mensal -->
+        <div class="mb-3">
+            <label for="rendaFamiliar" class="form-label">
+                <strong>8. Qual a renda mensal da sua família?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <input type="number" class="form-control" id="rendaFamiliar" name="rendaFamiliar" min="0" required />
+            <div class="invalid-feedback">Por favor, insira a renda mensal familiar.</div>
+        </div>
+
+        <!-- 9. Livros Lidos por Ano -->
+        <div class="mb-3">
+            <label for="quantidadeLivros" class="form-label">
+                <strong>9. Quantos livros você lê por ano?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <input type="number" class="form-control" id="quantidadeLivros" name="quantidadeLivros" min="0" required />
+            <div class="invalid-feedback">Por favor, insira a quantidade de livros lidos anualmente.</div>
+        </div>
+
+        <!-- 10. Motivação para Continuar Estudando -->
+        <div class="mb-3">
+            <label for="motivacaoEstudos" class="form-label">
+                <strong>10. Qual sua principal motivação para continuar estudando?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <textarea class="form-control" id="motivacaoEstudos" name="motivacaoEstudos" rows="3" required></textarea>
+            <div class="invalid-feedback">Por favor, compartilhe sua motivação para continuar estudando.</div>
         </div>
     </div>
 </div>

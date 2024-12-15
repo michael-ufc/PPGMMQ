@@ -4,6 +4,8 @@
 - JavaScript
 - Bootstrap
 - js-beautify
+- jsPDF
+- User language: Portuguese (BR)
 
 # sources:
 ./: yes
@@ -12,9 +14,9 @@
 
 ./includes: yes
   section1.html: all
-  section2.html: all
-  section3.html: all
-  section4.html: all
+  section2.html: none
+  section3.html: none
+  section4.html: none
   section5.html: all
   section6.html: all
   footer.html: none
@@ -24,16 +26,16 @@
 
 ./js: yes
   main.js: all
-  includes.js: all
-  courseSelection.js: all
+  includes.js: none
+  courseSelection.js: none
   popovers.js: none
   utils.js: none
   generatePdf.js: all
 
-./docs: none
+./docs: no
   edital_mestrado_2025-1.md: all
 
 # user_request
 """
-The "Gerar PDF" button should also check if all required fields should validate the form.
+The content of the section6.html file is not being inserted into the initial generated PDF created by the generatePdf.js file. Let's try to figure out what is going on. Take one step at a time and wait my confirmation before proceeding.
 """
