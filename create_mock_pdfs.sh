@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Define the list of required files and their content
+# Define the list of required files and their unique content
 declare -A files_content=(
-  ["doc_id_upload.pdf"]="Mock content for Document ID Upload"
-  ["autodeclaracao.pdf"]="Mock content for Auto Declaration"
-  ["diploma1.pdf"]="Mock content for Graduation Diploma 1"
-  ["historico1.pdf"]="Mock content for Academic Record 1"
-  ["diploma2.pdf"]="Mock content for Graduation Diploma 2"
-  ["historico2.pdf"]="Mock content for Academic Record 2"
-  ["syllabi_calculo1.pdf"]="Mock content for Syllabi - Calculus 1"
-  ["syllabi_algebra_linear.pdf"]="Mock content for Syllabi - Linear Algebra"
-  ["syllabi_estatistica.pdf"]="Mock content for Syllabi - Statistics"
-  ["proj_bolsa.pdf"]="Mock content for Projects with Scholarship"
-  ["proj_sem_bolsa.pdf"]="Mock content for Projects without Scholarship"
-  ["pub_a1a2.pdf"]="Mock content for Publications A1/A2"
-  ["pub_b1b2.pdf"]="Mock content for Publications B1/B2"
-  ["docencia_ies.pdf"]="Mock content for Teaching at Higher Education Institutions"
+  ["documento_identidade_mock.pdf"]="Mock content for Documento Identidade Upload"
+  ["autodeclaracao_mock.pdf"]="Mock content for Auto Declaration"
+  ["diploma_graduacao_mock.pdf"]="Mock content for Graduation Diploma 1"
+  ["historico_graduacao_mock.pdf"]="Mock content for Academic Record 1"
+  ["diploma_graduacao2_mock.pdf"]="Mock content for Graduation Diploma 2"
+  ["historico_graduacao2_mock.pdf"]="Mock content for Academic Record 2"
+  ["calculo1_syllabus.pdf"]="Mock content for Syllabus - Calculus 1"
+  ["mecanica_syllabus.pdf"]="Mock content for Syllabus - Mechanics"
+  ["ia_syllabus.pdf"]="Mock content for Syllabus - Artificial Intelligence"
+  ["projeto_ml_mock.pdf"]="Mock content for Project with Scholarship"
+  ["projeto_web_mock.pdf"]="Mock content for Project without Scholarship"
+  ["publicacao_rn_mock.pdf"]="Mock content for Publication on Neural Networks"
+  ["publicacao_pi_mock.pdf"]="Mock content for Publication on Image Processing"
+  ["resenha_cq_mock.pdf"]="Mock content for Review on Quantum Computing"
 )
 
 # Create output directory for mock files
@@ -27,9 +27,13 @@ for file in "${!files_content[@]}"; do
   content="${files_content[$file]}"
   output_file="$output_dir/$file"
 
-  # Use pandoc to generate the PDF
+  # Create temporary markdown file with content
   echo "$content" > temp.md
+  
+  # Use pandoc to convert markdown to PDF
   pandoc temp.md -o "$output_file"
+  
+  # Remove temporary markdown file
   rm temp.md
 
   echo "Generated: $output_file"

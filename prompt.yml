@@ -10,9 +10,10 @@
 # sources:
 ./: yes
   tree.txt: all
-  index.html: all
+  create_mock_pdfs.sh: none
+  index.html: none
 
-./includes: yes
+./includes: no
   section1.html: all
   section2.html: none
   section3.html: none
@@ -25,7 +26,7 @@
   styles.css: yes
 
 ./js: yes
-  main.js: all
+  main.js: none
   includes.js: none
   courseSelection.js: none
   popovers.js: none
@@ -37,5 +38,5 @@
 
 # user_request
 """
-The content of the section6.html file is not being inserted into the initial generated PDF created by the generatePdf.js file. Let's try to figure out what is going on. Take one step at a time and wait my confirmation before proceeding.
+Do I need to change the paths in the setMockData function?
 """

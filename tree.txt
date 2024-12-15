@@ -1,10 +1,13 @@
 .
+├── create_mock_pdfs.sh
 ├── css
 │   └── styles.css
 ├── docs
 │   └── edital_mestrado_2025-1.md
 ├── images
-│   └── logo-ppgmmq.jpeg
+│   ├── logo-ppgmmq.jpeg
+│   ├── ufc-logo-universidade-16.png
+│   └── ufc-logo-universidade-16.xcf
 ├── includes
 │   ├── footer.html
 │   ├── section1.html
@@ -22,10 +25,39 @@
 │   ├── popovers.js
 │   └── utils.js
 ├── LICENSE
+├── mock_pdfs
+│   ├── autodeclaracao_mock.pdf
+│   ├── autodeclaracao.pdf
+│   ├── calculo1_syllabus.pdf
+│   ├── diploma1.pdf
+│   ├── diploma2.pdf
+│   ├── diploma_graduacao2_mock.pdf
+│   ├── diploma_graduacao_mock.pdf
+│   ├── docencia_ies.pdf
+│   ├── doc_id_upload.pdf
+│   ├── documento_identidade_mock.pdf
+│   ├── historico1.pdf
+│   ├── historico2.pdf
+│   ├── historico_graduacao2_mock.pdf
+│   ├── historico_graduacao_mock.pdf
+│   ├── ia_syllabus.pdf
+│   ├── mecanica_syllabus.pdf
+│   ├── proj_bolsa.pdf
+│   ├── projeto_ml_mock.pdf
+│   ├── projeto_web_mock.pdf
+│   ├── proj_sem_bolsa.pdf
+│   ├── pub_a1a2.pdf
+│   ├── pub_b1b2.pdf
+│   ├── publicacao_pi_mock.pdf
+│   ├── publicacao_rn_mock.pdf
+│   ├── resenha_cq_mock.pdf
+│   ├── syllabi_algebra_linear.pdf
+│   ├── syllabi_calculo1.pdf
+│   └── syllabi_estatistica.pdf
 ├── PROJECT.md
 ├── prompt_content.json
 ├── prompt.yml
 ├── README.md
 └── tree.txt
 
-6 directories, 23 files
+7 directories, 54 files

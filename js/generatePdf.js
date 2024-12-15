@@ -22,15 +22,27 @@ const {
     jsPDF
 } = window.jspdf;
 
-// js/generatePdf.js
-
 /**
- * Esta função preenche o objeto formData com dados fictícios para fins de depuração.
- * @param {object} formData - O objeto que contém os dados do formulário organizados por seções.
+ * Populates the formData object with realistic mock data for testing purposes.
+ * Ensures compatibility with mock PDFs stored in the "mock_pdfs" directory.
+ * @param {object} formData - The object containing organized form data grouped by sections.
+ * @returns {object} - The updated formData object with mock data, including File objects.
  */
 export function setMockData(formData) {
-    console.log("setMockData");
-    console.log(formData);
+    console.log("Setting mock data for testing.");
+
+    // Base directory for mock PDFs
+    const mockPdfDir = "mock_pdfs/";
+
+    // Helper function to create realistic mock File objects
+    const createMockFile = (name, type) => {
+        const blob = new Blob([`Mock content for ${name}`], {
+            type
+        });
+        return new File([blob], name, {
+            type
+        });
+    };
 
     // Seção 1: Dados Pessoais
     formData.section1_form = {
@@ -43,8 +55,10 @@ export function setMockData(formData) {
         cotas: "Sim",
         especificacaoPcd: "Deficiência auditiva",
         especificacaoOutros: "Sem outras especificações",
-        docIdentidadeUpload: "documento_identidade_mock.pdf",
-        autodeclaracaoUpload: "autodeclaracao_mock.pdf"
+        uploadedFiles: {
+            docIdentidadeUpload: [createMockFile(`${mockPdfDir}documento_identidade_mock.pdf`, "application/pdf")],
+            autodeclaracaoUpload: [createMockFile(`${mockPdfDir}autodeclaracao_mock.pdf`, "application/pdf")]
+        }
     };
 
     // Seção 2: Dados Acadêmicos
@@ -58,57 +72,37 @@ export function setMockData(formData) {
         igcInstituicao2: "8.8",
         ira2: "8.2",
         curriculoLattes: "https://lattes.cnpq.br/1234567890123456",
-        diplomaGraduacaoUpload: "diploma_graduacao_mock.pdf",
-        historicoDisciplinasGraduacao: "historico_graduacao_mock.pdf",
-        diplomaGraduacaoUpload2: "diploma_graduacao2_mock.pdf",
-        historicoDisciplinasGraduacao2: "historico_graduacao2_mock.pdf"
+        uploadedFiles: {
+            diplomaGraduacaoUpload: [createMockFile(`${mockPdfDir}diploma_graduacao_mock.pdf`, "application/pdf")],
+            historicoDisciplinasGraduacao: [createMockFile(`${mockPdfDir}historico_graduacao_mock.pdf`, "application/pdf")],
+            diplomaGraduacaoUpload2: [createMockFile(`${mockPdfDir}diploma_graduacao2_mock.pdf`, "application/pdf")],
+            historicoDisciplinasGraduacao2: [createMockFile(`${mockPdfDir}historico_graduacao2_mock.pdf`, "application/pdf")]
+        }
     };
 
-    // Seção 3: Avaliação de Histórico
+    // Mock data for Section 3: Avaliação de Histórico
     formData.section3_form = {
         "courses-1": "Matemática Aplicada",
         "courses-1Name": "Cálculo I",
-        "courses-1Syllabi[]": ["calculo1_syllabus.pdf"],
+        "courses-1Syllabi[]": [createMockFile(`${mockPdfDir}calculo1_syllabus.pdf`, "application/pdf")],
         "courses-2": "Física",
         "courses-2Name": "Mecânica Clássica",
-        "courses-2Syllabi[]": ["mecanica_syllabus.pdf"],
-        // Adicione mais cursos conforme necessário
+        "courses-2Syllabi[]": [createMockFile(`${mockPdfDir}mecanica_syllabus.pdf`, "application/pdf")],
         "bonusCourses1-1": "Cursos Extracurriculares",
         "bonusCourses1-1Name": "Introdução à Inteligência Artificial",
-        "bonusCourses1-1Syllabi[]": ["ia_syllabus.pdf"],
-        // Continue preenchendo conforme a estrutura original
+        "bonusCourses1-1Syllabi[]": [createMockFile(`${mockPdfDir}ia_syllabus.pdf`, "application/pdf")]
     };
 
     // Seção 4: Análise Curricular
     formData.section4_form = {
         projetosComBolsa: "Projeto de Pesquisa em Machine Learning",
-        projetosComBolsaUpload: "projeto_ml_mock.pdf",
-        projetosSemBolsa: "Projeto de Extensão em Desenvolvimento Web",
-        projetosSemBolsaUpload: "projeto_web_mock.pdf",
-        publicacoesA1A2: "Artigo sobre Redes Neurais",
-        publicacoesA1A2Upload: "publicacao_rn_mock.pdf",
-        publicacoesA3A4: "Artigo sobre Processamento de Imagens",
-        publicacoesA3A4Upload: "publicacao_pi_mock.pdf",
-        publicacoesB1B2: "Resenha sobre Computação Quântica",
-        publicacoesB1B2Upload: "resenha_cq_mock.pdf",
-        publicacoesB3B4: "Trabalho de Conclusão de Curso",
-        publicacoesB3B4Upload: "tcc_mock.pdf",
-        publicacoesC: "Publicação em Revista Internacional",
-        publicacoesCUpload: "publicacao_revista_mock.pdf",
-        publicacoesArtigosCompletos: "Artigo Completo sobre Algoritmos Genéticos",
-        publicacoesArtigosCompletosUpload: "algoritmos_geneticos_mock.pdf",
-        publicacoesResumosExtendidos: "Resumo Estendido sobre Big Data",
-        publicacoesResumosExtendidosUpload: "big_data_mock.pdf",
-        docenciaIes: "Monitoria em Programação Avançada",
-        docenciaIesUpload: "monitoria_mock.pdf",
-        docenciaMonitoria: "Monitoria em Estruturas de Dados",
-        docenciaMonitoriaUpload: "estruturas_dados_mock.pdf",
-        docenciaEnsino: "Assistente de Ensino em Banco de Dados",
-        docenciaEnsinoUpload: "banco_dados_mock.pdf",
-        bolsaPet: "Bolsa PET em Desenvolvimento de Software",
-        bolsaPetUpload: "bolsa_pet_mock.pdf",
-        outrasBolsas: "Bolsa de Iniciação Científica",
-        outrasBolsasUpload: "iniciacao_cientifica_mock.pdf"
+        uploadedFiles: {
+            projetosComBolsaUpload: [createMockFile(`${mockPdfDir}projeto_ml_mock.pdf`, "application/pdf")],
+            projetosSemBolsaUpload: [createMockFile(`${mockPdfDir}projeto_web_mock.pdf`, "application/pdf")],
+            publicacoesA1A2Upload: [createMockFile(`${mockPdfDir}publicacao_rn_mock.pdf`, "application/pdf")],
+            publicacoesA3A4Upload: [createMockFile(`${mockPdfDir}publicacao_pi_mock.pdf`, "application/pdf")],
+            publicacoesB1B2Upload: [createMockFile(`${mockPdfDir}resenha_cq_mock.pdf`, "application/pdf")]
+        }
     };
 
     // Seção 5: Dados Socioeconômicos
