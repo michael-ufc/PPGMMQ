@@ -2,24 +2,28 @@
     <div class="card-body">
         <!-- 1. Situação atual -->
         <div class="mb-3">
-            <fieldset>
-                <legend class="form-label">
-                    <h5>1. Situação atual (escolha uma):</h5>
-                </legend>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao1" value="Não exerço atividade remunerada." required>
-                    <label class="form-check-label" for="declaracao1">Não exerço atividade remunerada.</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao2" value="Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa." required>
-                    <label class="form-check-label" for="declaracao2">Exerço atividade remunerada, mas me desligarei caso contemplado com bolsa.</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="declaracoes1" id="declaracao3" value="Exerço atividade remunerada e não me desligarei." required>
-                    <label class="form-check-label" for="declaracao3">Exerço atividade remunerada e não me desligarei.</label>
-                </div>
-                <div class="invalid-feedback">Por favor, selecione uma opção.</div>
-            </fieldset>
+            <label class="form-label" for="situacaoAtual">
+                <h5>1. Situação atual (escolha uma):</h5>
+            </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="situacaoAtual" id="naoExercoAtividadeRemunerada" value="naoExerco" required>
+                <label class="form-check-label" for="naoExercoAtividadeRemunerada">
+                    Não exerço atividade remunerada e estou disponível para dedicação exclusiva ao programa.
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="situacaoAtual" id="exercoAtividadeRemuneradaMasDesligarei" value="exercoMeDesligarei">
+                <label class="form-check-label" for="exercoAtividadeRemuneradaMasDesligarei">
+                    Exerço atividade remunerada atualmente, mas comprometo-me a me desligar caso seja contemplado com a bolsa.
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="situacaoAtual" id="continuareiExercendoAtividadeRemunerada" value="continuareiExercendo">
+                <label class="form-check-label" for="continuareiExercendoAtividadeRemunerada">
+                    Exerço atividade remunerada atualmente e não me desligarei dela.
+                </label>
+            </div>
+            <div class="invalid-feedback">Por favor, selecione uma das opções acima.</div>
         </div>
 
         <!-- 2. Declarações -->
@@ -29,19 +33,19 @@
                     <h5>2. Declarações:</h5>
                 </legend>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="declaracaoSim1" name="declaracoes2" value="Sim, declaro estar ciente." required>
-                    <label class="form-check-label" for="declaracaoSim1">
-                        Sim, declaro estar ciente.
+                    <input class="form-check-input" type="checkbox" id="estouCienteDasPenalidades" name="estouCienteDasPenalidades" value="ciente" required>
+                    <label class="form-check-label" for="estouCienteDasPenalidades">
+                        Declaro que estou ciente das regras do programa de bolsas, e das penalidades em caso de descumprimento das condições estabelecidas.
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="declaracaoSim2" name="declaracoes2" value="Sim, autorizo a averiguação das informações." required>
-                    <label class="form-check-label" for="declaracaoSim2">
-                        Sim, autorizo a averiguação das informações.
+                    <input class="form-check-input" type="checkbox" id="autorizoAveriguacoes" name="autorizoAveriguacoes" value="autorizacao" required>
+                    <label class="form-check-label" for="autorizoAveriguacoes">
+                        Autorizo a instituição responsável a realizar averiguações para validar as informações fornecidas neste formulário.
                     </label>
                 </div>
                 <div class="invalid-feedback">
-                    Você deve marcar ambas as declarações.
+                    Para prosseguir, você deve marcar ambas as declarações acima.
                 </div>
             </fieldset>
         </div>
