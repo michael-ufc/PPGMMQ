@@ -22,23 +22,26 @@ const {
     jsPDF
 } = window.jspdf;
 
+import {
+    customLog,
+    saveLogsToFile
+} from './utils.js';
+
+
 /**
  * Populates the formData object with realistic mock data for testing purposes.
  * Ensures compatibility with mock PDFs stored in the "mock_pdfs" directory.
  * @param {object} formData - The object containing organized form data grouped by sections.
- * @returns {object} - The updated formData object with mock data, including File objects.
+ * @returns {Promise<object>} - The updated formData object with mock data, including File objects.
  */
-export function setMockData(formData) {
-    console.log("Setting mock data for testing.");
-
+export async function setMockData(formData) {
     // Base directory for mock PDFs
     const mockPdfDir = "mock_pdfs/";
 
     // Helper function to create realistic mock File objects
-    const createMockFile = (name, type) => {
-        const blob = new Blob([`Mock content for ${name}`], {
-            type
-        });
+    const createMockFile = async (filePath, name, type) => {
+        const response = await fetch(filePath);
+        const blob = await response.blob();
         return new File([blob], name, {
             type
         });
@@ -56,8 +59,8 @@ export function setMockData(formData) {
         especificacaoPcd: "Deficiência auditiva",
         especificacaoOutros: "Sem outras especificações",
         uploadedFiles: {
-            docIdentidadeUpload: [createMockFile(`${mockPdfDir}documento_identidade_mock.pdf`, "application/pdf")],
-            autodeclaracaoUpload: [createMockFile(`${mockPdfDir}autodeclaracao_mock.pdf`, "application/pdf")]
+            docIdentidadeUpload: [await createMockFile(`${mockPdfDir}documento_identidade_mock.pdf`, "documento_identidade_mock.pdf", "application/pdf")],
+            autodeclaracaoUpload: [await createMockFile(`${mockPdfDir}autodeclaracao_mock.pdf`, "autodeclaracao_mock.pdf", "application/pdf")]
         }
     };
 
@@ -73,35 +76,35 @@ export function setMockData(formData) {
         ira2: "8.2",
         curriculoLattes: "https://lattes.cnpq.br/1234567890123456",
         uploadedFiles: {
-            diplomaGraduacaoUpload: [createMockFile(`${mockPdfDir}diploma_graduacao_mock.pdf`, "application/pdf")],
-            historicoDisciplinasGraduacao: [createMockFile(`${mockPdfDir}historico_graduacao_mock.pdf`, "application/pdf")],
-            diplomaGraduacaoUpload2: [createMockFile(`${mockPdfDir}diploma_graduacao2_mock.pdf`, "application/pdf")],
-            historicoDisciplinasGraduacao2: [createMockFile(`${mockPdfDir}historico_graduacao2_mock.pdf`, "application/pdf")]
+            diplomaGraduacaoUpload: [await createMockFile(`${mockPdfDir}diploma_graduacao_mock.pdf`, "diploma_graduacao_mock.pdf", "application/pdf")],
+            historicoDisciplinasGraduacao: [await createMockFile(`${mockPdfDir}historico_graduacao_mock.pdf`, "historico_graduacao_mock.pdf", "application/pdf")],
+            diplomaGraduacaoUpload2: [await createMockFile(`${mockPdfDir}diploma_graduacao2_mock.pdf`, "diploma_graduacao2_mock.pdf", "application/pdf")],
+            historicoDisciplinasGraduacao2: [await createMockFile(`${mockPdfDir}historico_graduacao2_mock.pdf`, "historico_graduacao2_mock.pdf", "application/pdf")]
         }
     };
 
-    // Mock data for Section 3: Avaliação de Histórico
+    // Seção 3: Avaliação de Histórico
     formData.section3_form = {
         "courses-1": "Matemática Aplicada",
         "courses-1Name": "Cálculo I",
-        "courses-1Syllabi[]": [createMockFile(`${mockPdfDir}calculo1_syllabus.pdf`, "application/pdf")],
+        "courses-1Syllabi[]": [await createMockFile(`${mockPdfDir}calculo1_syllabus.pdf`, "calculo1_syllabus.pdf", "application/pdf")],
         "courses-2": "Física",
         "courses-2Name": "Mecânica Clássica",
-        "courses-2Syllabi[]": [createMockFile(`${mockPdfDir}mecanica_syllabus.pdf`, "application/pdf")],
+        "courses-2Syllabi[]": [await createMockFile(`${mockPdfDir}mecanica_syllabus.pdf`, "mecanica_syllabus.pdf", "application/pdf")],
         "bonusCourses1-1": "Cursos Extracurriculares",
         "bonusCourses1-1Name": "Introdução à Inteligência Artificial",
-        "bonusCourses1-1Syllabi[]": [createMockFile(`${mockPdfDir}ia_syllabus.pdf`, "application/pdf")]
+        "bonusCourses1-1Syllabi[]": [await createMockFile(`${mockPdfDir}ia_syllabus.pdf`, "ia_syllabus.pdf", "application/pdf")]
     };
 
     // Seção 4: Análise Curricular
     formData.section4_form = {
         projetosComBolsa: "Projeto de Pesquisa em Machine Learning",
         uploadedFiles: {
-            projetosComBolsaUpload: [createMockFile(`${mockPdfDir}projeto_ml_mock.pdf`, "application/pdf")],
-            projetosSemBolsaUpload: [createMockFile(`${mockPdfDir}projeto_web_mock.pdf`, "application/pdf")],
-            publicacoesA1A2Upload: [createMockFile(`${mockPdfDir}publicacao_rn_mock.pdf`, "application/pdf")],
-            publicacoesA3A4Upload: [createMockFile(`${mockPdfDir}publicacao_pi_mock.pdf`, "application/pdf")],
-            publicacoesB1B2Upload: [createMockFile(`${mockPdfDir}resenha_cq_mock.pdf`, "application/pdf")]
+            projetosComBolsaUpload: [await createMockFile(`${mockPdfDir}projeto_ml_mock.pdf`, "projeto_ml_mock.pdf", "application/pdf")],
+            projetosSemBolsaUpload: [await createMockFile(`${mockPdfDir}projeto_web_mock.pdf`, "projeto_web_mock.pdf", "application/pdf")],
+            publicacoesA1A2Upload: [await createMockFile(`${mockPdfDir}publicacao_rn_mock.pdf`, "publicacao_rn_mock.pdf", "application/pdf")],
+            publicacoesA3A4Upload: [await createMockFile(`${mockPdfDir}publicacao_pi_mock.pdf`, "publicacao_pi_mock.pdf", "application/pdf")],
+            publicacoesB1B2Upload: [await createMockFile(`${mockPdfDir}resenha_cq_mock.pdf`, "resenha_cq_mock.pdf", "application/pdf")]
         }
     };
 
@@ -128,7 +131,6 @@ export function setMockData(formData) {
 
     return formData;
 }
-
 
 /**
  * Collects and organizes form data by sections.
@@ -173,6 +175,9 @@ export function collectFormData(formId) {
 export async function generateAndMergePDF(formId) {
     let formData = collectFormData(formId);
 
+    // Debug collected form data
+    customLog("Collected Form Data:", formData);
+
     // Just for testing
     formData = setMockData(formData);
 
@@ -184,6 +189,9 @@ export async function generateAndMergePDF(formId) {
 
     // Step 3: Trigger download of the merged PDF
     downloadPdf(mergedPdfBytes, 'Formulario_PPGMMQ_2025.1_Merged.pdf');
+
+    // Save logs to file
+    saveLogsToFile();
 }
 
 /** 
@@ -286,29 +294,27 @@ function formatFieldName(fieldName) {
  * @returns {Promise<Uint8Array>} - A promise that resolves to the bytes of the merged PDF.
  */
 async function mergeUploadedPdfs(initialPdfBytes, formData) {
-    console.log("mergeUploadedPdfs");
-    console.log("FormData before processing:", formData);
-
     // Load the initial PDF document
     const pdfDoc = await PDFDocument.load(initialPdfBytes);
 
     // Iterate over each section's uploaded files
     for (const [section, fields] of Object.entries(formData)) {
-        console.log("Section been processed:", section, "Fields:", fields);
         if (fields.uploadedFiles) {
-            console.log("Uploaded files found:", fields.uploadedFiles);
             for (const [inputName, files] of Object.entries(fields.uploadedFiles)) {
+                if (!Array.isArray(files) || files.length === 0) {
+                    console.warn(`No valid files for ${inputName}`);
+                    continue;
+                }
+
                 for (let file of files) {
-                    console.log("Processing file:", file);
-                    if (file.type === 'application/pdf') {
+                    if (file && file.type && file.type.startsWith('application/pdf')) {
                         const arrayBuffer = await file.arrayBuffer();
                         const uploadedPdf = await PDFDocument.load(arrayBuffer);
                         const copiedPages = await pdfDoc.copyPages(uploadedPdf, uploadedPdf.getPageIndices());
                         copiedPages.forEach(page => {
                             pdfDoc.addPage(page);
                         });
-                    } else if (file.type.startsWith('image/')) {
-                        // Handle image files by adding them as images in the PDF
+                    } else if (file && file.type && file.type.startsWith('image/')) {
                         const imageBytes = await file.arrayBuffer();
                         let img;
                         if (file.type === 'image/jpeg') {
@@ -317,10 +323,10 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
                             img = await pdfDoc.embedPng(imageBytes);
                         } else {
                             console.warn(`Unsupported image type: ${file.type}`);
-                            continue; // Skip unsupported image types
+                            continue;
                         }
 
-                        const imgDims = img.scale(0.5); // Adjust scale as needed
+                        const imgDims = img.scale(0.5);
                         const page = pdfDoc.addPage([imgDims.width, imgDims.height]);
                         page.drawImage(img, {
                             x: 0,
@@ -328,8 +334,9 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
                             width: imgDims.width,
                             height: imgDims.height,
                         });
+                    } else {
+                        console.warn("Skipping invalid or unsupported file:", file);
                     }
-                    // Handle other file types if necessary
                 }
             }
         } else {
