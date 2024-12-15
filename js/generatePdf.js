@@ -34,49 +34,30 @@ export function collectFormData(formId) {
         return {};
     }
 
+    const tabs = document.querySelectorAll('[data-bs-toggle="tab"]'); // Find all tabs
     const formData = new FormData(form);
     const data = {};
 
-    // Iterate over each form field
-    for (let [key, value] of formData.entries()) {
-        // Assuming each input has a data-section attribute
-        const input = form.querySelector(`[name="${key}"]`);
-        const section = input.closest('[id^="section"]');
-        const sectionId = section ? section.id : 'miscellaneous';
+    // Temporarily activate each tab to ensure visibility
+    for (let i = 0; i < tabs.length; i++) {
+        const tab = tabs[i];
+        tab.click(); // Switch to tab
+        form.querySelectorAll('input, select, textarea').forEach(input => {
+            if (input.name) {
+                const section = input.closest('[id^="section"]');
+                const sectionId = section ? section.id : 'miscellaneous';
 
-        if (!data[sectionId]) {
-            data[sectionId] = {};
-        }
-
-        // Handle multiple values (e.g., checkboxes)
-        if (data[sectionId][key]) {
-            if (Array.isArray(data[sectionId][key])) {
-                data[sectionId][key].push(value);
-            } else {
-                data[sectionId][key] = [data[sectionId][key], value];
+                if (!data[sectionId]) data[sectionId] = {};
+                data[sectionId][input.name] = input.type === 'checkbox' || input.type === 'radio' ?
+                    input.checked ? input.value : null :
+                    input.value;
             }
-        } else {
-            data[sectionId][key] = value;
-        }
+        });
     }
-
-    // Handle file uploads separately
-    const fileInputs = form.querySelectorAll('input[type="file"]');
-    fileInputs.forEach(input => {
-        if (input.files.length > 0) {
-            const section = input.closest('[id^="section"]');
-            const sectionId = section ? section.id : 'miscellaneous';
-            if (!data[sectionId].uploadedFiles) {
-                data[sectionId].uploadedFiles = {};
-            }
-            data[sectionId].uploadedFiles[input.name] = Array.from(input.files);
-        }
-    });
 
     console.log('Collected Form Data:', data);
     return data;
 }
-
 
 /**
  * Generates and merges PDFs based on the collected form data and uploaded files.
@@ -114,6 +95,8 @@ async function createInitialPdf(formData) {
 
     // Iterate through each section
     for (const [section, fields] of Object.entries(formData)) {
+        console.log("Processing section:", section);
+
         // Add color for section titles
         doc.setTextColor(0, 102, 204); // Set to a blue color (RGB: 0, 102, 204)
         doc.setFontSize(14);
@@ -163,12 +146,12 @@ async function createInitialPdf(formData) {
 function formatSectionName(sectionId) {
     // Define mapping from section IDs to readable names
     const sectionTitles = {
-        section1: "1) DADOS PESSOAIS",
-        section2: "2) DADOS ACADÊMICOS",
-        section3: "3) AVALIAÇÃO DE HISTÓRICO",
-        section4: "4) ANÁLISE CURRICULAR",
-        section5: "5) DADOS SOCIOECONÔMICOS",
-        section6: "6) DECLARAÇÕES PARA BOLSA"
+        section1_form: "1) DADOS PESSOAIS",
+        section2_form: "2) DADOS ACADÊMICOS",
+        section3_form: "3) AVALIAÇÃO DE HISTÓRICO",
+        section4_form: "4) ANÁLISE CURRICULAR",
+        section5_form: "5) DADOS SOCIOECONÔMICOS",
+        section6_form: "6) DECLARAÇÕES PARA BOLSA"
     };
 
     return sectionTitles[sectionId] || sectionId;
