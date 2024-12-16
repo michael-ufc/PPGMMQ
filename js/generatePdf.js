@@ -14,19 +14,14 @@
 
 // Assuming PDFLib is loaded via a script tag and available globally
 const {
-    PDFDocument
+    PDFDocument,
+    rgb
 } = window.pdfLib || window.PDFLib;
 
 // If using jsPDF loaded via a script tag
 const {
     jsPDF
 } = window.jspdf;
-
-import {
-    customLog,
-    saveLogsToFile
-} from './utils.js';
-
 
 /**
  * Populates the formData object with realistic mock data for testing purposes.
@@ -164,13 +159,12 @@ export function collectFormData(formId) {
 
                 // Handle file inputs
                 if (input.type === 'file') {
-                    console.log(`File Input [${input.name}]:`, input.files);
                     data[sectionId].uploadedFiles[input.name] = input.files ?
                         Array.from(input.files) : [];
                 }
                 // Handle checkboxes and radio buttons
                 else if (input.type === 'checkbox' || input.type === 'radio') {
-                    data[sectionId][input.name] = input.checked ? input.value : null;
+                    data[sectionId][input.name] = input.checked ? input.value : null;                    
                 }
                 // Handle other input types
                 else {
@@ -180,7 +174,6 @@ export function collectFormData(formId) {
         });
     }
 
-    console.log("Final Collected Form Data:", data);
     return data;
 }
 
@@ -203,9 +196,6 @@ export async function generateAndMergePDF(formId) {
 
     // Step 3: Trigger download of the merged PDF
     downloadPdf(mergedPdfBytes, 'Formulario_PPGMMQ_2025.1_Merged.pdf');
-
-    // Save logs to file
-    saveLogsToFile();
 }
 
 /** 
@@ -267,24 +257,22 @@ async function createInitialPdf(formData) {
     return initialPdfBytes;
 }
 
-
 /**
  * Formats the section ID to a readable section name.
- * @param {string} sectionId - The ID of the section (e.g., 'section1').
+ * @param {string} sectionId - The ID of the section (e.g., 'section1_form').
  * @returns {string} - The formatted section name.
  */
 function formatSectionName(sectionId) {
-    // Define mapping from section IDs to readable names
     const sectionTitles = {
-        section1_form: "1) DADOS PESSOAIS",
-        section2_form: "2) DADOS ACADÊMICOS",
-        section3_form: "3) AVALIAÇÃO DE HISTÓRICO",
-        section4_form: "4) ANÁLISE CURRICULAR",
-        section5_form: "5) DADOS SOCIOECONÔMICOS",
-        section6_form: "6) DECLARAÇÕES PARA BOLSA"
+        section1_form: "SEÇÃO 1 - DADOS PESSOAIS",
+        section2_form: "SEÇÃO 2 - DADOS ACADÊMICOS",
+        section3_form: "SEÇÃO 3 - AVALIAÇÃO DE HISTÓRICO",
+        section4_form: "SEÇÃO 4 - ANÁLISE CURRICULAR",
+        section5_form: "SEÇÃO 5 - DADOS SOCIOECONÔMICOS",
+        section6_form: "SEÇÃO 6 - DECLARAÇÕES PARA BOLSA",
     };
 
-    return sectionTitles[sectionId] || sectionId;
+    return sectionTitles[sectionId] || sectionId.toUpperCase();
 }
 
 /**
@@ -311,18 +299,19 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
     // Load the initial PDF document
     const pdfDoc = await PDFDocument.load(initialPdfBytes);
 
-    console.log("Starting PDF merging process...");
-
     // Iterate over each section's uploaded files
     for (const [section, fields] of Object.entries(formData)) {
-        console.log(`Processing section: ${section}`);
-
         if (fields.uploadedFiles) {
-            console.log(`Uploaded Files in ${section}:`, fields.uploadedFiles);
+            // Add a title page for the section attachments
+            const titlePage = pdfDoc.addPage();
+            titlePage.drawText(`ANEXOS ${formatSectionName(section)}`, {
+                x: 50,
+                y: 700,
+                size: 20,
+                color: rgb(0, 0, 0), // Black text
+            });
 
             for (const [inputName, files] of Object.entries(fields.uploadedFiles)) {
-                console.log(`Processing input: ${inputName}`);
-
                 // Validate files
                 if (!Array.isArray(files) || files.length === 0) {
                     console.warn(`No valid files for input: ${inputName}`);
@@ -335,8 +324,6 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
                         continue;
                     }
 
-                    console.log(`Processing file: ${file.name}, Type: ${file.type}`);
-
                     // Handle PDF files
                     if (file.type && file.type.startsWith('application/pdf')) {
                         try {
@@ -346,7 +333,6 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
                             copiedPages.forEach(page => {
                                 pdfDoc.addPage(page);
                             });
-                            console.log(`Successfully added PDF: ${file.name}`);
                         } catch (error) {
                             console.error(`Failed to process PDF: ${file.name}`, error);
                         }
@@ -373,7 +359,6 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
                                 width: imgDims.width,
                                 height: imgDims.height,
                             });
-                            console.log(`Successfully added image: ${file.name}`);
                         } catch (error) {
                             console.error(`Failed to process image: ${file.name}`, error);
                         }
@@ -389,12 +374,9 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
         }
     }
 
-    console.log("Finalizing PDF merging...");
     const mergedPdfBytes = await pdfDoc.save();
-    console.log("PDF merging completed successfully.");
     return mergedPdfBytes;
 }
-
 
 /**
  * Triggers the download of the generated PDF.

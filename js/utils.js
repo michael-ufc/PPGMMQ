@@ -22,22 +22,3 @@ export function debounce(func, wait) {
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
 }
-
-let logs = ''; // Initialize a global log accumulator
-
-export function customLog(message) {
-    logs += message + '\n'; // Append the message to logs
-    console.log(message); // Optional: still log to the console
-}
-
-export function saveLogsToFile(filename = 'debug-log.txt') {
-    const blob = new Blob([logs], {
-        type: 'text/plain'
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-}

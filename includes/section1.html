@@ -96,17 +96,15 @@
             <div id="outrosInput" class="mt-2" style="display: none;">
                 <input type="text" class="form-control" id="especificacaoOutros" name="especificacaoOutros" placeholder="Especifique outro enquadramento">
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="NaoSeAplica" id="cotaNaoSeAplica" name="cotas">
+                <label class="form-check-label" for="cotaNaoSeAplica">
+                    Não se aplica
+                </label>
+            </div>
             <div class="invalid-feedback">
                 Por favor, selecione pelo menos uma opção.
             </div>
-            <script>
-                document.getElementById('cotaPcd').addEventListener('change', function() {
-                    document.getElementById('pcdInput').style.display = this.checked ? 'block' : 'none';
-                });
-                document.getElementById('cotaOutros').addEventListener('change', function() {
-                    document.getElementById('outrosInput').style.display = this.checked ? 'block' : 'none';
-                });
-            </script>
         </div>
         <!-- Comprovantes -->
         <div class="card mt-4">
@@ -119,7 +117,7 @@
                         Documento oficial de identidade com foto
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="file" class="form-control" id="docIdentidadeUpload" name="docIdentidadeUpload" accept=".pdf" />
+                    <input type="file" class="form-control" id="docIdentidadeUpload" name="docIdentidadeUpload" accept=".pdf" required />
                     <div class="invalid-feedback">
                         Por favor, envie a cópia do documento de identidade com
                         foto.
