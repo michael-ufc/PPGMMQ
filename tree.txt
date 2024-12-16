@@ -26,17 +26,17 @@
 │   └── utils.js
 ├── LICENSE
 ├── mock_pdfs
+│   ├── 1_01_doc_identidade.pdf
+│   ├── 1_02_autodeclaracao.pdf
+│   ├── 2_01_diploma1.pdf
+│   ├── 2_02_historico1.pdf
 │   ├── autodeclaracao_mock.pdf
-│   ├── autodeclaracao.pdf
 │   ├── calculo1_syllabus.pdf
-│   ├── diploma1.pdf
 │   ├── diploma2.pdf
 │   ├── diploma_graduacao2_mock.pdf
 │   ├── diploma_graduacao_mock.pdf
 │   ├── docencia_ies.pdf
 │   ├── doc_id_upload.pdf
-│   ├── documento_identidade_mock.pdf
-│   ├── historico1.pdf
 │   ├── historico2.pdf
 │   ├── historico_graduacao2_mock.pdf
 │   ├── historico_graduacao_mock.pdf

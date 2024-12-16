@@ -145,28 +145,45 @@ export function collectFormData(formId) {
     }
 
     const tabs = document.querySelectorAll('[data-bs-toggle="tab"]'); // Find all tabs
-    const formData = new FormData(form);
     const data = {};
 
     // Temporarily activate each tab to ensure visibility
     for (let i = 0; i < tabs.length; i++) {
         const tab = tabs[i];
         tab.click(); // Switch to tab
+
         form.querySelectorAll('input, select, textarea').forEach(input => {
             if (input.name) {
                 const section = input.closest('[id^="section"]');
                 const sectionId = section ? section.id : 'miscellaneous';
 
-                if (!data[sectionId]) data[sectionId] = {};
-                data[sectionId][input.name] = input.type === 'checkbox' || input.type === 'radio' ?
-                    input.checked ? input.value : null :
-                    input.value;
+                if (!data[sectionId]) {
+                    data[sectionId] = {};
+                    data[sectionId].uploadedFiles = {}; // Add uploadedFiles key for this section
+                }
+
+                // Handle file inputs
+                if (input.type === 'file') {
+                    console.log(`File Input [${input.name}]:`, input.files);
+                    data[sectionId].uploadedFiles[input.name] = input.files ?
+                        Array.from(input.files) : [];
+                }
+                // Handle checkboxes and radio buttons
+                else if (input.type === 'checkbox' || input.type === 'radio') {
+                    data[sectionId][input.name] = input.checked ? input.value : null;
+                }
+                // Handle other input types
+                else {
+                    data[sectionId][input.name] = input.value;
+                }
             }
         });
     }
 
+    console.log("Final Collected Form Data:", data);
     return data;
 }
+
 
 /**
  * Generates and merges PDFs based on the collected form data and uploaded files.
@@ -175,11 +192,8 @@ export function collectFormData(formId) {
 export async function generateAndMergePDF(formId) {
     let formData = collectFormData(formId);
 
-    // Debug collected form data
-    customLog("Collected Form Data:", formData);
-
     // Just for testing
-    formData = setMockData(formData);
+    // formData = setMockData(formData);
 
     // Step 1: Generate initial PDF with form data
     const initialPdfBytes = await createInitialPdf(formData);
@@ -297,56 +311,90 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
     // Load the initial PDF document
     const pdfDoc = await PDFDocument.load(initialPdfBytes);
 
+    console.log("Starting PDF merging process...");
+
     // Iterate over each section's uploaded files
     for (const [section, fields] of Object.entries(formData)) {
+        console.log(`Processing section: ${section}`);
+
         if (fields.uploadedFiles) {
+            console.log(`Uploaded Files in ${section}:`, fields.uploadedFiles);
+
             for (const [inputName, files] of Object.entries(fields.uploadedFiles)) {
+                console.log(`Processing input: ${inputName}`);
+
+                // Validate files
                 if (!Array.isArray(files) || files.length === 0) {
-                    console.warn(`No valid files for ${inputName}`);
+                    console.warn(`No valid files for input: ${inputName}`);
                     continue;
                 }
 
                 for (let file of files) {
-                    if (file && file.type && file.type.startsWith('application/pdf')) {
-                        const arrayBuffer = await file.arrayBuffer();
-                        const uploadedPdf = await PDFDocument.load(arrayBuffer);
-                        const copiedPages = await pdfDoc.copyPages(uploadedPdf, uploadedPdf.getPageIndices());
-                        copiedPages.forEach(page => {
-                            pdfDoc.addPage(page);
-                        });
-                    } else if (file && file.type && file.type.startsWith('image/')) {
-                        const imageBytes = await file.arrayBuffer();
-                        let img;
-                        if (file.type === 'image/jpeg') {
-                            img = await pdfDoc.embedJpg(imageBytes);
-                        } else if (file.type === 'image/png') {
-                            img = await pdfDoc.embedPng(imageBytes);
-                        } else {
-                            console.warn(`Unsupported image type: ${file.type}`);
-                            continue;
-                        }
+                    if (!(file instanceof File)) {
+                        console.error(`Invalid file object for ${inputName}:`, file);
+                        continue;
+                    }
 
-                        const imgDims = img.scale(0.5);
-                        const page = pdfDoc.addPage([imgDims.width, imgDims.height]);
-                        page.drawImage(img, {
-                            x: 0,
-                            y: 0,
-                            width: imgDims.width,
-                            height: imgDims.height,
-                        });
-                    } else {
-                        console.warn("Skipping invalid or unsupported file:", file);
+                    console.log(`Processing file: ${file.name}, Type: ${file.type}`);
+
+                    // Handle PDF files
+                    if (file.type && file.type.startsWith('application/pdf')) {
+                        try {
+                            const arrayBuffer = await file.arrayBuffer();
+                            const uploadedPdf = await PDFDocument.load(arrayBuffer);
+                            const copiedPages = await pdfDoc.copyPages(uploadedPdf, uploadedPdf.getPageIndices());
+                            copiedPages.forEach(page => {
+                                pdfDoc.addPage(page);
+                            });
+                            console.log(`Successfully added PDF: ${file.name}`);
+                        } catch (error) {
+                            console.error(`Failed to process PDF: ${file.name}`, error);
+                        }
+                    }
+                    // Handle image files
+                    else if (file.type && file.type.startsWith('image/')) {
+                        try {
+                            const imageBytes = await file.arrayBuffer();
+                            let img;
+                            if (file.type === 'image/jpeg') {
+                                img = await pdfDoc.embedJpg(imageBytes);
+                            } else if (file.type === 'image/png') {
+                                img = await pdfDoc.embedPng(imageBytes);
+                            } else {
+                                console.warn(`Unsupported image type: ${file.type}`);
+                                continue;
+                            }
+
+                            const imgDims = img.scale(0.5);
+                            const page = pdfDoc.addPage([imgDims.width, imgDims.height]);
+                            page.drawImage(img, {
+                                x: 0,
+                                y: 0,
+                                width: imgDims.width,
+                                height: imgDims.height,
+                            });
+                            console.log(`Successfully added image: ${file.name}`);
+                        } catch (error) {
+                            console.error(`Failed to process image: ${file.name}`, error);
+                        }
+                    }
+                    // Unsupported file types
+                    else {
+                        console.warn(`Skipping unsupported file type: ${file.type}`);
                     }
                 }
             }
         } else {
-            console.log("No uploaded files found in section:", section);
+            console.warn(`No uploaded files found in section: ${section}`);
         }
     }
 
+    console.log("Finalizing PDF merging...");
     const mergedPdfBytes = await pdfDoc.save();
+    console.log("PDF merging completed successfully.");
     return mergedPdfBytes;
 }
+
 
 /**
  * Triggers the download of the generated PDF.

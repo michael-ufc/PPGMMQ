@@ -20,7 +20,7 @@
             <div class="col-md-6">
                 <label for="cpf" class="form-label"><strong>CPF</strong>
                     <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="cpf" name="cpf" pattern="\d{11}" placeholder="Apenas números" required />
+                <input type="text" class="form-control" id="cpf" name="cpf" autocomplete="cpf" pattern="\d{11}" placeholder="Apenas números" required />
                 <div class="invalid-feedback">
                     Por favor, insira um CPF válido (11 dígitos) ou deixe em
                     branco se estrangeiro.
@@ -29,7 +29,7 @@
             <div class="col-md-6">
                 <label for="documentoIdentificacao" class="form-label"><strong>Número da Identidade</strong>
                     <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="documentoIdentificacao" name="documentoIdentificacao" required />
+                <input type="text" class="form-control" id="documentoIdentificacao" name="documentoIdentificacao" autocomplete="identidade" required />
                 <div class="invalid-feedback">
                     Por favor, insira o número do documento oficial com foto.
                 </div>

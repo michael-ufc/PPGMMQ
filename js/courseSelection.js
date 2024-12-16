@@ -194,6 +194,9 @@ function initializeBonusCourses2() {
 }
 
 export function initializeCourseSelection() {
+    // Return if there is no "section3_form"
+    if (!document.getElementById("section3_form")) return;
+
     initializeCoursesContainer();
     initializeBonusCourses1();
     initializeBonusCourses2();

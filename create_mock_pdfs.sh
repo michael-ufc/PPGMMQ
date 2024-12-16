@@ -2,20 +2,20 @@
 
 # Define the list of required files and their unique content
 declare -A files_content=(
-  ["documento_identidade_mock.pdf"]="Mock content for Documento Identidade Upload"
-  ["autodeclaracao_mock.pdf"]="Mock content for Auto Declaration"
-  ["diploma_graduacao_mock.pdf"]="Mock content for Graduation Diploma 1"
-  ["historico_graduacao_mock.pdf"]="Mock content for Academic Record 1"
-  ["diploma_graduacao2_mock.pdf"]="Mock content for Graduation Diploma 2"
-  ["historico_graduacao2_mock.pdf"]="Mock content for Academic Record 2"
-  ["calculo1_syllabus.pdf"]="Mock content for Syllabus - Calculus 1"
-  ["mecanica_syllabus.pdf"]="Mock content for Syllabus - Mechanics"
-  ["ia_syllabus.pdf"]="Mock content for Syllabus - Artificial Intelligence"
-  ["projeto_ml_mock.pdf"]="Mock content for Project with Scholarship"
-  ["projeto_web_mock.pdf"]="Mock content for Project without Scholarship"
-  ["publicacao_rn_mock.pdf"]="Mock content for Publication on Neural Networks"
-  ["publicacao_pi_mock.pdf"]="Mock content for Publication on Image Processing"
-  ["resenha_cq_mock.pdf"]="Mock content for Review on Quantum Computing"
+  ["1_01_documento_identidade.pdf"]="Mock content for Documento Identidade Upload"
+  ["1_02_autodeclaracao.pdf"]="Mock content for Auto Declaration"
+  ["2_01_diploma_graduacao.pdf"]="Mock content for Graduation Diploma 1"
+  ["2_02_historico_graduacao.pdf"]="Mock content for Academic Record 1"
+  ["2_03_diploma_graduacao2.pdf"]="Mock content for Graduation Diploma 2"
+  ["2_04_historico_graduacao2.pdf"]="Mock content for Academic Record 2"
+  ["3_01_calculo1_syllabus.pdf"]="Mock content for Syllabus - Calculus 1"
+  ["3_02_mecanica_syllabus.pdf"]="Mock content for Syllabus - Mechanics"
+  ["3_03_ia_syllabus.pdf"]="Mock content for Syllabus - Artificial Intelligence"
+  ["4_01_projeto_ml.pdf"]="Mock content for Project with Scholarship"
+  ["4_02_projeto_web.pdf"]="Mock content for Project without Scholarship"
+  ["4_03_publicacao_rn.pdf"]="Mock content for Publication on Neural Networks"
+  ["4_04_publicacao_pi.pdf"]="Mock content for Publication on Image Processing"
+  ["4_05_resenha_cq.pdf"]="Mock content for Review on Quantum Computing"
 )
 
 # Create output directory for mock files
