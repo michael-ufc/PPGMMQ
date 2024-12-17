@@ -9,17 +9,17 @@
 
 # sources:
 ./: yes
-  tree.txt: all
-  index.html: all
+  tree.txt: none
+  index.html: none
   create_mock_pdfs.sh: none
 
 ./includes: yes
-  section1.html: none
-  section2.html: all
+  section1.html: all
+  section2.html: none
   section3.html: none
   section4.html: none
   section5.html: none
-  section6.html: none
+  section6.html: all
   footer.html: none
 
 ./css: no
@@ -27,17 +27,17 @@
 
 ./js: yes
   main.js: all
-  includes.js: all
-  section1.js: none
+  includes.js: none
+  section1.js: all
   section3.js: none
-  popovers.js: all
-  generatePdf.js: none
-  utils.js: all
+  popovers.js: none
+  generatePdf.js: all
+  utils.js: none
 
 ./docs: no
   edital_mestrado_2025-1.md: all
 
 # user_request
 """
-No arquivo section2.html, adicione um popover para o IGC da instituição.
-""
+No PDF gerado pela função generatePdf.js, o campo "COTAS" está com valor "null" mesmo quando o formulário é completamente preenchido e validado. Por favor, faça um diagnóstico detalhado do problema e apresente uma solução efetiva.
+"""

@@ -10,8 +10,13 @@ Página de inscrição para a pós-graduação no Programa de Pós-Graduação e
 
 ## Referências
 
-Edital 2025.1 - Mestrado
-- https://docs.google.com/document/d/1paoscJv2rYKuPD2FzCplQO_gUkTNmjIs9/edit
+**Edital 2025.1 - Mestrado**
+
+[https://docs.google.com/document/d/1paoscJv2rYKuPD2FzCplQO_gUkTNmjIs9/edit](https://docs.google.com/document/d/1paoscJv2rYKuPD2FzCplQO_gUkTNmjIs9/edit)
+
+**Link Github**
+
+[https://michael-ufc.github.io/PPGMMQ/](https://michael-ufc.github.io/PPGMMQ/)
 
 ## Estrutura do projeto
 

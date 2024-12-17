@@ -65,6 +65,23 @@ function validateForm(form) {
         }
     });
 
+    // Validação específica para #section1_form - groupCotas
+    const section1Form = document.getElementById('section1_form');
+    if (section1Form) {
+        const cotasCheckboxes = section1Form.querySelectorAll('input[name="cotas"]');
+        const cotasContainer = section1Form.querySelector('[aria-labelledby="groupCotas"]');
+        const isCotasChecked = Array.from(cotasCheckboxes).some(checkbox => checkbox.checked);
+
+        if (!isCotasChecked) {
+            cotasContainer.classList.add('is-invalid');
+            cotasContainer.querySelector('.invalid-feedback').style.display = 'block';
+            isValid = false;
+        } else {
+            cotasContainer.classList.remove('is-invalid');
+            cotasContainer.querySelector('.invalid-feedback').style.display = 'none';
+        }
+    }
+
     // Validação específica do #section4_form
     const section4Form = document.getElementById('section4_form');
     if (section4Form) {

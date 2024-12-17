@@ -127,11 +127,6 @@ export async function setMockData(formData) {
     return formData;
 }
 
-/**
- * Collects and organizes form data by sections.
- * @param {string} formId - The ID of the form to collect data from.
- * @returns {object} - An object containing organized form data grouped by sections.
- */
 export function collectFormData(formId) {
     const form = document.getElementById(formId);
     if (!form) {
@@ -139,44 +134,36 @@ export function collectFormData(formId) {
         return {};
     }
 
-    const tabs = document.querySelectorAll('[data-bs-toggle="tab"]'); // Find all tabs
     const data = {};
 
-    // Temporarily activate each tab to ensure visibility
-    for (let i = 0; i < tabs.length; i++) {
-        const tab = tabs[i];
-        tab.click(); // Switch to tab
+    form.querySelectorAll('input, select, textarea').forEach(input => {
+        if (input.name) {
+            const section = input.closest('[id^="section"]');
+            const sectionId = section ? section.id : 'miscellaneous';
 
-        form.querySelectorAll('input, select, textarea').forEach(input => {
-            if (input.name) {
-                const section = input.closest('[id^="section"]');
-                const sectionId = section ? section.id : 'miscellaneous';
+            if (!data[sectionId]) {
+                data[sectionId] = {};
+                data[sectionId].uploadedFiles = {}; // Initialize uploadedFiles
+            }
 
-                if (!data[sectionId]) {
-                    data[sectionId] = {};
-                    data[sectionId].uploadedFiles = {}; // Add uploadedFiles key for this section
-                }
-
-                // Handle file inputs
-                if (input.type === 'file') {
-                    data[sectionId].uploadedFiles[input.name] = input.files ?
-                        Array.from(input.files) : [];
-                } else if (input.type === 'radio') {
-                    // Apenas o radio marcado é processado
-                    if (input.checked) {
-                        data[sectionId][input.name] = input.value;
-                    }
-                } else if (input.type === 'checkbox') {
-                    // Checkboxes funcionam normalmente
-                    data[sectionId][input.name] = input.checked ? input.value : null;
-                }
-                // Handle other input types
-                else {
+            if (input.type === 'file') {
+                data[sectionId].uploadedFiles[input.name] = input.files ? Array.from(input.files) : [];
+            } else if (input.type === 'radio') {
+                if (input.checked) {
                     data[sectionId][input.name] = input.value;
                 }
+            } else if (input.type === 'checkbox') {
+                if (!data[sectionId][input.name]) {
+                    data[sectionId][input.name] = [];
+                }
+                if (input.checked && !data[sectionId][input.name].includes(input.value)) {
+                    data[sectionId][input.name].push(input.value);
+                }
+            } else {
+                data[sectionId][input.name] = input.value;
             }
-        });
-    }
+        }
+    });
 
     return data;
 }
