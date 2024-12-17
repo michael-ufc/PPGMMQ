@@ -2,7 +2,7 @@
     <div class="card-body">
         <!-- 1. Identificação Racial/Etnica -->
         <div class="mb-3">
-            <label class="form-label" for="identificacaoRacialEtnica">
+            <label class="form-label">
                 <strong>1. Qual é sua identificação racial/étnica?</strong>
                 <span class="text-danger">*</span>
             </label>
@@ -33,39 +33,41 @@
             <div class="invalid-feedback">Por favor, selecione uma opção.</div>
         </div>
 
-        <!-- 2. Local e Condição de Moradia -->
-        <div class="mb-3">
-            <label for="localCondicaoMoradia" class="form-label">
-                <strong>2. Onde e como você mora atualmente?</strong>
-                <span class="text-danger">*</span>
-            </label>
-            <textarea class="form-control" id="localCondicaoMoradia" name="localCondicaoMoradia" rows="3" required></textarea>
-            <div class="invalid-feedback">Por favor, descreva onde e como você mora atualmente.</div>
-        </div>
-
-        <!-- 3. Número de Moradores no Domicílio -->
-        <div class="mb-3">
-            <label for="numeroMoradores" class="form-label">
-                <strong>3. Quantas pessoas moram na sua casa?</strong>
-                <span class="text-danger">*</span>
-            </label>
-            <input type="number" class="form-control" id="numeroMoradores" name="numeroMoradores" min="1" required />
-            <div class="invalid-feedback">Por favor, insira o número de pessoas que residem em sua casa.</div>
-        </div>
-
-        <!-- 4. Localização da Moradia -->
+        <!-- 2. Localização da Moradia -->
         <div class="mb-3">
             <label for="localizacaoMoradia" class="form-label">
-                <strong>4. Sua moradia está localizada em:</strong>
+                <strong>2. Qual é o seu endereço de residência?</strong>
                 <span class="text-danger">*</span>
             </label>
             <input type="text" class="form-control" id="localizacaoMoradia" name="localizacaoMoradia" required />
             <div class="invalid-feedback">Por favor, insira a localização da sua moradia.</div>
         </div>
 
+        <!-- 3. Local e Condição de Moradia -->
+        <div class="mb-3">
+            <label for="localCondicaoMoradia" class="form-label">
+
+                <strong>3. Qual é o tipo de moradia onde você reside (casa, apartamento, alojamento, etc.) e como você avalia suas condições estruturais (número de cômodos, ventilação, iluminação, estado de conservação, etc.)?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <textarea class="form-control" id="localCondicaoMoradia" name="localCondicaoMoradia" rows="3" required></textarea>
+            <div class="invalid-feedback">Por favor, descreva onde e como você mora atualmente.</div>
+        </div>
+
+        <!-- 4. Número de Moradores no Domicílio -->
+        <div class="mb-3">
+            <label for="numeroMoradores" class="form-label">
+                <strong>4. Quantas pessoas moram na sua casa?</strong>
+                <span class="text-danger">*</span>
+            </label>
+            <input type="number" class="form-control" id="numeroMoradores" name="numeroMoradores" min="1" required />
+            <div class="invalid-feedback">Por favor, insira o número de pessoas que residem em sua casa.</div>
+        </div>
+
+
         <!-- 5. Tipo de Escola - Ensino Fundamental -->
         <div class="mb-3">
-            <label for="tipoEscolaFundamental" class="form-label">
+            <label class="form-label">
                 <strong>5. Qual o tipo de escola onde você cursou o ensino fundamental?</strong>
                 <span class="text-danger">*</span>
             </label>
@@ -86,7 +88,7 @@
 
         <!-- 6. Tipo de Escola - Ensino Médio -->
         <div class="mb-3">
-            <label for="tipoEscolaMedio" class="form-label">
+            <label class="form-label">
                 <strong>6. Qual o tipo de escola onde você cursou o ensino médio?</strong>
                 <span class="text-danger">*</span>
             </label>
@@ -138,7 +140,7 @@
         <!-- 10. Motivação para Continuar Estudando -->
         <div class="mb-3">
             <label for="motivacaoEstudos" class="form-label">
-                <strong>10. Qual sua principal motivação para continuar estudando?</strong>
+                <strong>10. Qual é a sua principal motivação para continuar estudando?</strong>
                 <span class="text-danger">*</span>
             </label>
             <textarea class="form-control" id="motivacaoEstudos" name="motivacaoEstudos" rows="3" required></textarea>

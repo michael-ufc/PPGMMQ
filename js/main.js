@@ -89,6 +89,35 @@ function validateForm(form) {
         });
     }
 
+    // Validação específica do #section5_form
+    const section5Form = document.getElementById('section5_form');
+    if (section5Form) {
+        const radioGroups = section5Form.querySelectorAll('input[type="radio"][required]');
+        const groupNames = new Set();
+
+        // Identificar os grupos únicos baseados no atributo 'name'
+        radioGroups.forEach(radio => groupNames.add(radio.name));
+
+        groupNames.forEach(groupName => {
+            const groupInputs = section5Form.querySelectorAll(`input[name="${groupName}"]`);
+            const isGroupValid = Array.from(groupInputs).some(radio => radio.checked);
+
+            // Encontrar o contêiner pai onde está o grupo e o invalid-feedback
+            const groupContainer = groupInputs[0].closest('.mb-3');
+
+            if (!isGroupValid) {
+                // Adiciona a classe 'is-invalid' no contêiner principal do grupo
+                groupContainer.classList.add('is-invalid');
+                groupContainer.querySelector('.invalid-feedback').style.display = 'block';
+                isValid = false;
+            } else {
+                // Remove a classe 'is-invalid' e esconde o feedback
+                groupContainer.classList.remove('is-invalid');
+                groupContainer.querySelector('.invalid-feedback').style.display = 'none';
+            }
+        });
+    }
+
     // Validação específica do #section6_form
     if (document.getElementById('section6_form')) {
         const situacaoAtualRadios = document.querySelectorAll('input[name="situacaoAtual"]');
