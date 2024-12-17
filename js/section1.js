@@ -28,7 +28,4 @@ export function initializeSection1() {
     document.getElementById('cotaPcd').addEventListener('change', function() {
         document.getElementById('pcdInput').style.display = this.checked ? 'block' : 'none';
     });
-    document.getElementById('cotaOutros').addEventListener('change', function() {
-        document.getElementById('outrosInput').style.display = this.checked ? 'block' : 'none';
-    });
 }
