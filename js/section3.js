@@ -1,4 +1,4 @@
-// courseSelection.js
+// js/section3.js
 
 import {
     appendHTML
@@ -6,50 +6,54 @@ import {
 
 const courseCategories = {
     "Matemática": [
-        ["Calculus_I", "Cálculos I"],
-        ["Calculus_II", "Cálculos II"],
-        ["Calculus_III", "Cálculos III"],
-        ["Complex_Variables", "Cálculos com Variáveis Complexas"],
-        ["Linear_Algebra", "Álgebra Linear"],
-        ["Analytic_Geometry", "Geometria Analítica"],
-        ["Mathematical_Analysis", "Análise Matemática 1"]
+        ["CalculoFundamental1", "Cálculo Diferencial e Integral 1 (ou Cálculo Fundamental 1)"],
+        ["CalculoFundamental2", "Cálculo Diferencial e Integral 2 (ou Cálculo Fundamental 2)"],
+        ["CalculoFundamental3", "Cálculo Diferencial e Integral 3 (ou Cálculo Fundamental 3)"],
+        ["CalculoComVariasVariaveis", "Cálculo com Variáveis Complexas (ou Variável Complexa)"],
+        ["AlgebraLinear", "Álgebra Linear"],
+        ["GeometriaAnalitica", "Geometria Analítica (ou Geometria Analítica e Vetores, ou Geometria Analítica Vetorial)"],
+        ["AnaliseMatematica1", "Análise Matemática 1 (ou Análise Real 1, ou Análise na Reta 1)"]
     ],
     "Estatística": [
-        ["Exploratory_Data_Analysis", "Análise Exploratória de Dados"],
-        ["Introduction_Statistics", "Introdução à Estatística"],
-        ["Probability_Calculation", "Cálculo das Probabilidades"],
-        ["Probability_1", "Probabilidade 1"],
-        ["Probability_2", "Probabilidade 2"],
-        ["Statistical_Inference", "Inferência Estatística 1"],
-        ["Regression_Models", "Modelos de Regressão 1"]
+        ["AnaliseExploratoriaDeDados", "Análise Exploratória de Dados"],
+        ["IntroducaoEstatistica", "Introdução à Estatística (ou Probabilidade e Estatística, ou Fundamentos de Estatística, ou Introdução à Probabilidade e à Estatística)"],
+        ["CalculoDasProbabilidades", "Cálculo das Probabilidades (ou Modelos Probabilísticos)"],
+        ["Probabilidade1", "Probabilidade 1"],
+        ["Probabilidade2", "Probabilidade 2"],
+        ["InferênciaEstatistica1", "Inferência Estatística 1"],
+        ["ModelosDeRegressao1", "Modelos de Regressão 1"],
     ],
     "Computação": [
-        ["Numerical_Calculus", "Cálculo Numérico"],
-        ["Programming_Fundamentals", "Fundamentos de Programação"],
-        ["Algorithm_Analysis", "Construção e Análise de Algoritmos"],
-        ["Data_Structures", "Estrutura de Dados"],
-        ["Finite_Math", "Matemática Finita"]
+        ["CalculoNumerico", "Cálculo Numérico (ou Métodos Numéricos)"],
+        ["FundamentosDeProgramacao", "Fundamentos de Programação"],
+        ["AnaliseDeAlgoritmos", "Construção e Análise de Algoritmos"],
+        ["EstruturaDeDados", "Estrutura de Dados"],
+        ["MatematicaFinita", "Matemática Finita (ou Matemática Discreta ou Elementos de Análise Combinatória)"]
     ],
     "PPGMMQ": [
-        ["Introduction_to_Modeling", "Introdução à Modelagem"],
-        ["Probability_and_Statistical_Inference", "Probabilidade e Inferência Estatística"],
-        ["Linear_Optimization", "Otimização Linear"],
-        ["Scientific_Programming", "Elementos de Programação Científica"],
-        ["Introduction_to_Bayesian_Inference", "Introdução à Inferência Bayesiana"],
-        ["Regression_Models", "Modelos de Regressão"],
-        ["Multivariate_Modeling", "Métodos de Modelagem Multivariada"],
-        ["Computational_Methods_in_Statistics", "Métodos Computacionais em Estatística"],
-        ["Stochastic_Processes", "Processos Estocásticos"],
-        ["Game_Theory_and_Conflict_Analysis", "Teoria dos Jogos e Análise de Conflitos"],
-        ["Mathematical_Methods_in_Physics", "Métodos Matemáticos em Física"],
-        ["Special_Topics_in_Statistical_and_Mathematical_Modeling", "Tópicos Especiais de Modelagem Estatística e Matemática"],
-        ["Computational_Intelligence", "Inteligência Computacional"],
-        ["Metaheuristics", "Metaheurísticas"],
-        ["Integer_Optimization", "Otimização Inteira"],
-        ["Combinatorial_Optimization_and_Graphs", "Otimização Combinatória e em Grafos"],
-        ["Nonlinear_Optimization", "Otimização Não Linear"],
+        ["IntroducaoModelagem", "Introdução à Modelagem"],
+        ["ProbabilidadeEstatistica", "Probabilidade e Inferência Estatística"],
+        ["OtimizacaoLinear", "Otimização Linear"],
+        ["ProgramacaoCientifica", "Elementos de Programação Científica"],
+        ["IntroducaoInferênciaBayesiana", "Introdução à Inferência Bayesiana"],
+        ["ModelosDeRegressao", "Modelos de Regressão"],
+        ["ModelagemMultivariada", "Métodos de Modelagem Multivariada"],
+        ["MetodosComputacionaisEmEstatistica", "Métodos Computacionais em Estatística"],
+        ["ProcessosEstocasticos", "Processos Estocásticos"],
+        ["TeoriaDosJogosConflitos", "Teoria dos Jogos e Análise de Conflitos"],
+        ["MetodosMatematicosFisica", "Métodos Matemáticos em Física"],
+        ["TopicosEspeciaisModelagemEstatistica", "Tópicos Especiais de Modelagem Estatística e Matemática"],
+        ["InteligenciaComputacional", "Inteligência Computacional"],
+        ["Metaheuristicas", "Metaheurísticas"],
+        ["OtimizacaoInteira", "Otimização Inteira"],
+        ["OtimizacaoCombinatoriaGrafos", "Otimização Combinatória e em Grafos"],
+        ["OtimizacaoNaoLinear", "Otimização Não Linear"],
     ],
 };
+
+
+// Registro para armazenar disciplinas selecionadas
+const selectedCourses = new Set();
 
 function createCourseContainer(containerId, courseNumber, required = true) {
     return `
@@ -144,7 +148,7 @@ function initializeCoursesContainer() {
         },
     ];
 
-    // Target the .card-body within coursesContainer
+    // Target the .card-body dentro de coursesContainer
     const containerId = "courses";
     const coursesContainer = document.getElementById(containerId).querySelector(".card-body");
 
@@ -160,6 +164,26 @@ function initializeCoursesContainer() {
         } = config;
         const courseSelect = document.getElementById(`${containerId}-${number}`);
         populateSelect(courseSelect, categories, includeOptGroups);
+
+        // Adicionar event listener para gerenciar seleção única
+        courseSelect.addEventListener('change', (event) => {
+            const previousValue = courseSelect.getAttribute('data-previous') || "";
+            const currentValue = event.target.value;
+
+            if (previousValue) {
+                selectedCourses.delete(previousValue);
+                updateAllSelectOptions();
+            }
+
+            if (currentValue) {
+                selectedCourses.add(currentValue);
+                courseSelect.setAttribute('data-previous', currentValue);
+            } else {
+                courseSelect.removeAttribute('data-previous');
+            }
+
+            updateAllSelectOptions();
+        });
     });
 }
 
@@ -168,13 +192,35 @@ function initializeBonusCourses1() {
     const bonusCoursesContainer = document.getElementById(containerId).querySelector(".card-body");
     const numberOfBonusCourses = 5;
 
+    // Criar os containers das disciplinas bônus
     for (let i = 1; i <= numberOfBonusCourses; i++) {
-        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i, false));
+        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, 5 + i, false));
     }
 
+    // Popular os selects das disciplinas bônus
     for (let i = 1; i <= numberOfBonusCourses; i++) {
-        const bonusSelect = document.getElementById(`${containerId}-${i}`);
+        const bonusSelect = document.getElementById(`${containerId}-${5 + i}`);
         populateSelect(bonusSelect, ["Matemática", "Estatística", "Computação"], true);
+
+        // Adicionar event listener para gerenciar seleção única
+        bonusSelect.addEventListener('change', (event) => {
+            const previousValue = bonusSelect.getAttribute('data-previous') || "";
+            const currentValue = event.target.value;
+
+            if (previousValue) {
+                selectedCourses.delete(previousValue);
+                updateAllSelectOptions();
+            }
+
+            if (currentValue) {
+                selectedCourses.add(currentValue);
+                bonusSelect.setAttribute('data-previous', currentValue);
+            } else {
+                bonusSelect.removeAttribute('data-previous');
+            }
+
+            updateAllSelectOptions();
+        });
     }
 }
 
@@ -184,20 +230,62 @@ function initializeBonusCourses2() {
     const numberOfBonusCourses = 4;
 
     for (let i = 1; i <= numberOfBonusCourses; i++) {
-        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, i, false));
+        appendHTML(bonusCoursesContainer, createCourseContainer(containerId, 10 + i, false));
     }
 
     for (let i = 1; i <= numberOfBonusCourses; i++) {
-        const bonusSelect = document.getElementById(`${containerId}-${i}`);
+        const bonusSelect = document.getElementById(`${containerId}-${10 + i}`);
         populateSelect(bonusSelect, ["PPGMMQ"], true);
+
+        // Adicionar event listener para gerenciar seleção única
+        bonusSelect.addEventListener('change', (event) => {
+            const previousValue = bonusSelect.getAttribute('data-previous') || "";
+            const currentValue = event.target.value;
+
+            if (previousValue) {
+                selectedCourses.delete(previousValue);
+                updateAllSelectOptions();
+            }
+
+            if (currentValue) {
+                selectedCourses.add(currentValue);
+                bonusSelect.setAttribute('data-previous', currentValue);
+            } else {
+                bonusSelect.removeAttribute('data-previous');
+            }
+
+            updateAllSelectOptions();
+        });
     }
 }
 
 export function initializeSection3() {
-    // Return if there is no "section3_form"
+    // Retornar se não houver "section3_form"
     if (!document.getElementById("section3_form")) return;
 
     initializeCoursesContainer();
     initializeBonusCourses1();
     initializeBonusCourses2();
+}
+
+// Função para atualizar as opções disponíveis em todos os selects
+function updateAllSelectOptions() {
+    const allSelects = document.querySelectorAll('.disciplina-select');
+
+    allSelects.forEach(select => {
+        const currentValue = select.value;
+        const options = select.querySelectorAll('option');
+
+        options.forEach(option => {
+            if (option.value === "") return; // Ignorar a opção padrão
+
+            if (selectedCourses.has(option.value) && option.value !== currentValue) {
+                option.disabled = true;
+                option.classList.add('text-muted');
+            } else {
+                option.disabled = false;
+                option.classList.remove('text-muted');
+            }
+        });
+    });
 }
