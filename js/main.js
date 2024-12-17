@@ -24,17 +24,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeSection1();
     initializeSection3();
     initializePopovers();
+
     // Step 3: Add form validation before PDF generation
     const generatePdfBtn = document.getElementById('generatePdfBtn');
     generatePdfBtn.addEventListener('click', async (e) => {
         e.preventDefault();
 
+        // Step 4: Validate form before PDF generation
         const form = document.getElementById('applicationForm'); // Assuming form ID
         if (!validateForm(form)) {
             alert('Por favor, preencha todos os campos obrigatórios corretamente.');
             return;
         }
 
+        // Step 5: Generate PDF
         try {
             await generateAndMergePDF('applicationForm');
             alert('PDF gerado com sucesso!');
@@ -62,33 +65,37 @@ function validateForm(form) {
         }
     });
 
-    // Validação - Situação Atual (pelo menos um rádio selecionado)
-    const situacaoAtualRadios = document.querySelectorAll('input[name="situacaoAtual"]');
-    const situacaoAtualContainer = document.querySelector('label[for="situacaoAtual"]').parentElement;
-    const situacaoSelecionada = Array.from(situacaoAtualRadios).some(radio => radio.checked);
+    // Validação - section6_form
+    if (document.getElementById('section6_form')) {
+        // Validação - Situação Atual (pelo menos um rádio selecionado)
+        const situacaoAtualRadios = document.querySelectorAll('input[name="situacaoAtual"]');
+        const situacaoAtualContainer = document.querySelector('label[for="situacaoAtual"]').parentElement;
+        const situacaoSelecionada = Array.from(situacaoAtualRadios).some(radio => radio.checked);
 
-    if (!situacaoSelecionada) {
-        situacaoAtualContainer.classList.add('is-invalid');
-        situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'block';
-        isValid = false;
-    } else {
-        situacaoAtualContainer.classList.remove('is-invalid');
-        situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'none';
+        if (!situacaoSelecionada) {
+            situacaoAtualContainer.classList.add('is-invalid');
+            situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'block';
+            isValid = false;
+        } else {
+            situacaoAtualContainer.classList.remove('is-invalid');
+            situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'none';
+        }
+
+        // Validação - Declarações (ambas checkboxes obrigatórias)
+        const checkboxCiente = document.getElementById('estouCienteDasPenalidades');
+        const checkboxAutorizo = document.getElementById('autorizoAveriguacoes');
+        const declaracoesContainer = document.querySelector('fieldset');
+
+        if (!checkboxCiente.checked || !checkboxAutorizo.checked) {
+            declaracoesContainer.classList.add('is-invalid');
+            declaracoesContainer.querySelector('.invalid-feedback').style.display = 'block';
+            isValid = false;
+        } else {
+            declaracoesContainer.classList.remove('is-invalid');
+            declaracoesContainer.querySelector('.invalid-feedback').style.display = 'none';
+        }
     }
 
-    // Validação - Declarações (ambas checkboxes obrigatórias)
-    const checkboxCiente = document.getElementById('estouCienteDasPenalidades');
-    const checkboxAutorizo = document.getElementById('autorizoAveriguacoes');
-    const declaracoesContainer = document.querySelector('fieldset');
-
-    if (!checkboxCiente.checked || !checkboxAutorizo.checked) {
-        declaracoesContainer.classList.add('is-invalid');
-        declaracoesContainer.querySelector('.invalid-feedback').style.display = 'block';
-        isValid = false;
-    } else {
-        declaracoesContainer.classList.remove('is-invalid');
-        declaracoesContainer.querySelector('.invalid-feedback').style.display = 'none';
-    }
 
     return isValid;
 }

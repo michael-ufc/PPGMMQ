@@ -3,18 +3,17 @@
         <div class="mb-3">
             <label for="cursoGraduacao" class="form-label"><strong>Curso de Graduação</strong>
                 <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="cursoGraduacao" name="cursoGraduacao" required />
+            <input type="text" class="form-control" id="cursoGraduacao" name="cursoGraduacao" placeholder="Preencha com o nome do seu curso de graduação" required />
             <div class="invalid-feedback">
                 Por favor, insira o seu curso de graduação.
             </div>
         </div>
         <div class="mb-3">
-            <label for="instituicao" class="form-label"><strong>Instituição</strong>
+            <label for="instituicao" class="form-label"><strong>Instituição de Ensinio Superior (IES)</strong>
                 <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="instituicao" name="instituicao" required />
+            <input type="text" class="form-control" id="instituicao" name="instituicao" placeholder="Preencha com o nome da IES da sua graduação" required />
             <div class="invalid-feedback">
-                Por favor, insira o nome da instituição onde realizou a
-                graduação.
+                Por favor, insira o nome da instituição onde realizou a graduação.
             </div>
         </div>
         <div class="row mb-3">
@@ -26,7 +25,7 @@
                     </button>
                     <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" required />
+                <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" placeholder="Apenas números" required />
                 <div class="invalid-feedback">
                     Por favor, insira o Índice Geral de Cursos (IGC) da instituição.
                 </div>
@@ -39,7 +38,7 @@
                     </button>
                     <span class="text-danger">*</span>
                 </label>
-                <input type="number" step="0.01" class="form-control" id="ira" name="ira" required />
+                <input type="number" step="0.01" class="form-control" id="ira" name="ira" placeholder="Apenas números" required />
                 <div class="invalid-feedback">
                     Por favor, insira o Índice de Rendimento Acadêmico (IRA).
                 </div>
@@ -47,20 +46,20 @@
         </div>
         <div class="mb-3">
             <label for="cursoGraduacao2" class="form-label"><strong>Curso de Graduação 2</strong></label>
-            <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2" />
+            <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2" placeholder="Preencha com o nome do seu curso de graduação" />
         </div>
         <div class="mb-3">
-            <label for="instituicao2" class="form-label"><strong>Instituição 2</strong></label>
-            <input type="text" class="form-control" id="instituicao2" name="instituicao2" />
+            <label for="instituicao2" class="form-label"><strong>Instituição de Ensino Superior (IES) 2 (Opcional)</strong></label>
+            <input type="text" class="form-control" id="instituicao2" name="instituicao2" placeholder="Preencha com o nome da IES da sua graduação" />
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="igcInstituicao2" class="form-label"><strong>IGC da Instituição 2</strong></label>
-                <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2" />
+                <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2" placeholder="Apenas números" />
             </div>
             <div class="col-md-6">
                 <label for="ira2" class="form-label"><strong>IRA 2</strong></label>
-                <input type="number" step="0.01" class="form-control" id="ira2" name="ira2" />
+                <input type="number" step="0.01" class="form-control" id="ira2" name="ira2" placeholder="Apenas números" />
             </div>
         </div>
         <div class="mb-3">
@@ -80,8 +79,6 @@
         <div class="card mt-4">
             <div class="card-body">
                 <h5 class="card-title">Comprovantes</h5>
-
-                <!-- Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso-->
                 <div class="mb-3">
                     <label for="diplomaGraduacaoUpload" class="form-label">
                         Frente e verso do Diploma de Graduação ou Declaração de
@@ -90,12 +87,9 @@
                     </label>
                     <input type="file" class="form-control" id="diplomaGraduacaoUpload" name="diplomaGraduacaoUpload" accept=".pdf" required />
                     <div class="invalid-feedback">
-                        Por favor, envie a cópia do diploma de graduação ou
-                        declaração de conclusão de curso.
+                        Por favor, envie a cópia do diploma de graduação ou declaração de conclusão de curso.
                     </div>
                 </div>
-
-                <!-- Histórico de Disciplinas Curso de Graduação-->
                 <div class="mb-3">
                     <label for="historicoDisciplinasGraduacao" class="form-label">
                         Histórico de Disciplinas do Curso de Graduação
@@ -103,33 +97,7 @@
                     </label>
                     <input type="file" class="form-control" id="historicoDisciplinasGraduacao" name="historicoDisciplinasGraduacao" accept=".pdf" required />
                     <div class="invalid-feedback">
-                        Por favor, envie o histórico de disciplinas do curso de
-                        graduação.
-                    </div>
-                </div>
-
-                <!-- Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso-->
-                <div class="mb-3">
-                    <label for="diplomaGraduacaoUpload2" class="form-label">
-                        Frente e verso do Diploma de Graduação ou Declaração de
-                        Conclusão de Curso
-                    </label>
-                    <input type="file" class="form-control" id="diplomaGraduacaoUpload2" name="diplomaGraduacaoUpload2" accept=".pdf" />
-                    <div class="invalid-feedback">
-                        Por favor, envie a cópia do diploma de graduação ou
-                        declaração de conclusão de curso.
-                    </div>
-                </div>
-
-                <!-- Histórico de Disciplinas Curso de Graduação 2-->
-                <div class="mb-3">
-                    <label for="historicoDisciplinasGraduacao2" class="form-label">
-                        Histórico de Disciplinas do Curso de Graduação 2
-                    </label>
-                    <input type="file" class="form-control" id="historicoDisciplinasGraduacao2" name="historicoDisciplinasGraduacao2" accept=".pdf" />
-                    <div class="invalid-feedback">
-                        Por favor, envie o histórico de disciplinas do curso de
-                        graduação 2.
+                        Por favor, envie o histórico de disciplinas do curso de graduação.
                     </div>
                 </div>
             </div>
