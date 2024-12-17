@@ -1,5 +1,5 @@
 # system:
-- HTML
+- HTML 5
 - CSS
 - JavaScript
 - Bootstrap
@@ -14,24 +14,24 @@
   create_mock_pdfs.sh: none
 
 ./includes: yes
-  section1.html: all
+  section1.html: none
   section2.html: none
-  section3.html: none
+  section3.html: all
   section4.html: none
   section5.html: none
-  section6.html: all
+  section6.html: none
   footer.html: none
 
-./css: no
+./css: yes
   styles.css: yes
 
 ./js: yes
   main.js: all
   includes.js: none
-  section1.js: all
-  section3.js: none
+  section1.js: none
+  section3.js: all
   popovers.js: none
-  generatePdf.js: all
+  generatePdf.js: none
   utils.js: none
 
 ./docs: no
@@ -39,5 +39,5 @@
 
 # user_request
 """
-No PDF gerado pela função generatePdf.js, o campo "COTAS" está com valor "null" mesmo quando o formulário é completamente preenchido e validado. Por favor, faça um diagnóstico detalhado do problema e apresente uma solução efetiva.
+No arquivo section3.js, alguns dos itens em "courseCategories" são muito longos e não ficam adequadamente exibidos no select. Por favor, adicione um title para cada item que contenha um '(', coloque o texto que antecede o '(' no value e o conteúdo do '(' no title.
 """

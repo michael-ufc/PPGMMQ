@@ -20,7 +20,7 @@ const courseCategories = {
         ["CalculoDasProbabilidades", "Cálculo das Probabilidades (ou Modelos Probabilísticos)"],
         ["Probabilidade1", "Probabilidade 1"],
         ["Probabilidade2", "Probabilidade 2"],
-        ["InferênciaEstatistica1", "Inferência Estatística 1"],
+        ["InferenciaEstatistica1", "Inferência Estatística 1"],
         ["ModelosDeRegressao1", "Modelos de Regressão 1"],
     ],
     "Computação": [
@@ -35,7 +35,7 @@ const courseCategories = {
         ["ProbabilidadeEstatistica", "Probabilidade e Inferência Estatística"],
         ["OtimizacaoLinear", "Otimização Linear"],
         ["ProgramacaoCientifica", "Elementos de Programação Científica"],
-        ["IntroducaoInferênciaBayesiana", "Introdução à Inferência Bayesiana"],
+        ["IntroducaoInferenciaBayesiana", "Introdução à Inferência Bayesiana"],
         ["ModelosDeRegressao", "Modelos de Regressão"],
         ["ModelagemMultivariada", "Métodos de Modelagem Multivariada"],
         ["MetodosComputacionaisEmEstatistica", "Métodos Computacionais em Estatística"],
@@ -50,7 +50,6 @@ const courseCategories = {
         ["OtimizacaoNaoLinear", "Otimização Não Linear"],
     ],
 };
-
 
 // Registro para armazenar disciplinas selecionadas
 const selectedCourses = new Set();
@@ -102,20 +101,38 @@ function populateSelect(selectElement, categories, includeOptGroups = false) {
         categories.forEach(category => {
             const optGroup = document.createElement("optgroup");
             optGroup.label = category;
-            courseCategories[category].forEach(([value, label]) => {
+            courseCategories[category].forEach(([code, label]) => {
                 const option = document.createElement("option");
-                option.value = value;
-                option.textContent = label;
+                const parenthesisIndex = label.indexOf('(');
+                if (parenthesisIndex !== -1) {
+                    const valueText = label.substring(0, parenthesisIndex).trim();
+                    const titleText = label.substring(parenthesisIndex + 1, label.length - 1).trim();
+                    option.value = valueText;
+                    option.title = titleText;
+                    option.textContent = valueText;
+                } else {
+                    option.value = code;
+                    option.textContent = label;
+                }
                 optGroup.appendChild(option);
             });
             selectElement.appendChild(optGroup);
         });
     } else {
         const singleCategory = categories[0];
-        courseCategories[singleCategory].forEach(([value, label]) => {
+        courseCategories[singleCategory].forEach(([code, label]) => {
             const option = document.createElement("option");
-            option.value = value;
-            option.textContent = label;
+            const parenthesisIndex = label.indexOf('(');
+            if (parenthesisIndex !== -1) {
+                const valueText = label.substring(0, parenthesisIndex).trim();
+                const titleText = label.substring(parenthesisIndex + 1, label.length - 1).trim();
+                option.value = valueText;
+                option.title = titleText;
+                option.textContent = valueText;
+            } else {
+                option.value = code;
+                option.textContent = label;
+            }
             selectElement.appendChild(option);
         });
     }
