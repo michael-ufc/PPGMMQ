@@ -161,10 +161,14 @@ export function collectFormData(formId) {
                 if (input.type === 'file') {
                     data[sectionId].uploadedFiles[input.name] = input.files ?
                         Array.from(input.files) : [];
-                }
-                // Handle checkboxes and radio buttons
-                else if (input.type === 'checkbox' || input.type === 'radio') {
-                    data[sectionId][input.name] = input.checked ? input.value : null;                    
+                } else if (input.type === 'radio') {
+                    // Apenas o radio marcado é processado
+                    if (input.checked) {
+                        data[sectionId][input.name] = input.value;
+                    }
+                } else if (input.type === 'checkbox') {
+                    // Checkboxes funcionam normalmente
+                    data[sectionId][input.name] = input.checked ? input.value : null;
                 }
                 // Handle other input types
                 else {

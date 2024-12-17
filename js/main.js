@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Step 1: Load includes
     await loadIncludes();
 
-
     // Step 2: Initialize dependent scripts
     initializeSection1();
     initializeCourseSelection();
@@ -43,12 +42,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 function validateForm(form) {
     let isValid = true;
 
-    // Verificar inputs regulares, emails e arquivos
+    // Validação de inputs regulares, emails e arquivos
     form.querySelectorAll('input, select, textarea').forEach((input) => {
         if (input.hasAttribute('required') && !input.value.trim()) {
-            input.classList.add('is-invalid');
-            isValid = false;
-        } else if (input.type === 'email' && !input.value.match(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)) {
             input.classList.add('is-invalid');
             isValid = false;
         } else if (input.type === 'file' && input.hasAttribute('required') && input.files.length === 0) {
@@ -60,26 +56,42 @@ function validateForm(form) {
         }
     });
 
-    // Verificar se pelo menos uma opção de "cotas" foi selecionada
-    const cotasGroup = document.getElementById('groupCotas').parentNode; // Container principal
-    const cotasCheckboxes = document.querySelectorAll('input[name="cotas"]');
-    const cotasChecked = Array.from(cotasCheckboxes).some(checkbox => checkbox.checked);
+    // Validação - Situação Atual (pelo menos um rádio selecionado)
+    const situacaoAtualRadios = document.querySelectorAll('input[name="situacaoAtual"]');
+    const situacaoAtualContainer = document.querySelector('label[for="situacaoAtual"]').parentElement;
+    const situacaoSelecionada = Array.from(situacaoAtualRadios).some(radio => radio.checked);
 
-    if (!cotasChecked) {
-        // Adicionar classe de erro e exibir mensagem
-        cotasGroup.classList.add('is-invalid');
-        cotasGroup.querySelector('.invalid-feedback').style.display = 'block';
+    if (!situacaoSelecionada) {
+        situacaoAtualContainer.classList.add('is-invalid');
+        situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'block';
         isValid = false;
     } else {
-        // Remover classe de erro e ocultar mensagem
-        cotasGroup.classList.remove('is-invalid');
-        cotasGroup.querySelector('.invalid-feedback').style.display = 'none';
+        situacaoAtualContainer.classList.remove('is-invalid');
+        situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'none';
+    }
+
+    // Validação - Declarações (ambas checkboxes obrigatórias)
+    const checkboxCiente = document.getElementById('estouCienteDasPenalidades');
+    const checkboxAutorizo = document.getElementById('autorizoAveriguacoes');
+    const declaracoesContainer = document.querySelector('fieldset');
+
+    if (!checkboxCiente.checked || !checkboxAutorizo.checked) {
+        declaracoesContainer.classList.add('is-invalid');
+        declaracoesContainer.querySelector('.invalid-feedback').style.display = 'block';
+        isValid = false;
+    } else {
+        declaracoesContainer.classList.remove('is-invalid');
+        declaracoesContainer.querySelector('.invalid-feedback').style.display = 'none';
     }
 
     return isValid;
 }
 
 function initializeSection1() {
+    // Return if section1_form not found
+    if (!document.getElementById("section1_form"))
+        return;
+
     const checkboxes = document.querySelectorAll('input[name="cotas"]');
     const cotaNaoSeAplica = document.getElementById('cotaNaoSeAplica');
 
