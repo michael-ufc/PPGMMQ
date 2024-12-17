@@ -19,12 +19,16 @@
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="igcInstituicao" class="form-label"><strong>IGC da Instituição</strong>
-                    <span class="text-danger">*</span></label>
+                <label for="igcInstituicao" class="form-label">
+                    <strong>IGC da Instituição</strong>
+                    <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover" data-bs-placement="right" data-bs-html="true" data-bs-content="O Índice Geral de Cursos (IGC) é um indicador de qualidade das instituições de ensino superior, calculado pelo MEC com base na avaliação dos cursos oferecidos.">
+                        <i class="bi bi-question-circle"></i>
+                    </button>
+                    <span class="text-danger">*</span>
+                </label>
                 <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" required />
                 <div class="invalid-feedback">
-                    Por favor, insira o Índice Geral de Cursos (IGC) da
-                    instituição.
+                    Por favor, insira o Índice Geral de Cursos (IGC) da instituição.
                 </div>
             </div>
             <div class="col-md-6">

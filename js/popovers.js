@@ -1,4 +1,4 @@
-// popovers.js
+// js/popovers.js
 
 export function initializePopovers() {
     const popoverTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="popover"]'));

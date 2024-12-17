@@ -10,33 +10,34 @@
 # sources:
 ./: yes
   tree.txt: all
+  index.html: all
   create_mock_pdfs.sh: none
-  index.html: none
 
-./includes: no
-  section1.html: all
-  section2.html: none
+./includes: yes
+  section1.html: none
+  section2.html: all
   section3.html: none
   section4.html: none
-  section5.html: all
-  section6.html: all
+  section5.html: none
+  section6.html: none
   footer.html: none
 
 ./css: no
   styles.css: yes
 
 ./js: yes
-  main.js: none
-  includes.js: none
-  courseSelection.js: none
-  popovers.js: none
-  utils.js: none
-  generatePdf.js: all
+  main.js: all
+  includes.js: all
+  section1.js: none
+  section3.js: none
+  popovers.js: all
+  generatePdf.js: none
+  utils.js: all
 
 ./docs: no
   edital_mestrado_2025-1.md: all
 
 # user_request
 """
-Do I need to change the paths in the setMockData function?
-"""
+No arquivo section2.html, adicione um popover para o IGC da instituição.
+""

@@ -18,11 +18,12 @@
 │   └── section6.html
 ├── index.html
 ├── js
-│   ├── courseSelection.js
 │   ├── generatePdf.js
 │   ├── includes.js
 │   ├── main.js
 │   ├── popovers.js
+│   ├── section1.js
+│   ├── section3.js
 │   └── utils.js
 ├── LICENSE
 ├── mock_pdfs
@@ -60,4 +61,4 @@
 ├── README.md
 └── tree.txt
 
-7 directories, 54 files
+7 directories, 55 files
