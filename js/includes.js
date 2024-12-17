@@ -9,18 +9,18 @@ export async function loadIncludes() {
         //     file: 'section1.html',
         //     containerId: 'section1-content'
         // },
-        {
-            file: 'section2.html',
-            containerId: 'section2-content'
-        },
+        // {
+        //     file: 'section2.html',
+        //     containerId: 'section2-content'
+        // },
         // {
         //     file: 'section3.html',
         //     containerId: 'section3-content'
         // },
-        // {
-        //     file: 'section4.html',
-        //     containerId: 'section4-content'
-        // },
+        {
+            file: 'section4.html',
+            containerId: 'section4-content'
+        },
         // {
         //     file: 'section5.html',
         //     containerId: 'section5-content'

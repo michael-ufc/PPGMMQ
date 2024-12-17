@@ -65,9 +65,32 @@ function validateForm(form) {
         }
     });
 
-    // Validação - section6_form
+    // Validação específica do #section4_form
+    const section4Form = document.getElementById('section4_form');
+    if (section4Form) {
+        section4Form.querySelectorAll('input[type="number"]').forEach(numberInput => {
+            const relatedFileInput = document.getElementById(`${numberInput.id}Upload`);
+
+            if (numberInput.value.trim() !== "" && Number(numberInput.value) > 0) {
+                // Se quantidade/mês for maior que zero, o arquivo se torna obrigatório
+                if (!relatedFileInput || relatedFileInput.files.length === 0) {
+                    relatedFileInput.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    relatedFileInput.classList.remove('is-invalid');
+                    relatedFileInput.classList.add('is-valid');
+                }
+            } else {
+                // Se quantidade/mês for zero ou vazio, limpa a validação do arquivo
+                if (relatedFileInput) {
+                    relatedFileInput.classList.remove('is-invalid', 'is-valid');
+                }
+            }
+        });
+    }
+
+    // Validação específica do #section6_form
     if (document.getElementById('section6_form')) {
-        // Validação - Situação Atual (pelo menos um rádio selecionado)
         const situacaoAtualRadios = document.querySelectorAll('input[name="situacaoAtual"]');
         const situacaoAtualContainer = document.querySelector('label[for="situacaoAtual"]').parentElement;
         const situacaoSelecionada = Array.from(situacaoAtualRadios).some(radio => radio.checked);
@@ -81,7 +104,6 @@ function validateForm(form) {
             situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'none';
         }
 
-        // Validação - Declarações (ambas checkboxes obrigatórias)
         const checkboxCiente = document.getElementById('estouCienteDasPenalidades');
         const checkboxAutorizo = document.getElementById('autorizoAveriguacoes');
         const declaracoesContainer = document.querySelector('fieldset');
@@ -95,7 +117,6 @@ function validateForm(form) {
             declaracoesContainer.querySelector('.invalid-feedback').style.display = 'none';
         }
     }
-
 
     return isValid;
 }
