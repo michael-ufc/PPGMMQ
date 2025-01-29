@@ -35,7 +35,7 @@
                 "isDefault": false
             },
             "problemMatcher": [],
-            "dependsOn": ["js-beautify"]
+            "dependsOn": []
         },
         // Same as pgen but includes git diff information in the prompt
         {
@@ -47,7 +47,7 @@
                 "isDefault": false
             },
             "problemMatcher": [],
-            "dependsOn": ["js-beautify"]
+            "dependsOn": []
         },
         // Formats Python code using Black formatter with 120 character line length
         // Runs silently in the background

@@ -10,13 +10,13 @@
 # sources:
 ./: yes
   tree.txt: none
-  index.html: none
+  index.html: all
   create_mock_pdfs.sh: none
 
 ./includes: yes
   section1.html: none
-  section2.html: none
-  section3.html: all
+  section2.html: all
+  section3.html: none
   section4.html: none
   section5.html: none
   section6.html: none
@@ -29,7 +29,7 @@
   main.js: all
   includes.js: none
   section1.js: none
-  section3.js: all
+  section3.js: none
   popovers.js: none
   generatePdf.js: none
   utils.js: none
@@ -39,5 +39,5 @@
 
 # user_request
 """
-No arquivo section3.js, alguns dos itens em "courseCategories" são muito longos e não ficam adequadamente exibidos no select. Por favor, adicione um title para cada item que contenha um '(', coloque o texto que antecede o '(' no value e o conteúdo do '(' no title.
+Na seleção para o doutorado, é preciso incluir também os dados do mestrado (instituição, coeficiente de rendimento, frente e verso do diploma de graduação e o histórico das disciplinas). 
 """
