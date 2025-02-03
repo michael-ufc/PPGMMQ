@@ -7,9 +7,6 @@ import {
     initializeSection1
 } from './section1.js';
 import {
-    initializeSection3
-} from './section3.js';
-import {
     initializePopovers
 } from './popovers.js';
 import {
@@ -22,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Step 2: Initialize dependent scripts
     initializeSection1();
-    initializeSection3();
     initializePopovers();
 
     // Step 3: Add form validation before PDF generation
