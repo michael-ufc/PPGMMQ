@@ -15,9 +15,8 @@
 
 ./includes: yes
   section1.html: none
-  section2.html: all
-  section3.html: none
-  section4.html: none
+  section2.html: none  
+  section4.html: all
   section5.html: none
   section6.html: none
   footer.html: none
@@ -27,15 +26,15 @@
 
 ./js: yes
   main.js: all
-  includes.js: none
-  section1.js: none
-  section3.js: none
+  includes.js: all
+  section1.js: none  
   popovers.js: none
   generatePdf.js: none
   utils.js: none
 
 ./docs: no
-  edital_mestrado_2025-1.md: all
+  edital_mestrado_2025-1.md: none
+  edital_doutorado_2025-1.md: all
 
 # user_request
 """
