@@ -1,325 +1,280 @@
-<!-- includes/section4.html -->
+<!-- includes/section4.html - Avaliação Curricular para Doutorado -->
 <div id="section4_form" class="mt-1">
-    <div class="card-body">
-        <h5>1. Projetos de pesquisa/iniciação científica</h5>
-        <!-- Com bolsa -->
+    <!-- Grupo 1: Publicações em Periódicos -->
+    <div class="card rounded-3 mb-4">
+      <div class="card-body">
+        <h5>1. Publicações em Periódicos</h5>
+        <p class="text-muted">Publicação ou trabalho aceito incondicionalmente em periódicos (Máximo de 6,0 pontos)</p>
+        
+        <!-- 1.1. Qualificação A1 e A2 -->
         <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Com bolsa (quantidade de meses)</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="projetosComBolsa" class="form-label">Meses</label>
-                        <input type="number" class="form-control" id="projetosComBolsa" name="mesesDeProjetosComBolsa" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira a quantidade de meses com bolsa.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="projetosComBolsaUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="projetosComBolsaUpload" name="projetosComBolsaUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes.
-                        </div>
-                    </div>
+          <div class="card-body">
+            <h6>1.1. Qualificação A1 e A2 (Máximo: 2,0 pontos)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="qualA1A2" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="qualA1A2" name="qualificacaoA1A2" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de publicações (A1 e A2).
                 </div>
+              </div>
+              <div class="col-md-10">
+                <label for="qualA1A2Upload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="qualA1A2Upload" name="qualA1A2Upload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes para as publicações A1 e A2.
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-
-        <!-- Sem bolsa -->
+        
+        <!-- 1.2. Qualificação A3 e A4 -->
         <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Sem bolsa (quantidade de meses)</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="projetosSemBolsa" class="form-label">Meses</label>
-                        <input type="number" class="form-control" id="projetosSemBolsa" name="mesesDeProjetosSemBolsa" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira a quantidade de meses sem bolsa.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="projetosSemBolsaUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="projetosSemBolsaUpload" name="projetosSemBolsaUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes.
-                        </div>
-                    </div>
+          <div class="card-body">
+            <h6>1.2. Qualificação A3 e A4 (Máximo: 1,5 pontos)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="qualA3A4" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="qualA3A4" name="qualificacaoA3A4" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de publicações (A3 e A4).
                 </div>
+              </div>
+              <div class="col-md-10">
+                <label for="qualA3A4Upload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="qualA3A4Upload" name="qualificacaoA3A4Upload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes para as publicações A3 e A4.
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-
-        <h5>2. Publicações em periódicos</h5>
-        <h6 class="text-primary">Envie apenas as páginas que identificam as revistas, os títulos dos artigos e os autores.</h6>
-        <!-- Categorias A1 e A2 -->
+        
+        <!-- 1.3. Qualificação B1 e B2 -->
         <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Categorias A1 e A2</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="publicacoesA1A2" class="form-label">Quantos?</label>
-                        <input type="number" class="form-control" id="publicacoesA1A2" name="publicacoesA1A2" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira o número de publicações nas categorias A1 e A2.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="publicacoesA1A2Upload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="publicacoesA1A2Upload" name="publicacoesA1A2Upload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes das publicações.
-                        </div>
-                    </div>
+          <div class="card-body">
+            <h6>1.3. Qualificação B1 e B2 (Máximo: 1,0 ponto)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="qualB1B2" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="qualB1B2" name="qualificacaoB1B2" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de publicações (B1 e B2).
                 </div>
+              </div>
+              <div class="col-md-10">
+                <label for="qualB1B2Upload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="qualB1B2Upload" name="qualificacaoB1B2Upload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes para as publicações B1 e B2.
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- Categorias A3 e A4 -->
+        
+        <!-- 1.4. Qualificação B3 e B4 -->
         <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Categorias A3 e A4</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="publicacoesA3A4" class="form-label">Quantos?</label>
-                        <input type="number" class="form-control" id="publicacoesA3A4" name="publicacoesA3A4" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira o número de publicações nas categorias A3 e A4.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="publicacoesA3A4Upload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="publicacoesA3A4Upload" name="publicacoesA3A4Upload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes das publicações.
-                        </div>
-                    </div>
+          <div class="card-body">
+            <h6>1.4. Qualificação B3 e B4 (Máximo: 0,5 ponto)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="qualB3B4" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="qualB3B4" name="qualificacaoB3B4" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de publicações (B3 e B4).
                 </div>
+              </div>
+              <div class="col-md-10">
+                <label for="qualB3B4Upload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="qualB3B4Upload" name="qualificacaoB3B4Upload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes para as publicações B3 e B4.
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- Categorias B1 e B2 -->
+        
+        <!-- 1.5. Qualificação C -->
         <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Categorias B1 e B2</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="publicacoesB1B2" class="form-label">Quantos?</label>
-                        <input type="number" class="form-control" id="publicacoesB1B2" name="publicacoesB1B2" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira o número de publicações nas categorias B1 e B2.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="publicacoesB1B2Upload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="publicacoesB1B2Upload" name="publicacoesB1B2Upload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes das publicações.
-                        </div>
-                    </div>
+          <div class="card-body">
+            <h6>1.5. Qualificação C (Máximo: 0,1 ponto)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="qualC" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="qualC" name="qualificacaoC" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de publicações (C).
                 </div>
-            </div>
-        </div>
-        <!-- Categorias B3 e B4 -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Categorias B3 e B4</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="publicacoesB3B4" class="form-label">Quantos?</label>
-                        <input type="number" class="form-control" id="publicacoesB3B4" name="publicacoesB3B4" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira o número de publicações nas categorias B3 e B4.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="publicacoesB3B4Upload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="publicacoesB3B4Upload" name="publicacoesB3B4Upload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes das publicações.
-                        </div>
-                    </div>
+              </div>
+              <div class="col-md-10">
+                <label for="qualCUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="qualCUpload" name="qualificacaoCUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes para as publicações da categoria C.
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- Categorias C -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Categorias C</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="publicacoesC" class="form-label">Quantos?</label>
-                        <input type="number" class="form-control" id="publicacoesC" name="publicacoesC" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira o número de publicações na categoria C.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="publicacoesCUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="publicacoesCUpload" name="publicacoesCUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes das publicações.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h5>3. Publicações em eventos (Número de Publicações)</h5>
-        <h6 class="text-primary">Envie apenas as páginas que identificam as revistas, os títulos dos artigos e os autores.</h6>
-        <!-- Artigos completos -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Artigos completos</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="publicacoesArtigosCompletos" class="form-label">Quantos?</label>
-                        <input type="number" class="form-control" id="publicacoesArtigosCompletos" name="publicacoesArtigosCompletos" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira o número de artigos completos.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="publicacoesArtigosCompletosUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="publicacoesArtigosCompletosUpload" name="publicacoesArtigosCompletosUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes dos artigos completos.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Resumos estendidos -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Resumos estendidos</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="publicacoesResumosExtendidos" class="form-label">Quantos?</label>
-                        <input type="number" class="form-control" id="publicacoesResumosExtendidos" name="publicacoesResumosExtendidos" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira o número de resumos estendidos.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="publicacoesResumosExtendidosUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="publicacoesResumosExtendidosUpload" name="publicacoesResumosExtendidosUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes dos resumos estendidos.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h5>4. Atividade de docência (Número de Meses)</h5>
-        <!-- IES -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Instituição de Ensino Superior (IES)</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="docenciaIes" class="form-label">Meses</label>
-                        <input type="number" class="form-control" id="docenciaIes" name="docenciaIes" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira a quantidade de meses de docência na IES.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="docenciaIesUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="docenciaIesUpload" name="docenciaIesUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes da docência na IES.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Monitoria/Estágio Docência -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Monitoria/Estágio Docência</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="docenciaMonitoria" class="form-label">Meses</label>
-                        <input type="number" class="form-control" id="docenciaMonitoria" name="docenciaMonitoria" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira a quantidade de meses de monitoria/estágio em docência.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="docenciaMonitoriaUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="docenciaMonitoriaUpload" name="docenciaMonitoriaUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes da monitoria/estágio em docência.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Ensino Fundamental, Médio ou Técnico -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Ensino Fundamental, Médio ou Técnico</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="docenciaEnsino" class="form-label">Meses</label>
-                        <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira a quantidade de meses de docência no ensino fundamental, médio ou técnico.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="docenciaEnsinoUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="docenciaEnsinoUpload" name="docenciaEnsinoUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes da docência no ensino fundamental, médio ou técnico.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h5>5. Outras atividades</h5>
-        <!-- Bolsa PET -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Bolsa PET</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="bolsaPet" class="form-label">Meses</label>
-                        <input type="number" class="form-control" id="bolsaPet" name="bolsaPet" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira a quantidade de meses de Bolsa PET.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="bolsaPetUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="bolsaPetUpload" name="bolsaPetUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes da Bolsa PET.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Outros tipos de bolsa -->
-        <div class="card rounded-3 mb-3">
-            <div class="card-body">
-                <h6>Outros tipos de bolsa</h6>
-                <div class="row mb-3 align-items-center">
-                    <div class="col-md-2">
-                        <label for="outrasBolsas" class="form-label">Meses</label>
-                        <input type="number" class="form-control" id="outrasBolsas" name="outrasBolsas" min="0" />
-                        <div class="invalid-feedback">
-                            Por favor, insira a quantidade de meses de outras bolsas.
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <label for="outrasBolsasUpload" class="form-label">Comprovantes</label>
-                        <input type="file" class="form-control" id="outrasBolsasUpload" name="outrasBolsasUpload" accept=".pdf" multiple />
-                        <div class="invalid-feedback">
-                            Por favor, faça o upload dos comprovantes das outras bolsas.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
+  
+    <!-- Grupo 2: Publicações em Anais de Eventos -->
+    <div class="card rounded-3 mb-4">
+      <div class="card-body">
+        <h5>2. Publicações em Anais de Eventos</h5>
+        <p class="text-muted">Envie apenas as páginas que comprovem a publicação nos anais (Máximo de 4,0 pontos)</p>
+        
+        <!-- 2.1. Artigo Completo -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>2.1. Artigo Completo (Máximo: 1,0 ponto)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="anaisArtigo" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="anaisArtigo" name="anaisArtigoCompleto" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de artigos completos.
+                </div>
+              </div>
+              <div class="col-md-10">
+                <label for="anaisArtigoUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="anaisArtigoUpload" name="anaisArtigoCompletoUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes dos artigos completos.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 2.2. Resumo Estendido -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>2.2. Resumo Estendido (Máximo: 0,6 ponto)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="anaisResumoEstendido" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="anaisResumoEstendido" name="anaisResumoEstendido" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de resumos estendidos.
+                </div>
+              </div>
+              <div class="col-md-10">
+                <label for="anaisResumoEstendidoUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="anaisResumoEstendidoUpload" name="anaisResumoEstendidoUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes dos resumos estendidos.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 2.3. Resumo -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>2.3. Resumo (Máximo: 0,3 ponto)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="anaisResumo" class="form-label">Quantos?</label>
+                <input type="number" class="form-control" id="anaisResumo" name="anaisResumo" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de resumos.
+                </div>
+              </div>
+              <div class="col-md-10">
+                <label for="anaisResumoUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="anaisResumoUpload" name="anaisResumoUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes dos resumos.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Grupo 3: Atividade de Docência e Orientação -->
+    <div class="card rounded-3 mb-4">
+      <div class="card-body">
+        <h5>3. Atividade de Docência e Orientação</h5>
+        <p class="text-muted">Informe os meses e/ou orientações concluídas (Máximo de 1,5 ponto)</p>
+        
+        <!-- 3.1. Docência em IES -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>3.1. Cada mês como docente em IES (0,1 ponto por mês)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="docenciaIES" class="form-label">Meses</label>
+                <input type="number" class="form-control" id="docenciaIES" name="docenciaIES" min="0" />
+                <div class="invalid-feedback">
+                  Informe a quantidade de meses como docente em IES.
+                </div>
+              </div>
+              <div class="col-md-10">
+                <label for="docenciaIESUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="docenciaIESUpload" name="docenciaIESUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes da docência em IES.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 3.2. Docência no Ensino Fundamental, Médio ou Técnico -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>3.2. Cada mês como docente no ensino Fundamental, Médio ou Técnico (0,05 ponto por mês)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="docenciaEnsino" class="form-label">Meses</label>
+                <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0" />
+                <div class="invalid-feedback">
+                  Informe a quantidade de meses no ensino Fundamental, Médio ou Técnico.
+                </div>
+              </div>
+              <div class="col-md-10">
+                <label for="docenciaEnsinoUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="docenciaEnsinoUpload" name="docenciaEnsinoUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes da docência no ensino Fundamental, Médio ou Técnico.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 3.3. Orientação de IC ou TCC concluída -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>3.3. Cada orientação de IC ou TCC concluída, como orientador principal (Máximo: 0,5 ponto cada)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-2">
+                <label for="orientacao" class="form-label">Quantas?</label>
+                <input type="number" class="form-control" id="orientacao" name="orientacao" min="0" />
+                <div class="invalid-feedback">
+                  Informe o número de orientações concluídas.
+                </div>
+              </div>
+              <div class="col-md-10">
+                <label for="orientacaoUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="orientacaoUpload" name="orientacaoUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes das orientações.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
