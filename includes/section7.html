@@ -1,0 +1,72 @@
+<!-- includes/section7.html -->
+<div id="section7_form" class="mt-1">
+    <div class="card-body">
+        <!-- Card: Proposta de Pesquisa -->
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">Proposta de Pesquisa</h5>
+            </div>
+            <div class="card-body">
+                <!-- Campo 1: Linha de Pesquisa -->
+                <div class="mb-3">
+                    <label for="linhaPesquisa" class="form-label">
+                        <strong>Linha de Pesquisa</strong>
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="linhaPesquisa" name="linhaPesquisa" required>
+                        <option value="">Selecione a linha de pesquisa</option>
+                        <option value="metodosEstatisticos">Métodos Estatísticos</option>
+                        <option value="metodosComputacionais">Métodos Computacionais</option>
+                        <option value="otimizacao">Otimização</option>
+                        <option value="modelosApoioTomadaDecisao">Modelos de Apoio à Tomada de Decisão</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor, selecione uma linha de pesquisa.
+                    </div>
+                </div>
+
+                <!-- Campo 2: Tema da Proposta de Pesquisa -->
+                <div class="mb-3">
+                    <label for="temaProposta" class="form-label">
+                        <strong>Tema da Proposta de Pesquisa</strong>
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="temaProposta" name="temaProposta" 
+                           placeholder="Digite o tema da proposta" required />
+                    <div class="invalid-feedback">
+                        Por favor, indique o tema da proposta.
+                    </div>
+                </div>
+
+                <!-- Campo 3: Arquivo PDF com o Projeto de Pesquisa -->
+                <div class="mb-3">
+                    <label for="pdfProjeto" class="form-label">
+                        <strong>Projeto de Pesquisa (PDF)</strong>
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="file" class="form-control" id="pdfProjeto" name="pdfProjeto" 
+                           accept=".pdf" required />
+                    <div class="invalid-feedback">
+                        Por favor, envie o arquivo PDF do projeto de pesquisa.
+                    </div>
+                </div>
+
+                <!-- Campo 4: Docentes para Orientação -->
+                <div class="mb-3">
+                    <label for="docentesOrientacao" class="form-label">
+                        <strong>Docentes para Orientação</strong>
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="docentesOrientacao" name="docentesOrientacao" 
+                           placeholder="Ex: Fulano da Silva, Beltrano de Oliveira" required />
+                    <div class="form-text">
+                        Indique pelo menos 1 e no máximo 4 docentes, separados por vírgula.
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, informe entre 1 e 4 docentes para orientação, separados por vírgula.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
