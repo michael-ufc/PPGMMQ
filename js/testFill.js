@@ -8,8 +8,6 @@ async function fillAndTestForm() {
     console.log("🚀 Iniciando preenchimento automático do formulário...");
 
     // === Funções Auxiliares ===
-
-    // Preenche um campo de texto, select ou textarea
     function fillText(id, value) {
         const el = document.getElementById(id);
         if (el) {
@@ -20,7 +18,6 @@ async function fillAndTestForm() {
         }
     }
 
-    // Marca um radio ou checkbox
     function checkRadioOrCheckbox(selector) {
         const el = document.querySelector(selector);
         if (el) {
@@ -31,14 +28,10 @@ async function fillAndTestForm() {
         }
     }
 
-    // "Anexa" um arquivo falso a um campo de upload.
-    // O nome do arquivo é gerado a partir do ID se não for especificado.
     function setFileInput(id, fileName) {
         const fileInput = document.getElementById(id);
         if (fileInput) {
-            // Se o nome do arquivo não for fornecido, cria um a partir do ID do campo.
             const finalFileName = fileName || `${id}.pdf`;
-            
             const dataTransfer = new DataTransfer();
             const file = new File(['mock content'], finalFileName, { type: 'application/pdf' });
             dataTransfer.items.add(file);
@@ -49,7 +42,7 @@ async function fillAndTestForm() {
         }
     }
 
-    // === Preenchimento dos Campos (Atualizado com os nomes dos arquivos mock) ===
+    // === Preenchimento dos Campos ===
 
     // -- Seção 1: Identificação do Candidato --
     console.log("Preenchendo Seção 1: Identificação");
@@ -60,10 +53,9 @@ async function fillAndTestForm() {
     fillText('cidade', 'Fortaleza/CE');
     fillText('telefoneCelular', '(85) 99999-8888');
     checkRadioOrCheckbox('#cotaNaoSeAplica');
-    setFileInput('docIdentidadeUpload'); // Gera 'docIdentidadeUpload.pdf'
+    setFileInput('docIdentidadeUpload');
     setFileInput('autodeclaracaoUpload', 'autodeclaracao_mock.pdf');
     setFileInput('dcfUpload', 'dcf_mock.pdf');
-
 
     // -- Seção 2: Formação Acadêmica --
     console.log("Preenchendo Seção 2: Formação Acadêmica");
@@ -75,11 +67,11 @@ async function fillAndTestForm() {
     setFileInput('diplomaGraduacaoUpload', 'diploma_graduacao_mock.pdf');
     setFileInput('historicoDisciplinasGraduacao', 'historico_graduacao_mock.pdf');
 
-
-    // -- Seção 3: Proposta de Projeto (Não há campos obrigatórios aqui)
-
     // -- Seção 4: Avaliação Curricular --
     console.log("Preenchendo Seção 4: Avaliação Curricular");
+    fillText('motivacaoMestrado', 'Minha principal motivação é aprofundar meus conhecimentos em Ciência de Dados para resolver problemas complexos do mundo real. Tenho grande expectativa em poder colaborar com os pesquisadores do programa e desenvolver uma dissertação de alto impacto na área de Métodos Estatísticos.');
+    checkRadioOrCheckbox('#cdMetodosEstatisticos');
+    setFileInput('tabelaPontuacaoUpload');
     setFileInput('projPesqComBolsaUpload');
     setFileInput('projPesqSemBolsaUpload');
     setFileInput('revistasA1A2Upload');
@@ -95,7 +87,6 @@ async function fillAndTestForm() {
     setFileInput('docenciaBasicoUpload');
     setFileInput('bolsaPETUpload');
     setFileInput('outraBolsaIESUpload');
-    setFileInput('tabelaPontuacaoUpload');
 
     // -- Seção 5: Questionário Socioeconômico --
     console.log("Preenchendo Seção 5: Questionário Socioeconômico");
@@ -115,8 +106,6 @@ async function fillAndTestForm() {
     checkRadioOrCheckbox('#naoExercoAtividadeRemunerada');
     checkRadioOrCheckbox('#estouCienteDasPenalidades');
     checkRadioOrCheckbox('#autorizoAveriguacoes');
-
-    // -- Seção 7: Confirmação de Proficiência em Inglês -- (Não há campos obrigatórios aqui)
 
     console.log("✅ Preenchimento concluído!");
     console.log("🖱️ Acionando o botão 'Gerar PDF'...");

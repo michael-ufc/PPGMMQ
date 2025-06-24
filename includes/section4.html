@@ -1,61 +1,112 @@
 <!-- includes/section4.html - Avaliação Curricular -->
 <div id="section4_form" class="mt-1">
-    <!-- Tabela de Pontuação Preenchida -->
-    <div class="card rounded-3 mb-4">
+  <!-- Carta de Motivação e Interesse -->
+  <div class="card rounded-3 mb-4">
       <div class="card-body">
-        <h5>Tabela de Pontuação Preenchida</h5>
-        <p class="text-muted">Faça o upload da Tabela 3 preenchida com a pontuação pleiteada, conforme o modelo do edital. O arquivo deve estar no formato PDF.</p>
-        
-        <div class="row mb-3 align-items-center">
-          <div class="col-md-12">
-            <label for="tabelaPontuacaoUpload" class="form-label">Arquivo da Tabela 3 (PDF)</label>
-            <input type="file" class="form-control" id="tabelaPontuacaoUpload" name="tabelaPontuacaoUpload" accept=".pdf" required />
-            <div class="invalid-feedback">
-              Por favor, anexe a tabela de pontuação preenchida.
-            </div>
+          <div class="mb-3">
+              <label for="motivacaoMestrado" class="form-label">
+                  <strong>Qual é sua motivação e expectativas para candidatar-se a uma vaga de mestrado do Programa de Pós-Graduação em Modelagem e Métodos Quantitativos?</strong>
+                  <span class="text-danger">*</span>
+              </label>
+              <textarea class="form-control" id="motivacaoMestrado" name="motivacaoMestrado" rows="5" required></textarea>
+              <div class="invalid-feedback">
+                  Por favor, descreva sua motivação e expectativas.
+              </div>
           </div>
-        </div>
+      </div>
+  </div>
+
+  <!-- Área de Pesquisa Pretendida -->
+  <div class="card rounded-3 mb-4">
+      <div class="card-body">
+          <div class="mb-3" role="group" aria-labelledby="groupAreaPesquisa">
+              <label class="form-label" id="groupAreaPesquisa">
+                  <strong>Qual a área de pesquisa do programa pretendida?</strong>
+                  <span class="text-danger">*</span>
+              </label>
+
+              <fieldset class="ms-3">
+                  <legend class="h6">a) Ciência de Dados:</legend>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="areaPesquisaPretendida" id="cdMetodosEstatisticos" value="Ciência de Dados: Métodos Estatísticos" required>
+                      <label class="form-check-label" for="cdMetodosEstatisticos">
+                          i) Métodos Estatísticos
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="areaPesquisaPretendida" id="cdMetodosComputacionais" value="Ciência de Dados: Métodos Computacionais">
+                      <label class="form-check-label" for="cdMetodosComputacionais">
+                          ii) Métodos Computacionais
+                      </label>
+                  </div>
+              </fieldset>
+
+              <fieldset class="ms-3 mt-2">
+                  <legend class="h6">b) Pesquisa Operacional:</legend>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="areaPesquisaPretendida" id="poOtimizacao" value="Pesquisa Operacional: Otimização">
+                      <label class="form-check-label" for="poOtimizacao">
+                          i) Otimização
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="areaPesquisaPretendida" id="poApoioDecisao" value="Pesquisa Operacional: Modelos de Apoio à Tomada de Decisão">
+                      <label class="form-check-label" for="poApoioDecisao">
+                          ii) Modelos de Apoio à Tomada de Decisão
+                      </label>
+                  </div>
+              </fieldset>
+
+              <div class="invalid-feedback">Por favor, selecione uma área de pesquisa.</div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Tabela de Pontuação Preenchida -->
+  <div class="card rounded-3 mb-4">
+      <div class="card-body">
+          <h5>Tabela de Pontuação Preenchida</h5>
+          <p class="text-muted">Faça o upload da Tabela 3 preenchida com a pontuação pleiteada, conforme o modelo do edital. O arquivo deve estar no formato PDF.</p>
+          <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                  <label for="tabelaPontuacaoUpload" class="form-label">Arquivo da Tabela 3 (PDF)</label>
+                  <input type="file" class="form-control" id="tabelaPontuacaoUpload" name="tabelaPontuacaoUpload" accept=".pdf" required />
+                  <div class="invalid-feedback">
+                      Por favor, anexe a tabela de pontuação preenchida.
+                  </div>
+              </div>
+          </div>
       </div>
   </div>
 
   <!-- Grupo 1: Participação em projetos de pesquisa ou iniciação científica -->
   <div class="card rounded-3 mb-4">
-    <div class="card-body">
-      <h5>1. Participação em projetos de pesquisa ou iniciação científica</h5>
-      <p class="text-muted">Máximo de 4,0 pontos</p>
-      
-      <!-- 1.1 Por cada mês com bolsa -->
-      <div class="card rounded-3 mb-3">
-        <div class="card-body">
-          <h6>1.1. Por cada mês com bolsa (0,2 pontos por mês)</h6>
-          <div class="row mb-3 align-items-center">
-            <div class="col-md-12">
-              <label for="projPesqComBolsaUpload" class="form-label">Comprovantes</label>
-              <input type="file" class="form-control" id="projPesqComBolsaUpload" name="projPesqComBolsaUpload" accept=".pdf" multiple />
-              <div class="invalid-feedback">
-                Faça o upload dos comprovantes.
+      <div class="card-body">
+          <h5>1. Participação em projetos de pesquisa ou iniciação científica</h5>
+          <p class="text-muted">Máximo de 4,0 pontos</p>
+          <div class="card rounded-3 mb-3">
+              <div class="card-body">
+                  <h6>1.1. Por cada mês com bolsa (0,2 pontos por mês)</h6>
+                  <div class="row mb-3 align-items-center">
+                      <div class="col-md-12">
+                          <label for="projPesqComBolsaUpload" class="form-label">Comprovantes</label>
+                          <input type="file" class="form-control" id="projPesqComBolsaUpload" name="projPesqComBolsaUpload" accept=".pdf" multiple />
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
-      </div>
-      
-      <!-- 1.2 Por cada mês sem bolsa ou como voluntário -->
-      <div class="card rounded-3 mb-3">
-        <div class="card-body">
-          <h6>1.2. Por cada mês sem bolsa ou como voluntário (0,1 ponto por mês)</h6>
-          <div class="row mb-3 align-items-center">
-            <div class="col-md-12">
-              <label for="projPesqSemBolsaUpload" class="form-label">Comprovantes</label>
-              <input type="file" class="form-control" id="projPesqSemBolsaUpload" name="projPesqSemBolsaUpload" accept=".pdf" multiple />
-              <div class="invalid-feedback">
-                Faça o upload dos comprovantes.
+          <div class="card rounded-3 mb-3">
+              <div class="card-body">
+                  <h6>1.2. Por cada mês sem bolsa ou como voluntário (0,1 ponto por mês)</h6>
+                  <div class="row mb-3 align-items-center">
+                      <div class="col-md-12">
+                          <label for="projPesqSemBolsaUpload" class="form-label">Comprovantes</label>
+                          <input type="file" class="form-control" id="projPesqSemBolsaUpload" name="projPesqSemBolsaUpload" accept=".pdf" multiple />
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
 
   <!-- Grupo 2: Produção científica em revistas -->
@@ -72,9 +123,6 @@
             <div class="col-md-12">
               <label for="revistasA1A2Upload" class="form-label">Comprovantes</label>
               <input type="file" class="form-control" id="revistasA1A2Upload" name="revistasA1A2Upload" accept=".pdf" multiple />
-              <div class="invalid-feedback">
-                Faça o upload dos comprovantes.
-              </div>
             </div>
           </div>
         </div>
@@ -88,9 +136,6 @@
               <div class="col-md-12">
                 <label for="revistasA3A4Upload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="revistasA3A4Upload" name="revistasA3A4Upload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -104,9 +149,6 @@
               <div class="col-md-12">
                 <label for="revistasB1B2Upload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="revistasB1B2Upload" name="revistasB1B2Upload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -120,9 +162,6 @@
               <div class="col-md-12">
                 <label for="revistasB3B4Upload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="revistasB3B4Upload" name="revistasB3B4Upload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -136,9 +175,6 @@
               <div class="col-md-12">
                 <label for="revistasCUpload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="revistasCUpload" name="revistasCUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -160,9 +196,6 @@
             <div class="col-md-12">
               <label for="anaisArtigoCompletoUpload" class="form-label">Comprovantes</label>
               <input type="file" class="form-control" id="anaisArtigoCompletoUpload" name="anaisArtigoCompletoUpload" accept=".pdf" multiple />
-              <div class="invalid-feedback">
-                Faça o upload dos comprovantes.
-              </div>
             </div>
           </div>
         </div>
@@ -176,9 +209,6 @@
             <div class="col-md-12">
               <label for="anaisResumoEstendidoUpload" class="form-label">Comprovantes</label>
               <input type="file" class="form-control" id="anaisResumoEstendidoUpload" name="anaisResumoEstendidoUpload" accept=".pdf" multiple />
-              <div class="invalid-feedback">
-                Faça o upload dos comprovantes.
-              </div>
             </div>
           </div>
         </div>
@@ -192,9 +222,6 @@
             <div class="col-md-12">
               <label for="anaisResumoUpload" class="form-label">Comprovantes</label>
               <input type="file" class="form-control" id="anaisResumoUpload" name="anaisResumoUpload" accept=".pdf" multiple />
-              <div class="invalid-feedback">
-                Faça o upload dos comprovantes.
-              </div>
             </div>
           </div>
         </div>
@@ -216,9 +243,6 @@
               <div class="col-md-12">
                 <label for="docenciaIESUpload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="docenciaIESUpload" name="docenciaIESUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -232,9 +256,6 @@
               <div class="col-md-12">
                 <label for="iniciacaoDocenciaUpload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="iniciacaoDocenciaUpload" name="iniciacaoDocenciaUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -248,9 +269,6 @@
               <div class="col-md-12">
                 <label for="docenciaBasicoUpload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="docenciaBasicoUpload" name="docenciaBasicoUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -272,9 +290,6 @@
               <div class="col-md-12">
                 <label for="bolsaPETUpload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="bolsaPETUpload" name="bolsaPETUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>
@@ -288,9 +303,6 @@
               <div class="col-md-12">
                 <label for="outraBolsaIESUpload" class="form-label">Comprovantes</label>
                 <input type="file" class="form-control" id="outraBolsaIESUpload" name="outraBolsaIESUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes.
-                </div>
               </div>
             </div>
           </div>

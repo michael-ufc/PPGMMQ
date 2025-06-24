@@ -7,9 +7,13 @@ O Programa de Pós-Graduação em Modelagem e Métodos Quantitativos (PPGMMQ) da
 ## 1. INFORMAÇÕES GERAIS
 
 1.1. O PPGMMQ é um programa de pós-graduação stricto sensu, em nível de mestrado e doutorado acadêmico (recentemente aprovado pela CAPES e aguardando liberação para funcionar), recomendado pela Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES).
+
 1.2. As áreas de concentração e linhas de pesquisa do PPGMMQ são:
-a) Ciência de Dados: i) Métodos Estatísticos; e ii) Métodos Computacionais;
-b) Pesquisa Operacional: i) Otimização; e ii) Modelos de Apoio à Tomada de Decisão.
+a) Ciência de Dados: 
+    i) Métodos Estatísticos; e ii) Métodos Computacionais;
+b) Pesquisa Operacional: 
+    i) Otimização; e ii) Modelos de Apoio à Tomada de Decisão.
+
 1.3. Candidatos ao mestrado do PPGMMQ devem ser portadores de diploma de graduação, outorgado por Instituição de Ensino Superior (IES) reconhecida pelo Ministério da Educação (MEC) ou diplomas dos cursos de graduação obtidos no exterior.
 1.4. Para inscrição no processo seletivo, o diploma poderá ser substituído por uma declaração de conclusão de curso emitida por setor competente da IES ou declaração do coordenador do curso informando que o candidato é um possível concluinte até a data de início da matrícula no semestre 2025-2, conforme calendário universitário da UFC, disponível em https://www.ufc.br/calendario-universitario.
 1.5. Para a matrícula inicial no curso de mestrado, caso a Instituição de Ensino Superior (IES) não tenha expedido o diploma de graduação a que faz jus o candidato, aceitar-se-á uma declaração da IES indicando a data de conclusão do curso e da colação de grau do candidato.

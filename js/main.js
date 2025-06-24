@@ -67,14 +67,15 @@ function getLabelForInput(inputElement) {
     if (inputElement.id) {
         const label = document.querySelector(`label[for="${inputElement.id}"]`);
         if (label) {
-            return label.innerText.trim();
+            // Pega o texto do label principal, ignorando spans internos
+            return label.cloneNode(true).querySelector('span.text-danger')?.remove() && label.innerText.trim();
         }
     }
-    // Fallback para encontrar o label mais próximo
-    const parent = inputElement.closest('div');
+    // Fallback para encontrar o label/legend mais próximo dentro do container
+    const parent = inputElement.closest('.mb-3, .card-body');
     if (parent) {
-        const label = parent.querySelector('label');
-        if (label) return label.innerText.trim();
+        const label = parent.querySelector('label.form-label, legend.form-label');
+        if (label) return label.innerText.trim().split('\n')[0]; // Pega a primeira linha
     }
     return 'Campo sem nome'; // Fallback
 }
@@ -89,14 +90,18 @@ function validateForm(form) {
     // Limpa a validação anterior de todos os campos
     form.querySelectorAll('.is-invalid, .is-valid').forEach(el => {
         el.classList.remove('is-invalid', 'is-valid');
-        const feedback = el.querySelector('.invalid-feedback');
+        const feedback = el.closest('.mb-3, .card-body')?.querySelector('.invalid-feedback');
         if (feedback) feedback.style.display = 'none';
     });
 
-
-    // Validação de inputs regulares, emails e arquivos com 'required'
+    // Validação de inputs regulares (texto, email, etc.) e textareas com 'required'
     const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
     for (const input of inputs) {
+        // Pula radios e checkboxes, que são validados em grupo
+        if (input.type === 'radio' || input.type === 'checkbox') {
+            continue;
+        }
+
         let isFieldValid = true;
         let errorMessage = '';
 
@@ -105,9 +110,6 @@ function validateForm(form) {
                 isFieldValid = false;
                 errorMessage = `Por favor, anexe o arquivo para "${getLabelForInput(input)}".`;
             }
-        } else if (input.type === 'radio' || input.type === 'checkbox') {
-            // Radios e checkboxes são validados em seus grupos específicos abaixo
-            continue;
         } else if (!input.value.trim()) {
             isFieldValid = false;
             errorMessage = `Por favor, preencha o campo "${getLabelForInput(input)}".`;
@@ -125,11 +127,10 @@ function validateForm(form) {
         }
     }
 
-    // Validação específica para #section1_form - groupCotas
-    const section1Form = document.getElementById('section1_form');
-    if (section1Form) {
-        const cotasCheckboxes = section1Form.querySelectorAll('input[name="cotas"]');
-        const cotasContainer = section1Form.querySelector('[aria-labelledby="groupCotas"]');
+    // Validação de grupos de checkboxes (ex: cotas)
+    const cotasCheckboxes = form.querySelectorAll('input[name="cotas"]');
+    if (cotasCheckboxes.length > 0) {
+        const cotasContainer = form.querySelector('[aria-labelledby="groupCotas"]');
         const isCotasChecked = Array.from(cotasCheckboxes).some(checkbox => checkbox.checked);
 
         if (!isCotasChecked) {
@@ -137,54 +138,40 @@ function validateForm(form) {
             cotasContainer.querySelector('.invalid-feedback').style.display = 'block';
             return {
                 isValid: false,
-                message: 'Por favor, selecione pelo menos uma opção no campo "Concorrer às cotas?".',
+                message: 'Por favor, selecione pelo menos uma opção no campo "Enquadramento para cotas".',
                 element: cotasContainer
             };
-        } else {
-            cotasContainer.classList.remove('is-invalid');
         }
     }
 
-    // Validação específica do #section5_form (grupos de radio)
-    const section5Form = document.getElementById('section5_form');
-    if (section5Form) {
-        const radioGroups = new Set(Array.from(section5Form.querySelectorAll('input[type="radio"][required]')).map(r => r.name));
+    // Validação genérica para TODOS os grupos de radio 'required' no formulário
+    const radioGroups = new Set(Array.from(form.querySelectorAll('input[type="radio"][required]')).map(r => r.name));
 
-        for (const groupName of radioGroups) {
-            const groupInputs = section5Form.querySelectorAll(`input[name="${groupName}"]`);
-            const isGroupValid = Array.from(groupInputs).some(radio => radio.checked);
-            const groupContainer = groupInputs[0].closest('.mb-3'); // Container do grupo
+    for (const groupName of radioGroups) {
+        const groupInputs = form.querySelectorAll(`input[name="${groupName}"]`);
+        const isGroupValid = Array.from(groupInputs).some(radio => radio.checked);
 
-            if (!isGroupValid) {
+        if (!isGroupValid) {
+            // Encontra o container mais próximo que agrupa a pergunta
+            const groupContainer = groupInputs[0].closest('.mb-3, .card-body');
+            if (groupContainer) {
                 groupContainer.classList.add('is-invalid');
                 const feedback = groupContainer.querySelector('.invalid-feedback');
                 if (feedback) feedback.style.display = 'block';
-                return {
-                    isValid: false,
-                    message: `Por favor, selecione uma opção para a pergunta: "${groupContainer.querySelector('h6, p').innerText.trim()}"`,
-                    element: groupContainer
-                };
             }
+
+            const questionText = getLabelForInput(groupInputs[0]);
+            return {
+                isValid: false,
+                message: `Por favor, selecione uma opção para a pergunta: "${questionText}"`,
+                element: groupContainer || groupInputs[0]
+            };
         }
     }
 
-    // Validação específica do #section6_form (declarações)
+    // Validação específica para os checkboxes de declaração da Seção 6
     const section6Form = document.getElementById('section6_form');
     if (section6Form) {
-        const situacaoAtualRadios = section6Form.querySelectorAll('input[name="situacaoAtual"]');
-        const situacaoSelecionada = Array.from(situacaoAtualRadios).some(radio => radio.checked);
-
-        if (!situacaoSelecionada) {
-            const container = document.querySelector('label[for="situacaoAtual"]').parentElement;
-            container.classList.add('is-invalid');
-            container.querySelector('.invalid-feedback').style.display = 'block';
-            return {
-                isValid: false,
-                message: 'Por favor, selecione sua situação profissional atual.',
-                element: container
-            };
-        }
-
         const checkboxCiente = document.getElementById('estouCienteDasPenalidades');
         const checkboxAutorizo = document.getElementById('autorizoAveriguacoes');
         if (!checkboxCiente.checked || !checkboxAutorizo.checked) {
