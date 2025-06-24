@@ -23,72 +23,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Master's Degree -->
-        <div class="card mb-4">
-            <div class="card-header bg-light">
-                <h5 class="mb-0">Dados do Mestrado <span class="text-danger">*</span></h5>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <label for="cursoMestrado" class="form-label">
-                        <strong>Curso de Mestrado</strong>
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" class="form-control" id="cursoMestrado" name="cursoMestrado" 
-                           placeholder="Nome do curso de mestrado" required />
-                    <div class="invalid-feedback">
-                        Por favor, insira o nome do seu curso de mestrado.
-                    </div>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="instituicaoMestrado" class="form-label">
-                        <strong>Instituição de Ensino Superior (IES)</strong>
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" class="form-control" id="instituicaoMestrado" name="instituicaoMestrado" 
-                           placeholder="Nome da IES do mestrado" required />
-                    <div class="invalid-feedback">
-                        Por favor, insira o nome da instituição do mestrado.
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="igcMestrado" class="form-label">
-                            <strong>IGC da Instituição</strong>
-                            <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover" 
-                                    data-bs-content="Índice Geral de Cursos (MEC) durante o período do mestrado">
-                                <i class="bi bi-question-circle"></i>
-                            </button>
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control" id="igcMestrado" name="igcMestrado" 
-                               placeholder="Apenas números" required />
-                        <div class="invalid-feedback">
-                            Insira o IGC da instituição durante o mestrado.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="creMestrado" class="form-label">
-                            <strong>Coeficiente de Rendimento</strong>
-                            <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover"
-                                    data-bs-content="Média ponderada das notas durante o mestrado">
-                                <i class="bi bi-question-circle"></i>
-                            </button>
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input type="number" step="0.01" class="form-control" id="creMestrado" name="creMestrado" 
-                               placeholder="0.00 a 10.00" min="0" max="10" required />
-                        <div class="invalid-feedback">
-                            Insira um coeficiente de rendimento válido.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>        
 
         <!-- Group 2: Main Graduation -->
         <div class="card mb-4">
@@ -147,74 +82,17 @@
                     </div>
                 </div>
             </div>
-        </div>        
-
-        <!-- Group 3: Additional Graduation (Optional) -->
-        <div class="card mb-4">
-            <div class="card-header bg-light">
-                <h5 class="mb-0">Dados da Graduação Adicional (Opcional)</h5>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <label for="cursoGraduacao2" class="form-label"><strong>Segundo Curso de Graduação</strong></label>
-                    <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2" 
-                           placeholder="Nome do segundo curso" />
-                </div>
-                <div class="mb-3">
-                    <label for="instituicao2" class="form-label"><strong>IES da Segunda Graduação</strong></label>
-                    <input type="text" class="form-control" id="instituicao2" name="instituicao2" 
-                           placeholder="Nome da IES adicional" />
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="igcInstituicao2" class="form-label"><strong>IGC da Segunda IES</strong></label>
-                        <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2" 
-                               placeholder="Apenas números" />
-                    </div>
-                    <div class="col-md-6">
-                        <label for="ira2" class="form-label"><strong>IRA Adicional</strong></label>
-                        <input type="number" step="0.01" class="form-control" id="ira2" name="ira2" 
-                               placeholder="0.00 a 10.00" />
-                    </div>
-                </div>
-            </div>
-        </div>        
+        </div>
 
         <!-- Comprovantes -->
         <div class="card mt-4">
             <div class="card-body">
-                <h5 class="card-title">Comprovantes</h5>
+                <h5 class="card-title">Comprovantes</h5>                                
                 
-                <!-- Mestrado Documents -->
-                <div class="mb-3">
-                    <label for="diplomaMestradoUpload" class="form-label">
-                        Diploma de Mestrado ou Declaração de Conclusão
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="file" class="form-control" id="diplomaMestradoUpload" name="diplomaMestradoUpload" 
-                           accept=".pdf" required />
-                    <div class="invalid-feedback">
-                        Por favor, envie a cópia do diploma ou declaração de conclusão do mestrado.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="historicoDisciplinasMestrado" class="form-label">
-                        Histórico de Disciplinas do Mestrado
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="file" class="form-control" id="historicoDisciplinasMestrado" 
-                           name="historicoDisciplinasMestrado" accept=".pdf" required />
-                    <div class="invalid-feedback">
-                        Por favor, envie o histórico de disciplinas do mestrado.
-                    </div>
-                </div>
-
                 <!-- Existing Graduação Documents -->
                 <div class="mb-3">
                     <label for="diplomaGraduacaoUpload" class="form-label">
-                        Frente e verso do(s) Diploma(s) de Graduação ou Declaração(ões) de
-                        Conclusão de Curso(s)
+                        Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso
                         <span class="text-danger">*</span>
                     </label>
                     <input type="file" class="form-control" id="diplomaGraduacaoUpload" name="diplomaGraduacaoUpload" accept=".pdf" required />

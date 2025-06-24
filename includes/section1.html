@@ -118,14 +118,26 @@
                 <!-- Campo para Autodeclaração -->
                 <div class="mb-3">
                     <label for="autodeclaracaoUpload" class="form-label">
-                        Autodeclaração (vide ANEXO II)
-                        <span class="text-danger">(Opcional, para concorrer às cotas de políticas
-                            afirmativas)</span>
+                        Autodeclaração (vide ANEXO I)
+                        <span class="text-danger">(Apenas para cotistas de políticas afirmativas)</span>
                     </label>
                     <input type="file" class="form-control" id="autodeclaracaoUpload" name="autodeclaracaoUpload" accept=".pdf" />
                     <div class="invalid-feedback">
                         Caso deseje concorrer nas cotas, envie a autodeclaração
                         preenchida.
+                    </div>
+                </div>
+
+                <!-- Campo para Declaração de Comprovação de Função (DCF) -->
+                <div class="mb-3">
+                    <label for="dcfUpload" class="form-label">
+                        Declaração de Comprovação de Função (DCF - ANEXO II)
+                        <span class="text-danger">(Apenas servidores(as) UFC)</span>
+                    </label>
+                    <input type="file" class="form-control" id="dcfUpload" name="dcfUpload" accept=".pdf" />
+                    <div class="invalid-feedback">
+                        Caso deseje concorrer nas cotas, envie a declaração de
+                        comprovação de função preenchida.
                     </div>
                 </div>
             </div>

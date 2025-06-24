@@ -1,9 +1,15 @@
 .
+├── LICENSE
+├── PROJECT.md
+├── README.md
 ├── create_mock_pdfs.sh
 ├── css
 │   └── styles.css
 ├── docs
-│   └── edital_mestrado_2025-1.md
+│   ├── edital2025-2._mestrado.md
+│   ├── edital_2025.1_doutorado.md
+│   ├── edital_2025.1_mestrado.md
+│   └── edital_2025.2_mestrado.pdf
 ├── images
 │   ├── logo-ppgmmq.jpeg
 │   ├── ufc-logo-universidade-16.png
@@ -12,10 +18,10 @@
 │   ├── footer.html
 │   ├── section1.html
 │   ├── section2.html
-│   ├── section3.html
 │   ├── section4.html
 │   ├── section5.html
-│   └── section6.html
+│   ├── section6.html
+│   └── section7.html
 ├── index.html
 ├── js
 │   ├── generatePdf.js
@@ -23,42 +29,32 @@
 │   ├── main.js
 │   ├── popovers.js
 │   ├── section1.js
-│   ├── section3.js
+│   ├── testFill.js
 │   └── utils.js
-├── LICENSE
 ├── mock_pdfs
-│   ├── 1_01_doc_identidade.pdf
-│   ├── 1_02_autodeclaracao.pdf
-│   ├── 2_01_diploma1.pdf
-│   ├── 2_02_historico1.pdf
+│   ├── anaisArtigoCompletoUpload.pdf
+│   ├── anaisResumoEstendidoUpload.pdf
+│   ├── anaisResumoUpload.pdf
 │   ├── autodeclaracao_mock.pdf
-│   ├── calculo1_syllabus.pdf
-│   ├── diploma2.pdf
-│   ├── diploma_graduacao2_mock.pdf
+│   ├── bolsaPETUpload.pdf
+│   ├── create_mocks.py
+│   ├── dcf_mock.pdf
 │   ├── diploma_graduacao_mock.pdf
-│   ├── docencia_ies.pdf
-│   ├── doc_id_upload.pdf
-│   ├── historico2.pdf
-│   ├── historico_graduacao2_mock.pdf
+│   ├── docIdentidadeUpload.pdf
+│   ├── docenciaBasicoUpload.pdf
+│   ├── docenciaIESUpload.pdf
 │   ├── historico_graduacao_mock.pdf
-│   ├── ia_syllabus.pdf
-│   ├── mecanica_syllabus.pdf
-│   ├── proj_bolsa.pdf
-│   ├── projeto_ml_mock.pdf
-│   ├── projeto_web_mock.pdf
-│   ├── proj_sem_bolsa.pdf
-│   ├── pub_a1a2.pdf
-│   ├── pub_b1b2.pdf
-│   ├── publicacao_pi_mock.pdf
-│   ├── publicacao_rn_mock.pdf
-│   ├── resenha_cq_mock.pdf
-│   ├── syllabi_algebra_linear.pdf
-│   ├── syllabi_calculo1.pdf
-│   └── syllabi_estatistica.pdf
-├── PROJECT.md
-├── prompt_content.json
+│   ├── iniciacaoDocenciaUpload.pdf
+│   ├── outraBolsaIESUpload.pdf
+│   ├── projPesqComBolsaUpload.pdf
+│   ├── projPesqSemBolsaUpload.pdf
+│   ├── revistasA1A2Upload.pdf
+│   ├── revistasA3A4Upload.pdf
+│   ├── revistasB1B2Upload.pdf
+│   ├── revistasB3B4Upload.pdf
+│   ├── revistasCUpload.pdf
+│   └── tabelaPontuacaoUpload.pdf
 ├── prompt.yml
-├── README.md
 └── tree.txt
 
-7 directories, 55 files
+7 directories, 51 files

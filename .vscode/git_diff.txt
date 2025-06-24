@@ -1,0 +1,1200 @@
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+index 6f3a291..40a5a2b 100644
+--- a/.vscode/settings.json
++++ b/.vscode/settings.json
+@@ -1,3 +1,4 @@
+ {
+-    "liveServer.settings.port": 5501
++    "liveServer.settings.port": 5501,
++    "djlint.showInstallError": false
+ }
+\ No newline at end of file
+diff --git a/includes/section1.html b/includes/section1.html
+index 487d13f..eba1d72 100644
+--- a/includes/section1.html
++++ b/includes/section1.html
+@@ -118,9 +118,8 @@
+                 <!-- Campo para Autodeclaração -->
+                 <div class="mb-3">
+                     <label for="autodeclaracaoUpload" class="form-label">
+-                        Autodeclaração (vide ANEXO II)
+-                        <span class="text-danger">(Opcional, para concorrer às cotas de políticas
+-                            afirmativas)</span>
++                        Autodeclaração (vide ANEXO I)
++                        <span class="text-danger">(Apenas para cotistas de políticas afirmativas)</span>
+                     </label>
+                     <input type="file" class="form-control" id="autodeclaracaoUpload" name="autodeclaracaoUpload" accept=".pdf" />
+                     <div class="invalid-feedback">
+@@ -128,6 +127,19 @@
+                         preenchida.
+                     </div>
+                 </div>
++
++                <!-- Campo para Declaração de Comprovação de Função (DCF) -->
++                <div class="mb-3">
++                    <label for="dcfUpload" class="form-label">
++                        Declaração de Comprovação de Função (DCF - ANEXO II)
++                        <span class="text-danger">(Apenas servidores(as) UFC)</span>
++                    </label>
++                    <input type="file" class="form-control" id="dcfUpload" name="dcfUpload" accept=".pdf" />
++                    <div class="invalid-feedback">
++                        Caso deseje concorrer nas cotas, envie a declaração de
++                        comprovação de função preenchida.
++                    </div>
++                </div>
+             </div>
+         </div>
+     </div>
+diff --git a/includes/section2.html b/includes/section2.html
+index f70d82c..1aaa890 100644
+--- a/includes/section2.html
++++ b/includes/section2.html
+@@ -23,72 +23,7 @@
+                     </div>
+                 </div>
+             </div>
+-        </div>
+-
+-        <!-- Master's Degree -->
+-        <div class="card mb-4">
+-            <div class="card-header bg-light">
+-                <h5 class="mb-0">Dados do Mestrado <span class="text-danger">*</span></h5>
+-            </div>
+-            <div class="card-body">
+-                <div class="mb-3">
+-                    <label for="cursoMestrado" class="form-label">
+-                        <strong>Curso de Mestrado</strong>
+-                        <span class="text-danger">*</span>
+-                    </label>
+-                    <input type="text" class="form-control" id="cursoMestrado" name="cursoMestrado" 
+-                           placeholder="Nome do curso de mestrado" required />
+-                    <div class="invalid-feedback">
+-                        Por favor, insira o nome do seu curso de mestrado.
+-                    </div>
+-                </div>
+-                
+-                <div class="mb-3">
+-                    <label for="instituicaoMestrado" class="form-label">
+-                        <strong>Instituição de Ensino Superior (IES)</strong>
+-                        <span class="text-danger">*</span>
+-                    </label>
+-                    <input type="text" class="form-control" id="instituicaoMestrado" name="instituicaoMestrado" 
+-                           placeholder="Nome da IES do mestrado" required />
+-                    <div class="invalid-feedback">
+-                        Por favor, insira o nome da instituição do mestrado.
+-                    </div>
+-                </div>
+-
+-                <div class="row mb-3">
+-                    <div class="col-md-6">
+-                        <label for="igcMestrado" class="form-label">
+-                            <strong>IGC da Instituição</strong>
+-                            <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover" 
+-                                    data-bs-content="Índice Geral de Cursos (MEC) durante o período do mestrado">
+-                                <i class="bi bi-question-circle"></i>
+-                            </button>
+-                            <span class="text-danger">*</span>
+-                        </label>
+-                        <input type="text" class="form-control" id="igcMestrado" name="igcMestrado" 
+-                               placeholder="Apenas números" required />
+-                        <div class="invalid-feedback">
+-                            Insira o IGC da instituição durante o mestrado.
+-                        </div>
+-                    </div>
+-                    <div class="col-md-6">
+-                        <label for="creMestrado" class="form-label">
+-                            <strong>Coeficiente de Rendimento</strong>
+-                            <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover"
+-                                    data-bs-content="Média ponderada das notas durante o mestrado">
+-                                <i class="bi bi-question-circle"></i>
+-                            </button>
+-                            <span class="text-danger">*</span>
+-                        </label>
+-                        <input type="number" step="0.01" class="form-control" id="creMestrado" name="creMestrado" 
+-                               placeholder="0.00 a 10.00" min="0" max="10" required />
+-                        <div class="invalid-feedback">
+-                            Insira um coeficiente de rendimento válido.
+-                        </div>
+-                    </div>
+-                </div>
+-            </div>
+-        </div>
++        </div>        
+ 
+         <!-- Group 2: Main Graduation -->
+         <div class="card mb-4">
+@@ -147,74 +82,17 @@
+                     </div>
+                 </div>
+             </div>
+-        </div>        
+-
+-        <!-- Group 3: Additional Graduation (Optional) -->
+-        <div class="card mb-4">
+-            <div class="card-header bg-light">
+-                <h5 class="mb-0">Dados da Graduação Adicional (Opcional)</h5>
+-            </div>
+-            <div class="card-body">
+-                <div class="mb-3">
+-                    <label for="cursoGraduacao2" class="form-label"><strong>Segundo Curso de Graduação</strong></label>
+-                    <input type="text" class="form-control" id="cursoGraduacao2" name="cursoGraduacao2" 
+-                           placeholder="Nome do segundo curso" />
+-                </div>
+-                <div class="mb-3">
+-                    <label for="instituicao2" class="form-label"><strong>IES da Segunda Graduação</strong></label>
+-                    <input type="text" class="form-control" id="instituicao2" name="instituicao2" 
+-                           placeholder="Nome da IES adicional" />
+-                </div>
+-                <div class="row mb-3">
+-                    <div class="col-md-6">
+-                        <label for="igcInstituicao2" class="form-label"><strong>IGC da Segunda IES</strong></label>
+-                        <input type="text" class="form-control" id="igcInstituicao2" name="igcInstituicao2" 
+-                               placeholder="Apenas números" />
+-                    </div>
+-                    <div class="col-md-6">
+-                        <label for="ira2" class="form-label"><strong>IRA Adicional</strong></label>
+-                        <input type="number" step="0.01" class="form-control" id="ira2" name="ira2" 
+-                               placeholder="0.00 a 10.00" />
+-                    </div>
+-                </div>
+-            </div>
+-        </div>        
++        </div>
+ 
+         <!-- Comprovantes -->
+         <div class="card mt-4">
+             <div class="card-body">
+-                <h5 class="card-title">Comprovantes</h5>
++                <h5 class="card-title">Comprovantes</h5>                                
+                 
+-                <!-- Mestrado Documents -->
+-                <div class="mb-3">
+-                    <label for="diplomaMestradoUpload" class="form-label">
+-                        Diploma de Mestrado ou Declaração de Conclusão
+-                        <span class="text-danger">*</span>
+-                    </label>
+-                    <input type="file" class="form-control" id="diplomaMestradoUpload" name="diplomaMestradoUpload" 
+-                           accept=".pdf" required />
+-                    <div class="invalid-feedback">
+-                        Por favor, envie a cópia do diploma ou declaração de conclusão do mestrado.
+-                    </div>
+-                </div>
+-
+-                <div class="mb-3">
+-                    <label for="historicoDisciplinasMestrado" class="form-label">
+-                        Histórico de Disciplinas do Mestrado
+-                        <span class="text-danger">*</span>
+-                    </label>
+-                    <input type="file" class="form-control" id="historicoDisciplinasMestrado" 
+-                           name="historicoDisciplinasMestrado" accept=".pdf" required />
+-                    <div class="invalid-feedback">
+-                        Por favor, envie o histórico de disciplinas do mestrado.
+-                    </div>
+-                </div>
+-
+                 <!-- Existing Graduação Documents -->
+                 <div class="mb-3">
+                     <label for="diplomaGraduacaoUpload" class="form-label">
+-                        Frente e verso do(s) Diploma(s) de Graduação ou Declaração(ões) de
+-                        Conclusão de Curso(s)
++                        Frente e verso do Diploma de Graduação ou Declaração de Conclusão de Curso
+                         <span class="text-danger">*</span>
+                     </label>
+                     <input type="file" class="form-control" id="diplomaGraduacaoUpload" name="diplomaGraduacaoUpload" accept=".pdf" required />
+diff --git a/includes/section4.html b/includes/section4.html
+index 03f4f0a..d8de4d8 100644
+--- a/includes/section4.html
++++ b/includes/section4.html
+@@ -1,280 +1,300 @@
+-<!-- includes/section4.html - Avaliação Curricular para Doutorado -->
++<!-- includes/section4.html - Avaliação Curricular -->
+ <div id="section4_form" class="mt-1">
+-    <!-- Grupo 1: Publicações em Periódicos -->
++    <!-- Tabela de Pontuação Preenchida -->
+     <div class="card rounded-3 mb-4">
+       <div class="card-body">
+-        <h5>1. Publicações em Periódicos</h5>
+-        <p class="text-muted">Publicação ou trabalho aceito incondicionalmente em periódicos (Máximo de 6,0 pontos)</p>
++        <h5>Tabela de Pontuação Preenchida</h5>
++        <p class="text-muted">Faça o upload da Tabela 3 preenchida com a pontuação pleiteada, conforme o modelo do edital. O arquivo deve estar no formato PDF.</p>
+         
+-        <!-- 1.1. Qualificação A1 e A2 -->
+-        <div class="card rounded-3 mb-3">
+-          <div class="card-body">
+-            <h6>1.1. Qualificação A1 e A2 (Máximo: 2,0 pontos)</h6>
+-            <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="qualA1A2" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="qualA1A2" name="qualificacaoA1A2" min="0" />
+-                <div class="invalid-feedback">
+-                  Informe o número de publicações (A1 e A2).
+-                </div>
+-              </div>
+-              <div class="col-md-10">
+-                <label for="qualA1A2Upload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="qualA1A2Upload" name="qualA1A2Upload" accept=".pdf" multiple />
+-                <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes para as publicações A1 e A2.
+-                </div>
++        <div class="row mb-3 align-items-center">
++          <div class="col-md-12">
++            <label for="tabelaPontuacaoUpload" class="form-label">Arquivo da Tabela 3 (PDF)</label>
++            <input type="file" class="form-control" id="tabelaPontuacaoUpload" name="tabelaPontuacaoUpload" accept=".pdf" required />
++            <div class="invalid-feedback">
++              Por favor, anexe a tabela de pontuação preenchida.
++            </div>
++          </div>
++        </div>
++      </div>
++  </div>
++
++  <!-- Grupo 1: Participação em projetos de pesquisa ou iniciação científica -->
++  <div class="card rounded-3 mb-4">
++    <div class="card-body">
++      <h5>1. Participação em projetos de pesquisa ou iniciação científica</h5>
++      <p class="text-muted">Máximo de 4,0 pontos</p>
++      
++      <!-- 1.1 Por cada mês com bolsa -->
++      <div class="card rounded-3 mb-3">
++        <div class="card-body">
++          <h6>1.1. Por cada mês com bolsa (0,2 pontos por mês)</h6>
++          <div class="row mb-3 align-items-center">
++            <div class="col-md-12">
++              <label for="projPesqComBolsaUpload" class="form-label">Comprovantes</label>
++              <input type="file" class="form-control" id="projPesqComBolsaUpload" name="projPesqComBolsaUpload" accept=".pdf" multiple />
++              <div class="invalid-feedback">
++                Faça o upload dos comprovantes.
+               </div>
+             </div>
+           </div>
+         </div>
+-        
+-        <!-- 1.2. Qualificação A3 e A4 -->
+-        <div class="card rounded-3 mb-3">
+-          <div class="card-body">
+-            <h6>1.2. Qualificação A3 e A4 (Máximo: 1,5 pontos)</h6>
+-            <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="qualA3A4" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="qualA3A4" name="qualificacaoA3A4" min="0" />
+-                <div class="invalid-feedback">
+-                  Informe o número de publicações (A3 e A4).
+-                </div>
++      </div>
++      
++      <!-- 1.2 Por cada mês sem bolsa ou como voluntário -->
++      <div class="card rounded-3 mb-3">
++        <div class="card-body">
++          <h6>1.2. Por cada mês sem bolsa ou como voluntário (0,1 ponto por mês)</h6>
++          <div class="row mb-3 align-items-center">
++            <div class="col-md-12">
++              <label for="projPesqSemBolsaUpload" class="form-label">Comprovantes</label>
++              <input type="file" class="form-control" id="projPesqSemBolsaUpload" name="projPesqSemBolsaUpload" accept=".pdf" multiple />
++              <div class="invalid-feedback">
++                Faça o upload dos comprovantes.
+               </div>
+-              <div class="col-md-10">
+-                <label for="qualA3A4Upload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="qualA3A4Upload" name="qualificacaoA3A4Upload" accept=".pdf" multiple />
+-                <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes para as publicações A3 e A4.
+-                </div>
++            </div>
++          </div>
++        </div>
++      </div>
++    </div>
++  </div>
++
++  <!-- Grupo 2: Produção científica em revistas -->
++  <div class="card rounded-3 mb-4">
++    <div class="card-body">
++      <h5>2. Produção científica em revistas aderente às áreas de pesquisa do programa</h5>
++      <p class="text-muted">Máximo de 2,0 pontos</p>
++      
++      <!-- 2.1 Qualificação A1 e A2 -->
++      <div class="card rounded-3 mb-3">
++        <div class="card-body">
++          <h6>2.1. Qualificação A1 e A2 (QUALIS CAPES 2017-2020) (1,0 ponto por publicação)</h6>
++          <div class="row mb-3 align-items-center">
++            <div class="col-md-12">
++              <label for="revistasA1A2Upload" class="form-label">Comprovantes</label>
++              <input type="file" class="form-control" id="revistasA1A2Upload" name="revistasA1A2Upload" accept=".pdf" multiple />
++              <div class="invalid-feedback">
++                Faça o upload dos comprovantes.
+               </div>
+             </div>
+           </div>
+         </div>
+-        
+-        <!-- 1.3. Qualificação B1 e B2 -->
+-        <div class="card rounded-3 mb-3">
++      </div>
++
++      <!-- 2.2 Qualificação A3 e A4 -->
++      <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>1.3. Qualificação B1 e B2 (Máximo: 1,0 ponto)</h6>
++            <h6>2.2. Qualificação A3 e A4 (QUALIS CAPES 2017-2020) (0,8 ponto por publicação)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="qualB1B2" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="qualB1B2" name="qualificacaoB1B2" min="0" />
++              <div class="col-md-12">
++                <label for="revistasA3A4Upload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="revistasA3A4Upload" name="revistasA3A4Upload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Informe o número de publicações (B1 e B2).
+-                </div>
+-              </div>
+-              <div class="col-md-10">
+-                <label for="qualB1B2Upload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="qualB1B2Upload" name="qualificacaoB1B2Upload" accept=".pdf" multiple />
+-                <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes para as publicações B1 e B2.
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+             </div>
+           </div>
+-        </div>
+-        
+-        <!-- 1.4. Qualificação B3 e B4 -->
+-        <div class="card rounded-3 mb-3">
++      </div>
++
++      <!-- 2.3 Qualificação B1 e B2 -->
++      <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>1.4. Qualificação B3 e B4 (Máximo: 0,5 ponto)</h6>
++            <h6>2.3. Qualificação B1 e B2 (QUALIS CAPES 2017-2020) (0,6 ponto por publicação)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="qualB3B4" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="qualB3B4" name="qualificacaoB3B4" min="0" />
++              <div class="col-md-12">
++                <label for="revistasB1B2Upload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="revistasB1B2Upload" name="revistasB1B2Upload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Informe o número de publicações (B3 e B4).
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+-              <div class="col-md-10">
+-                <label for="qualB3B4Upload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="qualB3B4Upload" name="qualificacaoB3B4Upload" accept=".pdf" multiple />
++            </div>
++          </div>
++      </div>
++
++      <!-- 2.4 Qualificação B3 e B4 -->
++      <div class="card rounded-3 mb-3">
++          <div class="card-body">
++            <h6>2.4. Qualificação B3 e B4 (QUALIS CAPES 2017-2020) (0,4 ponto por publicação)</h6>
++            <div class="row mb-3 align-items-center">
++              <div class="col-md-12">
++                <label for="revistasB3B4Upload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="revistasB3B4Upload" name="revistasB3B4Upload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes para as publicações B3 e B4.
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+             </div>
+           </div>
+-        </div>
+-        
+-        <!-- 1.5. Qualificação C -->
+-        <div class="card rounded-3 mb-3">
++      </div>
++
++      <!-- 2.5 Qualificação C -->
++      <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>1.5. Qualificação C (Máximo: 0,1 ponto)</h6>
++            <h6>2.5. Qualificação C (QUALIS CAPES 2017-2020) (0,1 ponto por publicação)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="qualC" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="qualC" name="qualificacaoC" min="0" />
++              <div class="col-md-12">
++                <label for="revistasCUpload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="revistasCUpload" name="revistasCUpload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Informe o número de publicações (C).
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+-              <div class="col-md-10">
+-                <label for="qualCUpload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="qualCUpload" name="qualificacaoCUpload" accept=".pdf" multiple />
+-                <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes para as publicações da categoria C.
+-                </div>
++            </div>
++          </div>
++      </div>
++    </div>
++  </div>
++
++  <!-- Grupo 3: Produção científica em anais de eventos -->
++  <div class="card rounded-3 mb-4">
++    <div class="card-body">
++      <h5>3. Produção científica em anais de eventos regionais, nacionais ou internacionais aderentes às áreas de pesquisa do programa</h5>
++      <p class="text-muted">Máximo de 2,0 pontos</p>
++      
++      <!-- 3.1 Artigo completo -->
++      <div class="card rounded-3 mb-3">
++        <div class="card-body">
++          <h6>3.1. Artigo completo (0,5 ponto por artigo)</h6>
++          <div class="row mb-3 align-items-center">
++            <div class="col-md-12">
++              <label for="anaisArtigoCompletoUpload" class="form-label">Comprovantes</label>
++              <input type="file" class="form-control" id="anaisArtigoCompletoUpload" name="anaisArtigoCompletoUpload" accept=".pdf" multiple />
++              <div class="invalid-feedback">
++                Faça o upload dos comprovantes.
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+-    </div>
+-  
+-    <!-- Grupo 2: Publicações em Anais de Eventos -->
+-    <div class="card rounded-3 mb-4">
+-      <div class="card-body">
+-        <h5>2. Publicações em Anais de Eventos</h5>
+-        <p class="text-muted">Envie apenas as páginas que comprovem a publicação nos anais (Máximo de 4,0 pontos)</p>
+-        
+-        <!-- 2.1. Artigo Completo -->
+-        <div class="card rounded-3 mb-3">
+-          <div class="card-body">
+-            <h6>2.1. Artigo Completo (Máximo: 1,0 ponto)</h6>
+-            <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="anaisArtigo" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="anaisArtigo" name="anaisArtigoCompleto" min="0" />
+-                <div class="invalid-feedback">
+-                  Informe o número de artigos completos.
+-                </div>
++      
++      <!-- 3.2 Resumo estendido -->
++      <div class="card rounded-3 mb-3">
++        <div class="card-body">
++          <h6>3.2. Resumo estendido (0,3 ponto por resumo)</h6>
++          <div class="row mb-3 align-items-center">
++            <div class="col-md-12">
++              <label for="anaisResumoEstendidoUpload" class="form-label">Comprovantes</label>
++              <input type="file" class="form-control" id="anaisResumoEstendidoUpload" name="anaisResumoEstendidoUpload" accept=".pdf" multiple />
++              <div class="invalid-feedback">
++                Faça o upload dos comprovantes.
+               </div>
+-              <div class="col-md-10">
+-                <label for="anaisArtigoUpload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="anaisArtigoUpload" name="anaisArtigoCompletoUpload" accept=".pdf" multiple />
+-                <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes dos artigos completos.
+-                </div>
++            </div>
++          </div>
++        </div>
++      </div>
++      
++      <!-- 3.3 Resumo -->
++      <div class="card rounded-3 mb-3">
++        <div class="card-body">
++          <h6>3.3. Resumo (0,1 ponto por resumo)</h6>
++          <div class="row mb-3 align-items-center">
++            <div class="col-md-12">
++              <label for="anaisResumoUpload" class="form-label">Comprovantes</label>
++              <input type="file" class="form-control" id="anaisResumoUpload" name="anaisResumoUpload" accept=".pdf" multiple />
++              <div class="invalid-feedback">
++                Faça o upload dos comprovantes.
+               </div>
+             </div>
+           </div>
+         </div>
++      </div>
++    </div>
++  </div>
++
++  <!-- Grupo 4: Atividade de docência ou iniciação à docência -->
++  <div class="card rounded-3 mb-4">
++      <div class="card-body">
++        <h5>4. Atividade de docência ou iniciação à docência</h5>
++        <p class="text-muted">Não são pontuadas as atividades de estágio no ensino infantil, fundamental, médio ou técnico. Máximo de 1,5 ponto.</p>
+         
+-        <!-- 2.2. Resumo Estendido -->
++        <!-- 4.1 Cada mês como docente em IES -->
+         <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>2.2. Resumo Estendido (Máximo: 0,6 ponto)</h6>
++            <h6>4.1. Cada mês como docente em IES (0,1 ponto por mês)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="anaisResumoEstendido" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="anaisResumoEstendido" name="anaisResumoEstendido" min="0" />
+-                <div class="invalid-feedback">
+-                  Informe o número de resumos estendidos.
+-                </div>
+-              </div>
+-              <div class="col-md-10">
+-                <label for="anaisResumoEstendidoUpload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="anaisResumoEstendidoUpload" name="anaisResumoEstendidoUpload" accept=".pdf" multiple />
++              <div class="col-md-12">
++                <label for="docenciaIESUpload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="docenciaIESUpload" name="docenciaIESUpload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes dos resumos estendidos.
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         
+-        <!-- 2.3. Resumo -->
++        <!-- 4.2 Cada mês de iniciação à docência -->
+         <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>2.3. Resumo (Máximo: 0,3 ponto)</h6>
++            <h6>4.2. Cada mês de iniciação à docência (monitoria, estágio docência ou tutor da UAB) (0,05 ponto por mês)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="anaisResumo" class="form-label">Quantos?</label>
+-                <input type="number" class="form-control" id="anaisResumo" name="anaisResumo" min="0" />
++              <div class="col-md-12">
++                <label for="iniciacaoDocenciaUpload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="iniciacaoDocenciaUpload" name="iniciacaoDocenciaUpload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Informe o número de resumos.
+-                </div>
+-              </div>
+-              <div class="col-md-10">
+-                <label for="anaisResumoUpload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="anaisResumoUpload" name="anaisResumoUpload" accept=".pdf" multiple />
+-                <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes dos resumos.
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+-      </div>
+-    </div>
+-  
+-    <!-- Grupo 3: Atividade de Docência e Orientação -->
+-    <div class="card rounded-3 mb-4">
+-      <div class="card-body">
+-        <h5>3. Atividade de Docência e Orientação</h5>
+-        <p class="text-muted">Informe os meses e/ou orientações concluídas (Máximo de 1,5 ponto)</p>
+-        
+-        <!-- 3.1. Docência em IES -->
++
++        <!-- 4.3 Cada mês como docente do ensino Fundamental, Médio ou Técnico -->
+         <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>3.1. Cada mês como docente em IES (0,1 ponto por mês)</h6>
++            <h6>4.3. Cada mês como docente do ensino Fundamental, Médio ou Técnico (0,05 ponto por mês)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="docenciaIES" class="form-label">Meses</label>
+-                <input type="number" class="form-control" id="docenciaIES" name="docenciaIES" min="0" />
++              <div class="col-md-12">
++                <label for="docenciaBasicoUpload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="docenciaBasicoUpload" name="docenciaBasicoUpload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Informe a quantidade de meses como docente em IES.
+-                </div>
+-              </div>
+-              <div class="col-md-10">
+-                <label for="docenciaIESUpload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="docenciaIESUpload" name="docenciaIESUpload" accept=".pdf" multiple />
+-                <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes da docência em IES.
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
++      </div>
++  </div>
++
++  <!-- Grupo 5: Outras atividades -->
++  <div class="card rounded-3 mb-4">
++      <div class="card-body">
++        <h5>5. Outras atividades</h5>
++        <p class="text-muted">Máximo de 0,5 ponto.</p>
+         
+-        <!-- 3.2. Docência no Ensino Fundamental, Médio ou Técnico -->
++        <!-- 5.1 Cada mês com bolsa PET -->
+         <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>3.2. Cada mês como docente no ensino Fundamental, Médio ou Técnico (0,05 ponto por mês)</h6>
++            <h6>5.1. Cada mês com bolsa PET (0,05 ponto por mês)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="docenciaEnsino" class="form-label">Meses</label>
+-                <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0" />
+-                <div class="invalid-feedback">
+-                  Informe a quantidade de meses no ensino Fundamental, Médio ou Técnico.
+-                </div>
+-              </div>
+-              <div class="col-md-10">
+-                <label for="docenciaEnsinoUpload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="docenciaEnsinoUpload" name="docenciaEnsinoUpload" accept=".pdf" multiple />
++              <div class="col-md-12">
++                <label for="bolsaPETUpload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="bolsaPETUpload" name="bolsaPETUpload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes da docência no ensino Fundamental, Médio ou Técnico.
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         
+-        <!-- 3.3. Orientação de IC ou TCC concluída -->
++        <!-- 5.2 Cada mês com outro tipo de bolsa da IES -->
+         <div class="card rounded-3 mb-3">
+           <div class="card-body">
+-            <h6>3.3. Cada orientação de IC ou TCC concluída, como orientador principal (Máximo: 0,5 ponto cada)</h6>
++            <h6>5.2. Cada mês com outro tipo de bolsa da IES (0,02 ponto por mês)</h6>
+             <div class="row mb-3 align-items-center">
+-              <div class="col-md-2">
+-                <label for="orientacao" class="form-label">Quantas?</label>
+-                <input type="number" class="form-control" id="orientacao" name="orientacao" min="0" />
+-                <div class="invalid-feedback">
+-                  Informe o número de orientações concluídas.
+-                </div>
+-              </div>
+-              <div class="col-md-10">
+-                <label for="orientacaoUpload" class="form-label">Comprovantes</label>
+-                <input type="file" class="form-control" id="orientacaoUpload" name="orientacaoUpload" accept=".pdf" multiple />
++              <div class="col-md-12">
++                <label for="outraBolsaIESUpload" class="form-label">Comprovantes</label>
++                <input type="file" class="form-control" id="outraBolsaIESUpload" name="outraBolsaIESUpload" accept=".pdf" multiple />
+                 <div class="invalid-feedback">
+-                  Faça o upload dos comprovantes das orientações.
++                  Faça o upload dos comprovantes.
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+-    </div>
+   </div>
+-  
+\ No newline at end of file
++</div>
+\ No newline at end of file
+diff --git a/index.html b/index.html
+index 622ff49..4355663 100644
+--- a/index.html
++++ b/index.html
+@@ -31,7 +31,7 @@
+                 <a class="navbar-brand me-3" href="#">
+                     <img src="images/logo-ppgmmq.jpeg" alt="Logo" class="img-fluid" style="max-height: 50px;" />
+                 </a>
+-                <h2>PPGMMQ Processo Seletivo - Doutorado 2025.1</h2>
++                <h2>PPGMMQ Processo Seletivo - MESTRADO EDITAL 02/2025</h2>
+             </div>
+         </div>
+     </nav>
+@@ -55,10 +55,7 @@
+                         </li>                        
+                         <li class="nav-item" role="presentation">
+                             <button class="nav-link mb-2" id="section4-tab" data-bs-toggle="tab" data-bs-target="#section4" type="button" role="tab" aria-controls="section4" aria-selected="false">3. Análise Curricular</button>
+-                        </li>
+-                        <li class="nav-item" role="presentation">
+-                            <button class="nav-link mb-2" id="section7-tab" data-bs-toggle="tab" data-bs-target="#section7" type="button" role="tab" aria-controls="section7" aria-selected="false">4. Proposta de Pesquisa</button>
+-                        </li>
++                        </li>                        
+                         <li class="nav-item" role="presentation">
+                             <button class="nav-link mb-2" id="section5-tab" data-bs-toggle="tab" data-bs-target="#section5" type="button" role="tab" aria-controls="section5" aria-selected="false">5. Dados Socioeconômicos</button>
+                         </li>
+@@ -90,10 +87,6 @@
+                             <!-- Section 4 Content -->
+                             <div id="section4-content"></div>
+                         </div>
+-                        <div class="tab-pane fade" id="section7" role="tabpanel" aria-labelledby="section7-tab">
+-                            <!-- Section 7 Content -->
+-                            <div id="section7-content"></div>
+-                        </div>
+                         <div class="tab-pane fade" id="section5" role="tabpanel" aria-labelledby="section5-tab">
+                             <!-- Section 5 Content -->
+                             <div id="section5-content"></div>
+diff --git a/js/includes.js b/js/includes.js
+index a544403..36dbd68 100644
+--- a/js/includes.js
++++ b/js/includes.js
+@@ -12,10 +12,6 @@ export async function loadIncludes() {
+             file: 'section2.html',
+             containerId: 'section2-content'
+         },
+-        {
+-            file: 'section7.html',
+-            containerId: 'section7-content'
+-        },
+         {
+             file: 'section4.html',
+             containerId: 'section4-content'
+diff --git a/js/main.js b/js/main.js
+index d1b5d37..31edae5 100644
+--- a/js/main.js
++++ b/js/main.js
+@@ -28,8 +28,21 @@ document.addEventListener('DOMContentLoaded', async () => {
+ 
+         // Step 4: Validate form before PDF generation
+         const form = document.getElementById('applicationForm'); // Assuming form ID
+-        if (!validateForm(form)) {
+-            alert('Por favor, preencha todos os campos obrigatórios corretamente.');
++        const validationResult = validateForm(form);
++        if (!validationResult.isValid) {
++            // Exibe a mensagem de erro específica
++            alert(validationResult.message);
++            // Rola a tela até o elemento com erro e o foca
++            if (validationResult.element) {
++                validationResult.element.scrollIntoView({
++                    behavior: 'smooth',
++                    block: 'center'
++                });
++                // Tenta focar no elemento para melhor UX
++                if (typeof validationResult.element.focus === 'function') {
++                    validationResult.element.focus();
++                }
++            }
+             return;
+         }
+ 
+@@ -44,22 +57,73 @@ document.addEventListener('DOMContentLoaded', async () => {
+     });
+ });
+ 
++
++/**
++ * Encontra o texto do label associado a um campo de input.
++ * @param {HTMLElement} inputElement O elemento de input.
++ * @returns {string} O texto do label.
++ */
++function getLabelForInput(inputElement) {
++    if (inputElement.id) {
++        const label = document.querySelector(`label[for="${inputElement.id}"]`);
++        if (label) {
++            return label.innerText.trim();
++        }
++    }
++    // Fallback para encontrar o label mais próximo
++    const parent = inputElement.closest('div');
++    if (parent) {
++        const label = parent.querySelector('label');
++        if (label) return label.innerText.trim();
++    }
++    return 'Campo sem nome'; // Fallback
++}
++
++
++/**
++ * Valida o formulário e retorna um objeto indicando o status e a mensagem de erro.
++ * @param {HTMLFormElement} form O formulário a ser validado.
++ * @returns {{isValid: boolean, message?: string, element?: HTMLElement}}
++ */
+ function validateForm(form) {
+-    let isValid = true;
++    // Limpa a validação anterior de todos os campos
++    form.querySelectorAll('.is-invalid, .is-valid').forEach(el => {
++        el.classList.remove('is-invalid', 'is-valid');
++        const feedback = el.querySelector('.invalid-feedback');
++        if (feedback) feedback.style.display = 'none';
++    });
+ 
+-    // Validação de inputs regulares, emails e arquivos
+-    form.querySelectorAll('input, select, textarea').forEach((input) => {
+-        if (input.hasAttribute('required') && !input.value.trim()) {
+-            input.classList.add('is-invalid');
+-            isValid = false;
+-        } else if (input.type === 'file' && input.hasAttribute('required') && input.files.length === 0) {
++
++    // Validação de inputs regulares, emails e arquivos com 'required'
++    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
++    for (const input of inputs) {
++        let isFieldValid = true;
++        let errorMessage = '';
++
++        if (input.type === 'file') {
++            if (input.files.length === 0) {
++                isFieldValid = false;
++                errorMessage = `Por favor, anexe o arquivo para "${getLabelForInput(input)}".`;
++            }
++        } else if (input.type === 'radio' || input.type === 'checkbox') {
++            // Radios e checkboxes são validados em seus grupos específicos abaixo
++            continue;
++        } else if (!input.value.trim()) {
++            isFieldValid = false;
++            errorMessage = `Por favor, preencha o campo "${getLabelForInput(input)}".`;
++        }
++
++        if (!isFieldValid) {
+             input.classList.add('is-invalid');
+-            isValid = false;
++            return {
++                isValid: false,
++                message: errorMessage,
++                element: input
++            };
+         } else {
+-            input.classList.remove('is-invalid');
+             input.classList.add('is-valid');
+         }
+-    });
++    }
+ 
+     // Validação específica para #section1_form - groupCotas
+     const section1Form = document.getElementById('section1_form');
+@@ -71,94 +135,71 @@ function validateForm(form) {
+         if (!isCotasChecked) {
+             cotasContainer.classList.add('is-invalid');
+             cotasContainer.querySelector('.invalid-feedback').style.display = 'block';
+-            isValid = false;
++            return {
++                isValid: false,
++                message: 'Por favor, selecione pelo menos uma opção no campo "Concorrer às cotas?".',
++                element: cotasContainer
++            };
+         } else {
+             cotasContainer.classList.remove('is-invalid');
+-            cotasContainer.querySelector('.invalid-feedback').style.display = 'none';
+         }
+     }
+ 
+-    // Validação específica do #section4_form
+-    const section4Form = document.getElementById('section4_form');
+-    if (section4Form) {
+-        section4Form.querySelectorAll('input[type="number"]').forEach(numberInput => {
+-            const relatedFileInput = document.getElementById(`${numberInput.id}Upload`);
+-
+-            if (numberInput.value.trim() !== "" && Number(numberInput.value) > 0) {
+-                // Se quantidade/mês for maior que zero, o arquivo se torna obrigatório
+-                if (!relatedFileInput || relatedFileInput.files.length === 0) {
+-                    relatedFileInput.classList.add('is-invalid');
+-                    isValid = false;
+-                } else {
+-                    relatedFileInput.classList.remove('is-invalid');
+-                    relatedFileInput.classList.add('is-valid');
+-                }
+-            } else {
+-                // Se quantidade/mês for zero ou vazio, limpa a validação do arquivo
+-                if (relatedFileInput) {
+-                    relatedFileInput.classList.remove('is-invalid', 'is-valid');
+-                }
+-            }
+-        });
+-    }
+-
+-    // Validação específica do #section5_form
++    // Validação específica do #section5_form (grupos de radio)
+     const section5Form = document.getElementById('section5_form');
+     if (section5Form) {
+-        const radioGroups = section5Form.querySelectorAll('input[type="radio"][required]');
+-        const groupNames = new Set();
+-
+-        // Identificar os grupos únicos baseados no atributo 'name'
+-        radioGroups.forEach(radio => groupNames.add(radio.name));
++        const radioGroups = new Set(Array.from(section5Form.querySelectorAll('input[type="radio"][required]')).map(r => r.name));
+ 
+-        groupNames.forEach(groupName => {
++        for (const groupName of radioGroups) {
+             const groupInputs = section5Form.querySelectorAll(`input[name="${groupName}"]`);
+             const isGroupValid = Array.from(groupInputs).some(radio => radio.checked);
+-
+-            // Encontrar o contêiner pai onde está o grupo e o invalid-feedback
+-            const groupContainer = groupInputs[0].closest('.mb-3');
++            const groupContainer = groupInputs[0].closest('.mb-3'); // Container do grupo
+ 
+             if (!isGroupValid) {
+-                // Adiciona a classe 'is-invalid' no contêiner principal do grupo
+                 groupContainer.classList.add('is-invalid');
+-                groupContainer.querySelector('.invalid-feedback').style.display = 'block';
+-                isValid = false;
+-            } else {
+-                // Remove a classe 'is-invalid' e esconde o feedback
+-                groupContainer.classList.remove('is-invalid');
+-                groupContainer.querySelector('.invalid-feedback').style.display = 'none';
++                const feedback = groupContainer.querySelector('.invalid-feedback');
++                if (feedback) feedback.style.display = 'block';
++                return {
++                    isValid: false,
++                    message: `Por favor, selecione uma opção para a pergunta: "${groupContainer.querySelector('h6, p').innerText.trim()}"`,
++                    element: groupContainer
++                };
+             }
+-        });
++        }
+     }
+ 
+-    // Validação específica do #section6_form
+-    if (document.getElementById('section6_form')) {
+-        const situacaoAtualRadios = document.querySelectorAll('input[name="situacaoAtual"]');
+-        const situacaoAtualContainer = document.querySelector('label[for="situacaoAtual"]').parentElement;
++    // Validação específica do #section6_form (declarações)
++    const section6Form = document.getElementById('section6_form');
++    if (section6Form) {
++        const situacaoAtualRadios = section6Form.querySelectorAll('input[name="situacaoAtual"]');
+         const situacaoSelecionada = Array.from(situacaoAtualRadios).some(radio => radio.checked);
+ 
+         if (!situacaoSelecionada) {
+-            situacaoAtualContainer.classList.add('is-invalid');
+-            situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'block';
+-            isValid = false;
+-        } else {
+-            situacaoAtualContainer.classList.remove('is-invalid');
+-            situacaoAtualContainer.querySelector('.invalid-feedback').style.display = 'none';
++            const container = document.querySelector('label[for="situacaoAtual"]').parentElement;
++            container.classList.add('is-invalid');
++            container.querySelector('.invalid-feedback').style.display = 'block';
++            return {
++                isValid: false,
++                message: 'Por favor, selecione sua situação profissional atual.',
++                element: container
++            };
+         }
+ 
+         const checkboxCiente = document.getElementById('estouCienteDasPenalidades');
+         const checkboxAutorizo = document.getElementById('autorizoAveriguacoes');
+-        const declaracoesContainer = document.querySelector('fieldset');
+-
+         if (!checkboxCiente.checked || !checkboxAutorizo.checked) {
+-            declaracoesContainer.classList.add('is-invalid');
+-            declaracoesContainer.querySelector('.invalid-feedback').style.display = 'block';
+-            isValid = false;
+-        } else {
+-            declaracoesContainer.classList.remove('is-invalid');
+-            declaracoesContainer.querySelector('.invalid-feedback').style.display = 'none';
++            const container = checkboxCiente.closest('fieldset');
++            container.classList.add('is-invalid');
++            container.querySelector('.invalid-feedback').style.display = 'block';
++            return {
++                isValid: false,
++                message: 'Você deve marcar as duas caixas de declaração para prosseguir.',
++                element: container
++            };
+         }
+     }
+ 
+-    return isValid;
++    return {
++        isValid: true
++    };
+ }
+\ No newline at end of file
+diff --git a/mock_pdfs/1_01_doc_identidade.pdf b/mock_pdfs/1_01_doc_identidade.pdf
+deleted file mode 100644
+index 9494810..0000000
+Binary files a/mock_pdfs/1_01_doc_identidade.pdf and /dev/null differ
+diff --git a/mock_pdfs/1_02_autodeclaracao.pdf b/mock_pdfs/1_02_autodeclaracao.pdf
+deleted file mode 100644
+index 9d55f92..0000000
+Binary files a/mock_pdfs/1_02_autodeclaracao.pdf and /dev/null differ
+diff --git a/mock_pdfs/2_01_diploma1.pdf b/mock_pdfs/2_01_diploma1.pdf
+deleted file mode 100644
+index 6799bbf..0000000
+Binary files a/mock_pdfs/2_01_diploma1.pdf and /dev/null differ
+diff --git a/mock_pdfs/2_02_historico1.pdf b/mock_pdfs/2_02_historico1.pdf
+deleted file mode 100644
+index de69565..0000000
+Binary files a/mock_pdfs/2_02_historico1.pdf and /dev/null differ
+diff --git a/mock_pdfs/autodeclaracao_mock.pdf b/mock_pdfs/autodeclaracao_mock.pdf
+index 0b2f7fd..120cefe 100644
+Binary files a/mock_pdfs/autodeclaracao_mock.pdf and b/mock_pdfs/autodeclaracao_mock.pdf differ
+diff --git a/mock_pdfs/calculo1_syllabus.pdf b/mock_pdfs/calculo1_syllabus.pdf
+deleted file mode 100644
+index 7f7e022..0000000
+Binary files a/mock_pdfs/calculo1_syllabus.pdf and /dev/null differ
+diff --git a/mock_pdfs/diploma2.pdf b/mock_pdfs/diploma2.pdf
+deleted file mode 100644
+index 27b6e42..0000000
+Binary files a/mock_pdfs/diploma2.pdf and /dev/null differ
+diff --git a/mock_pdfs/diploma_graduacao2_mock.pdf b/mock_pdfs/diploma_graduacao2_mock.pdf
+deleted file mode 100644
+index 596e90f..0000000
+Binary files a/mock_pdfs/diploma_graduacao2_mock.pdf and /dev/null differ
+diff --git a/mock_pdfs/diploma_graduacao_mock.pdf b/mock_pdfs/diploma_graduacao_mock.pdf
+index be58690..1f7152b 100644
+Binary files a/mock_pdfs/diploma_graduacao_mock.pdf and b/mock_pdfs/diploma_graduacao_mock.pdf differ
+diff --git a/mock_pdfs/doc_id_upload.pdf b/mock_pdfs/doc_id_upload.pdf
+deleted file mode 100644
+index fde39bc..0000000
+Binary files a/mock_pdfs/doc_id_upload.pdf and /dev/null differ
+diff --git a/mock_pdfs/docencia_ies.pdf b/mock_pdfs/docencia_ies.pdf
+deleted file mode 100644
+index 9aa867b..0000000
+Binary files a/mock_pdfs/docencia_ies.pdf and /dev/null differ
+diff --git a/mock_pdfs/historico2.pdf b/mock_pdfs/historico2.pdf
+deleted file mode 100644
+index 56cf887..0000000
+Binary files a/mock_pdfs/historico2.pdf and /dev/null differ
+diff --git a/mock_pdfs/historico_graduacao2_mock.pdf b/mock_pdfs/historico_graduacao2_mock.pdf
+deleted file mode 100644
+index a05c621..0000000
+Binary files a/mock_pdfs/historico_graduacao2_mock.pdf and /dev/null differ
+diff --git a/mock_pdfs/historico_graduacao_mock.pdf b/mock_pdfs/historico_graduacao_mock.pdf
+index 8f35a79..04a5a87 100644
+Binary files a/mock_pdfs/historico_graduacao_mock.pdf and b/mock_pdfs/historico_graduacao_mock.pdf differ
+diff --git a/mock_pdfs/ia_syllabus.pdf b/mock_pdfs/ia_syllabus.pdf
+deleted file mode 100644
+index 1473253..0000000
+Binary files a/mock_pdfs/ia_syllabus.pdf and /dev/null differ
+diff --git a/mock_pdfs/mecanica_syllabus.pdf b/mock_pdfs/mecanica_syllabus.pdf
+deleted file mode 100644
+index 4f351f9..0000000
+Binary files a/mock_pdfs/mecanica_syllabus.pdf and /dev/null differ
+diff --git a/mock_pdfs/proj_bolsa.pdf b/mock_pdfs/proj_bolsa.pdf
+deleted file mode 100644
+index 08103da..0000000
+Binary files a/mock_pdfs/proj_bolsa.pdf and /dev/null differ
+diff --git a/mock_pdfs/proj_sem_bolsa.pdf b/mock_pdfs/proj_sem_bolsa.pdf
+deleted file mode 100644
+index c804a7b..0000000
+Binary files a/mock_pdfs/proj_sem_bolsa.pdf and /dev/null differ
+diff --git a/mock_pdfs/projeto_ml_mock.pdf b/mock_pdfs/projeto_ml_mock.pdf
+deleted file mode 100644
+index 2a5765a..0000000
+Binary files a/mock_pdfs/projeto_ml_mock.pdf and /dev/null differ
+diff --git a/mock_pdfs/projeto_web_mock.pdf b/mock_pdfs/projeto_web_mock.pdf
+deleted file mode 100644
+index a9951d5..0000000
+Binary files a/mock_pdfs/projeto_web_mock.pdf and /dev/null differ
+diff --git a/mock_pdfs/pub_a1a2.pdf b/mock_pdfs/pub_a1a2.pdf
+deleted file mode 100644
+index b5a269d..0000000
+Binary files a/mock_pdfs/pub_a1a2.pdf and /dev/null differ
+diff --git a/mock_pdfs/pub_b1b2.pdf b/mock_pdfs/pub_b1b2.pdf
+deleted file mode 100644
+index 1de42da..0000000
+Binary files a/mock_pdfs/pub_b1b2.pdf and /dev/null differ
+diff --git a/mock_pdfs/publicacao_pi_mock.pdf b/mock_pdfs/publicacao_pi_mock.pdf
+deleted file mode 100644
+index da1d136..0000000
+Binary files a/mock_pdfs/publicacao_pi_mock.pdf and /dev/null differ
+diff --git a/mock_pdfs/publicacao_rn_mock.pdf b/mock_pdfs/publicacao_rn_mock.pdf
+deleted file mode 100644
+index 725e269..0000000
+Binary files a/mock_pdfs/publicacao_rn_mock.pdf and /dev/null differ
+diff --git a/mock_pdfs/resenha_cq_mock.pdf b/mock_pdfs/resenha_cq_mock.pdf
+deleted file mode 100644
+index b89da9a..0000000
+Binary files a/mock_pdfs/resenha_cq_mock.pdf and /dev/null differ
+diff --git a/mock_pdfs/syllabi_algebra_linear.pdf b/mock_pdfs/syllabi_algebra_linear.pdf
+deleted file mode 100644
+index 3081f20..0000000
+Binary files a/mock_pdfs/syllabi_algebra_linear.pdf and /dev/null differ
+diff --git a/mock_pdfs/syllabi_calculo1.pdf b/mock_pdfs/syllabi_calculo1.pdf
+deleted file mode 100644
+index ac9e70e..0000000
+Binary files a/mock_pdfs/syllabi_calculo1.pdf and /dev/null differ
+diff --git a/mock_pdfs/syllabi_estatistica.pdf b/mock_pdfs/syllabi_estatistica.pdf
+deleted file mode 100644
+index c6bfc3b..0000000
+Binary files a/mock_pdfs/syllabi_estatistica.pdf and /dev/null differ
+diff --git a/tree.txt b/tree.txt
+index 81a8c6b..d1f8c8d 100644
+--- a/tree.txt
++++ b/tree.txt
+@@ -1,9 +1,15 @@
+ .
++├── LICENSE
++├── PROJECT.md
++├── README.md
+ ├── create_mock_pdfs.sh
+ ├── css
+ │   └── styles.css
+ ├── docs
+-│   └── edital_mestrado_2025-1.md
++│   ├── edital2025-2._mestrado.md
++│   ├── edital_2025.1_doutorado.md
++│   ├── edital_2025.1_mestrado.md
++│   └── edital_2025.2_mestrado.pdf
+ ├── images
+ │   ├── logo-ppgmmq.jpeg
+ │   ├── ufc-logo-universidade-16.png
+@@ -12,10 +18,10 @@
+ │   ├── footer.html
+ │   ├── section1.html
+ │   ├── section2.html
+-│   ├── section3.html
+ │   ├── section4.html
+ │   ├── section5.html
+-│   └── section6.html
++│   ├── section6.html
++│   └── section7.html
+ ├── index.html
+ ├── js
+ │   ├── generatePdf.js
+@@ -23,42 +29,32 @@
+ │   ├── main.js
+ │   ├── popovers.js
+ │   ├── section1.js
+-│   ├── section3.js
++│   ├── testFill.js
+ │   └── utils.js
+-├── LICENSE
+ ├── mock_pdfs
+-│   ├── 1_01_doc_identidade.pdf
+-│   ├── 1_02_autodeclaracao.pdf
+-│   ├── 2_01_diploma1.pdf
+-│   ├── 2_02_historico1.pdf
++│   ├── anaisArtigoCompletoUpload.pdf
++│   ├── anaisResumoEstendidoUpload.pdf
++│   ├── anaisResumoUpload.pdf
+ │   ├── autodeclaracao_mock.pdf
+-│   ├── calculo1_syllabus.pdf
+-│   ├── diploma2.pdf
+-│   ├── diploma_graduacao2_mock.pdf
++│   ├── bolsaPETUpload.pdf
++│   ├── create_mocks.py
++│   ├── dcf_mock.pdf
+ │   ├── diploma_graduacao_mock.pdf
+-│   ├── docencia_ies.pdf
+-│   ├── doc_id_upload.pdf
+-│   ├── historico2.pdf
+-│   ├── historico_graduacao2_mock.pdf
++│   ├── docIdentidadeUpload.pdf
++│   ├── docenciaBasicoUpload.pdf
++│   ├── docenciaIESUpload.pdf
+ │   ├── historico_graduacao_mock.pdf
+-│   ├── ia_syllabus.pdf
+-│   ├── mecanica_syllabus.pdf
+-│   ├── proj_bolsa.pdf
+-│   ├── projeto_ml_mock.pdf
+-│   ├── projeto_web_mock.pdf
+-│   ├── proj_sem_bolsa.pdf
+-│   ├── pub_a1a2.pdf
+-│   ├── pub_b1b2.pdf
+-│   ├── publicacao_pi_mock.pdf
+-│   ├── publicacao_rn_mock.pdf
+-│   ├── resenha_cq_mock.pdf
+-│   ├── syllabi_algebra_linear.pdf
+-│   ├── syllabi_calculo1.pdf
+-│   └── syllabi_estatistica.pdf
+-├── PROJECT.md
+-├── prompt_content.json
++│   ├── iniciacaoDocenciaUpload.pdf
++│   ├── outraBolsaIESUpload.pdf
++│   ├── projPesqComBolsaUpload.pdf
++│   ├── projPesqSemBolsaUpload.pdf
++│   ├── revistasA1A2Upload.pdf
++│   ├── revistasA3A4Upload.pdf
++│   ├── revistasB1B2Upload.pdf
++│   ├── revistasB3B4Upload.pdf
++│   ├── revistasCUpload.pdf
++│   └── tabelaPontuacaoUpload.pdf
+ ├── prompt.yml
+-├── README.md
+ └── tree.txt
+ 
+-7 directories, 55 files
++7 directories, 51 files

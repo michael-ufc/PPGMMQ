@@ -1,275 +1,55 @@
-<!-- includes/section4.html - Avaliação Curricular para Doutorado -->
+<!-- includes/section4.html - Avaliação Curricular -->
 <div id="section4_form" class="mt-1">
-    <!-- Grupo 1: Publicações em Periódicos -->
+    <!-- Tabela de Pontuação Preenchida -->
     <div class="card rounded-3 mb-4">
       <div class="card-body">
-        <h5>1. Publicações em Periódicos</h5>
-        <p class="text-muted">Publicação ou trabalho aceito incondicionalmente em periódicos (Máximo de 6,0 pontos)</p>
+        <h5>Tabela de Pontuação Preenchida</h5>
+        <p class="text-muted">Faça o upload da Tabela 3 preenchida com a pontuação pleiteada, conforme o modelo do edital. O arquivo deve estar no formato PDF.</p>
         
-        <!-- 1.1. Qualificação A1 e A2 -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>1.1. Qualificação A1 e A2 (Máximo: 2,0 pontos)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="qualA1A2" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="qualA1A2" name="qualificacaoA1A2" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de publicações (A1 e A2).
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="qualA1A2Upload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="qualA1A2Upload" name="qualA1A2Upload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes para as publicações A1 e A2.
-                </div>
-              </div>
+        <div class="row mb-3 align-items-center">
+          <div class="col-md-12">
+            <label for="tabelaPontuacaoUpload" class="form-label">Arquivo da Tabela 3 (PDF)</label>
+            <input type="file" class="form-control" id="tabelaPontuacaoUpload" name="tabelaPontuacaoUpload" accept=".pdf" required />
+            <div class="invalid-feedback">
+              Por favor, anexe a tabela de pontuação preenchida.
             </div>
           </div>
         </div>
-        
-        <!-- 1.2. Qualificação A3 e A4 -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>1.2. Qualificação A3 e A4 (Máximo: 1,5 pontos)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="qualA3A4" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="qualA3A4" name="qualificacaoA3A4" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de publicações (A3 e A4).
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="qualA3A4Upload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="qualA3A4Upload" name="qualificacaoA3A4Upload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes para as publicações A3 e A4.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 1.3. Qualificação B1 e B2 -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>1.3. Qualificação B1 e B2 (Máximo: 1,0 ponto)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="qualB1B2" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="qualB1B2" name="qualificacaoB1B2" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de publicações (B1 e B2).
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="qualB1B2Upload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="qualB1B2Upload" name="qualificacaoB1B2Upload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes para as publicações B1 e B2.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 1.4. Qualificação B3 e B4 -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>1.4. Qualificação B3 e B4 (Máximo: 0,5 ponto)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="qualB3B4" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="qualB3B4" name="qualificacaoB3B4" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de publicações (B3 e B4).
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="qualB3B4Upload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="qualB3B4Upload" name="qualificacaoB3B4Upload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes para as publicações B3 e B4.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 1.5. Qualificação C -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>1.5. Qualificação C (Máximo: 0,1 ponto)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="qualC" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="qualC" name="qualificacaoC" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de publicações (C).
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="qualCUpload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="qualCUpload" name="qualificacaoCUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes para as publicações da categoria C.
-                </div>
+      </div>
+  </div>
+
+  <!-- Grupo 1: Participação em projetos de pesquisa ou iniciação científica -->
+  <div class="card rounded-3 mb-4">
+    <div class="card-body">
+      <h5>1. Participação em projetos de pesquisa ou iniciação científica</h5>
+      <p class="text-muted">Máximo de 4,0 pontos</p>
+      
+      <!-- 1.1 Por cada mês com bolsa -->
+      <div class="card rounded-3 mb-3">
+        <div class="card-body">
+          <h6>1.1. Por cada mês com bolsa (0,2 pontos por mês)</h6>
+          <div class="row mb-3 align-items-center">
+            <div class="col-md-12">
+              <label for="projPesqComBolsaUpload" class="form-label">Comprovantes</label>
+              <input type="file" class="form-control" id="projPesqComBolsaUpload" name="projPesqComBolsaUpload" accept=".pdf" multiple />
+              <div class="invalid-feedback">
+                Faça o upload dos comprovantes.
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  
-    <!-- Grupo 2: Publicações em Anais de Eventos -->
-    <div class="card rounded-3 mb-4">
-      <div class="card-body">
-        <h5>2. Publicações em Anais de Eventos</h5>
-        <p class="text-muted">Envie apenas as páginas que comprovem a publicação nos anais (Máximo de 4,0 pontos)</p>
-        
-        <!-- 2.1. Artigo Completo -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>2.1. Artigo Completo (Máximo: 1,0 ponto)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="anaisArtigo" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="anaisArtigo" name="anaisArtigoCompleto" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de artigos completos.
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="anaisArtigoUpload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="anaisArtigoUpload" name="anaisArtigoCompletoUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes dos artigos completos.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 2.2. Resumo Estendido -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>2.2. Resumo Estendido (Máximo: 0,6 ponto)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="anaisResumoEstendido" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="anaisResumoEstendido" name="anaisResumoEstendido" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de resumos estendidos.
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="anaisResumoEstendidoUpload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="anaisResumoEstendidoUpload" name="anaisResumoEstendidoUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes dos resumos estendidos.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 2.3. Resumo -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>2.3. Resumo (Máximo: 0,3 ponto)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="anaisResumo" class="form-label">Quantos?</label>
-                <input type="number" class="form-control" id="anaisResumo" name="anaisResumo" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de resumos.
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="anaisResumoUpload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="anaisResumoUpload" name="anaisResumoUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes dos resumos.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Grupo 3: Atividade de Docência e Orientação -->
-    <div class="card rounded-3 mb-4">
-      <div class="card-body">
-        <h5>3. Atividade de Docência e Orientação</h5>
-        <p class="text-muted">Informe os meses e/ou orientações concluídas (Máximo de 1,5 ponto)</p>
-        
-        <!-- 3.1. Docência em IES -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>3.1. Cada mês como docente em IES (0,1 ponto por mês)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="docenciaIES" class="form-label">Meses</label>
-                <input type="number" class="form-control" id="docenciaIES" name="docenciaIES" min="0" />
-                <div class="invalid-feedback">
-                  Informe a quantidade de meses como docente em IES.
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="docenciaIESUpload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="docenciaIESUpload" name="docenciaIESUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes da docência em IES.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 3.2. Docência no Ensino Fundamental, Médio ou Técnico -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>3.2. Cada mês como docente no ensino Fundamental, Médio ou Técnico (0,05 ponto por mês)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="docenciaEnsino" class="form-label">Meses</label>
-                <input type="number" class="form-control" id="docenciaEnsino" name="docenciaEnsino" min="0" />
-                <div class="invalid-feedback">
-                  Informe a quantidade de meses no ensino Fundamental, Médio ou Técnico.
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="docenciaEnsinoUpload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="docenciaEnsinoUpload" name="docenciaEnsinoUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes da docência no ensino Fundamental, Médio ou Técnico.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 3.3. Orientação de IC ou TCC concluída -->
-        <div class="card rounded-3 mb-3">
-          <div class="card-body">
-            <h6>3.3. Cada orientação de IC ou TCC concluída, como orientador principal (Máximo: 0,5 ponto cada)</h6>
-            <div class="row mb-3 align-items-center">
-              <div class="col-md-2">
-                <label for="orientacao" class="form-label">Quantas?</label>
-                <input type="number" class="form-control" id="orientacao" name="orientacao" min="0" />
-                <div class="invalid-feedback">
-                  Informe o número de orientações concluídas.
-                </div>
-              </div>
-              <div class="col-md-10">
-                <label for="orientacaoUpload" class="form-label">Comprovantes</label>
-                <input type="file" class="form-control" id="orientacaoUpload" name="orientacaoUpload" accept=".pdf" multiple />
-                <div class="invalid-feedback">
-                  Faça o upload dos comprovantes das orientações.
-                </div>
+      
+      <!-- 1.2 Por cada mês sem bolsa ou como voluntário -->
+      <div class="card rounded-3 mb-3">
+        <div class="card-body">
+          <h6>1.2. Por cada mês sem bolsa ou como voluntário (0,1 ponto por mês)</h6>
+          <div class="row mb-3 align-items-center">
+            <div class="col-md-12">
+              <label for="projPesqSemBolsaUpload" class="form-label">Comprovantes</label>
+              <input type="file" class="form-control" id="projPesqSemBolsaUpload" name="projPesqSemBolsaUpload" accept=".pdf" multiple />
+              <div class="invalid-feedback">
+                Faça o upload dos comprovantes.
               </div>
             </div>
           </div>
@@ -277,4 +57,244 @@
       </div>
     </div>
   </div>
-  
+
+  <!-- Grupo 2: Produção científica em revistas -->
+  <div class="card rounded-3 mb-4">
+    <div class="card-body">
+      <h5>2. Produção científica em revistas aderente às áreas de pesquisa do programa</h5>
+      <p class="text-muted">Máximo de 2,0 pontos</p>
+      
+      <!-- 2.1 Qualificação A1 e A2 -->
+      <div class="card rounded-3 mb-3">
+        <div class="card-body">
+          <h6>2.1. Qualificação A1 e A2 (QUALIS CAPES 2017-2020) (1,0 ponto por publicação)</h6>
+          <div class="row mb-3 align-items-center">
+            <div class="col-md-12">
+              <label for="revistasA1A2Upload" class="form-label">Comprovantes</label>
+              <input type="file" class="form-control" id="revistasA1A2Upload" name="revistasA1A2Upload" accept=".pdf" multiple />
+              <div class="invalid-feedback">
+                Faça o upload dos comprovantes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.2 Qualificação A3 e A4 -->
+      <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>2.2. Qualificação A3 e A4 (QUALIS CAPES 2017-2020) (0,8 ponto por publicação)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="revistasA3A4Upload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="revistasA3A4Upload" name="revistasA3A4Upload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- 2.3 Qualificação B1 e B2 -->
+      <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>2.3. Qualificação B1 e B2 (QUALIS CAPES 2017-2020) (0,6 ponto por publicação)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="revistasB1B2Upload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="revistasB1B2Upload" name="revistasB1B2Upload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- 2.4 Qualificação B3 e B4 -->
+      <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>2.4. Qualificação B3 e B4 (QUALIS CAPES 2017-2020) (0,4 ponto por publicação)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="revistasB3B4Upload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="revistasB3B4Upload" name="revistasB3B4Upload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- 2.5 Qualificação C -->
+      <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>2.5. Qualificação C (QUALIS CAPES 2017-2020) (0,1 ponto por publicação)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="revistasCUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="revistasCUpload" name="revistasCUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grupo 3: Produção científica em anais de eventos -->
+  <div class="card rounded-3 mb-4">
+    <div class="card-body">
+      <h5>3. Produção científica em anais de eventos regionais, nacionais ou internacionais aderentes às áreas de pesquisa do programa</h5>
+      <p class="text-muted">Máximo de 2,0 pontos</p>
+      
+      <!-- 3.1 Artigo completo -->
+      <div class="card rounded-3 mb-3">
+        <div class="card-body">
+          <h6>3.1. Artigo completo (0,5 ponto por artigo)</h6>
+          <div class="row mb-3 align-items-center">
+            <div class="col-md-12">
+              <label for="anaisArtigoCompletoUpload" class="form-label">Comprovantes</label>
+              <input type="file" class="form-control" id="anaisArtigoCompletoUpload" name="anaisArtigoCompletoUpload" accept=".pdf" multiple />
+              <div class="invalid-feedback">
+                Faça o upload dos comprovantes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 3.2 Resumo estendido -->
+      <div class="card rounded-3 mb-3">
+        <div class="card-body">
+          <h6>3.2. Resumo estendido (0,3 ponto por resumo)</h6>
+          <div class="row mb-3 align-items-center">
+            <div class="col-md-12">
+              <label for="anaisResumoEstendidoUpload" class="form-label">Comprovantes</label>
+              <input type="file" class="form-control" id="anaisResumoEstendidoUpload" name="anaisResumoEstendidoUpload" accept=".pdf" multiple />
+              <div class="invalid-feedback">
+                Faça o upload dos comprovantes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 3.3 Resumo -->
+      <div class="card rounded-3 mb-3">
+        <div class="card-body">
+          <h6>3.3. Resumo (0,1 ponto por resumo)</h6>
+          <div class="row mb-3 align-items-center">
+            <div class="col-md-12">
+              <label for="anaisResumoUpload" class="form-label">Comprovantes</label>
+              <input type="file" class="form-control" id="anaisResumoUpload" name="anaisResumoUpload" accept=".pdf" multiple />
+              <div class="invalid-feedback">
+                Faça o upload dos comprovantes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grupo 4: Atividade de docência ou iniciação à docência -->
+  <div class="card rounded-3 mb-4">
+      <div class="card-body">
+        <h5>4. Atividade de docência ou iniciação à docência</h5>
+        <p class="text-muted">Não são pontuadas as atividades de estágio no ensino infantil, fundamental, médio ou técnico. Máximo de 1,5 ponto.</p>
+        
+        <!-- 4.1 Cada mês como docente em IES -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>4.1. Cada mês como docente em IES (0,1 ponto por mês)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="docenciaIESUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="docenciaIESUpload" name="docenciaIESUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 4.2 Cada mês de iniciação à docência -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>4.2. Cada mês de iniciação à docência (monitoria, estágio docência ou tutor da UAB) (0,05 ponto por mês)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="iniciacaoDocenciaUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="iniciacaoDocenciaUpload" name="iniciacaoDocenciaUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4.3 Cada mês como docente do ensino Fundamental, Médio ou Técnico -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>4.3. Cada mês como docente do ensino Fundamental, Médio ou Técnico (0,05 ponto por mês)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="docenciaBasicoUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="docenciaBasicoUpload" name="docenciaBasicoUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Grupo 5: Outras atividades -->
+  <div class="card rounded-3 mb-4">
+      <div class="card-body">
+        <h5>5. Outras atividades</h5>
+        <p class="text-muted">Máximo de 0,5 ponto.</p>
+        
+        <!-- 5.1 Cada mês com bolsa PET -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>5.1. Cada mês com bolsa PET (0,05 ponto por mês)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="bolsaPETUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="bolsaPETUpload" name="bolsaPETUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 5.2 Cada mês com outro tipo de bolsa da IES -->
+        <div class="card rounded-3 mb-3">
+          <div class="card-body">
+            <h6>5.2. Cada mês com outro tipo de bolsa da IES (0,02 ponto por mês)</h6>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-12">
+                <label for="outraBolsaIESUpload" class="form-label">Comprovantes</label>
+                <input type="file" class="form-control" id="outraBolsaIESUpload" name="outraBolsaIESUpload" accept=".pdf" multiple />
+                <div class="invalid-feedback">
+                  Faça o upload dos comprovantes.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

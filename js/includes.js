@@ -13,10 +13,6 @@ export async function loadIncludes() {
             containerId: 'section2-content'
         },
         {
-            file: 'section7.html',
-            containerId: 'section7-content'
-        },
-        {
             file: 'section4.html',
             containerId: 'section4-content'
         },

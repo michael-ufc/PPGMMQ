@@ -197,56 +197,84 @@ export async function generateAndMergePDF(formId) {
 async function createInitialPdf(formData) {
     const doc = new jsPDF();
 
+    // --- INÍCIO DA ALTERAÇÃO ---
+
+    // Define constantes para layout para facilitar a manutenção
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 15;
+    const maxWidth = pageWidth - margin * 2;
+    const lineHeight = 7; // Altura da linha para fonte tamanho 12
+    const fieldSpacing = 5; // Espaçamento extra entre os campos
+
     let yPosition = 20;
 
-    // Title
+    // Função para adicionar nova página se o conteúdo não couber
+    const addNewPageIfNeeded = (requiredHeight) => {
+        if (yPosition + requiredHeight > pageHeight - margin) {
+            doc.addPage();
+            yPosition = margin;
+        }
+    };
+
+    // Título
     doc.setFontSize(16);
-    doc.text('PPGMMQ Processo Seletivo 2025.1', 10, yPosition);
-    yPosition += 10;
+    doc.text('PPGMMQ Processo Seletivo 2025.1', margin, yPosition);
+    yPosition += 15;
 
-    doc.setFontSize(12);
-
-    // Iterate through each section
+    // Itera por cada seção
     for (const [section, fields] of Object.entries(formData)) {
-        // Add color for section titles
-        doc.setTextColor(0, 102, 204); // Set to a blue color (RGB: 0, 102, 204)
-        doc.setFontSize(14);
-        doc.text(`${formatSectionName(section)}`, 10, yPosition);
-        yPosition += 10;
-
-        // Reset color for regular text
-        doc.setTextColor(0, 0, 0); // Black text
         doc.setFontSize(12);
 
-        // Iterate through each field in the section
+        // Verifica se o título da seção cabe na página atual
+        addNewPageIfNeeded(lineHeight + fieldSpacing);
+
+        // Adiciona cor para os títulos das seções
+        doc.setTextColor(0, 102, 204); // Azul
+        doc.setFont("helvetica", "bold");
+        doc.text(`${formatSectionName(section)}`, margin, yPosition);
+        doc.setFont("helvetica", "normal");
+        yPosition += lineHeight + fieldSpacing;
+
+        // Reseta a cor para o texto normal
+        doc.setTextColor(0, 0, 0); // Preto
+
+        // Itera por cada campo na seção
         for (const [key, value] of Object.entries(fields)) {
-            if (key !== 'uploadedFiles') { // Exclude file uploads from text content
-                let displayValue = '';
+            if (key !== 'uploadedFiles' && value) { // Exclui arquivos e valores vazios
+                let displayValue = Array.isArray(value) ? value.join(', ') : value.toString();
 
-                if (Array.isArray(value)) {
-                    displayValue = value.join(', ');
-                } else {
-                    displayValue = value;
-                }
+                if (displayValue) {
+                    const label = `${formatFieldName(key)}: `;
+                    const fullText = label + displayValue;
 
-                doc.text(`${formatFieldName(key)}: ${displayValue}`, 10, yPosition);
-                yPosition += 10;
+                    // Usa splitTextToSize para calcular quantas linhas o texto ocupará
+                    const lines = doc.splitTextToSize(fullText, maxWidth);
+                    const requiredHeight = lines.length * lineHeight;
 
-                // Add a new page if yPosition exceeds the limit
-                if (yPosition > 270) {
-                    doc.addPage();
-                    yPosition = 20;
+                    // Verifica se o bloco de texto cabe na página atual
+                    addNewPageIfNeeded(requiredHeight + fieldSpacing);
+
+                    // Adiciona o texto com quebra de linha automática
+                    doc.text(fullText, margin, yPosition, {
+                        maxWidth: maxWidth
+                    });
+
+                    // Atualiza a posição Y com base na altura do texto renderizado
+                    yPosition += requiredHeight + fieldSpacing;
                 }
             }
         }
-
-        yPosition += 10; // Add extra space after each section
+        yPosition += 10; // Adiciona espaço extra após cada seção
     }
 
-    // Convert the PDF to bytes for merging
+    // --- FIM DA ALTERAÇÃO ---
+
+    // Converte o PDF em bytes para a mesclagem
     const initialPdfBytes = doc.output('arraybuffer');
     return initialPdfBytes;
 }
+
 
 /**
  * Formats the section ID to a readable section name.
