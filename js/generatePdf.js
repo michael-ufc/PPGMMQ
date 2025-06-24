@@ -127,6 +127,7 @@ export async function setMockData(formData) {
     return formData;
 }
 
+// --- INÍCIO DA ALTERAÇÃO 1: `collectFormData` ---
 export function collectFormData(formId) {
     const form = document.getElementById(formId);
     if (!form) {
@@ -150,14 +151,21 @@ export function collectFormData(formId) {
                 data[sectionId].uploadedFiles[input.name] = input.files ? Array.from(input.files) : [];
             } else if (input.type === 'radio') {
                 if (input.checked) {
-                    data[sectionId][input.name] = input.value;
+                    // Pega o texto do label associado, em vez do `value`
+                    const label = form.querySelector(`label[for="${input.id}"]`);
+                    data[sectionId][input.name] = label ? label.innerText.trim() : input.value;
                 }
             } else if (input.type === 'checkbox') {
                 if (!data[sectionId][input.name]) {
                     data[sectionId][input.name] = [];
                 }
-                if (input.checked && !data[sectionId][input.name].includes(input.value)) {
-                    data[sectionId][input.name].push(input.value);
+                if (input.checked) {
+                    // Pega o texto do label associado, em vez do `value`
+                    const label = form.querySelector(`label[for="${input.id}"]`);
+                    const textValue = label ? label.innerText.trim() : input.value;
+                    if (!data[sectionId][input.name].includes(textValue)) {
+                        data[sectionId][input.name].push(textValue);
+                    }
                 }
             } else {
                 data[sectionId][input.name] = input.value;
@@ -167,6 +175,7 @@ export function collectFormData(formId) {
 
     return data;
 }
+// --- FIM DA ALTERAÇÃO 1 ---
 
 
 /**
@@ -196,8 +205,6 @@ export async function generateAndMergePDF(formId) {
  */
 async function createInitialPdf(formData) {
     const doc = new jsPDF();
-
-    // --- INÍCIO DA ALTERAÇÃO ---
 
     // Define constantes para layout para facilitar a manutenção
     const pageHeight = doc.internal.pageSize.getHeight();
@@ -239,36 +246,44 @@ async function createInitialPdf(formData) {
         // Reseta a cor para o texto normal
         doc.setTextColor(0, 0, 0); // Preto
 
+        // --- INÍCIO DA ALTERAÇÃO 2: `createInitialPdf` ---
         // Itera por cada campo na seção
         for (const [key, value] of Object.entries(fields)) {
-            if (key !== 'uploadedFiles' && value) { // Exclui arquivos e valores vazios
-                let displayValue = Array.isArray(value) ? value.join(', ') : value.toString();
+            // Exclui arquivos e valores vazios ou arrays vazios
+            if (key !== 'uploadedFiles' && value && (Array.isArray(value) ? value.length > 0 : true)) {
+                let fullText;
 
-                if (displayValue) {
+                // Tratamento especial para os checkboxes de declaração da Seção 6
+                if (section === 'section6_form' && (key === 'estouCienteDasPenalidades' || key === 'autorizoAveriguacoes')) {
+                    // Para estes campos, o valor já é o texto completo.
+                    // Adicionamos um marcador [X] para indicar que foi selecionado.
+                    fullText = `[X] ${value.join(', ')}`;
+                } else {
+                    // Formato padrão "NOME DO CAMPO: Valor" para todos os outros
+                    let displayValue = Array.isArray(value) ? value.join(', ') : value.toString();
                     const label = `${formatFieldName(key)}: `;
-                    const fullText = label + displayValue;
-
-                    // Usa splitTextToSize para calcular quantas linhas o texto ocupará
-                    const lines = doc.splitTextToSize(fullText, maxWidth);
-                    const requiredHeight = lines.length * lineHeight;
-
-                    // Verifica se o bloco de texto cabe na página atual
-                    addNewPageIfNeeded(requiredHeight + fieldSpacing);
-
-                    // Adiciona o texto com quebra de linha automática
-                    doc.text(fullText, margin, yPosition, {
-                        maxWidth: maxWidth
-                    });
-
-                    // Atualiza a posição Y com base na altura do texto renderizado
-                    yPosition += requiredHeight + fieldSpacing;
+                    fullText = label + displayValue;
                 }
+
+                // Usa splitTextToSize para calcular quantas linhas o texto ocupará
+                const lines = doc.splitTextToSize(fullText, maxWidth);
+                const requiredHeight = lines.length * lineHeight;
+
+                // Verifica se o bloco de texto cabe na página atual
+                addNewPageIfNeeded(requiredHeight + fieldSpacing);
+
+                // Adiciona o texto com quebra de linha automática
+                doc.text(fullText, margin, yPosition, {
+                    maxWidth: maxWidth
+                });
+
+                // Atualiza a posição Y com base na altura do texto renderizado
+                yPosition += requiredHeight + fieldSpacing;
             }
         }
+        // --- FIM DA ALTERAÇÃO 2 ---
         yPosition += 10; // Adiciona espaço extra após cada seção
     }
-
-    // --- FIM DA ALTERAÇÃO ---
 
     // Converte o PDF em bytes para a mesclagem
     const initialPdfBytes = doc.output('arraybuffer');
@@ -285,10 +300,9 @@ function formatSectionName(sectionId) {
     const sectionTitles = {
         section1_form: "SEÇÃO 1 - DADOS PESSOAIS",
         section2_form: "SEÇÃO 2 - DADOS ACADÊMICOS",
-        section3_form: "SEÇÃO 3 - AVALIAÇÃO DE HISTÓRICO",
-        section4_form: "SEÇÃO 4 - ANÁLISE CURRICULAR",
-        section5_form: "SEÇÃO 5 - DADOS SOCIOECONÔMICOS",
-        section6_form: "SEÇÃO 6 - DECLARAÇÕES PARA BOLSA",
+        section4_form: "SEÇÃO 3 - ANÁLISE CURRICULAR",
+        section5_form: "SEÇÃO 4 - DADOS SOCIOECONÔMICOS",
+        section6_form: "SEÇÃO 5 - DECLARAÇÕES PARA BOLSA",
     };
 
     return sectionTitles[sectionId] || sectionId.toUpperCase();
@@ -325,7 +339,7 @@ async function mergeUploadedPdfs(initialPdfBytes, formData) {
             const titlePage = pdfDoc.addPage();
             titlePage.drawText(`ANEXOS ${formatSectionName(section)}`, {
                 x: 50,
-                y: 700,
+                y: 400,
                 size: 20,
                 color: rgb(0, 0, 0), // Black text
             });
