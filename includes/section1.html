@@ -140,6 +140,30 @@
                         comprovação de função preenchida.
                     </div>
                 </div>
+
+                <!-- Solicitação de Atendimento Especial (Anexo III) -->
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="solicitaAtendimentoEspecial" name="solicitaAtendimentoEspecial">
+                        <label class="form-check-label" for="solicitaAtendimentoEspecial">
+                            Solicitação de atendimento especial (conforme Anexo III do edital)
+                        </label>
+                    </div>
+                </div>
+                <div id="atendimentoEspecialContainer" class="mt-2" style="display: none;">
+                    <p class="small text-muted mb-2">
+                        1.2 anexar, obrigatoriamente, aos documentos solicitados no Edital, o requerimento de atendimento especial e laudo médico, com indicação da sua condição de deficiência e/ou com especificação de suas necessidades quanto ao atendimento personalizado. No citado laudo (original ou cópia autenticada), deverão constar o nome legível e o CPF do(a) candidato(a), assim como legíveis o nome do profissional médico, telefone de contato e respectivo CRM.
+                    </p>
+                    <div class="mb-3">
+                        <label for="documentacaoAtendimentoEspecialUpload" class="form-label">
+                            Documentação comprobatória (requerimento de atendimento especial e laudo médico)
+                        </label>
+                        <input type="file" class="form-control" id="documentacaoAtendimentoEspecialUpload" name="documentacaoAtendimentoEspecialUpload" accept=".pdf" />
+                        <div class="invalid-feedback">
+                            Por favor, anexe o requerimento e o laudo médico (PDF).
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

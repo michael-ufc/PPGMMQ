@@ -21,10 +21,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeSection1();
     initializePopovers();
 
+    // Step 2.1: Setup modalidade selector (Mestrado/Doutorado)
+    setupModalidadeSwitcher();
+
     // Step 3: Add form validation before PDF generation
     const generatePdfBtn = document.getElementById('generatePdfBtn');
     generatePdfBtn.addEventListener('click', async (e) => {
         e.preventDefault();
+
+        // Ensure modality-dependent required flags are synced
+        const modalidadeSelect = document.getElementById('modalidadeSelect');
+        if (modalidadeSelect) applyModalidade(modalidadeSelect.value);
 
         // Step 4: Validate form before PDF generation
         const form = document.getElementById('applicationForm'); // Assuming form ID
@@ -189,4 +196,50 @@ function validateForm(form) {
     return {
         isValid: true
     };
+}
+
+// --- Modalidade handling (Mestrado/Doutorado) ---
+function setupModalidadeSwitcher() {
+    const select = document.getElementById('modalidadeSelect');
+    if (!select) return;
+    // Apply initial state
+    applyModalidade(select.value);
+    // Listen to changes
+    select.addEventListener('change', () => applyModalidade(select.value));
+}
+
+function applyModalidade(modalidade) {
+    const isDoutorado = (modalidade === 'Doutorado');
+
+    // Toggle doutorado-only blocks
+    document.querySelectorAll('[data-modalidade="doutorado"]').forEach(container => {
+        container.style.display = isDoutorado ? '' : 'none';
+        // Toggle required for inputs inside the container
+        container.querySelectorAll('input, select, textarea').forEach(input => {
+            if (['diplomaMestradoUpload','historicoMestradoUpload','projetoPesquisaUpload'].includes(input.id)) {
+                if (isDoutorado) {
+                    input.setAttribute('required', 'required');
+                } else {
+                    input.removeAttribute('required');
+                    input.classList.remove('is-invalid','is-valid');
+                }
+            }
+        });
+    });
+
+    // Update motivation label (mestrado/doutorado)
+    const nivelSpan = document.getElementById('nivelPrograma');
+    if (nivelSpan) nivelSpan.textContent = isDoutorado ? 'doutorado' : 'mestrado';
+
+    // Update header title text
+    const headerTitle = document.getElementById('headerTitle');
+    if (headerTitle) {
+        headerTitle.textContent = isDoutorado
+            ? 'PPGMMQ Processo Seletivo - DOUTORADO EDITAL 2026/1'
+            : 'PPGMMQ Processo Seletivo - MESTRADO EDITAL 2026/1';
+    }
+
+    // Sync hidden input for PDF and data collection
+    const hiddenModalidade = document.getElementById('modalidade');
+    if (hiddenModalidade) hiddenModalidade.value = isDoutorado ? 'Doutorado' : 'Mestrado';
 }

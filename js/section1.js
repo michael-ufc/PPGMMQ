@@ -28,4 +28,25 @@ export function initializeSection1() {
     document.getElementById('cotaPcd').addEventListener('change', function() {
         document.getElementById('pcdInput').style.display = this.checked ? 'block' : 'none';
     });
+
+    // Solicitação de atendimento especial (Anexo III)
+    const solicitaAtendimentoCheckbox = document.getElementById('solicitaAtendimentoEspecial');
+    const atendimentoContainer = document.getElementById('atendimentoEspecialContainer');
+    const atendimentoFileInput = document.getElementById('documentacaoAtendimentoEspecialUpload');
+
+    if (solicitaAtendimentoCheckbox && atendimentoContainer && atendimentoFileInput) {
+        const toggleAtendimentoEspecial = () => {
+            const enabled = solicitaAtendimentoCheckbox.checked;
+            atendimentoContainer.style.display = enabled ? 'block' : 'none';
+            if (enabled) {
+                atendimentoFileInput.setAttribute('required', 'required');
+            } else {
+                atendimentoFileInput.removeAttribute('required');
+                atendimentoFileInput.classList.remove('is-invalid', 'is-valid');
+            }
+        };
+        solicitaAtendimentoCheckbox.addEventListener('change', toggleAtendimentoEspecial);
+        // Initialize on load
+        toggleAtendimentoEspecial();
+    }
 }

@@ -185,17 +185,21 @@ export function collectFormData(formId) {
 export async function generateAndMergePDF(formId) {
     let formData = collectFormData(formId);
 
+    // Read selected modalidade from hidden input (defaults to Mestrado)
+    const modalidade = (document.getElementById('modalidade')?.value || 'Mestrado');
+
     // Just for testing
     // formData = setMockData(formData);
 
     // Step 1: Generate initial PDF with form data
-    const initialPdfBytes = await createInitialPdf(formData);
+    const initialPdfBytes = await createInitialPdf(formData, modalidade);
 
     // Step 2: Merge uploaded PDFs with the generated PDF
     const mergedPdfBytes = await mergeUploadedPdfs(initialPdfBytes, formData);
 
     // Step 3: Trigger download of the merged PDF
-    downloadPdf(mergedPdfBytes, 'Formulario_PPGMMQ_2025.1_Merged.pdf');
+    const safeModalidade = modalidade.toLowerCase() === 'doutorado' ? 'Doutorado' : 'Mestrado';
+    downloadPdf(mergedPdfBytes, `Formulario_PPGMMQ_2026.1_${safeModalidade}.pdf`);
 }
 
 /** 
@@ -203,7 +207,7 @@ export async function generateAndMergePDF(formId) {
  * @param {object} formData - The organized form data grouped by sections.
  * @returns {Promise<Uint8Array>} - A promise that resolves to the bytes of the generated PDF.
  */
-async function createInitialPdf(formData) {
+async function createInitialPdf(formData, modalidade) {
     const doc = new jsPDF();
 
     // Define constantes para layout para facilitar a manutenção
@@ -226,7 +230,8 @@ async function createInitialPdf(formData) {
 
     // Título
     doc.setFontSize(16);
-    doc.text('PPGMMQ Processo Seletivo 2025.1', margin, yPosition);
+    const titulo = `PPGMMQ Processo Seletivo 2026.1 - ${modalidade}`;
+    doc.text(titulo, margin, yPosition);
     yPosition += 15;
 
     // Itera por cada seção
