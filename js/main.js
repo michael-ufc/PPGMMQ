@@ -235,8 +235,8 @@ function applyModalidade(modalidade) {
     const headerTitle = document.getElementById('headerTitle');
     if (headerTitle) {
         headerTitle.textContent = isDoutorado
-            ? 'PPGMMQ Processo Seletivo - DOUTORADO EDITAL 2026/1'
-            : 'PPGMMQ Processo Seletivo - MESTRADO EDITAL 2026/1';
+            ? 'PPGMMQ Seleção 2026/1 - DOUTORADO'
+            : 'PPGMMQ Seleção 2026/1 - MESTRADO';
     }
 
     // Sync hidden input for PDF and data collection
