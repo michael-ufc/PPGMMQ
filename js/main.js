@@ -231,13 +231,7 @@ function applyModalidade(modalidade) {
     const nivelSpan = document.getElementById('nivelPrograma');
     if (nivelSpan) nivelSpan.textContent = isDoutorado ? 'doutorado' : 'mestrado';
 
-    // Update header title text
-    const headerTitle = document.getElementById('headerTitle');
-    if (headerTitle) {
-        headerTitle.textContent = isDoutorado
-            ? 'PPGMMQ Seleção 2026/1 - DOUTORADO'
-            : 'PPGMMQ Seleção 2026/1 - MESTRADO';
-    }
+    // Header title no longer changes with modalidade; dropdown highlights selection
 
     // Sync hidden input for PDF and data collection
     const hiddenModalidade = document.getElementById('modalidade');
