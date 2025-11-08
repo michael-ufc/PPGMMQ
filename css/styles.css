@@ -18,6 +18,7 @@
     padding: 10px 15px;
     color: #495057;
     transition: background-color 0.3s, color 0.3s;
+    text-align: left;
 }
 
 /* Active Navigation Link Styling */
@@ -87,20 +88,234 @@
     /* Removes extra padding */
 }
 
+/* Navbar Responsive Styles */
+.navbar-title {
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+.modalidade-label {
+    font-size: 0.875rem;
+}
+
+.form-select-responsive {
+    max-width: 200px;
+    border: 2px solid #dc3545;
+    background-color: #fff3cd;
+}
+
+/* Sidebar Toggle Button */
+#sidebarToggle {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Sidebar Overlay for Mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-    .nav-pills {
-        flex-direction: row;
+
+/* Tablet and below (992px) */
+@media (max-width: 991.98px) {
+    /* Make sidebar collapsible on tablet/mobile */
+    .custom-sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: white;
+        z-index: 1050;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        overflow-y: auto;
+    }
+
+    .custom-sidebar.show {
+        left: 0;
+    }
+
+    .custom-content {
         width: 100%;
-        overflow-x: auto;
+        padding: 0 10px;
+    }
+
+    .navbar-title {
+        font-size: 1.25rem;
+    }
+
+    .form-select-responsive {
+        max-width: 150px;
+        font-size: 0.9rem;
     }
 
     .nav-pills .nav-link {
-        flex: 1 1 auto;
-        text-align: center;
+        white-space: normal;
+        word-wrap: break-word;
+        padding: 10px 12px;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .nav-pills {
+        padding: 10px;
+    }
+
+    #generatePdfBtn {
+        margin-top: 1rem;
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile devices (768px and below) */
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 1rem;
+    }
+
+    .navbar-brand img {
+        max-height: 35px !important;
+    }
+
+    .form-select-responsive {
+        max-width: 130px;
+        font-size: 0.85rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .modalidade-label {
+        font-size: 0.75rem;
     }
 
     .tab-content {
         padding: 10px;
+    }
+
+    .custom-sidebar {
+        width: 280px;
+        left: -280px;
+        padding: 12px;
+    }
+
+    .nav-pills {
+        padding: 8px;
+    }
+
+    .nav-pills .nav-link {
+        padding: 9px 10px;
+        margin-bottom: 0.4rem;
+        font-size: 0.9rem;
+    }
+
+    #generatePdfBtn {
+        font-size: 0.9rem;
+        padding: 0.55rem;
+    }
+
+    /* Adjust navbar spacing */
+    .navbar .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+/* Small mobile devices (576px and below) */
+@media (max-width: 576px) {
+    .navbar-title {
+        font-size: 0.85rem;
+        max-width: 120px;
+        white-space: normal;
+        line-height: 1.2;
+    }
+
+    .navbar-brand img {
+        max-height: 30px !important;
+    }
+
+    .form-select-responsive {
+        max-width: 110px;
+        font-size: 0.8rem;
+    }
+
+    .modalidade-label {
+        font-size: 0.7rem;
+    }
+
+    .custom-sidebar {
+        width: 270px;
+        left: -270px;
+        padding: 10px;
+    }
+
+    .nav-pills {
+        padding: 6px;
+    }
+
+    /* Make sidebar nav links smaller */
+    .nav-pills .nav-link {
+        padding: 8px 10px;
+        margin-bottom: 0.35rem;
+        font-size: 0.875rem;
+    }
+
+    /* Smaller generate PDF button */
+    #generatePdfBtn {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+    }
+}
+
+/* Extra small devices (400px and below) */
+@media (max-width: 400px) {
+    .navbar-title {
+        font-size: 0.75rem;
+        max-width: 100px;
+    }
+
+    .form-select-responsive {
+        max-width: 95px;
+        font-size: 0.75rem;
+    }
+
+    .modalidade-label {
+        font-size: 0.65rem;
+        margin-right: 0.25rem !important;
+    }
+
+    .custom-sidebar {
+        width: 260px;
+        left: -260px;
+        padding: 10px;
+    }
+
+    .nav-pills {
+        padding: 5px;
+    }
+
+    .nav-pills .nav-link {
+        padding: 7px 8px;
+        margin-bottom: 0.3rem;
+        font-size: 0.85rem;
+    }
+
+    #generatePdfBtn {
+        font-size: 0.85rem;
+        padding: 0.45rem;
     }
 }

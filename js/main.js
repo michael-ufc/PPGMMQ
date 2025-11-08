@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Step 2.1: Setup modalidade selector (Mestrado/Doutorado)
     setupModalidadeSwitcher();
 
+    // Step 2.2: Setup mobile sidebar toggle
+    setupSidebarToggle();
+
     // Step 3: Add form validation before PDF generation
     const generatePdfBtn = document.getElementById('generatePdfBtn');
     generatePdfBtn.addEventListener('click', async (e) => {
@@ -236,4 +239,49 @@ function applyModalidade(modalidade) {
     // Sync hidden input for PDF and data collection
     const hiddenModalidade = document.getElementById('modalidade');
     if (hiddenModalidade) hiddenModalidade.value = isDoutorado ? 'Doutorado' : 'Mestrado';
+}
+
+// --- Mobile Sidebar Toggle ---
+function setupSidebarToggle() {
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.custom-sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    if (!sidebarToggle || !sidebar || !overlay) return;
+
+    // Toggle sidebar on button click
+    sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+        overlay.classList.toggle('show');
+        document.body.style.overflow = sidebar.classList.contains('show') ? 'hidden' : '';
+    });
+
+    // Close sidebar when clicking overlay
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('show');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+    });
+
+    // Close sidebar when clicking a nav link (after navigation)
+    const navLinks = sidebar.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Only close on mobile (when sidebar has 'show' class)
+            if (sidebar.classList.contains('show')) {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Close sidebar on window resize if screen becomes large
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 992) {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
 }
