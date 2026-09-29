@@ -12,8 +12,15 @@ import {
 import {
     generateAndMergePDF
 } from './generatePdf.js';
+import {
+    SEMESTRE
+} from './config.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Step 0: Semestre no cabeçalho
+    const headerTitle = document.getElementById('headerTitle');
+    if (headerTitle) headerTitle.textContent = `PPGMMQ Seleção ${SEMESTRE}`;
+
     // Step 1: Load includes
     await loadIncludes();
 

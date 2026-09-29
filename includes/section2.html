@@ -4,7 +4,7 @@
         <!-- Group 1: Lattes Curriculum -->
         <div class="card mb-4">
             <div class="card-body">
-                <h5 class="card-title">Currículo Lattes</h5>
+                <h5 class="card-title">Currículo Lattes e ORCID</h5>
                 <hr>
                 <div class="mb-3">
                     <label for="curriculoLattes" class="form-label">
@@ -21,8 +21,27 @@
                         URL do Lattes é obrigatória.
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="curriculoOrcid" class="form-label">
+                        <strong>Link do ORCID</strong>
+                        <span class="text-danger">*</span>
+                        <button type="button" class="btn btn-link btn-sm p-0 ms-1" data-bs-toggle="popover"
+                                data-bs-content="URL completa do seu perfil ORCID">
+                            <i class="bi bi-question-circle"></i>
+                        </button>
+                    </label>
+                    <input type="url" class="form-control" id="curriculoOrcid" name="curriculoOrcid"
+                           placeholder="https://orcid.org/0000-0000-0000-0000" required />
+                    <div class="form-text">
+                        Não possui ORCID?
+                        <a href="https://orcid.org/register" target="_blank" rel="noopener">Crie o seu aqui</a>.
+                    </div>
+                    <div class="invalid-feedback">
+                        URL do ORCID é obrigatória.
+                    </div>
+                </div>
             </div>
-        </div>        
+        </div>
 
         <!-- Group 2: Main Graduation -->
         <div class="card mb-4">
@@ -59,6 +78,10 @@
                         </label>
                         <input type="text" class="form-control" id="igcInstituicao" name="igcInstituicao" 
                                placeholder="Apenas números" required />
+                        <div class="form-text">
+                            <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/indicadores-de-qualidade-da-educacao-superior/indice-geral-de-cursos-igc"
+                               target="_blank" rel="noopener">Consulte o IGC no site do INEP</a>
+                        </div>
                         <div class="invalid-feedback">
                             Insira o IGC da instituição.
                         </div>

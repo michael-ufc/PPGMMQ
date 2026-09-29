@@ -6,6 +6,8 @@
  * and facilitating the download of the final PDF.
  */
 
+import { SEMESTRE } from './config.js';
+
 // Import necessary libraries
 // Ensure that PDFLib is available in the global scope or import it appropriately
 // If using modules, you might need to adjust the import based on your setup
@@ -70,6 +72,7 @@ export async function setMockData(formData) {
         igcInstituicao2: "8.8",
         ira2: "8.2",
         curriculoLattes: "https://lattes.cnpq.br/1234567890123456",
+        curriculoOrcid: "https://orcid.org/0000-0002-1825-0097",
         uploadedFiles: {
             diplomaGraduacaoUpload: [await createMockFile(`${mockPdfDir}diploma_graduacao_mock.pdf`, "diploma_graduacao_mock.pdf", "application/pdf")],
             historicoDisciplinasGraduacao: [await createMockFile(`${mockPdfDir}historico_graduacao_mock.pdf`, "historico_graduacao_mock.pdf", "application/pdf")],
@@ -199,7 +202,7 @@ export async function generateAndMergePDF(formId) {
 
     // Step 3: Trigger download of the merged PDF
     const safeModalidade = modalidade.toLowerCase() === 'doutorado' ? 'Doutorado' : 'Mestrado';
-    downloadPdf(mergedPdfBytes, `Formulario_PPGMMQ_2026.1_${safeModalidade}.pdf`);
+    downloadPdf(mergedPdfBytes, `Formulario_PPGMMQ_${SEMESTRE}_${safeModalidade}.pdf`);
 }
 
 /** 
@@ -230,7 +233,7 @@ async function createInitialPdf(formData, modalidade) {
 
     // Título
     doc.setFontSize(16);
-    const titulo = `PPGMMQ Processo Seletivo 2026.1 - ${modalidade}`;
+    const titulo = `PPGMMQ Processo Seletivo ${SEMESTRE} - ${modalidade}`;
     doc.text(titulo, margin, yPosition);
     yPosition += 15;
 

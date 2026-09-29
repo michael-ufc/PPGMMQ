@@ -16,7 +16,6 @@ export function initializeSection1() {
                     if (cb !== cotaNaoSeAplica) cb.checked = false;
                 });
                 document.getElementById('pcdInput').style.display = 'none';
-                document.getElementById('outrosInput').style.display = 'none';
             } else {
                 // Desmarcar "Não se aplica" se qualquer outro for marcado
                 cotaNaoSeAplica.checked = false;
