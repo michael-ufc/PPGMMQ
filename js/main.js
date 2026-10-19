@@ -84,8 +84,10 @@ function getLabelForInput(inputElement) {
     if (inputElement.id) {
         const label = document.querySelector(`label[for="${inputElement.id}"]`);
         if (label) {
-            // Pega o texto do label principal, ignorando spans internos
-            return label.cloneNode(true).querySelector('span.text-danger')?.remove() && label.innerText.trim();
+            // Pega o texto do label principal, ignorando o asterisco e o botão de ajuda
+            const clone = label.cloneNode(true);
+            clone.querySelectorAll('span.text-danger, button').forEach(el => el.remove());
+            return clone.textContent.replace(/\s+/g, ' ').trim();
         }
     }
     // Fallback para encontrar o label/legend mais próximo dentro do container
@@ -97,6 +99,26 @@ function getLabelForInput(inputElement) {
     return 'Campo sem nome'; // Fallback
 }
 
+/**
+ * Texto do enunciado de um grupo de radios.
+ * @param {HTMLElement|null} container Container que agrupa a pergunta.
+ * @param {HTMLElement} radio Primeiro radio do grupo (fallback).
+ * @returns {string}
+ */
+function getQuestionText(container, radio) {
+    // O enunciado é o primeiro título do grupo, não o rótulo da alternativa (form-check-label)
+    const heading = container?.querySelector('legend, label.form-label, h5, h6');
+    const text = heading?.textContent.replace(/\s+/g, ' ').trim();
+    return text || getLabelForInput(radio);
+}
+
+
+// Link do ORCID: https://orcid.org/ + 4 grupos de 4 dígitos (o último caractere pode ser X)
+const ORCID_REGEX = /^(https?:\/\/)?(www\.)?orcid\.org\/\d{4}-\d{4}-\d{4}-\d{3}[\dX]\/?$/i;
+
+// Link do Lattes: lattes.cnpq.br/ + 16 dígitos, ou o link antigo da busca textual (id=K0000000A0);
+// sufixos como ?..., #... ou parâmetros extras são tolerados
+const LATTES_REGEX = /^(https?:\/\/)?(www\.)?(lattes\.cnpq\.br\/\d{16}\/?([?#].*)?|buscatextual\.cnpq\.br\/buscatextual\/visualizacv\.do\?(.*&)?id=K\d{7}[A-Z]\d(&.*)?(#.*)?)$/i;
 
 /**
  * Valida o formulário e retorna um objeto indicando o status e a mensagem de erro.
@@ -130,6 +152,17 @@ function validateForm(form) {
         } else if (!input.value.trim()) {
             isFieldValid = false;
             errorMessage = `Por favor, preencha o campo "${getLabelForInput(input)}".`;
+        } else if (input.id === 'curriculoLattes' && !LATTES_REGEX.test(input.value.trim())) {
+            isFieldValid = false;
+            errorMessage = 'O link do Lattes deve estar no formato http://lattes.cnpq.br/0000000000000000.';
+        } else if (input.id === 'curriculoOrcid' && !ORCID_REGEX.test(input.value.trim())) {
+            isFieldValid = false;
+            errorMessage = 'O link do ORCID deve estar no formato https://orcid.org/0000-0000-0000-0000.';
+        }
+
+        // Links aceitos sem esquema são gravados como https:// para sair clicáveis no PDF
+        if (isFieldValid && input.type === 'url') {
+            input.value = input.value.trim().replace(/^(?!https?:\/\/)/i, 'https://');
         }
 
         if (!isFieldValid) {
@@ -177,7 +210,7 @@ function validateForm(form) {
                 if (feedback) feedback.style.display = 'block';
             }
 
-            const questionText = getLabelForInput(groupInputs[0]);
+            const questionText = getQuestionText(groupContainer, groupInputs[0]);
             return {
                 isValid: false,
                 message: `Por favor, selecione uma opção para a pergunta: "${questionText}"`,
